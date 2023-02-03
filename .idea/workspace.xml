@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="278060cb-522c-410f-9db4-c2a48137f47a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/com/example/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9ba726d9-9d61-439c-ae5e-7695cd233d44.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9ba726d9-9d61-439c-ae5e-7695cd233d44.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/MonitorApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/test/java/GatewayTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/test/java/MockTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/test/java/Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,11 +50,12 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/eastsoft/Documents/Development/LuciusGithub/JavaProject/SpringCloudExample/gateway/src/main/resources&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/eastsoft/Documents/Development/LuciusGithub/JavaProject/SpringCloudExample&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsDialog.application.dockerConsole&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;44b622340f094b8084a541a23411396b&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -69,7 +74,21 @@
       <recent name="$PROJECT_DIR$/auth/src/main/resources/mybatis" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Test">
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.AuthMain">
+    <configuration name="Test (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Test" />
+      <module name="gateway" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.Test" />
       <module name="gateway" />
@@ -84,23 +103,8 @@
       </method>
     </configuration>
     <configuration name="AuthMain" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <option name="ACTIVE_PROFILES" />
       <module name="auth" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.AuthMain" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AuthMainConsume" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <option name="ACTIVE_PROFILES" />
-      <module name="auth-consume" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.AuthMainConsume" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.example.*" />
@@ -138,19 +142,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MonitorApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="auth-consume" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.MonitorApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
+      <item itemvalue="Application.Test (1)" />
       <item itemvalue="Application.Test" />
+      <item itemvalue="Spring Boot.MonitorApplication" />
       <item itemvalue="Spring Boot.GatewayApplication" />
       <item itemvalue="Spring Boot.AuthMain" />
-      <item itemvalue="Spring Boot.AuthMainConsume" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.AuthMain" />
+        <item itemvalue="Application.Test (1)" />
+        <item itemvalue="Spring Boot.MonitorApplication" />
         <item itemvalue="Application.Test" />
         <item itemvalue="Spring Boot.GatewayApplication" />
-        <item itemvalue="Spring Boot.AuthMainConsume" />
-        <item itemvalue="Spring Boot.AuthMain" />
-        <item itemvalue="Spring Boot.AuthMainConsume" />
       </list>
     </recent_temporary>
   </component>
@@ -166,6 +184,8 @@
       <workItem from="1670577893536" duration="10600000" />
       <workItem from="1671092851960" duration="3099000" />
       <workItem from="1672379946561" duration="683000" />
+      <workItem from="1673600326677" duration="257000" />
+      <workItem from="1675136536967" duration="13621000" />
     </task>
     <servers />
   </component>
