@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="278060cb-522c-410f-9db4-c2a48137f47a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/MonitorApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/test/java/GatewayTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/test/java/MockTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gateway/src/test/java/Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/example/GatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/example/GatewayApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/Test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +51,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsDialog.application.dockerConsole&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;44b622340f094b8084a541a23411396b&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -81,7 +77,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.AuthMain">
+  <component name="RunManager" selected="Spring Boot.GatewayApplication">
     <configuration name="Test (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Test" />
       <module name="gateway" />
@@ -158,17 +154,18 @@
     <list>
       <item itemvalue="Application.Test (1)" />
       <item itemvalue="Application.Test" />
+      <item itemvalue="Spring Boot.AuthMainConsume" />
       <item itemvalue="Spring Boot.MonitorApplication" />
       <item itemvalue="Spring Boot.GatewayApplication" />
       <item itemvalue="Spring Boot.AuthMain" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.GatewayApplication" />
         <item itemvalue="Spring Boot.AuthMain" />
         <item itemvalue="Application.Test (1)" />
         <item itemvalue="Spring Boot.MonitorApplication" />
         <item itemvalue="Application.Test" />
-        <item itemvalue="Spring Boot.GatewayApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -185,7 +182,17 @@
       <workItem from="1671092851960" duration="3099000" />
       <workItem from="1672379946561" duration="683000" />
       <workItem from="1673600326677" duration="257000" />
-      <workItem from="1675136536967" duration="13621000" />
+      <workItem from="1675136536967" duration="15746000" />
+      <workItem from="1675645919211" duration="6806000" />
+      <workItem from="1675997992817" duration="598000" />
+      <workItem from="1676256565579" duration="598000" />
+      <workItem from="1678241248662" duration="780000" />
+      <workItem from="1678347085291" duration="598000" />
+      <workItem from="1678437560206" duration="597000" />
+      <workItem from="1678755089534" duration="2000" />
+      <workItem from="1678782975681" duration="598000" />
+      <workItem from="1678953019956" duration="136000" />
+      <workItem from="1678953211810" duration="1596000" />
     </task>
     <servers />
   </component>
