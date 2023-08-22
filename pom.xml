@@ -12,6 +12,7 @@
         <module>auth</module>
         <module>auth-consume</module>
         <module>gateway</module>
+        <module>ocpp</module>
     </modules>
 
     <packaging>pom</packaging>
