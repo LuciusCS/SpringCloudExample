@@ -5,21 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="278060cb-522c-410f-9db4-c2a48137f47a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9ba726d9-9d61-439c-ae5e-7695cd233d44.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9ba726d9-9d61-439c-ae5e-7695cd233d44.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/配置README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/auth-api/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/MonitorApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/controller/TestFeignController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/controller/TestFeignController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-consume/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/resources/bootstrap.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auth/src/main/java/com/example/controller/DeptController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/java/com/example/controller/DeptController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/src/main/resources/application.yml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/auth/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +53,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -88,7 +79,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.GatewayApplication">
+  <component name="RunManager" selected="Spring Boot.AuthMain">
     <configuration name="GatewayApplication (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.GatewayApplication" />
       <module name="gateway" />
@@ -166,9 +157,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.AuthMain" />
         <item itemvalue="Spring Boot.GatewayApplication" />
         <item itemvalue="Spring Boot.AuthMainConsume" />
-        <item itemvalue="Spring Boot.AuthMain" />
         <item itemvalue="Application.GatewayApplication (1)" />
         <item itemvalue="Spring Boot.MonitorApplication" />
       </list>
@@ -212,7 +203,7 @@
       <workItem from="1701575844147" duration="4267000" />
       <workItem from="1701583918441" duration="9968000" />
       <workItem from="1702083645412" duration="5304000" />
-      <workItem from="1702090874506" duration="3492000" />
+      <workItem from="1702090874506" duration="6955000" />
     </task>
     <servers />
   </component>
