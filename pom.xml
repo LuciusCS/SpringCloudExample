@@ -3,7 +3,12 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
+    <parent>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-build</artifactId>
+        <version>4.0.0</version>
+        <relativePath/>
+    </parent>
     <groupId>com.example</groupId>
     <artifactId>SpringCloudExample</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -15,24 +20,48 @@
         <module>ocpp</module>
     </modules>
 
+
     <packaging>pom</packaging>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-<!--        设置依赖的版本-->
+        <spring-cloud-dependencies.version>2022.0.0</spring-cloud-dependencies.version>
+        <spring-boot-dependencies.version>3.0.0</spring-boot-dependencies.version>
+        <spring-cloud-alibaba.version>2022.0.0.0-RC2</spring-cloud-alibaba.version>
+        <!--        设置依赖的版本-->
         <junit.version>4.13.1</junit.version>
     </properties>
-
-<!--    用于子文件的依赖管理-->
+    <!--    用于子文件的依赖管理-->
     <dependencyManagement>
+
+        <!--        <dependencies>-->
+
+
+        <!--        </dependencies>-->
         <dependencies>
-<!--            Spring Cloud的依赖-->
+            <!--            Spring Cloud的依赖-->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>2021.0.4</version>
+                <version>${spring-cloud-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!--            <dependency>-->
+            <!--                <groupId>com.alibaba.cloud</groupId>-->
+            <!--                <artifactId>spring-cloud-alibaba-dependencies</artifactId>-->
+            <!--                <version>2022.0.0.0</version>-->
+            <!--                <type>pom</type>-->
+            <!--                <scope>import</scope>-->
+            <!--            </dependency>-->
+            <!--            Spring Boot 依赖-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot-dependencies.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -40,61 +69,52 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-bootstrap</artifactId>
-                <version>3.1.1</version>
+                <version>3.0.0</version>
+
             </dependency>
 
-
-            <!--            Spring Boot 依赖-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>2.7.5</version>
-                <type>pom</type>
-                <scope>import</scope>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>3.0.0</version>
+
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>3.0.0</version>
             </dependency>
 
-<!--            数据库依赖-->
+            <!--            用于表示网关依赖-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-gateway</artifactId>
+                <version>3.0.0</version>
+
+            </dependency>
+
+            <!--            热部署工具-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-devtools</artifactId>
+                <version>3.0.0</version>
+
+            </dependency>
+
+            <!--            数据库依赖-->
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>8.0.28</version>
             </dependency>
 
-<!--            数据源依赖-->
+            <!--            数据源依赖-->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid</artifactId>
                 <version>1.1.23</version>
             </dependency>
 
-<!--            Spring boot启动器-->
-
-
-            <dependency>
-                <groupId>org.mybatis.spring.boot</groupId>
-                <artifactId>mybatis-spring-boot-starter</artifactId>
-                <version>2.2.2</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
-                <version>2.7.5</version>
-            </dependency>
-
-<!--            用于表示网关依赖-->
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-gateway</artifactId>
-                <version>3.1.2</version>
-            </dependency>
-
-<!--            热部署工具-->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-devtools</artifactId>
-                <version>2.7.5</version>
-            </dependency>
 
             <dependency>
                 <groupId>junit</groupId>
@@ -113,65 +133,68 @@
                 <groupId>log4j</groupId>
                 <artifactId>log4j</artifactId>
                 <version>1.2.16</version>
+                <!--            <version>1.2.16</version>-->
             </dependency>
 
             <dependency>
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-core</artifactId>
-                <version>1.2.11</version>
+                <version>1.4.11</version>
             </dependency>
 
 
-<!--            <dependency>-->
-<!--                <groupId>com.alibaba.cloud</groupId>-->
-<!--                <artifactId>spring-cloud-alibaba-dependencies</artifactId>-->
-<!--                <version>2.2.5.RELEASE</version>-->
-<!--                <type>pom</type>-->
-<!--                <scope>import</scope>-->
-<!--            </dependency>-->
+            <!--            <dependency>-->
+            <!--                <groupId>com.alibaba.cloud</groupId>-->
+            <!--                <artifactId>spring-cloud-alibaba-dependencies</artifactId>-->
+            <!--                <version>2.2.5.RELEASE</version>-->
+            <!--                <type>pom</type>-->
+            <!--                <scope>import</scope>-->
+            <!--            </dependency>-->
 
-<!--            <dependency>-->
-<!--                <groupId>com.alibaba.cloud</groupId>-->
-<!--                <artifactId>aliyun-spring-boot-dependencies</artifactId>-->
-<!--                <version>2.3.12.RELEASE</version>-->
-<!--                <type>pom</type>-->
-<!--                <scope>import</scope>-->
-<!--            </dependency>-->
+            <!--            <dependency>-->
+            <!--                <groupId>com.alibaba.cloud</groupId>-->
+            <!--                <artifactId>aliyun-spring-boot-dependencies</artifactId>-->
+            <!--                <version>2.3.12.RELEASE</version>-->
+            <!--                <type>pom</type>-->
+            <!--                <scope>import</scope>-->
+            <!--            </dependency>-->
 
 
-<!--         nacos的配置管理客户端依赖-->
+            <!--         nacos的配置管理客户端依赖-->
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-                <version>2021.0.4.0</version>
+                <version>2022.0.0.0-RC2 </version>
+<!--                <version>2.2.1.RELEASE</version>-->
             </dependency>
-<!--         nacos客户端依赖包-->
+            <!--         nacos客户端依赖包-->
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-                <version>2021.0.4.0</version>
+                <version>2022.0.0.0-RC2 </version>
+<!--                <version>2.2.1.RELEASE</version>-->
             </dependency>
-<!--         feign客户端依赖-->
+            <!--         feign客户端依赖-->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-openfeign</artifactId>
-                <version>3.1.1</version>
+                <version>3.0.0</version>
             </dependency>
 
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-loadbalancer</artifactId>
-                <version>3.1.1</version>
+                <version>3.0.0</version>
+
             </dependency>
 
-<!--            <dependency>-->
-<!--                <groupId>org.springframework.cloud</groupId>-->
-<!--                <artifactId>spring-cloud-starter-test</artifactId>-->
-<!--                <version>3.1.1</version>-->
-<!--            </dependency>-->
-
-
+            <!--            <dependency>-->
+            <!--                <groupId>org.springframework.cloud</groupId>-->
+            <!--                <artifactId>spring-cloud-starter-test</artifactId>-->
+            <!--                <version>3.1.1</version>-->
+            <!--            </dependency>-->
         </dependencies>
     </dependencyManagement>
+
 
 </project>

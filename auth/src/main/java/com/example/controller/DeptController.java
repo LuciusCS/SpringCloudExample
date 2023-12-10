@@ -18,7 +18,7 @@ public class DeptController {
     @Autowired
     private DeptService deptService;
 
-
+//
     @Value("${pattern.dateformat}")   //这里获取的是nacos的配置信息
     private String dateFormat;
     @Value("${pattern.test}")   //这里获取的是nacos的配置信息
@@ -28,12 +28,13 @@ public class DeptController {
     @PostMapping("dept/add")
     public boolean addDept()
     {
-//         return  deptService.addDept(new Dept(100,"123"));
-
-
+        //
         System.out.println(dateFormat);
         System.out.println(test);
-        return  true;
+         return  deptService.addDept(new Dept(100,"123"));
+
+
+//        return  true;
     }
 
 

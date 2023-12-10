@@ -11,12 +11,10 @@ mybatis:
 # spring 配置
 
 spring:
-
-
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql:// 192.168.19.124:3306/spring_cloud_db?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://127.0.0.1:3306/spring_cloud_db?useUnicode=true&characterEncoding=utf-8
     username: root
     password: 123456
 

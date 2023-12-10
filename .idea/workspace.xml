@@ -5,8 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="278060cb-522c-410f-9db4-c2a48137f47a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9ba726d9-9d61-439c-ae5e-7695cd233d44.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9ba726d9-9d61-439c-ae5e-7695cd233d44.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/auth-api/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/MonitorApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/controller/TestFeignController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/controller/TestFeignController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-consume/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/src/main/java/com/example/controller/DeptController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/java/com/example/controller/DeptController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +41,10 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2HwA7gwgvclGjcBO4qMo16hlr13" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -40,24 +57,13 @@
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "dart.analysis.tool.window.visible": "false",
-    "jdk.selected.JAVA_MODULE": "1.8",
-    "last_opened_file_path": "/Users/eastsoft/Documents/Development/LuciusGithub/JavaProject/SpringCloudExample/ocpp/src/main/java",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "spring.configuration.checksum": "9bd4a9236c8ab98c7e34671d780bae15"
-  },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
-    ]
+    "last_opened_file_path": "D:/Project/Idea/spring-security-in-action-source",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -67,6 +73,7 @@
       <recent name="$PROJECT_DIR$/auth-consume/src/main/resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Project\Idea\SpringCloudExample\gateway\src\main\java\com\example" />
       <recent name="$PROJECT_DIR$/auth/src/main/resources/mybatis/mapper" />
       <recent name="$PROJECT_DIR$/auth/src/main/resources/mybatis" />
     </key>
@@ -82,15 +89,8 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.GatewayApplication">
-    <configuration name="Test (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Test" />
-      <module name="gateway" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.Test" />
+    <configuration name="GatewayApplication (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.GatewayApplication" />
       <module name="gateway" />
       <extension name="coverage">
         <pattern>
@@ -103,6 +103,7 @@
       </method>
     </configuration>
     <configuration name="AuthMain" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="auth" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.AuthMain" />
       <extension name="coverage">
@@ -115,8 +116,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AuthMainConsume" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true">
-      <option name="ACTIVE_PROFILES" />
+    <configuration name="AuthMainConsume" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="auth-consume" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.AuthMainConsume" />
       <extension name="coverage">
@@ -143,6 +144,7 @@
       </method>
     </configuration>
     <configuration name="MonitorApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="auth-consume" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.MonitorApplication" />
       <extension name="coverage">
@@ -156,20 +158,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Test (1)" />
-      <item itemvalue="Application.Test" />
-      <item itemvalue="Spring Boot.AuthMainConsume" />
-      <item itemvalue="Spring Boot.MonitorApplication" />
-      <item itemvalue="Spring Boot.GatewayApplication" />
+      <item itemvalue="Application.GatewayApplication (1)" />
       <item itemvalue="Spring Boot.AuthMain" />
+      <item itemvalue="Spring Boot.AuthMainConsume" />
+      <item itemvalue="Spring Boot.GatewayApplication" />
+      <item itemvalue="Spring Boot.MonitorApplication" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.GatewayApplication" />
+        <item itemvalue="Spring Boot.AuthMainConsume" />
         <item itemvalue="Spring Boot.AuthMain" />
-        <item itemvalue="Application.Test (1)" />
+        <item itemvalue="Application.GatewayApplication (1)" />
         <item itemvalue="Spring Boot.MonitorApplication" />
-        <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
   </component>
@@ -204,6 +205,14 @@
       <workItem from="1695083922905" duration="3625000" />
       <workItem from="1695705714279" duration="598000" />
       <workItem from="1697519699939" duration="4301000" />
+      <workItem from="1700989418487" duration="2801000" />
+      <workItem from="1701569078638" duration="23000" />
+      <workItem from="1701569151471" duration="5940000" />
+      <workItem from="1701575537570" duration="243000" />
+      <workItem from="1701575844147" duration="4267000" />
+      <workItem from="1701583918441" duration="9968000" />
+      <workItem from="1702083645412" duration="5304000" />
+      <workItem from="1702090874506" duration="3492000" />
     </task>
     <servers />
   </component>
