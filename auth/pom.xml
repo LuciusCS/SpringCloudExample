@@ -37,6 +37,7 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
+<!--        数据库连接池-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
@@ -48,6 +49,7 @@
 
         </dependency>
 
+<!--        如果用jpa,这部分应该考虑去掉，或者后期修改为 MybatisPlus-->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>

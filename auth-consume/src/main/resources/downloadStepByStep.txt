@@ -1,0 +1,8 @@
+Is_used: 0x05|4|12345678
+Com_addr: 0x21|6|12 34 56 78 11 20
+Work_mode: 0x01|1|0
+Com_baud: 0x04|4|9600
+Com_mod: 0x01|1|2
+mb_baud: 0x04|4|9600
+mb_mod: 0x01|1|0
+fkv_def_ver: 0x20|14|fkv_def_230731

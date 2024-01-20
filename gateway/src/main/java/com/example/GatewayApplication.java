@@ -8,7 +8,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 public class GatewayApplication {
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext context= SpringApplication.run(GatewayApplication.class);
+        ConfigurableApplicationContext context= SpringApplication.run(GatewayApplication.class,args);
 
 //        System.out.println(context.getEnvironment().getPropertSources());
 //        System.out.println(context.getEnvironment().getPr);

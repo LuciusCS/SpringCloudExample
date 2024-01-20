@@ -11,7 +11,8 @@ spring:
       discovery:
         cluster-name: QD
         namespace: c37be6af-3138-4dcf-9d10-d19bc6aab9ca
-#
+
+#    如果有了cacos还需不需要断言工厂等信息
 #    gateway:
 #      routes:   # 网关路由配置
 #        - id: auth       # 自定义，需要保持唯一
