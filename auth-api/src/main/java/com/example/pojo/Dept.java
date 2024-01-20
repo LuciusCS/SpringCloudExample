@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @Accessors(chain = true )  ///链式写法
-public class Dept implements Serializable {  //dept 实体类， orm 类表关系映射
+public class Dept implements Serializable {  //dept 实体类， orm 类表关系映射  需要添加一个base类，其中包括创建日期和创建人等其他功能
 
     private  int depoNum;  //主键
 

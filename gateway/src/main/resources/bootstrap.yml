@@ -11,11 +11,13 @@ spring:
         server-addr: 192.168.99.106:8848
         cluster-name: QD   # 需要在nacos 的namespace中创建，名字为QD的Service
         namespace: 1b2b72d4-ca4b-48b1-a6ca-a8f17c27c547  # 将QD的namespace中id填入
-
     gateway:
       discovery:
           locator:
-              enabled: true # 让gateway从nacos中获取服务信息，如果没有这一个不会进行转发
+              enabled: true
+          cluster-name: QD
+          namespace: c37be6af-3138-4dcf-9d10-d19bc6aab9ca
+      # 让gateway从nacos中获取服务信息，如果没有这一个不会进行转发
 #      routes: # 路由数组路由 就是指当请求满足什么样的条件的时候转发到哪个微服务上]
 #          - id: product route # 当前路由发的标识要求唯一,默认是UUID
 #            #uri: http://localhost:8081 # 请求最终要被转发到的地址
@@ -26,6 +28,9 @@ spring:
 #            filters:  #过滤器(在请求传递过程中 对请求做一些手脚)
 #               stripPrefix=1 # 在请求转发之前去掉一层路径
 #
+
+#    如果有了cacos还需不需要断言工厂等信息
+
 #    gateway:
 #      routes:   # 网关路由配置
 #        - id: auth       # 自定义，需要保持唯一
