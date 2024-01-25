@@ -7,9 +7,17 @@ spring:
 
   cloud:
     nacos:
-      server-addr: 192.168.19.124:8848
+      server-addr: 192.168.99.106:8848
       config:
         file-extension: yaml # 文件后缀名
+        namespace: 1b2b72d4-ca4b-48b1-a6ca-a8f17c27c547
+        shared-configs: all-service.yaml  # 微服务之间共享的配置文件
+        refresh-enabled: true             # 微服务之前共享的配置文件要实现动态配置刷新
       discovery:
         cluster-name: QD
-        namespace: c37be6af-3138-4dcf-9d10-d19bc6aab9ca
+        namespace: 1b2b72d4-ca4b-48b1-a6ca-a8f17c27c547
+
+mybatis:
+  type-aliases-package: com.example.pojo
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations:  classpath:mybatis/mapper/*.xml

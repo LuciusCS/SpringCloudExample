@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-public class TestFeignController {
+public class    TestFeignController {
 
     @Autowired
     TestFeignService feignService;
