@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="278060cb-522c-410f-9db4-c2a48137f47a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/resources/area.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/resources/result.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-consume/src/test/java/com/example/Area.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-consume/src/test/java/com/example/MapArea.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-consume/src/test/java/com/example/TestJson.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-api/src/main/java/com/example/pojo/Dept.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-api/src/main/java/com/example/pojo/Dept.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-consume/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/auth/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/example/GatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/example/GatewayApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +90,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Application.TestJson">
+  <component name="RunManager" selected="Spring Boot.MonitorApplication">
     <configuration name="Test (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Test" />
       <module name="gateway" />
@@ -168,11 +159,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.MonitorApplication" />
         <item itemvalue="Application.TestJson" />
         <item itemvalue="Spring Boot.GatewayApplication" />
         <item itemvalue="Spring Boot.AuthMain" />
         <item itemvalue="Application.Test (1)" />
-        <item itemvalue="Spring Boot.MonitorApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -226,6 +217,14 @@
       <workItem from="1703656910461" duration="613000" />
       <workItem from="1703841523588" duration="599000" />
       <workItem from="1704445155402" duration="18000" />
+      <workItem from="1705753901366" duration="72000" />
+      <workItem from="1705913310354" duration="1299000" />
+      <workItem from="1705969824304" duration="845000" />
+      <workItem from="1706001205546" duration="598000" />
+      <workItem from="1706056546231" duration="266000" />
+      <workItem from="1706062970575" duration="599000" />
+      <workItem from="1706082126922" duration="599000" />
+      <workItem from="1706159915372" duration="514000" />
     </task>
     <servers />
   </component>

@@ -89,6 +89,13 @@
                 <version>3.1.2</version>
             </dependency>
 
+<!--            用于表示Spring Security-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-security</artifactId>
+                <version>2.7.5</version>
+            </dependency>
+
 <!--            热部署工具-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
