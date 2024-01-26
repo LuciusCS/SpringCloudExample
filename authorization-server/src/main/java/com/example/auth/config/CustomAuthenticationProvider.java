@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 import java.util.Arrays;
 
 ///身份验证提供程序，实现了身份验证逻辑
+
+/// https://xieshaohu.wordpress.com 有另外一种写法
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
@@ -26,7 +28,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         if ("john".equals(userName) && "12345".equals(password)) {
               UsernamePasswordAuthenticationToken tmp=new UsernamePasswordAuthenticationToken(userName, password, Arrays.asList());
 
-              System.out.println(String.valueOf(tmp));
+              System.out.println(String.valueOf(tmp.getCredentials()));
               System.out.println(String.valueOf("+++++++++++++++++++"));
             return tmp;
         } else {

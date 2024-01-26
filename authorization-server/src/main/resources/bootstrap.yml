@@ -22,3 +22,10 @@ spring:
         namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136 # 将QD的namespace中id填入
         username: nacos
         password: nacos
+
+# 用于配置数据库
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.19.121:3306/spring
+    username: root
+    password: 123456
