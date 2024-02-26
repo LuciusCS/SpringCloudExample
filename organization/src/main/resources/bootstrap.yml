@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: organization  # 服务名称
+  # 服务名称+开发环境+文件后缀名 = nacos配置的Data Id
+  profiles:
+    active: dev   #开发环境
+
+  cloud:
+    nacos:
+      server-addr: 192.168.99.106:8848
+      config:
+        file-extension: yaml # 文件后缀名
+      discovery:
+        cluster-name: QD
+        namespace: 1b2b72d4-ca4b-48b1-a6ca-a8f17c27c547
