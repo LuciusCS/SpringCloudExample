@@ -6,7 +6,17 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/authorization-server/pom.xml" />
+        <option value="$PROJECT_DIR$/organization/pom.xml" />
+        <option value="$PROJECT_DIR$/common/pom.xml" />
+        <option value="$PROJECT_DIR$/authorization-client/pom.xml" />
+        <option value="$PROJECT_DIR$/oauth2--client/pom.xml" />
+        <option value="$PROJECT_DIR$/authorization-resource/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/oauth2--client/pom.xml" />
+      </set>
     </option>
     <option name="workspaceImportForciblyTurnedOn" value="true" />
   </component>
