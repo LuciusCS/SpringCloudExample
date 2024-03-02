@@ -5,16 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="278060cb-522c-410f-9db4-c2a48137f47a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/authorization-client/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authorization-client/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/config/OauthServerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/authorization-client/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/authorization-client/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authorization-client/src/main/java/com/example/authorization/client/AuthorizationClientApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/authorization-client/src/main/java/com/example/authorization/client/AuthorizationClientApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authorization-client/src/main/resources/application.properties" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/authorization-resource/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/authorization-resource/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/organization/src/main/java/com/example/organization/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/organization/src/main/java/com/example/organization/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/organization/src/main/java/com/example/organization/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/organization/src/main/java/com/example/organization/dao/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/organization/src/main/java/com/example/organization/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/organization/src/main/java/com/example/organization/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorization-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/authorization-server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/Oauth2AuthorizationApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/Oauth2AuthorizationApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/config/ProjectConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/config/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/services/InMemoryUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/services/InMemoryUserDetailsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorization-server/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/authorization-server/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorization-server/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/authorization-server/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ocpp/src/main/java/push/NettyConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/ocpp/src/main/java/push/NettyConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ocpp/src/main/java/push/NettyPushMessageBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/ocpp/src/main/java/push/NettyPushMessageBody.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ocpp/src/main/java/push/PushController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ocpp/src/main/java/push/PushController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ocpp/src/main/java/push/PushService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ocpp/src/main/java/push/PushService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ocpp/src/main/java/push/PushServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ocpp/src/main/java/push/PushServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ocpp/src/main/java/websocket/HeartBeatHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/ocpp/src/main/java/websocket/HeartBeatHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ocpp/src/main/java/websocket/NettyServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/ocpp/src/main/java/websocket/NettyServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ocpp/src/main/java/websocket/WebSocketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/ocpp/src/main/java/websocket/WebSocketHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,45 +71,55 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.AuthorizationClientApplication.executor": "Run",
-    "Maven.common [install].executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.AuthorizationClientApplication.executor": "Run",
-    "Spring Boot.GatewayApplication.executor": "Run",
-    "Spring Boot.MonitorApplication.executor": "Run",
-    "Spring Boot.Oauth2AuthorizationApplication.executor": "Run",
-    "WebServerToolWindowFactoryState": "false",
-    "dart.analysis.tool.window.visible": "false",
-    "jdk.selected.JAVA_MODULE": "17",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/eastsoft/Documents/Development/LuciusGithub/JavaProject/SpringCloudExample/authorization-client/src/main/resources",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "http.proxy",
-    "spring.configuration.checksum": "9bd4a9236c8ab98c7e34671d780bae15",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.AuthorizationClientApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.SpringCloudExample [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.SpringCloudExample [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.SpringCloudExample [site].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.SpringCloudExample [validate].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.authorization-server [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.authorization-server [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.authorization-server [org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.authorization-server [org.apache.maven.plugins:maven-clean-plugin:3.2.0:help].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.authorization-server [org.apache.maven.plugins:maven-install-plugin:3.1.1:install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.common [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.gateway [clean].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.AuthorizationClientApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.GatewayApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.MonitorApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.Oauth2AuthorizationApplication.executor&quot;: &quot;Run&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/eastsoft/Documents/Development/LuciusGithub/JavaProject/SpringCloudExample/authorization-client/src/main/resources&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;http.proxy&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;9bd4a9236c8ab98c7e34671d780bae15&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -133,7 +153,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.AuthorizationClientApplication">
+  <component name="RunManager" selected="Spring Boot.Oauth2AuthorizationApplication">
     <configuration name="AuthorizationClientApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.authorization.client.AuthorizationClientApplication" />
       <module name="authorization-client" />
@@ -233,13 +253,20 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.AuthorizationClientApplication" />
         <item itemvalue="Spring Boot.Oauth2AuthorizationApplication" />
         <item itemvalue="Spring Boot.GatewayApplication" />
+        <item itemvalue="Application.AuthorizationClientApplication" />
         <item itemvalue="Application.TestJson" />
         <item itemvalue="Spring Boot.AuthMain" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.9-corretto-17.0.9-f644763e9732-203781b8" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -306,12 +333,27 @@
       <workItem from="1706261073779" duration="48000" />
       <workItem from="1708994086916" duration="149000" />
       <workItem from="1708999158528" duration="1655000" />
-      <workItem from="1709000900983" duration="984000" />
+      <workItem from="1709000900983" duration="4362000" />
+      <workItem from="1709005282548" duration="15996000" />
+      <workItem from="1709087511589" duration="2521000" />
+      <workItem from="1709090050634" duration="4300000" />
+      <workItem from="1709257011068" duration="948000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -325,6 +367,14 @@
     </option>
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NoSuchFieldError" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="area" />

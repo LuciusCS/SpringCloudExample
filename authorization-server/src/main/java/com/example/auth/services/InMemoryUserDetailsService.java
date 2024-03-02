@@ -16,6 +16,8 @@ public class InMemoryUserDetailsService implements UserDetailsService {
 
     public InMemoryUserDetailsService(List<UserDetails> users) {
         this.users = users;
+
+        System.out.println("++");
     }
 
     @Override

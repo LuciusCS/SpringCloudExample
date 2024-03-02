@@ -32,6 +32,10 @@ nacos 2.2.1 版本需要单独设置 conf目录下 application.properties
 2、auth-dev.yaml 配置信息需要在public下进行创建，在QD下创建会注入失败；或者在 cloud.nacos.config.namespace namespace设置QD的id
 
 
+#### 在bootstrap.yaml 中配置nacos的路经后，微服务启动时还是使用 127.0.0.1:8848 注册nacos
+
+需要对模块依赖进行clean
+
 ### mysql配置
 
 1、创建spring_cloud_db 数据库，其中有一张表  dept
@@ -47,3 +51,8 @@ nacos 2.2.1 版本需要单独设置 conf目录下 application.properties
 通过 gateway调用auth接口        192.168.99.106:8003/auth-consume/test/feign
                          或者  192.168.99.106:8003/auth/dept/add
 
+
+
+### 使用 springdoc 替代swagger
+
+springdoc 访问的端口为微服务的端口
