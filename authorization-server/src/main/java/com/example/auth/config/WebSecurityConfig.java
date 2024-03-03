@@ -3,12 +3,21 @@ package com.example.auth.config;
 import com.example.auth.entity.SecurityUser;
 import com.example.auth.entity.User;
 import com.example.auth.services.InMemoryUserDetailsService;
+
+import com.nimbusds.jose.jwk.RSAKey;
+import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
+import com.nimbusds.jose.jwk.source.JWKSource;
+import com.nimbusds.jose.proc.JWKSecurityContext;
+import com.nimbusds.jose.jwk.JWKSet;
+import com.nimbusds.jose.proc.SecurityContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
+import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
@@ -16,16 +25,25 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.core.oidc.OidcScopes;
+import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.server.authorization.client.InMemoryRegisteredClientRepository;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
 import org.springframework.security.oauth2.server.authorization.config.annotation.web.configuration.OAuth2AuthorizationServerConfiguration;
 import org.springframework.security.oauth2.server.authorization.config.annotation.web.configurers.OAuth2AuthorizationServerConfigurer;
+import org.springframework.security.oauth2.server.authorization.settings.AuthorizationServerSettings;
 import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler;
 
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+//import java.security.interfaces.RSAKey;
+import java.security.interfaces.RSAPrivateKey;
+import java.security.interfaces.RSAPublicKey;
 import java.util.List;
 import java.util.UUID;
 
@@ -34,16 +52,18 @@ import java.util.UUID;
  * Spring Security配置类
  */
 @Configuration
-//@EnableWebSecurity
+@EnableWebSecurity
+@EnableWebFluxSecurity
 public class WebSecurityConfig {
 
 
-    @Bean
+    @Bean   ///一个用于 协议端点 的 Spring Security 过滤器链。
     @Order(1)  ///定义bean的加载顺序
     public SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity http) throws Exception {
 
         OAuth2AuthorizationServerConfiguration.applyDefaultSecurity(http);
 
+        ///OpenID Connect 1.0 在默认配置中被禁用。下面的例子显示了如何通过初始化 OidcConfigurer 来启用OpenID Connect 1.0。
         http.getConfigurer(OAuth2AuthorizationServerConfigurer.class)
                 .oidc(Customizer.withDefaults()); /// 使用OpenID Connect 1.0
 
@@ -60,8 +80,8 @@ public class WebSecurityConfig {
 
 
     @Bean
-    @Order(2)
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    @Order(2)  ///	一个用于 认证 的 Spring Security 过滤器链。
+    public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
 //        http.httpBasic();
 //        http.authorizeRequests().anyRequest().authenticated();  ///所有的请求都需要身份验证
 //        http.authorizeRequests().anyRequest().permitAll();  ///所有的请求都需要身份验证，有一些需要略过的数据直接掠过
@@ -95,12 +115,17 @@ public class WebSecurityConfig {
 //                .addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 
         http.authorizeHttpRequests((authorize) -> authorize.anyRequest().authenticated())
-                .formLogin(Customizer.withDefaults());
+                .formLogin(Customizer.withDefaults())
+                .csrf(csrf -> csrf
+                        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+                        .csrfTokenRequestHandler(new CsrfTokenRequestAttributeHandler()));
+        ///需要删除或保留
+//               .csrf(csrf -> csrf.disable());
 
         return http.build();
     }
 
-    @Bean
+    @Bean  ///	UserDetailsService 的一个实例，用于检索要认证的用户。
     public UserDetailsService userDetailsService() {
 //        InMemoryUserDetailsManager userDetailsService = new InMemoryUserDetailsManager();
 //
@@ -124,14 +149,16 @@ public class WebSecurityConfig {
                 .password("password")
                 .roles("USER")
                 .build();
+
+
         return new InMemoryUserDetailsManager(userDetails);
 //        UserDetails userDetails=Us
     }
 
 
-    @Bean
-    public RegisteredClientRepository registeredClientRepository(){
-        RegisteredClient registeredClient=RegisteredClient.withId(UUID.randomUUID().toString())
+    @Bean  ///	RegisteredClientRepository 的一个实例，用于管理客户端
+    public RegisteredClientRepository registeredClientRepository() {
+        RegisteredClient registeredClient = RegisteredClient.withId(UUID.randomUUID().toString())
                 .clientId("messaging-client")
                 .clientSecret("{noop}secret")
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
@@ -140,6 +167,7 @@ public class WebSecurityConfig {
                 .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
                 .redirectUri("http://127.0.0.1:8080/login/oauth2/code/messaging-client-oidc")
                 .redirectUri("http://127.0.0.1:8080/authorized")
+                .redirectUri("www.baidu.com")
                 .scope(OidcScopes.OPENID)
                 .scope(OidcScopes.PROFILE)
                 .scope("message.read")
@@ -147,15 +175,60 @@ public class WebSecurityConfig {
                 .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
                 .build();
 
-        return  new InMemoryRegisteredClientRepository(registeredClient);
+        return new InMemoryRegisteredClientRepository(registeredClient);
 
     }
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return NoOpPasswordEncoder.getInstance();
+    @Bean  ///	com.nimbusds.jose.jwk.source.JWKSource 的一个实例，用于签署访问令牌（access token）
+    public JWKSource<SecurityContext> jwtSource() {
+        KeyPair keyPair = generateRsaKey();
+        RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
+        RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();
+
+//        RSAKey 不能使用 import java.security.interfaces.RSAKey;
+//        而用import com.nimbusds.jose.jwk.RSAKey;
+        RSAKey rsaKey = new RSAKey.Builder(publicKey)
+                .privateKey(privateKey)
+                .keyID(UUID.randomUUID().toString())
+                .build();
+//
+        JWKSet jwkSet = new JWKSet(rsaKey);
+
+        return new ImmutableJWKSet<>(jwkSet);
+
     }
 
+    ///生成RsaKey  java.security.KeyPair 的一个实例，其 key 在启动时生成，用于创建上述 JWKSource。
+    private static KeyPair generateRsaKey() {
+
+        KeyPair keyPair;
+        try {
+            KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
+            keyPairGenerator.initialize(2048);
+            keyPair = keyPairGenerator.generateKeyPair();
+        } catch (Exception exception) {
+            throw new IllegalStateException(exception);
+        }
+
+        return keyPair;
+
+    }
+
+
+    @Bean ///	JwtDecoder 的一个实例，用于解码签名访问令牌（access token）。
+    public JwtDecoder jwtDecoder(JWKSource<SecurityContext> jwkSource) {
+        return OAuth2AuthorizationServerConfiguration.jwtDecoder(jwkSource);
+    }
+
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return NoOpPasswordEncoder.getInstance();
+//    }
+
+    @Bean  //AuthorizationServerSettings 的一个实例，用于配置Spring授权服务器。
+    public AuthorizationServerSettings authorizationServerSettings(){
+        return  AuthorizationServerSettings.builder().build();
+    }
 //    void configure(HttpSecurity http) throws Exception {
 //        http.httpBasic();
 //        http.authorizeRequests().anyRequest().authenticated();

@@ -11,3 +11,8 @@ springdoc:
     use-root-path: true
   cache:
     disabled: true
+
+#spring:
+#  main:
+#    web-application-type:
+#      reactive

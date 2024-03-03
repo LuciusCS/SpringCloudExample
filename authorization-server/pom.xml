@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -15,73 +16,10 @@
 
     <dependencies>
 
-        <!--        要拿到实体类，首先需要配置 api module-->
-        <!--        <dependency>-->
-        <!--            <groupId>com.example</groupId>-->
-        <!--            <artifactId>auth-api</artifactId>-->
-        <!--            <version>1.0-SNAPSHOT</version>-->
-        <!--        </dependency>-->
-
-        <!--        <dependency>-->
-        <!--            <groupId>junit</groupId>-->
-        <!--            <artifactId>junit</artifactId>-->
-        <!--            <scope>test</scope>-->
-        <!--        </dependency>-->
-
-        <!--        <dependency>-->
-        <!--            <groupId>mysql</groupId>-->
-        <!--            <artifactId>mysql-connector-java</artifactId>-->
-        <!--        </dependency>-->
-
-        <!--        <dependency>-->
-        <!--            <groupId>com.alibaba</groupId>-->
-        <!--            <artifactId>druid</artifactId>-->
-        <!--        </dependency>-->
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-
-        </dependency>
-
-        <!--        <dependency>-->
-        <!--            <groupId>org.mybatis.spring.boot</groupId>-->
-        <!--            <artifactId>mybatis-spring-boot-starter</artifactId>-->
-
-        <!--        </dependency>-->
-
-        <!--            热部署工具-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework.boot</groupId>-->
-        <!--            <artifactId>spring-boot-devtools</artifactId>-->
-
-        <!--        </dependency>-->
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-bootstrap</artifactId>
-        </dependency>
-
-
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-core</artifactId>
-        </dependency>
-
-        <!--        <dependency>-->
-        <!--            <groupId>com.alibaba.nacos</groupId>-->
-        <!--            <artifactId>logback-adapter</artifactId>-->
-        <!--        </dependency>-->
-
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-
-        </dependency>
-
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
         <!--        feign客户端-->
         <dependency>
@@ -89,48 +27,23 @@
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
 
-        <!--        <dependency>-->
-        <!--            <groupId>com.springboot.cloud</groupId>-->
-        <!--            <artifactId>web</artifactId>-->
-        <!--            <version>0.0.1-SNAPSHOT</version>-->
-        <!--        </dependency>-->
-        <!--oauth2认证-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-security</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.12.6.1</version>
-            <scope>compile</scope>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
+        <!--已经被官方移除-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.security.oauth</groupId>-->
+        <!--            <artifactId>spring-security-oauth2</artifactId>-->
+        <!--            <version>${spring.security.oauth2.version}</version>-->
+        <!--        </dependency>-->
+        <!--            最新的，-->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <!--            最新的，-->
+            <artifactId>spring-boot-starter-oauth2-client</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-        </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-
-<!--            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>-->
-<!--        </dependency>-->
-                    <!--            最新的，-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>-->
-
-<!--        </dependency>-->
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-oauth2-authorization-server</artifactId>
@@ -144,6 +57,43 @@
             <!--            最新的，-->
             <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
         </dependency>
+        <!-- Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+            <version>2022.0.0.0-RC2</version>
+
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+            <version>2022.0.0.0-RC2</version>
+
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>

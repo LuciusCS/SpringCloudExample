@@ -4,28 +4,35 @@ spring:
   # 服务名称+开发环境+文件后缀名 = nacos配置的Data Id     gateway-dev.yaml
   profiles:
     active: dev   #开发环境
-
+  main:
+    web-application-type: reactive
+    allow-bean-definition-overriding: true
   cloud:
     nacos:
       discovery:
-        server-addr: 192.168.19.121:8848
+
+        server-addr: 127.0.0.1:8848
+#        server-addr: 192.168.19.121:8848
         group: QD   # 需要在nacos 的namespace中创建，名字为QD的Service
-        namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136 # 将QD的namespace中id填入
+#        namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136 # 将QD的namespace中id填入
+        namespace: 1b2b72d4-ca4b-48b1-a6ca-a8f17c27c547
         username: nacos
         password: nacos
       config:
-        server-addr: 192.168.19.121:8848
+#        server-addr: 192.168.19.121:8848
+        server-addr: 127.0.0.1:8848
         group: QD   # 需要在nacos 的namespace中创建，名字为QD的Service
-        namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136 # 将QD的namespace中id填入
+#        namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136 # 将QD的namespace中id填入
+        namespace: 1b2b72d4-ca4b-48b1-a6ca-a8f17c27c547
         username: nacos
         password: nacos
-    gateway:
-      discovery:
-          server-addr: 192.168.19.121:8848
-          locator:
-              enabled: true
-          group: QD
-          namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136
+#    gateway:
+#      discovery:
+#          server-addr: 192.168.19.121:8848
+#          locator:
+#              enabled: true
+#          group: QD
+#          namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136
       # 让gateway从nacos中获取服务信息，如果没有这一个不会进行转发
 #      routes: # 路由数组路由 就是指当请求满足什么样的条件的时候转发到哪个微服务上]
 #          - id: product route # 当前路由发的标识要求唯一,默认是UUID
@@ -39,7 +46,13 @@ spring:
 #
 
 #    如果有了cacos还需不需要断言工厂等信息
-
+  # 用于配置数据库
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #    url: jdbc:mysql://192.168.19.121:3306/spring_cloud_db
+    url: jdbc:mysql://127.0.0.1:3306/spring_cloud_db
+    username: root
+    password: 123456
 #    gateway:
 #      routes:   # 网关路由配置
 #        - id: auth       # 自定义，需要保持唯一
