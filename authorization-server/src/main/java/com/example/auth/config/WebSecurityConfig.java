@@ -66,7 +66,7 @@ public class WebSecurityConfig {
         ///OpenID Connect 1.0 在默认配置中被禁用。下面的例子显示了如何通过初始化 OidcConfigurer 来启用OpenID Connect 1.0。
         http.getConfigurer(OAuth2AuthorizationServerConfigurer.class)
                 .oidc(Customizer.withDefaults()); /// 使用OpenID Connect 1.0
-
+        // 当未登录时访问认证端点时重定向至登录页面，默认前往登录页的uri是/login
         http.exceptionHandling((exceptions) -> exceptions.authenticationEntryPoint(
                         ///跳转到登陆页面
                         new LoginUrlAuthenticationEntryPoint("/login")))
@@ -146,7 +146,7 @@ public class WebSecurityConfig {
 
         UserDetails userDetails = org.springframework.security.core.userdetails.User.withDefaultPasswordEncoder()
                 .username("user")
-                .password("password")
+                .password("{noop}password")  ///好像是表示不需要加密
                 .roles("USER")
                 .build();
 
@@ -161,7 +161,9 @@ public class WebSecurityConfig {
         RegisteredClient registeredClient = RegisteredClient.withId(UUID.randomUUID().toString())
                 .clientId("messaging-client")
                 .clientSecret("{noop}secret")
+                // 客户端认证基于请求头
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+                // 配置授权的支持方式
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
                 .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
@@ -172,6 +174,7 @@ public class WebSecurityConfig {
                 .scope(OidcScopes.PROFILE)
                 .scope("message.read")
                 .scope("message.write")
+                // 客户端设置，设置用户需要确认授权
                 .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
                 .build();
 
