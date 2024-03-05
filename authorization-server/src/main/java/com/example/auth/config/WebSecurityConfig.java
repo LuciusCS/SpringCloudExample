@@ -13,6 +13,7 @@ import com.nimbusds.jose.proc.SecurityContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.http.MediaType;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -38,6 +39,8 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler;
+import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
+import org.springframework.security.web.util.matcher.MediaTypeRequestMatcher;
 
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
@@ -67,11 +70,13 @@ public class WebSecurityConfig {
         http.getConfigurer(OAuth2AuthorizationServerConfigurer.class)
                 .oidc(Customizer.withDefaults()); /// 使用OpenID Connect 1.0
         // 当未登录时访问认证端点时重定向至登录页面，默认前往登录页的uri是/login
-        http.exceptionHandling((exceptions) -> exceptions.authenticationEntryPoint(
+        http.exceptionHandling((exceptions) -> exceptions.defaultAuthenticationEntryPointFor(
                         ///跳转到登陆页面
-                        new LoginUrlAuthenticationEntryPoint("/login")))
+                        new LoginUrlAuthenticationEntryPoint("/login"),
+                        new MediaTypeRequestMatcher(MediaType.TEXT_HTML)))
                 ///接受用户和客户端的 access token
-                .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
+                .oauth2ResourceServer((resourceServer) -> resourceServer
+                        .jwt(Customizer.withDefaults()));
 
         return http.build();
 
@@ -114,13 +119,16 @@ public class WebSecurityConfig {
 //                // 加我们自定义的过滤器，替代UsernamePasswordAuthenticationFilter
 //                .addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 
-        http.authorizeHttpRequests((authorize) -> authorize.anyRequest().authenticated())
-                .formLogin(Customizer.withDefaults())
-                .csrf(csrf -> csrf
-                        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-                        .csrfTokenRequestHandler(new CsrfTokenRequestAttributeHandler()));
+//        http
+//                .authorizeHttpRequests((authorize) -> authorize.anyRequest().authenticated())
+//                .formLogin(Customizer.withDefaults())
+//
+//                .csrf(csrf -> csrf
+////                        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+//                        .csrfTokenRepository(new HttpSessionCsrfTokenRepository())
+//                        .csrfTokenRequestHandler(new CsrfTokenRequestAttributeHandler()));
         ///需要删除或保留
-//               .csrf(csrf -> csrf.disable());
+         http  .csrf(csrf -> csrf.disable());
 
         return http.build();
     }
@@ -144,7 +152,7 @@ public class WebSecurityConfig {
 //
 //        return new InMemoryUserDetailsService(users);
 
-        UserDetails userDetails = org.springframework.security.core.userdetails.User.withDefaultPasswordEncoder()
+        UserDetails userDetails = org.springframework.security.core.userdetails.User.builder()
                 .username("user")
                 .password("{noop}password")  ///好像是表示不需要加密
                 .roles("USER")
@@ -167,9 +175,10 @@ public class WebSecurityConfig {
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
                 .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
+//                .authorizationGrantType(AuthorizationGrantType.PASSWORD)
                 .redirectUri("http://127.0.0.1:8080/login/oauth2/code/messaging-client-oidc")
                 .redirectUri("http://127.0.0.1:8080/authorized")
-                .redirectUri("www.baidu.com")
+//                .redirectUri("www.baidu.com")
                 .scope(OidcScopes.OPENID)
                 .scope(OidcScopes.PROFILE)
                 .scope("message.read")

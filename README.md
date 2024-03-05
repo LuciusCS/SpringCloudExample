@@ -56,3 +56,8 @@ nacos 2.2.1 版本需要单独设置 conf目录下 application.properties
 ### 使用 springdoc 替代swagger
 
 springdoc 访问的端口为微服务的端口
+
+
+### 如果程序不能运行
+
+有时候清理一下maven就可以

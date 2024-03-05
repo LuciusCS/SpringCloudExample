@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="278060cb-522c-410f-9db4-c2a48137f47a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/authorization-server/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/authorization-server/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/config/CustomAuthenticationProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/config/CustomAuthenticationProvider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/config/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorization-server/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/authorization-server/src/main/resources/bootstrap.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +91,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
@@ -256,7 +258,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-17.0.9-corretto-17.0.9-f644763e9732-203781b8" />
+        <option value="jdk-17.0.10-corretto-17.0.10-f644763e9732-24582b8d" />
       </set>
     </attachedChunks>
   </component>
@@ -334,6 +336,7 @@
       <workItem from="1709435775059" duration="5918000" />
       <workItem from="1709456729033" duration="11873000" />
       <workItem from="1709472363297" duration="2374000" />
+      <workItem from="1709608371595" duration="13841000" />
     </task>
     <servers />
   </component>
