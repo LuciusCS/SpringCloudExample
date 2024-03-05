@@ -7,10 +7,13 @@
     <list default="true" id="278060cb-522c-410f-9db4-c2a48137f47a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authorization-server/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/authorization-server/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/config/OauthServerConfig.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/config/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/controller/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/controller/HelloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/entity/SecurityUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/entity/SecurityUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/entity/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/authorization-server/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/authorization-server/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -337,6 +340,7 @@
       <workItem from="1709456729033" duration="11873000" />
       <workItem from="1709472363297" duration="2374000" />
       <workItem from="1709608371595" duration="13841000" />
+      <workItem from="1709639296266" duration="3830000" />
     </task>
     <servers />
   </component>
