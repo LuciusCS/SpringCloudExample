@@ -1,2 +1,37 @@
 server:
   port: 8001
+
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+
+          ## 已经登记的客户端
+          oidc-client:
+            provider: spring
+
+            client-id: oidc-client
+            client-secret: secret
+
+#            认证方式
+            authorization-grant-type: authorization_code
+
+            ## 这里返回的地址是 authorization-client的地址
+            ## authorization-server 会将数据重定向到这个接口
+            redirect-uri: http://127.0.0.1:8001/login/oauth2/code/oidc-client
+
+            scope:
+              - openid
+              - profile
+              - read
+              - write
+
+            ## 这个名字将会在登陆页面显示，类似于QQ 微信的等登陆方式
+            client-name: oidc-client
+
+        # 上文用的 provider
+        provider:
+          spring:   ## 名字应该是任意的
+             issuer-uri: http://localhost:8004  # 这里的地址是 authorization-server的地址

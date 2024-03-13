@@ -2,30 +2,85 @@ spring:
   application:
     name: authorization-client  # 服务名称
   # 服务名称+开发环境+文件后缀名 = nacos配置的Data Id
+  # 服务名称+开发环境+文件后缀名 = nacos配置的Data Id
   profiles:
-    active: dev   #开发环境
+    active: mac   #开发环境
+#  main:
+#    web-application-type: reactive
+#    allow-bean-definition-overriding: true
 
-#  cloud:
-#    nacos:
+---
+spring:
+  config:
+    activate:
+      on-profile: mac
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.19.121:8848
+        #        server-addr: 127.0.0.1:8848
+        group: QD
+        namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136
+        #        namespace: 1b2b72d4-ca4b-48b1-a6ca-a8f17c27c547
+        username: nacos
+        password: nacos
+        enable: true
+      config:
+        #        import-check:
+        #          enabled: false
+        server-addr: 192.168.19.121:8848
+        #        server-addr: 127.0.0.1:8848
+        group: QD   # 需要在nacos 的namespace中创建，名字为QD的Service
+        #        namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136 # 将QD的namespace中id填入
+        namespace: 1b2b72d4-ca4b-48b1-a6ca-a8f17c27c547 # 将QD的namespace中id填入
+        username: nacos
+        password: nacos
+        file-extension: yaml # 文件后缀名
+        enable: true
+  ## 用于配置数据库
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.19.121:3306/spring_cloud_db
+    #    url: jdbc:mysql://127.0.0.1:3306/spring_cloud_db
+    username: root
+    password: 123456
 
-#      config:
-#        file-extension: yaml # 文件后缀名
-#      discovery:
-#        server-addr: 192.168.19.121:8848
-#        group: QD
-#        namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136
-#        username: nacos
-#        password: nacos
-#      config:
-#        server-addr: 192.168.19.121:8848
-#        group: QD   # 需要在nacos 的namespace中创建，名字为QD的Service
-#        namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136 # 将QD的namespace中id填入
-#        username: nacos
-#        password: nacos
 
-# 用于配置数据库
-#  datasource:
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#    url: jdbc:mysql://192.168.19.121:3306/spring
-#    username: root
-#    password: 123456
+
+#security:
+#  ignored=/**:
+#  enable-csrf: false
+
+---
+spring:
+  config:
+    activate:
+      on-profile: windows
+  cloud:
+    nacos:
+      discovery:
+        #        server-addr: 192.168.19.121:8848
+        server-addr: 127.0.0.1:8848
+        group: QD
+        #        namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136
+        namespace: 1b2b72d4-ca4b-48b1-a6ca-a8f17c27c547
+        username: nacos
+        password: nacos
+        enable: true
+      config:
+        #        server-addr: 192.168.19.121:8848
+        server-addr: 127.0.0.1:8848
+        group: QD   # 需要在nacos 的namespace中创建，名字为QD的Service
+        #        namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136 # 将QD的namespace中id填入
+        namespace: 1b2b72d4-ca4b-48b1-a6ca-a8f17c27c547 # 将QD的namespace中id填入
+        username: nacos
+        password: nacos
+        file-extension: yaml # 文件后缀名
+        enable: true
+  ## 用于配置数据库
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #    url: jdbc:mysql://192.168.19.121:3306/spring_cloud_db
+    url: jdbc:mysql://127.0.0.1:3306/spring_cloud_db
+    username: root
+    password: 123456
