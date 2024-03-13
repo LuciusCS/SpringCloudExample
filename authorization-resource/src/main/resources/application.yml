@@ -1,0 +1,28 @@
+server:
+  port: 8006
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs  # 访问的端口为微服务的端口
+  swagger-ui:
+    path: /swagger-ui.html
+    tagsSorter: alpha
+    use-root-path: true
+  cache:
+    disabled: true
+
+#spring:
+#  main:
+#    web-application-type:
+#      reactive
+
+# 用于配置 spring security
+
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8004  # 这里的地址是 authorization-server的地址
