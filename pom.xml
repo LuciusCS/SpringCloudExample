@@ -79,12 +79,11 @@
 
 <!--            </dependency>-->
 
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.cloud</groupId>-->
+<!--                <artifactId>spring-cloud-starter-loadbalancer</artifactId>-->
 
-
-            </dependency>
+<!--            </dependency>-->
 
             <!--        nacos的配置管理客户端依赖-->
             <dependency>
@@ -114,12 +113,12 @@
 
 
             <!--            热部署工具-->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-devtools</artifactId>
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-devtools</artifactId>-->
 
 
-            </dependency>
+<!--            </dependency>-->
 
 <!--            <dependency>-->
 <!--                <groupId>org.springframework.boot</groupId>-->
