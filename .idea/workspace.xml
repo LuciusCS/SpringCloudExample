@@ -5,10 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="278060cb-522c-410f-9db4-c2a48137f47a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/知识点.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/authorization-client/src/main/java/com/example/authorization/client/client/HelloFeignClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/controller/TestFeignController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/controller/TestFeignController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-consume/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorization-client/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/authorization-client/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorization-resource/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/authorization-resource/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorization-resource/src/main/java/com/example/authorization/resource/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/authorization-resource/src/main/java/com/example/authorization/resource/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,8 +37,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="spring-beans.schema" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -61,6 +67,8 @@
     "Maven.SpringCloudExample [install].executor": "Run",
     "Maven.SpringCloudExample [site].executor": "Run",
     "Maven.SpringCloudExample [validate].executor": "Run",
+    "Maven.auth [clean].executor": "Run",
+    "Maven.auth [install].executor": "Run",
     "Maven.authorization-client [clean].executor": "Run",
     "Maven.authorization-client [install].executor": "Run",
     "Maven.authorization-resource [clean].executor": "Run",
@@ -83,6 +91,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.AuthMain.executor": "Run",
+    "Spring Boot.AuthMainConsume.executor": "Run",
     "Spring Boot.AuthorizationClientApplication.executor": "Run",
     "Spring Boot.AuthorizationResourceApplication.executor": "Run",
     "Spring Boot.GatewayApplication.executor": "Run",
@@ -92,7 +102,7 @@
     "dart.analysis.tool.window.visible": "false",
     "jdk.selected.JAVA_MODULE": "17",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/eastsoft/Documents/Development/LuciusGithub/JavaProject/SpringCloudExample/authorization-resource/src/main/resources",
+    "last_opened_file_path": "/Users/eastsoft/Documents/Development/LuciusGithub/JavaProject/SpringCloudExample/authorization-server/note",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -117,11 +127,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/authorization-server/note" />
       <recent name="$PROJECT_DIR$/authorization-resource/src/main/resources" />
       <recent name="$PROJECT_DIR$/authorization-server" />
       <recent name="$PROJECT_DIR$/authorization-client/src/main/resources" />
       <recent name="$PROJECT_DIR$/organization/src/main/resources" />
-      <recent name="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/controller" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/authorization-server/note" />
@@ -146,7 +156,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.GatewayApplication">
+  <component name="RunManager" selected="Spring Boot.AuthorizationResourceApplication">
     <configuration name="AuthorizationClientApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.authorization.client.AuthorizationClientApplication" />
       <module name="authorization-client" />
@@ -255,11 +265,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.GatewayApplication" />
         <item itemvalue="Spring Boot.Oauth2AuthorizationApplication" />
+        <item itemvalue="Spring Boot.GatewayApplication" />
+        <item itemvalue="Spring Boot.AuthMain" />
         <item itemvalue="Application.AuthorizationClientApplication" />
         <item itemvalue="Application.TestJson" />
-        <item itemvalue="Spring Boot.AuthMain" />
       </list>
     </recent_temporary>
   </component>
@@ -354,7 +364,7 @@
       <workItem from="1710221992256" duration="10403000" />
       <workItem from="1710232538571" duration="888000" />
       <workItem from="1710233441787" duration="1006000" />
-      <workItem from="1710234462603" duration="17283000" />
+      <workItem from="1710234462603" duration="25279000" />
     </task>
     <servers />
   </component>

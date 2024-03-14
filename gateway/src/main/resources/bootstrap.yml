@@ -27,8 +27,12 @@ spring:
         namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136 # 将QD的namespace中id填入
         username: nacos
         password: nacos
-#    gateway:
-#      discovery:
+    # 让gateway从nacos中获取服务信息，如果没有这一个不会进行转发
+    gateway:
+      discovery:
+        locator:
+          enabled: true #使用服务发现路由
+          lower-case-service-id: true
 #          server-addr: 192.168.19.121:8848
 #          locator:
 #              enabled: true
