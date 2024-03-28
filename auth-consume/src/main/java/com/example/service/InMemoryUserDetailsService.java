@@ -1,4 +1,4 @@
-package com.example.auth.services;
+package com.example.service;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

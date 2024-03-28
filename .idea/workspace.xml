@@ -5,16 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="278060cb-522c-410f-9db4-c2a48137f47a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/authorization-client/src/main/java/com/example/authorization/client/client/HelloFeignClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/auth/WebSecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/controller/TestFeignController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/controller/TestFeignController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-consume/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authorization-client/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/authorization-client/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authorization-resource/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/authorization-resource/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authorization-resource/src/main/java/com/example/authorization/resource/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/authorization-resource/src/main/java/com/example/authorization/resource/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-consume/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/config/AuthorizationServerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/auth/AuthorizationServerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/config/CustomAuthenticationProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/auth/CustomAuthenticationProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/config/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/controller/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/controller/HelloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/entity/SecurityUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/entity/SecurityUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/services/InMemoryUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/service/InMemoryUserDetailsService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,8 +37,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="spring-beans.schema" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -60,68 +60,68 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.AuthorizationClientApplication.executor": "Run",
-    "Maven.SpringCloudExample [clean].executor": "Run",
-    "Maven.SpringCloudExample [install].executor": "Run",
-    "Maven.SpringCloudExample [site].executor": "Run",
-    "Maven.SpringCloudExample [validate].executor": "Run",
-    "Maven.auth [clean].executor": "Run",
-    "Maven.auth [install].executor": "Run",
-    "Maven.authorization-client [clean].executor": "Run",
-    "Maven.authorization-client [install].executor": "Run",
-    "Maven.authorization-resource [clean].executor": "Run",
-    "Maven.authorization-resource [compile].executor": "Run",
-    "Maven.authorization-resource [install].executor": "Run",
-    "Maven.authorization-resource-server [clean].executor": "Run",
-    "Maven.authorization-resource-server [install].executor": "Run",
-    "Maven.authorization-server [clean].executor": "Run",
-    "Maven.authorization-server [install].executor": "Run",
-    "Maven.authorization-server [org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean].executor": "Run",
-    "Maven.authorization-server [org.apache.maven.plugins:maven-clean-plugin:3.2.0:help].executor": "Run",
-    "Maven.authorization-server [org.apache.maven.plugins:maven-install-plugin:3.1.1:install].executor": "Run",
-    "Maven.common [install].executor": "Run",
-    "Maven.gateway [clean].executor": "Run",
-    "Maven.gateway [install].executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.AuthMain.executor": "Run",
-    "Spring Boot.AuthMainConsume.executor": "Run",
-    "Spring Boot.AuthorizationClientApplication.executor": "Run",
-    "Spring Boot.AuthorizationResourceApplication.executor": "Run",
-    "Spring Boot.GatewayApplication.executor": "Run",
-    "Spring Boot.MonitorApplication.executor": "Run",
-    "Spring Boot.Oauth2AuthorizationApplication.executor": "Run",
-    "WebServerToolWindowFactoryState": "false",
-    "dart.analysis.tool.window.visible": "false",
-    "jdk.selected.JAVA_MODULE": "17",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/eastsoft/Documents/Development/LuciusGithub/JavaProject/SpringCloudExample/authorization-server/note",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "http.proxy",
-    "spring.configuration.checksum": "9bd4a9236c8ab98c7e34671d780bae15",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.AuthorizationClientApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.SpringCloudExample [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.SpringCloudExample [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.SpringCloudExample [site].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.SpringCloudExample [validate].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.auth [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.auth [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.authorization-client [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.authorization-client [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.authorization-resource [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.authorization-resource [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.authorization-resource [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.authorization-resource-server [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.authorization-resource-server [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.authorization-server [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.authorization-server [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.authorization-server [org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.authorization-server [org.apache.maven.plugins:maven-clean-plugin:3.2.0:help].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.authorization-server [org.apache.maven.plugins:maven-install-plugin:3.1.1:install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.common [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.gateway [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.gateway [install].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.AuthMain.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.AuthMainConsume.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.AuthorizationClientApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.AuthorizationResourceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.GatewayApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.MonitorApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.Oauth2AuthorizationApplication.executor&quot;: &quot;Run&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/eastsoft/Documents/Development/LuciusGithub/JavaProject/SpringCloudExample/authorization-server/note&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;http.proxy&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;9bd4a9236c8ab98c7e34671d780bae15&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -134,10 +134,11 @@
       <recent name="$PROJECT_DIR$/organization/src/main/resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/auth-consume/src/main/java/com/example/controller" />
+      <recent name="$PROJECT_DIR$/auth-consume/src/main/java/com/example/auth" />
       <recent name="$PROJECT_DIR$/authorization-server/note" />
       <recent name="$PROJECT_DIR$/auth-consume/src/main/resources" />
       <recent name="$PROJECT_DIR$/auth/src/main/resources/mybatis/mapper" />
-      <recent name="$PROJECT_DIR$/auth/src/main/resources/mybatis" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.example" />
@@ -156,7 +157,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.AuthorizationResourceApplication">
+  <component name="RunManager" selected="Spring Boot.AuthMainConsume">
     <configuration name="AuthorizationClientApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.authorization.client.AuthorizationClientApplication" />
       <module name="authorization-client" />
@@ -364,7 +365,10 @@
       <workItem from="1710221992256" duration="10403000" />
       <workItem from="1710232538571" duration="888000" />
       <workItem from="1710233441787" duration="1006000" />
-      <workItem from="1710234462603" duration="25279000" />
+      <workItem from="1710234462603" duration="26861000" />
+      <workItem from="1710723508589" duration="598000" />
+      <workItem from="1710991895588" duration="598000" />
+      <workItem from="1711602736637" duration="4619000" />
     </task>
     <servers />
   </component>
