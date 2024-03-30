@@ -17,7 +17,8 @@ public class    TestFeignController {
 
     @PostMapping("/test/feign")
     private boolean testFeign(){
-        feignService.getTestFeignInfo();
+//        feignService.getTestFeignInfo();
+        System.out.println("auth-consume调用");
         return true;
     }
 }

@@ -7,27 +7,32 @@ spring:
   main:
     web-application-type: reactive
     allow-bean-definition-overriding: true
+
+#---
+#spring:
+#  config:
+#    activate:
+#      on-profile: mac
   cloud:
     nacos:
       discovery:
-
-        server-addr: 127.0.0.1:8848
-#        server-addr: 192.168.19.121:8848
+        server-addr: 192.168.19.121:8848
         group: QD   # 需要在nacos 的namespace中创建，名字为QD的Service
-#        namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136 # 将QD的namespace中id填入
-        namespace: 1b2b72d4-ca4b-48b1-a6ca-a8f17c27c547
+        namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136 # 将QD的namespace中id填入
         username: nacos
         password: nacos
       config:
-#        server-addr: 192.168.19.121:8848
-        server-addr: 127.0.0.1:8848
+        server-addr: 192.168.19.121:8848
         group: QD   # 需要在nacos 的namespace中创建，名字为QD的Service
-#        namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136 # 将QD的namespace中id填入
-        namespace: 1b2b72d4-ca4b-48b1-a6ca-a8f17c27c547
+        namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136 # 将QD的namespace中id填入
         username: nacos
         password: nacos
-#    gateway:
-#      discovery:
+    # 让gateway从nacos中获取服务信息，如果没有这一个不会进行转发
+    gateway:
+      discovery:
+        locator:
+          enabled: true #使用服务发现路由
+          lower-case-service-id: true
 #          server-addr: 192.168.19.121:8848
 #          locator:
 #              enabled: true
@@ -46,6 +51,64 @@ spring:
 #
 
 #    如果有了cacos还需不需要断言工厂等信息
+  # 用于配置数据库
+
+#    gateway:
+#      routes:   # 网关路由配置
+#        - id: auth       # 自定义，需要保持唯一
+#          # uri: http://127.0.0.1:8081  #路由的目标地址 http就是固定地址 一般不使用
+#          uri: lb://auth-consume        # 路由的目标地址，  lb （loadbalance）就是负载均衡，后面跟服务名称
+#          predicates:             # 路由断言，判断请求是否负荷路由规则的条件
+#            - Path=/test/**      # 这个是按照路径匹配，只要以 /user/开头就符合要求  Path后面和等号之间不能有空格
+#        - id: order-service
+#          uri: lb:/order          # 路由的目标地址，  lb （loadbalance）就是负载均衡，后面跟服务名称
+#          predicates: # 路由断言，判断请求是否负荷路由规则的条件
+#            - Path=/order/**      # 这个是按照路径匹配，只要以 /user/开头就符合要求
+
+---
+spring:
+  config:
+    activate:
+      on-profile: windows
+  cloud:
+    nacos:
+      discovery:
+
+        server-addr: 127.0.0.1:8848
+        #        server-addr: 192.168.19.121:8848
+        group: QD   # 需要在nacos 的namespace中创建，名字为QD的Service
+        #        namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136 # 将QD的namespace中id填入
+        namespace: 1b2b72d4-ca4b-48b1-a6ca-a8f17c27c547
+        username: nacos
+        password: nacos
+      config:
+        #        server-addr: 192.168.19.121:8848
+        server-addr: 127.0.0.1:8848
+        group: QD   # 需要在nacos 的namespace中创建，名字为QD的Service
+        #        namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136 # 将QD的namespace中id填入
+        namespace: 1b2b72d4-ca4b-48b1-a6ca-a8f17c27c547
+        username: nacos
+        password: nacos
+      #    gateway:
+      #      discovery:
+      #          server-addr: 192.168.19.121:8848
+      #          locator:
+      #              enabled: true
+      #          group: QD
+      #          namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136
+      # 让gateway从nacos中获取服务信息，如果没有这一个不会进行转发
+  #      routes: # 路由数组路由 就是指当请求满足什么样的条件的时候转发到哪个微服务上]
+  #          - id: product route # 当前路由发的标识要求唯一,默认是UUID
+  #            #uri: http://localhost:8081 # 请求最终要被转发到的地址
+  #            uri: 1b://service-product # lb 指的是负载均，后面跟的是具体微服务在nacos中的标识
+  #            order: 1 # 路由的优先级，数字越代表路由的优先级越高
+  #            predicates: # 断言(条件判断，返回值是boolean 转发请求要满足的条件)
+  #              - Path=/product-serv/** # 当请求路径满足Path指定的规则时，此路由信息才会正常转发
+  #            filters:  #过滤器(在请求传递过程中 对请求做一些手脚)
+  #               stripPrefix=1 # 在请求转发之前去掉一层路径
+  #
+
+  #    如果有了cacos还需不需要断言工厂等信息
   # 用于配置数据库
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver

@@ -19,3 +19,5 @@
    spring.cloud.nacos.config.refresh-enabled: true              微服务之前共享的配置文件要实现动态配置刷新
 
 ```
+
+
