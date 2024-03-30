@@ -5,16 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="278060cb-522c-410f-9db4-c2a48137f47a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/auth/WebSecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/entity/AuthRole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/entity/AuthUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/entity/AuthUserRole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/entity/dto/EntityResponseBody.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/entity/dto/UserRegisterRequestDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/repository/RoleRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/repository/UserRoleRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/security/dto/JWTTokenUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/security/dto/SecurityPrincipal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/service/RoleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auth-consume/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/config/AuthorizationServerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/auth/AuthorizationServerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/config/CustomAuthenticationProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/auth/CustomAuthenticationProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/config/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/controller/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/controller/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/entity/SecurityUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/entity/SecurityUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authorization-server/src/main/java/com/example/auth/services/InMemoryUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/service/InMemoryUserDetailsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/entity/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,6 +150,7 @@
       <recent name="test" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.entity.dto" />
       <recent name="push" />
     </key>
   </component>
@@ -368,7 +374,7 @@
       <workItem from="1710234462603" duration="26861000" />
       <workItem from="1710723508589" duration="598000" />
       <workItem from="1710991895588" duration="598000" />
-      <workItem from="1711602736637" duration="4619000" />
+      <workItem from="1711602736637" duration="21075000" />
     </task>
     <servers />
   </component>
