@@ -1,4 +1,4 @@
-package com.example.security.dto;
+package com.example.security;
 
 
 import io.jsonwebtoken.Claims;
@@ -6,6 +6,7 @@ import io.jsonwebtoken.Header;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -43,7 +44,9 @@ public class JWTTokenUtil {
 
     private Claims getAllClaimsFromToken(String token) {
         try {
-            return Jwts.parser().setSigningKey(secret).parseClaimsJwt(token).getBody();
+            return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
+            ///下面这种写法是错误的
+//            return Jwts.parser().setSigningKey(secret).parseClaimsJwt(token).getBody();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -66,6 +69,12 @@ public class JWTTokenUtil {
     }
 
 
+    public String generateRefreshToken(UserDetails userDetails){
+        Map<String,Object> claims=new HashMap<>();
+        claims.put("role",userDetails.getAuthorities());
+        return doGenerateRefreshToken(claims,userDetails.getUsername());
+    }
+
 
 
 
@@ -73,9 +82,9 @@ public class JWTTokenUtil {
         Header header=Jwts.header();
         header.setType("JWT");
         return  Jwts.builder().setHeader((Map<String,Object>)header).setClaims(claims).setSubject(subject)
-                .setIssuer("??").setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis()+JWT_TOKEN_VALIDITY*2*1000))
-                .signWith(SignatureAlgorithm.ES512,secret).compact();
+                .setIssuer("rbacspring").setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis()+JWT_TOKEN_VALIDITY*1000))
+                .signWith(SignatureAlgorithm.HS512,secret).compact();
     }
 
     ///刷新token
@@ -83,9 +92,9 @@ public class JWTTokenUtil {
         Header header=Jwts.header();
         header.setType("JWT");
         return  Jwts.builder().setHeader((Map<String,Object>)header).setClaims(claims).setSubject(subject)
-                .setIssuer("??").setIssuedAt(new Date(System.currentTimeMillis()))
+                .setIssuer("rbacspring").setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis()+JWT_TOKEN_VALIDITY*2*1000))
-                .signWith(SignatureAlgorithm.ES512,secret).compact();
+                .signWith(SignatureAlgorithm.HS512,secret).compact();
     }
 
 

@@ -5,21 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="278060cb-522c-410f-9db4-c2a48137f47a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/entity/AuthRole.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/entity/AuthUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/entity/AuthUserRole.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/entity/dto/EntityResponseBody.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/entity/dto/UserRegisterRequestDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/repository/RoleRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/repository/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/repository/UserRoleRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/security/dto/JWTTokenUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/security/dto/SecurityPrincipal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/service/RoleService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-consume/doc/4db84c52861aa17109da146d6cce3ff5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-consume/doc/a0807cf8656c16939b4b1babb1391be3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/controller/UserAccessController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/security/JWTRequestFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/security/dto/AuthenticationRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/security/dto/AuthenticationResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auth-consume/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/AuthMainConsume.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/AuthMainConsume.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/auth/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/auth/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/controller/AdminAccessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/controller/AdminAccessController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/entity/AuthUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/entity/AuthUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/security/dto/JWTTokenUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/security/JWTTokenUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/security/dto/SecurityPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/security/SecurityPrincipal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-consume/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-consume/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/resources/bootstrap.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,78 +67,78 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.AuthorizationClientApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.SpringCloudExample [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.SpringCloudExample [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.SpringCloudExample [site].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.SpringCloudExample [validate].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.auth [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.auth [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.authorization-client [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.authorization-client [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.authorization-resource [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.authorization-resource [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.authorization-resource [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.authorization-resource-server [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.authorization-resource-server [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.authorization-server [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.authorization-server [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.authorization-server [org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.authorization-server [org.apache.maven.plugins:maven-clean-plugin:3.2.0:help].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.authorization-server [org.apache.maven.plugins:maven-install-plugin:3.1.1:install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.common [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.gateway [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.gateway [install].executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Spring Boot.AuthMain.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.AuthMainConsume.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.AuthorizationClientApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.AuthorizationResourceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.GatewayApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.MonitorApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.Oauth2AuthorizationApplication.executor&quot;: &quot;Run&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/eastsoft/Documents/Development/LuciusGithub/JavaProject/SpringCloudExample/authorization-server/note&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;http.proxy&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;9bd4a9236c8ab98c7e34671d780bae15&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.AuthorizationClientApplication.executor": "Run",
+    "Maven.SpringCloudExample [clean].executor": "Run",
+    "Maven.SpringCloudExample [install].executor": "Run",
+    "Maven.SpringCloudExample [site].executor": "Run",
+    "Maven.SpringCloudExample [validate].executor": "Run",
+    "Maven.auth [clean].executor": "Run",
+    "Maven.auth [install].executor": "Run",
+    "Maven.authorization-client [clean].executor": "Run",
+    "Maven.authorization-client [install].executor": "Run",
+    "Maven.authorization-resource [clean].executor": "Run",
+    "Maven.authorization-resource [compile].executor": "Run",
+    "Maven.authorization-resource [install].executor": "Run",
+    "Maven.authorization-resource-server [clean].executor": "Run",
+    "Maven.authorization-resource-server [install].executor": "Run",
+    "Maven.authorization-server [clean].executor": "Run",
+    "Maven.authorization-server [install].executor": "Run",
+    "Maven.authorization-server [org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean].executor": "Run",
+    "Maven.authorization-server [org.apache.maven.plugins:maven-clean-plugin:3.2.0:help].executor": "Run",
+    "Maven.authorization-server [org.apache.maven.plugins:maven-install-plugin:3.1.1:install].executor": "Run",
+    "Maven.common [install].executor": "Run",
+    "Maven.gateway [clean].executor": "Run",
+    "Maven.gateway [install].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.AuthMain.executor": "Run",
+    "Spring Boot.AuthMainConsume.executor": "Run",
+    "Spring Boot.AuthorizationClientApplication.executor": "Run",
+    "Spring Boot.AuthorizationResourceApplication.executor": "Run",
+    "Spring Boot.GatewayApplication.executor": "Run",
+    "Spring Boot.MonitorApplication.executor": "Run",
+    "Spring Boot.Oauth2AuthorizationApplication.executor": "Run",
+    "WebServerToolWindowFactoryState": "false",
+    "dart.analysis.tool.window.visible": "false",
+    "jdk.selected.JAVA_MODULE": "17",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/eastsoft/Documents/Development/LuciusGithub/JavaProject/SpringCloudExample/auth-consume/doc",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.configurations.included.in.services": "true",
+    "settings.editor.selected.configurable": "http.proxy",
+    "spring.configuration.checksum": "9bd4a9236c8ab98c7e34671d780bae15",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/auth-consume/doc" />
       <recent name="$PROJECT_DIR$/authorization-server/note" />
       <recent name="$PROJECT_DIR$/authorization-resource/src/main/resources" />
       <recent name="$PROJECT_DIR$/authorization-server" />
       <recent name="$PROJECT_DIR$/authorization-client/src/main/resources" />
-      <recent name="$PROJECT_DIR$/organization/src/main/resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/auth-consume/src/main/java/com/example/controller" />
@@ -374,7 +376,7 @@
       <workItem from="1710234462603" duration="26861000" />
       <workItem from="1710723508589" duration="598000" />
       <workItem from="1710991895588" duration="598000" />
-      <workItem from="1711602736637" duration="21075000" />
+      <workItem from="1711602736637" duration="45040000" />
     </task>
     <servers />
   </component>
@@ -410,6 +412,55 @@
           <properties class="java.lang.NoSuchFieldError" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/auth-consume/src/main/java/com/example/security/JWTTokenUtil.java</url>
+          <line>81</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/auth-consume/src/main/java/com/example/security/JWTTokenUtil.java</url>
+          <line>82</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/auth-consume/src/main/java/com/example/security/JWTTokenUtil.java</url>
+          <line>83</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/auth-consume/src/main/java/com/example/security/JWTTokenUtil.java</url>
+          <line>84</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/auth-consume/src/main/java/com/example/security/JWTTokenUtil.java</url>
+          <line>85</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/auth-consume/src/main/java/com/example/security/JWTTokenUtil.java</url>
+          <line>86</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/auth-consume/src/main/java/com/example/security/JWTTokenUtil.java</url>
+          <line>101</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/auth-consume/src/main/java/com/example/security/JWTTokenUtil.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/auth-consume/src/main/java/com/example/security/JWTTokenUtil.java</url>
+          <line>80</line>
+          <properties class="com.example.security.JWTTokenUtil" method="doGenerateToken">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
