@@ -26,25 +26,11 @@ import java.util.concurrent.ExecutionException;
 @RestController
 @RequestMapping("apns")
 public class APNSSendController {
-//    final ApnsClient apnsClient = new ApnsClientBuilder()
-//            .setApnsServer(ApnsClientBuilder.DEVELOPMENT_APNS_HOST)
-//            .setSigningKey(ApnsSigningKey.loadFromPkcs8File(new File("/Users/eastsoft/Documents/Development/LuciusGithub/JavaProject/SpringCloudExample/auth-consume/src/main/resources/key.p8"),
-//                    "94NM47LXMF", "59HU657SU2"))
-//            .build();
+
 
 
     @PostMapping("/postApns")
     private boolean testFeign() throws IOException, NoSuchAlgorithmException, InvalidKeyException {
-//        feignService.getTestFeignInfo();
-//        System.out.println("auth-consume调用");
-
-        try {
-            Resource resource = new ClassPathResource("key.p8");
-//            InputStream inputStream = resource.getInputStream();
-            // 这里处理文件加载逻辑
-        } catch (Exception e) {
-            // 处理异常
-        }
 
         ClassLoader classLoader = getClass().getClassLoader();
         File file = new File(classLoader.getResource("AuthKeyPush.p8").getFile());
@@ -88,15 +74,5 @@ public class APNSSendController {
             throw new RuntimeException(e);
         }
         return true;
-    }
-
-    ApnsClient getApnsClient() throws IOException, NoSuchAlgorithmException, InvalidKeyException {
-        ApnsClient apnsClient = new ApnsClientBuilder()
-                .setApnsServer(ApnsClientBuilder.DEVELOPMENT_APNS_HOST)
-                .setSigningKey(ApnsSigningKey.loadFromPkcs8File(new File("/Users/eastsoft/Documents/Development/LuciusGithub/JavaProject/SpringCloudExample/auth-consume/src/main/resources/key.p8"),
-                        "94NM47LXMF", "59HU657SU2"))
-                .build();
-        return apnsClient;
-
     }
 }
