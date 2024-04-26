@@ -1,6 +1,6 @@
 server:
   port: 8002
-
+  address: 0.0.0.0
 springdoc:
   api-docs:
     enabled: true
@@ -11,3 +11,6 @@ springdoc:
     use-root-path: true
   cache:
     disabled: true
+#java:
+#  net:
+#    preferIPv4Stack: true

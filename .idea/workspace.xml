@@ -5,23 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="278060cb-522c-410f-9db4-c2a48137f47a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/auth-consume/doc/4db84c52861aa17109da146d6cce3ff5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-consume/doc/a0807cf8656c16939b4b1babb1391be3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/controller/UserAccessController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/security/JWTRequestFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/security/dto/AuthenticationRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/security/dto/AuthenticationResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/controller/apns/APNSSendController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/resources/AuthKeyPush.p8" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/java/com/example/filter/AuthorizeFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auth-consume/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/AuthMainConsume.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/AuthMainConsume.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/auth/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/auth/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/controller/AdminAccessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/controller/AdminAccessController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/entity/AuthUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/entity/AuthUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/security/dto/JWTTokenUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/security/JWTTokenUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/security/dto/SecurityPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/security/SecurityPrincipal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auth-consume/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-consume/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/auth-consume/src/main/resources/bootstrap.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +99,7 @@
     "dart.analysis.tool.window.visible": "false",
     "jdk.selected.JAVA_MODULE": "17",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/eastsoft/Documents/Development/LuciusGithub/JavaProject/SpringCloudExample/auth-consume/doc",
+    "last_opened_file_path": "/Users/eastsoft/Documents/Development/LuciusGithub/JavaProject/SpringCloudExample/auth-consume/src/main/resources",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -134,11 +124,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/auth-consume/src/main/resources" />
       <recent name="$PROJECT_DIR$/auth-consume/doc" />
       <recent name="$PROJECT_DIR$/authorization-server/note" />
       <recent name="$PROJECT_DIR$/authorization-resource/src/main/resources" />
       <recent name="$PROJECT_DIR$/authorization-server" />
-      <recent name="$PROJECT_DIR$/authorization-client/src/main/resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/auth-consume/src/main/java/com/example/controller" />
@@ -274,8 +264,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.Oauth2AuthorizationApplication" />
         <item itemvalue="Spring Boot.GatewayApplication" />
+        <item itemvalue="Spring Boot.Oauth2AuthorizationApplication" />
         <item itemvalue="Spring Boot.AuthMain" />
         <item itemvalue="Application.AuthorizationClientApplication" />
         <item itemvalue="Application.TestJson" />
@@ -376,7 +366,9 @@
       <workItem from="1710234462603" duration="26861000" />
       <workItem from="1710723508589" duration="598000" />
       <workItem from="1710991895588" duration="598000" />
-      <workItem from="1711602736637" duration="45040000" />
+      <workItem from="1711602736637" duration="50326000" />
+      <workItem from="1713764784151" duration="669000" />
+      <workItem from="1714100810167" duration="6503000" />
     </task>
     <servers />
   </component>
@@ -446,11 +438,6 @@
           <url>file://$PROJECT_DIR$/auth-consume/src/main/java/com/example/security/JWTTokenUtil.java</url>
           <line>101</line>
           <option name="timeStamp" value="38" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/auth-consume/src/main/java/com/example/security/JWTTokenUtil.java</url>
-          <line>45</line>
-          <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/auth-consume/src/main/java/com/example/security/JWTTokenUtil.java</url>

@@ -11,7 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @SpringBootApplication
 public class AuthMainConsume {
     public static void main(String[] args) {
-
+        System.setProperty("java.net.preferIPv4Stack", "true");
         SpringApplication.run(AuthMainConsume.class,args);
 
 //        System.out.println("Hello world!");
