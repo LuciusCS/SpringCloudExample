@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="278060cb-522c-410f-9db4-c2a48137f47a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/controller/huawei/SendDataMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-consume/src/main/java/com/example/controller/huawei/messaging/HuaweiApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -153,7 +151,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.AuthMainConsume">
+  <component name="RunManager" selected="Spring Boot.GatewayApplication">
     <configuration name="AuthorizationClientApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.authorization.client.AuthorizationClientApplication" />
       <module name="authorization-client" />
@@ -372,7 +370,8 @@
       <workItem from="1714955540162" duration="599000" />
       <workItem from="1715132032947" duration="598000" />
       <workItem from="1715905713398" duration="597000" />
-      <workItem from="1716529747624" duration="597000" />
+      <workItem from="1716529747624" duration="1364000" />
+      <workItem from="1716874691472" duration="599000" />
     </task>
     <servers />
   </component>
