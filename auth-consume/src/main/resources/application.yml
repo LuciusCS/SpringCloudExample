@@ -14,3 +14,6 @@ springdoc:
 #java:
 #  net:
 #    preferIPv4Stack: true
+
+jwt:
+  secret: 7CA6AFDA-B94C-4CCF-AC45-7C802BD0745F
