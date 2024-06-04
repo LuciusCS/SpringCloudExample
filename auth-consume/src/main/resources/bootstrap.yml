@@ -3,7 +3,7 @@ spring:
     name: auth-consume  # 服务名称
   # 服务名称+开发环境+文件后缀名 = nacos配置的Data Id
   profiles:
-    active: windows   #开发环境
+    active: mac   #开发环境
 
 
 ---
@@ -15,10 +15,8 @@ spring:
     nacos:
       discovery:
         server-addr: 192.168.19.121:8848
-        #        server-addr: 127.0.0.1:8848
         group: QD
         namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136
-        #        namespace: 1b2b72d4-ca4b-48b1-a6ca-a8f17c27c547
         username: nacos
         password: nacos
         enable: true
