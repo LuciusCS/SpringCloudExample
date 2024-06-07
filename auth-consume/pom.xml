@@ -191,8 +191,17 @@
         </dependency>
 
 <!--   ********小米推送**********    -->
+<!--   ********OPPO推送**********    -->
 
+        <dependency>
+            <groupId>opush-server-sdk</groupId>
+            <artifactId>opush-server-sdk</artifactId>
+            <version>1.1.0</version>
+            <scope>system</scope>
+            <systemPath>${pom.basedir}/lib/opush-server-sdk-1.1.0.jar</systemPath>
+        </dependency>
 
+        <!--   ********小米推送**********    -->
 
 
     </dependencies>
