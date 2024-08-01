@@ -17,3 +17,10 @@ springdoc:
 
 jwt:
   secret: 7CA6AFDA-B94C-4CCF-AC45-7C802BD0745F
+
+# 用于表示将大文件上传至 minio
+minio:
+   url: http://192.168.19.121:9000
+   access-key: minioadmin
+   secret-key: minioadmin
+   bucket-name: big-file
