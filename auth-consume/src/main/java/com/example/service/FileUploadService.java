@@ -57,6 +57,7 @@ public class FileUploadService {
      ///合并所有的块上传值minio
     public  void mergeChunks(String fileName,int totalChunks)throws Exception {
 
+        ///这里最好通过md5校验文件的完整性
 //         Path tempDir=Files.createTempDirectory("chunks");
          Path finalFile=tempDir.resolve(fileName);
 
