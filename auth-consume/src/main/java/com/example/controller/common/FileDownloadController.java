@@ -23,6 +23,12 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 
+/***
+ * 断点续传功能中，因为使用分块实现，最好使用md5 进行数据校验
+ *
+ *
+ */
+
 ///用于下载断点续传
 @Controller
 public class FileDownloadController {
