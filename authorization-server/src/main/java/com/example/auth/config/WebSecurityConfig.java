@@ -164,7 +164,7 @@ public class WebSecurityConfig {
                 .clientSecret("{noop}secret")
                 // 客户端认证基于请求头
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
-                // 配置授权的支持方式
+                // 配置授权的支持方式，允许客户端生成授权码和刷新令牌
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
                 .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
@@ -174,6 +174,7 @@ public class WebSecurityConfig {
                 .redirectUri("http://127.0.0.1:8001/login/oauth2/code/oidc-client")
 //                .redirectUri("http://127.0.0.1:8001/authorized")
 //                .redirectUri("www.baidu.com")
+                ///scope——此参数定义客户端可能拥有的权限。
                 .scope(OidcScopes.OPENID)
                 .scope(OidcScopes.PROFILE)
                 .scope("read")
