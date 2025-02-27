@@ -29,9 +29,9 @@ public class UserAccessController {
 
     @Autowired
     private JWTTokenUtil jwtTokenUtil;
-
-    @Autowired
-    PasswordEncoder passwordEncoder;
+//
+//    @Autowired
+//    PasswordEncoder passwordEncoder;
 
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<Object> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
@@ -68,7 +68,7 @@ public class UserAccessController {
 
     @PostMapping("register")
     public ResponseEntity<Object>register(@RequestBody UserRegisterRequestDTO request){
-        request.setPassword(passwordEncoder.encode(request.getPassword()));
+//        request.setPassword(passwordEncoder.encode(request.getPassword()));
         return EntityResponseBody.generateResponse("Register User",HttpStatus.OK,userService.createUser(request));
     }
 

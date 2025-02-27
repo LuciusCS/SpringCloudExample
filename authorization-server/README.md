@@ -31,3 +31,6 @@
 
 ## authorization-server、authorization-resource、authorization-client
 三个微服务需要先启动 authorization-server 否则另外两个都启动不了
+
+
+

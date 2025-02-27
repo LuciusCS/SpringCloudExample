@@ -16,3 +16,11 @@ springdoc:
 #  main:
 #    web-application-type:
 #      reactive
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.web: DEBUG
+    org.springdoc: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %p [%t] %c{1} - %M - %L - %msg%n"
