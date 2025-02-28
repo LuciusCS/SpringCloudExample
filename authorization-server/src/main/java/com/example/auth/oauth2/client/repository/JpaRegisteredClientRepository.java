@@ -1,13 +1,11 @@
 package com.example.auth.oauth2.client.repository;
-import com.example.auth.oauth2.client.OAuth2RegisteredClient;
+import com.example.auth.bean.OAuth2RegisteredClient;
 //import org.springframework.security.oauth2.client.registration.ClientRegistration;
 
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
-import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
-import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -45,7 +43,7 @@ public class JpaRegisteredClientRepository  implements RegisteredClientRepositor
                 .map(this::resolveAuthMethod)
                 .collect(Collectors.toSet());
 
-        RegisteredClient.Builder builder = RegisteredClient.withId(client.getId())
+        RegisteredClient.Builder builder = RegisteredClient.withId(client.getId().toString())
                 .clientId(client.getClientId())
                 .clientSecret(client.getClientSecret())
                 .clientAuthenticationMethods(methods -> methods.addAll(authMethods))
@@ -113,7 +111,9 @@ private AuthorizationGrantType resolveGrantType(String grantType) {
     }
 
     @Override
-    public void save(RegisteredClient registeredClient) { /* 动态注册逻辑（可选） */ }
+    public void save(RegisteredClient registeredClient) { /* 动态注册逻辑（可选） */
+//            clientRepository.save(registeredClient);
+    }
 
     @Override
     public RegisteredClient findById(String id) {

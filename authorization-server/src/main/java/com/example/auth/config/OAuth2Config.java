@@ -1,6 +1,10 @@
 package com.example.auth.config;
 
 
+import com.nimbusds.jose.jwk.JWKSet;
+import com.nimbusds.jose.jwk.RSAKey;
+import com.nimbusds.jose.jwk.source.JWKSource;
+import com.nimbusds.jose.proc.SecurityContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -13,15 +17,24 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
+import org.springframework.security.oauth2.jwt.JwtDecoders;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
 import org.springframework.security.oauth2.server.authorization.config.annotation.web.configuration.OAuth2AuthorizationServerConfiguration;
 import org.springframework.security.oauth2.server.authorization.config.annotation.web.configurers.OAuth2AuthorizationServerConfigurer;
+import org.springframework.security.oauth2.server.authorization.settings.AuthorizationServerSettings;
+import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
 import org.springframework.security.web.SecurityFilterChain;
+
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.interfaces.RSAPrivateKey;
+import java.security.interfaces.RSAPublicKey;
+import java.util.UUID;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
 /**
- 负责配置 Spring Security 的安全性，定义哪些端点需要认证，哪些端点可以开放，以及如何处理请求的安全性（如 CSRF、防护、JWT 验证等）。
+ * 负责配置 Spring Security 的安全性，定义哪些端点需要认证，哪些端点可以开放，以及如何处理请求的安全性（如 CSRF、防护、JWT 验证等）。
  */
 //@EnableAuthorizationServer  老版本的写法
 @Configuration
@@ -38,6 +51,7 @@ public class OAuth2Config {
     /**
      * defaultSecurityFilterChain 聚焦于 资源服务器 的安全配置，主要是保护 API 和资源端点，对传入的 OAuth2 令牌进行验证，用于资源服务器
      * authorizationServerSecurityFilterChain 聚焦于 授权服务器 的安全配置，处理 OAuth2 授权流程和令牌生成等相关操作，用于授权服务器
+     *
      * @param http
      * @return
      * @throws Exception
@@ -67,11 +81,11 @@ public class OAuth2Config {
         OAuth2AuthorizationServerConfiguration.applyDefaultSecurity(http);
 
         http
-                .securityMatcher("/oauth2/**")
+                .securityMatcher("/oauth2/**")                        // 只匹配以 /oauth2/ 开头的请求
                 .csrf(csrf -> csrf
-                        .ignoringRequestMatchers("/oauth2/token"))
+                        .ignoringRequestMatchers("/oauth2/token"))   // 忽略 /oauth2/token 路径的 CSRF 防护
                 .oauth2ResourceServer(oauth2 -> oauth2
-                        .jwt(jwt -> jwt.decoder(jwtDecoder)));
+                        .jwt(jwt -> jwt.decoder(jwtDecoder)));   // 配置 JWT 解码器
 
         return http.build();
     }
@@ -82,18 +96,23 @@ public class OAuth2Config {
     public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/userinfo", "/login").permitAll()
+                        .requestMatchers("/userinfo", "/login", "/addRegisteredClient").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
                         .loginPage("/login")
                         .permitAll()
                 )
+                .csrf(csrf -> csrf
+                        .ignoringRequestMatchers("/addRegisteredClient") // 禁用对/addRegisteredClient接口的CSRF保护
+                )
                 .oauth2ResourceServer(oauth2 -> oauth2
                         .jwt(jwt -> jwt.decoder(jwtDecoder)));
 
         return http.build();
     }
+
+
 
 
     // 密码模式需要配置 AuthenticationManager
@@ -107,6 +126,7 @@ public class OAuth2Config {
         provider.setPasswordEncoder(passwordEncoder);
         return new ProviderManager(provider);
     }
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {

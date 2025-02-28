@@ -1,4 +1,4 @@
-package com.example.auth.oauth2.client;
+package com.example.auth.bean;
 
 
 import jakarta.persistence.*;
@@ -14,7 +14,8 @@ import lombok.Data;
 public class OAuth2RegisteredClient
 {
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "client_id", unique = true, nullable = false)
     private String clientId;
