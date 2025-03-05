@@ -16,11 +16,11 @@ import java.util.stream.Collectors;
  * 动态客户端注册 (RegisteredClientRepository)
  */
 @Component
-public class JpaRegisteredClientRepository  implements RegisteredClientRepository {
+public class OAuth2RegisteredClientRepository implements RegisteredClientRepository {
 
     private final OAuth2ClientRepository clientRepository;
 
-    public JpaRegisteredClientRepository(OAuth2ClientRepository clientRepository) {
+    public OAuth2RegisteredClientRepository(OAuth2ClientRepository clientRepository) {
         this.clientRepository = clientRepository;
     }
 

@@ -48,29 +48,6 @@ public class OAuth2Config {
         this.jwtDecoder = jwtDecoder;
     }
 
-    /**
-     * defaultSecurityFilterChain 聚焦于 资源服务器 的安全配置，主要是保护 API 和资源端点，对传入的 OAuth2 令牌进行验证，用于资源服务器
-     * authorizationServerSecurityFilterChain 聚焦于 授权服务器 的安全配置，处理 OAuth2 授权流程和令牌生成等相关操作，用于授权服务器
-     *
-     * @param http
-     * @return
-     * @throws Exception
-     */
-    // 更多配置，如令牌存储、端点配置等
-    //defaultSecurityFilterChain 更适用于资源服务器，配置了如何处理 OAuth2 令牌和 API 请求的安全性。
-    //
-//    @Bean
-//    public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
-//        http
-//                .authorizeHttpRequests(authorize -> authorize
-//                        .requestMatchers("/oauth2/token").permitAll() // 开放令牌端点
-//                        .anyRequest().authenticated()
-//                )
-//                .csrf(csrf -> csrf.disable()) // 根据实际情况决定是否禁用CSRF
-//                .oauth2ResourceServer(oauth2 -> oauth2.jwt()); // 如果资源服务器需要JWT验证
-//
-//        return http.build();
-//    }
 
     // 授权服务器安全配置  下面是客户端通过 client id 进行登录
     // 授权服务器安全配置（处理 /oauth2/authorize, /oauth2/token 等端点）
