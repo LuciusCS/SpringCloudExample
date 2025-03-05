@@ -70,7 +70,9 @@ public class JwtConfig {
                                 .collect(Collectors.toList())
                 );
             }else if(context.getAuthorizationGrantType().getValue().equals("client_credential")){
-
+                context.getClaims().claim("roles", "test");
+            }else{
+                context.getClaims().claim("roles","test");
             }
         };
     }
