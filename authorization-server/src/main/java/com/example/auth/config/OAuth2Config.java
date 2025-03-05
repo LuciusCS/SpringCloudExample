@@ -61,6 +61,8 @@ public class OAuth2Config {
                 .securityMatcher("/oauth2/**")                        // 只匹配以 /oauth2/ 开头的请求
                 .csrf(csrf -> csrf
                         .ignoringRequestMatchers("/oauth2/token"))   // 忽略 /oauth2/token 路径的 CSRF 防护
+                // 添加表单登录支持（关键修复）
+                .formLogin(withDefaults())
                 .oauth2ResourceServer(oauth2 -> oauth2
                         .jwt(jwt -> jwt.decoder(jwtDecoder)));   // 配置 JWT 解码器
 
@@ -72,16 +74,22 @@ public class OAuth2Config {
     @Order(2)
     public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http
+                .securityMatcher(request ->
+                        !request.getRequestURI().startsWith("/oauth2/") // 排除 /oauth2/ 路径
+                )
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/userinfo", "/login", "/addRegisteredClient").permitAll()
+                        .requestMatchers("/userinfo", "/login", "/addRegisteredClient"
+//                                "/oauth2/authorize" // 允许匿名访问授权端点（触发登录）
+                                ).permitAll()
                         .anyRequest().authenticated()
                 )
-                .formLogin(form -> form
-                        .loginPage("/login")
-                        .permitAll()
-                )
+//                .formLogin(form -> form
+//                        .loginPage("/login")
+//                        .permitAll()
+//                )
+                .formLogin(withDefaults())
                 .csrf(csrf -> csrf
-                        .ignoringRequestMatchers("/addRegisteredClient") // 禁用对/addRegisteredClient接口的CSRF保护
+                        .ignoringRequestMatchers("/addRegisteredClient", "/oauth2/token","/addUser") // 禁用对/addRegisteredClient接口的CSRF保护
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2
                         .jwt(jwt -> jwt.decoder(jwtDecoder)));

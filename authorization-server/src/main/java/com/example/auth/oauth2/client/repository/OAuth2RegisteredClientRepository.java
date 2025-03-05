@@ -4,6 +4,7 @@ import com.example.auth.bean.OAuth2RegisteredClient;
 
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
+import org.springframework.security.oauth2.core.oidc.OidcScopes;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
 import org.springframework.stereotype.Component;
@@ -48,6 +49,8 @@ public class OAuth2RegisteredClientRepository implements RegisteredClientReposit
                 .clientSecret(client.getClientSecret())
                 .clientAuthenticationMethods(methods -> methods.addAll(authMethods))
                 .authorizationGrantTypes(types -> types.addAll(grantTypes))
+                .scope(OidcScopes.OPENID)
+                .scope(OidcScopes.PROFILE)
                 .scopes(scopes -> scopes.addAll(Arrays.asList(client.getScopes().split(","))));
 
         // 处理重

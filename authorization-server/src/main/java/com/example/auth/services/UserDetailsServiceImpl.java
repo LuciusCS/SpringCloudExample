@@ -21,4 +21,13 @@ public class UserDetailsServiceImpl  implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
         return user; // 直接返回 User 实体（已实现 UserDetails）
     }
+
+    public boolean save(User user) {
+        User user1= userRepository.save(user);
+        if(user1!=null) {
+            return  true;
+        }else{
+            return  false;
+        }
+    }
 }
