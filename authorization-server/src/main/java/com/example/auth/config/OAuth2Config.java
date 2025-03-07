@@ -62,13 +62,15 @@ public class OAuth2Config {
 
     private final JwtDecoder jwtDecoder;
 
-    private  OAuth2TokenCustomizer<JwtEncodingContext> jwtCustomizer;
+    private final OAuth2TokenCustomizer<JwtEncodingContext> jwtCustomizer;
 
-    private CustomOidcUserInfoService customOidcUserInfoService;
+    private final CustomOidcUserInfoService customOidcUserInfoService;
 
 
-    public OAuth2Config(JwtDecoder jwtDecoder) {
+    public OAuth2Config(JwtDecoder jwtDecoder,OAuth2TokenCustomizer<JwtEncodingContext> jwtCustomizer,CustomOidcUserInfoService customOidcUserInfoService) {
         this.jwtDecoder = jwtDecoder;
+        this.jwtCustomizer = jwtCustomizer;
+        this.customOidcUserInfoService = customOidcUserInfoService;
     }
 
 
