@@ -28,11 +28,11 @@ import java.util.function.Function;
 public class CustomOidcAuthenticationProvider implements AuthenticationProvider {
 
 
-    private final OAuth2AuthorizationService authorizationService;
+//    private final OAuth2AuthorizationService authorizationService;
 
-    public CustomOidcAuthenticationProvider(OAuth2AuthorizationService authorizationService) {
-        Assert.notNull(authorizationService, "authorizationService cannot be null");
-        this.authorizationService = authorizationService;
+    public CustomOidcAuthenticationProvider() {
+//        Assert.notNull(authorizationService, "authorizationService cannot be null");
+//        this.authorizationService = authorizationService;
     }
 
     @Override
@@ -45,22 +45,24 @@ public class CustomOidcAuthenticationProvider implements AuthenticationProvider 
 
         if (accessTokenAuthentication != null && accessTokenAuthentication.isAuthenticated()) {
             String accessTokenValue = accessTokenAuthentication.getToken().getTokenValue();
-            OAuth2Authorization authorization = this.authorizationService.findByToken(accessTokenValue, OAuth2TokenType.ACCESS_TOKEN);
-            if (authorization == null) {
-                throw new OAuth2AuthenticationException("invalid_token");
-            } else {
+//            OAuth2Authorization authorization = this.authorizationService.findByToken(accessTokenValue, OAuth2TokenType.ACCESS_TOKEN);
+//            if (authorization == null) {
+//                throw new OAuth2AuthenticationException("invalid_token");
+//            } else {
                 if (log.isTraceEnabled()) {
                     log.trace("Retrieved authorization with access token");
                 }
 
-                OAuth2Authorization.Token<OAuth2AccessToken> authorizedAccessToken = authorization.getAccessToken();
-                if (!authorizedAccessToken.isActive()) {
-                    throw new OAuth2AuthenticationException("invalid_token");
-                } else {
+//                OAuth2Authorization.Token<OAuth2AccessToken> authorizedAccessToken = authorization.getAccessToken();
+//                if (!authorizedAccessToken.isActive()) {
+//                    throw new OAuth2AuthenticationException("invalid_token");
+//                } else {
                     // 从认证结果中获取userInfo
                     CustomOidcUserInfo customOidcUserInfo = (CustomOidcUserInfo) userInfoAuthentication.getUserInfo();
                     // 从authorizedAccessToken中获取授权范围
-                    Set<String> scopeSet = (HashSet<String>) authorizedAccessToken.getClaims().get("scope");
+//                    Set<String> scopeSet = (HashSet<String>) authorizedAccessToken.getClaims().get("scope");
+                    Set<String> scopeSet = new HashSet<>();
+                    scopeSet.add("测试");
                     // 获取授权范围对应userInfo的字段信息
                     Map<String, Object> claims = DefaultOidcUserInfoMapper.getClaimsRequestedByScope(customOidcUserInfo.getClaims(), scopeSet);
                     if (log.isTraceEnabled()) {
@@ -68,8 +70,8 @@ public class CustomOidcAuthenticationProvider implements AuthenticationProvider 
                     }
 
                     return new CustomOidcToken(accessTokenAuthentication, new CustomOidcUserInfo(claims));
-                }
-            }
+//                }
+//            }
         } else {
             throw new OAuth2AuthenticationException("invalid_token");
         }

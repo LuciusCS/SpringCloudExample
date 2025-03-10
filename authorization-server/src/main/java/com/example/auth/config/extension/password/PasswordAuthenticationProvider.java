@@ -32,7 +32,7 @@ public class PasswordAuthenticationProvider  implements AuthenticationProvider {
 
     private static final String ERROR_URI = "https://datatracker.ietf.org/doc/html/rfc6749#section-5.2";
     private final AuthenticationManager authenticationManager;
-    private final OAuth2AuthorizationService authorizationService;
+//    private final OAuth2AuthorizationService authorizationService;
     private final OAuth2TokenGenerator<? extends OAuth2Token> tokenGenerator;
 
     /**
@@ -44,13 +44,13 @@ public class PasswordAuthenticationProvider  implements AuthenticationProvider {
      * @since 0.2.3
      */
     public PasswordAuthenticationProvider(AuthenticationManager authenticationManager,
-                                          OAuth2AuthorizationService authorizationService,
+//                                          OAuth2AuthorizationService authorizationService,
                                           OAuth2TokenGenerator<? extends OAuth2Token> tokenGenerator
     ) {
-        Assert.notNull(authorizationService, "authorizationService cannot be null");
+//        Assert.notNull(authorizationService, "authorizationService cannot be null");
         Assert.notNull(tokenGenerator, "tokenGenerator cannot be null");
         this.authenticationManager = authenticationManager;
-        this.authorizationService = authorizationService;
+//        this.authorizationService = authorizationService;
         this.tokenGenerator = tokenGenerator;
     }
 
@@ -156,7 +156,7 @@ public class PasswordAuthenticationProvider  implements AuthenticationProvider {
         OAuth2Authorization authorization = authorizationBuilder.build();
 
         // 持久化令牌发放记录到数据库
-        this.authorizationService.save(authorization);
+//        this.authorizationService.save(authorization);
         additionalParameters = Collections.emptyMap();
 
         return new OAuth2AccessTokenAuthenticationToken(registeredClient, clientPrincipal, accessToken, refreshToken, additionalParameters);

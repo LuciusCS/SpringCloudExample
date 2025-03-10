@@ -80,7 +80,7 @@ public class OAuth2Config {
     @Bean
     @Order(1)
     public SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity http,     AuthenticationManager authenticationManager,
-                                                                      OAuth2AuthorizationService authorizationService,
+//                                                                      OAuth2AuthorizationService authorizationService,
                                                                       OAuth2TokenGenerator<?> tokenGenerator) throws Exception {
         /// 授权服务器需要有这一行，资源服务器不需要有这一行
         ///  配置 OAuth2 授权服务器所需的默认安全设置，通常包括用户授权、客户端认证、登录等。
@@ -104,7 +104,7 @@ public class OAuth2Config {
                                         // 自定义授权模式提供者(Provider)
                                         authenticationProviders.addAll(
                                                 List.of(
-                                                        new PasswordAuthenticationProvider(authenticationManager, authorizationService, tokenGenerator)
+                                                        new PasswordAuthenticationProvider(authenticationManager, tokenGenerator)
                                                                                            )
                                         )
                         )
@@ -116,7 +116,7 @@ public class OAuth2Config {
                         oidcCustomizer.userInfoEndpoint(userInfoEndpointCustomizer ->
                                 {
                                     userInfoEndpointCustomizer.userInfoRequestConverter(new CustomOidcAuthenticationConverter(customOidcUserInfoService));
-                                    userInfoEndpointCustomizer.authenticationProvider(new CustomOidcAuthenticationProvider(authorizationService));
+                                    userInfoEndpointCustomizer.authenticationProvider(new CustomOidcAuthenticationProvider());
                                 }
                         )
                 );
@@ -163,35 +163,6 @@ public class OAuth2Config {
         return http.build();
     }
 
-    @Bean
-    public OAuth2AuthorizationService authorizationService(JdbcTemplate jdbcTemplate,
-                                                           RegisteredClientRepository registeredClientRepository) {
-        // 创建基于JDBC的OAuth2授权服务。这个服务使用JdbcTemplate和客户端仓库来存储和检索OAuth2授权数据。
-        JdbcOAuth2AuthorizationService service = new JdbcOAuth2AuthorizationService(jdbcTemplate, registeredClientRepository);
-
-        // 创建并配置用于处理数据库中OAuth2授权数据的行映射器。
-        JdbcOAuth2AuthorizationService.OAuth2AuthorizationRowMapper rowMapper = new JdbcOAuth2AuthorizationService.OAuth2AuthorizationRowMapper(registeredClientRepository);
-        rowMapper.setLobHandler(new DefaultLobHandler());
-        ObjectMapper objectMapper = new ObjectMapper();
-        ClassLoader classLoader = JdbcOAuth2AuthorizationService.class.getClassLoader();
-        List<Module> securityModules = SecurityJackson2Modules.getModules(classLoader);
-        objectMapper.registerModules(securityModules);
-        objectMapper.registerModule(new OAuth2AuthorizationServerJackson2Module());
-        // You will need to write the Mixin for your class so Jackson can marshall it.
-
-        // 添加自定义Mixin，用于序列化/反序列化特定的类。
-        // Mixin类需要自行实现，以便Jackson可以处理这些类的序列化。
-//        objectMapper.addMixIn(SysUserDetails.class, SysUserMixin.class);
-        objectMapper.addMixIn(Long.class, Object.class);
-
-        // 将配置好的ObjectMapper设置到行映射器中。
-        rowMapper.setObjectMapper(objectMapper);
-
-        // 将自定义的行映射器设置到授权服务中。
-        service.setAuthorizationRowMapper(rowMapper);
-
-        return service;
-    }
 
     @Bean
     OAuth2TokenGenerator<?> tokenGenerator(JWKSource<SecurityContext> jwkSource) {
