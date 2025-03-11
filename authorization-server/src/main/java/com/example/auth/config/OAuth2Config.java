@@ -8,6 +8,7 @@ import com.example.auth.handler.MyAuthenticationSuccessHandler;
 import com.example.auth.oidc.CustomOidcAuthenticationConverter;
 import com.example.auth.oidc.CustomOidcAuthenticationProvider;
 import com.example.auth.oidc.CustomOidcUserInfoService;
+import com.example.auth.services.RedisOAuth2AuthorizationService;
 import com.fasterxml.jackson.databind.Module;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nimbusds.jose.jwk.JWKSet;
@@ -17,6 +18,7 @@ import com.nimbusds.jose.proc.SecurityContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.lob.DefaultLobHandler;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -32,6 +34,7 @@ import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.jwt.JwtDecoders;
 import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
 import org.springframework.security.oauth2.server.authorization.JdbcOAuth2AuthorizationService;
+import org.springframework.security.oauth2.server.authorization.OAuth2Authorization;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationService;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
 import org.springframework.security.oauth2.server.authorization.config.annotation.web.configuration.OAuth2AuthorizationServerConfiguration;
@@ -80,7 +83,7 @@ public class OAuth2Config {
     @Bean
     @Order(1)
     public SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity http,     AuthenticationManager authenticationManager,
-//                                                                      OAuth2AuthorizationService authorizationService,
+                                                                      OAuth2AuthorizationService authorizationService,
                                                                       OAuth2TokenGenerator<?> tokenGenerator) throws Exception {
         /// 授权服务器需要有这一行，资源服务器不需要有这一行
         ///  配置 OAuth2 授权服务器所需的默认安全设置，通常包括用户授权、客户端认证、登录等。
@@ -104,7 +107,7 @@ public class OAuth2Config {
                                         // 自定义授权模式提供者(Provider)
                                         authenticationProviders.addAll(
                                                 List.of(
-                                                        new PasswordAuthenticationProvider(authenticationManager, tokenGenerator)
+                                                        new PasswordAuthenticationProvider(authenticationManager,authorizationService, tokenGenerator)
                                                                                            )
                                         )
                         )
@@ -136,6 +139,7 @@ public class OAuth2Config {
 
 
     /// 资源服务器配置 (defaultSecurityFilterChain) 是专门保护应用资源的配置，主要处理对 API 的授权访问，确保客户端请求中携带有效的 JWT 或其他类型的 OAuth2 令牌。
+    /// 其实没必要在授权服务器中添加
     @Bean
     @Order(2)
     public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
@@ -162,6 +166,12 @@ public class OAuth2Config {
 
         return http.build();
     }
+
+    /// 需要对refresh token 进行管理，
+//    @Bean
+//    public OAuth2AuthorizationService authorizationService(RedisTemplate<String, OAuth2Authorization> redisTemplate) {
+//        return new RedisOAuth2AuthorizationService(redisTemplate);
+//    }
 
 
     @Bean
