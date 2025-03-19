@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -35,7 +36,7 @@ public class RedisConfig {
     @Bean
     public RedisTemplate<String, OAuth2Authorization> redisTemplate(
             RedisConnectionFactory connectionFactory,
-            ObjectMapper securityObjectMapper) { // 使用自定义配置的ObjectMapper
+            @Qualifier("redisObjectMapper")  ObjectMapper securityObjectMapper) { // 使用自定义配置的ObjectMapper
 
         RedisTemplate<String, OAuth2Authorization> template = new RedisTemplate<>();
         template.setConnectionFactory(connectionFactory);
@@ -55,7 +56,8 @@ public class RedisConfig {
 
 
 
-    @Bean
+    /// 在Redis配置中创建专用的ObjectMapper，并仅将其用于Redis序列化，避免影响Spring MVC的默认配置。
+    @Bean(name = "redisObjectMapper")
     public ObjectMapper securityObjectMapper(RegisteredClientRepository clientRepository) {
         ObjectMapper objectMapper = new ObjectMapper();
 
@@ -80,6 +82,7 @@ public class RedisConfig {
                 .addDeserializer(OAuth2Authorization.class, new OAuth2AuthorizationDeserializer(clientRepository))
         );
 
+        // 启用默认类型信息（仅用于Redis）
         objectMapper.activateDefaultTyping(
                 objectMapper.getPolymorphicTypeValidator(),
                 ObjectMapper.DefaultTyping.NON_FINAL,

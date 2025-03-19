@@ -17,6 +17,9 @@ import java.util.stream.Collectors;
 @Table(name = "user")
 @Data
 public class User implements UserDetails {
+
+    public User() {}
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -52,4 +55,5 @@ public class User implements UserDetails {
     @Override public boolean isAccountNonExpired() { return true; }
     @Override public boolean isAccountNonLocked() { return true; }
     @Override public boolean isCredentialsNonExpired() { return true; }
+
 }

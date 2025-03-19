@@ -148,7 +148,7 @@ public class OAuth2Config {
                         !request.getRequestURI().startsWith("/oauth2/") // 排除 /oauth2/ 路径
                 )
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/userinfo", "/login", "/addRegisteredClient"
+                        .requestMatchers("/userinfo", "/login", "/addRegisteredClient" /// 表示上述端点可以被任何人进行访问
 //                                "/oauth2/authorize" // 允许匿名访问授权端点（触发登录）
                                 ).permitAll()
                         .anyRequest().authenticated()
@@ -167,11 +167,6 @@ public class OAuth2Config {
         return http.build();
     }
 
-    /// 需要对refresh token 进行管理，
-//    @Bean
-//    public OAuth2AuthorizationService authorizationService(RedisTemplate<String, OAuth2Authorization> redisTemplate) {
-//        return new RedisOAuth2AuthorizationService(redisTemplate);
-//    }
 
 
     @Bean
