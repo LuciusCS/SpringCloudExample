@@ -2,6 +2,7 @@ package com.example.auth.oidc;
 
 //import cn.hutool.core.lang.Assert;
 import org.springframework.security.oauth2.core.oidc.OidcUserInfo;
+import org.springframework.util.Assert;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -20,7 +21,7 @@ public class CustomOidcUserInfo extends OidcUserInfo {
 
     public CustomOidcUserInfo(Map<String, Object> claims) {
         super(claims);
-//        Assert.notEmpty(claims, "claims cannot be empty");
+        Assert.notEmpty(claims, "claims cannot be empty");
         this.claims = Collections.unmodifiableMap(new LinkedHashMap(claims));
     }
 

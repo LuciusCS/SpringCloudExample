@@ -1,6 +1,7 @@
 package com.example.auth.bean;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
@@ -30,6 +31,7 @@ public class User implements UserDetails {
 
     private String email;
 
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_role",

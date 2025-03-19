@@ -47,7 +47,7 @@ spring:
     redis:
       host: localhost       # Redis 服务器地址（如果 Redis 在 Docker 里，改为 host.docker.internal）
       port: 6379            # Redis 端口
-      password: ""          # Redis 密码（如果没有设置密码，则为空）
+      password: 123456          # Redis 密码（如果没有设置密码，则为空）
       database: 0           # 使用 Redis 的第 0 号数据库
       timeout: 3000ms       # 连接超时时间
       lettuce:

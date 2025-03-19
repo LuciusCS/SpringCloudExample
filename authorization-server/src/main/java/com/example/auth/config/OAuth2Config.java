@@ -119,7 +119,7 @@ public class OAuth2Config {
                         oidcCustomizer.userInfoEndpoint(userInfoEndpointCustomizer ->
                                 {
                                     userInfoEndpointCustomizer.userInfoRequestConverter(new CustomOidcAuthenticationConverter(customOidcUserInfoService));
-                                    userInfoEndpointCustomizer.authenticationProvider(new CustomOidcAuthenticationProvider());
+                                    userInfoEndpointCustomizer.authenticationProvider(new CustomOidcAuthenticationProvider(authorizationService));
                                 }
                         )
                 );
