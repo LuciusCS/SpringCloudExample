@@ -57,6 +57,14 @@ public class RedisConfig {
 
 
     /// 在Redis配置中创建专用的ObjectMapper，并仅将其用于Redis序列化，避免影响Spring MVC的默认配置。
+    /// ObjectMapper 被注册为一个 @Bean，并且通过 @Qualifier("redisObjectMapper") 进行限定，只在 Redis 相关的 RedisTemplate 里使用。
+    /// 不会影响 Spring MVC 默认的 JSON 处理，即不会影响 @RequestBody 解析 JSON 请求的行为。
+    ///
+    ///
+    ///
+    /// redisTemplate 方法的 ObjectMapper 参数是由 Spring 自动注入的，这里的 securityObjectMapper
+    /// 其实是 Spring MVC 统一的 ObjectMapper，可能导致 Redis 自定义的 ObjectMapper 影响全局 JSON 解析。
+    ///
     @Bean(name = "redisObjectMapper")
     public ObjectMapper securityObjectMapper(RegisteredClientRepository clientRepository) {
         ObjectMapper objectMapper = new ObjectMapper();
