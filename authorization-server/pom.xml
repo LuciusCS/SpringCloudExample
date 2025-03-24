@@ -9,8 +9,8 @@
     </parent>
     <artifactId>authorization-server</artifactId>
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -18,10 +18,24 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter</artifactId>
+
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
+<!--            <exclusions>-->
+<!--                &lt;!&ndash; 排除 Spring WebFlux 隐式依赖 &ndash;&gt;-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.springframework.boot</groupId>-->
+<!--                    <artifactId>spring-boot-starter-webflux</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+        </dependency>
+
+<!--        为什么这里是boot，而不是cloud-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
 <!--        <dependency>-->
@@ -104,6 +118,8 @@
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
             <version>2.3.0</version>
         </dependency>
+
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -122,8 +138,12 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>9</source>
-                    <target>9</target><compilerArgs>--enable-preview</compilerArgs>
+<!--                    <source>9</source>-->
+<!--                    <target>9</target><compilerArgs>&#45;&#45;enable-preview</compilerArgs>-->
+<!--                    关闭 JavaDoc 严格检查-->
+                    <compilerArgs>
+                        <arg>-Xlint:none</arg>
+                    </compilerArgs>
                 </configuration>
             </plugin>
         </plugins>
