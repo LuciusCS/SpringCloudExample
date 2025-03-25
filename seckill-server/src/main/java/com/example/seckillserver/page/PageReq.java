@@ -1,4 +1,4 @@
-package com.crazymaker.springcloud.common.page;
+package com.example.seckillserver.page;
 
 import lombok.Data;
 

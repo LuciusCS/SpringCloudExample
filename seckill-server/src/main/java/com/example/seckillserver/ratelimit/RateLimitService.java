@@ -1,9 +1,6 @@
-package com.crazymaker.springcloud.common.distribute.rateLimit;
+package com.example.seckillserver.ratelimit;
 
-/**
- * 接口：限流服务
- * create by 尼恩 @ 疯狂创客圈
- **/
+
 public interface RateLimitService
 {
 

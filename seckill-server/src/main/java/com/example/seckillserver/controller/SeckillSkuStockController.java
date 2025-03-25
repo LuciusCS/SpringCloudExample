@@ -1,30 +1,33 @@
-package com.crazymaker.springcloud.stock.controller;
+package com.example.seckillserver.controller;
 
-import com.crazymaker.springcloud.common.page.PageOut;
-import com.crazymaker.springcloud.common.page.PageReq;
-import com.crazymaker.springcloud.common.result.RestOut;
-import com.crazymaker.springcloud.seckill.api.dto.SeckillDTO;
-import com.crazymaker.springcloud.seckill.api.dto.SeckillSkuDTO;
-import com.crazymaker.springcloud.standard.ratelimit.RedisRateLimitImpl;
-import com.crazymaker.springcloud.standard.redis.RedisRepository;
-import com.crazymaker.springcloud.stock.service.impl.SeckillSkuStockServiceImpl;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
+import com.example.seckillserver.api.dto.SeckillSkuDTO;
+import com.example.seckillserver.ratelimit.RedisRateLimitImpl;
+import com.example.seckillserver.standard.redis.RedisRepository;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.web.bind.annotation.*;
+import com.example.seckillserver.api.dto.SeckillDTO;
+
+import com.example.seckillserver.page.PageOut;
+import com.example.seckillserver.page.PageReq;
+import com.example.seckillserver.result.RestOut;
+
+import com.example.seckillserver.service.SeckillSkuStockServiceImpl;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.annotation.Resource;
+import org.springframework.web.bind.annotation.*;
+
+import java.math.BigDecimal;
+import java.util.List;
+
 
 
 @RestController
 @RequestMapping("/api/seckill/sku/")
-@Api(tags = "商品库存")
+@Tag(name =  "商品库存")
 public class SeckillSkuStockController {
     @Resource
     SeckillSkuStockServiceImpl seckillSkuStockService;
@@ -33,11 +36,6 @@ public class SeckillSkuStockController {
     @Resource(name = "redisRateLimitImpl")
     RedisRateLimitImpl rateLimitService;
 
-    /**
-     * 缓存数据操作类
-     */
-    @Resource
-    RedisRepository redisRepository;
 
 
     /**
@@ -47,7 +45,7 @@ public class SeckillSkuStockController {
      * @return
      */
     @PostMapping("/list/v1")
-    @ApiOperation(value = "全部秒杀商品")
+    @Operation(summary = "全部秒杀商品")
     RestOut<PageOut<SeckillSkuDTO>> findAll(@RequestBody PageReq pageReq) {
         PageOut<SeckillSkuDTO> page = seckillSkuStockService.findAll(pageReq);
         RestOut<PageOut<SeckillSkuDTO>> r = RestOut.success(page);
@@ -62,7 +60,7 @@ public class SeckillSkuStockController {
      * @return 商品 skuDTO
      */
     @PostMapping("/detail/v1")
-    @ApiOperation(value = "秒杀商品详情")
+    @Operation(summary =  "秒杀商品详情")
     RestOut<SeckillSkuDTO> skuDetail(@RequestBody SeckillDTO dto) {
         Long skuId = dto.getSeckillSkuId();
 
@@ -84,7 +82,7 @@ public class SeckillSkuStockController {
      * @return 商品 skuDTO
      */
     @PostMapping("/delete/v1")
-    @ApiOperation(value = "删除商品信息")
+    @Operation(summary =  "删除商品信息")
     RestOut<SeckillSkuDTO> deleteSku(@RequestBody SeckillDTO dto) {
         Long skuId = dto.getSeckillSkuId();
 
@@ -102,7 +100,7 @@ public class SeckillSkuStockController {
      * @return 商品 skuDTO
      */
     @PutMapping("/stock/v1")
-    @ApiOperation(value = "设置秒杀库存")
+    @Operation(summary = "设置秒杀库存")
     RestOut<SeckillSkuDTO> setStock(@RequestBody SeckillDTO dto) {
         Long skuId = dto.getSeckillSkuId();
         int stock = dto.getNewStockNum();
@@ -126,12 +124,12 @@ public class SeckillSkuStockController {
      * @return
      */
     @PostMapping("/add/v1")
-    @ApiOperation(value = "增加秒杀商品")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "title", value = "商品名称", dataType = "string", paramType = "query", required = true, defaultValue = "秒杀商品-1"),
-            @ApiImplicitParam(name = "stockCount", value = "秒杀数量", dataType = "int", paramType = "query", required = true, defaultValue = "10000", example = "10000"),
-            @ApiImplicitParam(name = "price", value = "原始价格", dataType = "float", paramType = "query", required = true, defaultValue = "1000", example = "1000"),
-            @ApiImplicitParam(name = "costPrice", value = "秒杀价格", dataType = "float", paramType = "query", required = true, defaultValue = "10", example = "1000")
+    @Operation(summary = "增加秒杀商品")
+    @Parameters({
+            @Parameter(name = "title", description = "商品名称",  required = true, example = "秒杀商品-1"),
+            @Parameter(name = "stockCount", description = "秒杀数量",  required = true,  example = "10000"),
+            @Parameter(name = "price", description = "原始价格",  required = true,example = "1000"),
+            @Parameter(name = "costPrice", description = "秒杀价格", required = true,example = "1000")
     })
     RestOut<SeckillSkuDTO> addSeckill(
             @RequestParam(value = "title", required = true) String title,
@@ -159,7 +157,7 @@ public class SeckillSkuStockController {
      * @return 商品 skuDTO
      */
     @PostMapping("/expose/v1")
-    @ApiOperation(value = "暴露商品秒杀")
+    @Operation(summary = "暴露商品秒杀")
     RestOut<SeckillSkuDTO> expose(@RequestBody SeckillDTO dto) {
         Long skuId = dto.getSeckillSkuId();
 

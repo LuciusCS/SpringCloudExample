@@ -1,4 +1,4 @@
-package com.crazymaker.springcloud.common.result;
+package com.example.seckillserver.result;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
@@ -42,8 +42,8 @@ public class RestOut<T>
 
 
     public RestOut(@JsonProperty("respCode" ) int respCode,
-                      @JsonProperty("respMsg" ) String respMsg,
-                      @JsonProperty("datas" ) T datas)
+                   @JsonProperty("respMsg" ) String respMsg,
+                   @JsonProperty("datas" ) T datas)
     {
         this.respCode = respCode;
         this.respMsg = respMsg;

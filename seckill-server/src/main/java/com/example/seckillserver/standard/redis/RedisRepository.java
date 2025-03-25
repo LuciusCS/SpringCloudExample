@@ -1,8 +1,9 @@
-package com.crazymaker.springcloud.standard.redis;
+package com.example.seckillserver.standard.redis;
 
-import com.crazymaker.springcloud.common.context.SessionHolder;
-import com.crazymaker.springcloud.standard.context.SpringContextUtil;
-import com.google.gson.Gson;
+
+import com.alibaba.nacos.shaded.com.google.gson.Gson;
+import com.example.seckillserver.standard.context.SessionHolder;
+import com.example.seckillserver.standard.context.SpringContextUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
@@ -14,6 +15,7 @@ import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.data.redis.core.script.RedisScript;
 import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializer;
+import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import java.nio.charset.Charset;
@@ -25,6 +27,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 @Slf4j
+@Service
 public class RedisRepository {
     private RedisTemplate redisTemplate;
 
@@ -295,10 +298,7 @@ public class RedisRepository {
     }
 
     public boolean existSetK(String key) {
-        if (redisTemplate.opsForSet().isMember(key, null)) {
-            return true;
-        }
-        return false;
+        return Boolean.TRUE.equals(redisTemplate.hasKey(key));
     }
 
     /**
@@ -457,6 +457,14 @@ public class RedisRepository {
         return redisTemplate.getStringSerializer();
     }
 
+    /**
+     * @param script 要执行的 Redis Lua 脚本，通常是 RedisScript<T> 类型的对象。
+     * @param keys ：Lua 脚本中会用到的 Redis 键列表。
+     * @param args：Lua 脚本的参数列表。
+     * @return
+     * @param <K>
+     * @param <T>
+     */
     public <K, T> T executeScript(RedisScript<T> script, List<K> keys, Object... args) {
         Object r = redisTemplate.execute(script, keys, args);
         return (T) r;

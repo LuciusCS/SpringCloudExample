@@ -1,4 +1,4 @@
-package com.crazymaker.springcloud.standard.context;
+package com.example.seckillserver.standard.context;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContextAware;
@@ -7,9 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Created by 尼恩 on 2019/7/18.
- */
+
 @Component
 public class SpringContextUtil
         implements ApplicationContextAware

@@ -1,4 +1,4 @@
-package com.crazymaker.springcloud.seckill.api.dto;
+package com.example.seckillserver.api.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
@@ -7,6 +7,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.math.BigDecimal;
 import java.util.Date;
 
+/**
+ * 用于表示可以秒杀的商品
+ */
 @Data
 public class SeckillGoodDTO
 {

@@ -1,0 +1,125 @@
+server:
+  port: 8005
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs  # 访问的端口为微服务的端口
+  swagger-ui:
+    path: /swagger-ui.html
+    tagsSorter: alpha
+    use-root-path: true
+  cache:
+    disabled: true
+
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.web: DEBUG
+    org.springdoc: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %p [%t] %c{1} - %M - %L - %msg%n"
+
+spring:
+  application:
+    name: seckill-server  # 服务名称
+  # 服务名称+开发环境+文件后缀名 = nacos配置的Data Id
+  profiles:
+    active: mac   #开发环境
+  main:
+    web-application-type: servlet #reactive
+    allow-bean-definition-overriding: true
+  config:
+    import:
+      - optional:nacos:${spring.application.name}-${spring.profiles.active}.yaml
+
+---
+spring:
+  config:
+    activate:
+      on-profile: mac
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.22.180:8848
+        #        server-addr: 127.0.0.1:8848
+        group: QD
+        namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136
+        #        namespace: 1b2b72d4-ca4b-48b1-a6ca-a8f17c27c547
+        username: nacos
+        password: nacos
+        enable: true
+      config:
+        server-addr: 192.168.22.180:8848
+        #        server-addr: 127.0.0.1:8848
+        group: QD   # 需要在nacos 的namespace中创建，名字为QD的Service
+        #        namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136 # 将QD的namespace中id填入
+        namespace: 1b2b72d4-ca4b-48b1-a6ca-a8f17c27c547 # 将QD的namespace中id填入
+        username: nacos
+        password: nacos
+#        enable: true
+        import-check:
+          enabled: false
+  #        file-extension: yaml # 文件后缀名
+
+  ## 用于配置数据库
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.22.180:3306/store
+    #    url: jdbc:mysql://127.0.0.1:3306/spring_cloud_db
+    username: root
+    password: 123456
+
+  data:
+    redis:
+      host: localhost       # Redis 服务器地址（如果 Redis 在 Docker 里，改为 host.docker.internal）
+      port: 6379            # Redis 端口
+      password: 123456          # Redis 密码（如果没有设置密码，则为空）
+      database: 1           # 使用 Redis 的第 0 号数据库
+      timeout: 3000ms       # 连接超时时间
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 0
+          max-wait:
+#security:
+#  ignored=/**:
+#  enable-csrf: false
+
+---
+spring:
+  config:
+    activate:
+      on-profile: windows
+  cloud:
+    nacos:
+      discovery:
+        #        server-addr: 192.168.22.180:8848
+        server-addr: 127.0.0.1:8848
+        group: QD
+        #        namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136
+        namespace: 1b2b72d4-ca4b-48b1-a6ca-a8f17c27c547
+        username: nacos
+        password: nacos
+        enable: true
+      config:
+        #        server-addr: 192.168.22.180:8848
+        server-addr: 127.0.0.1:8848
+        group: QD   # 需要在nacos 的namespace中创建，名字为QD的Service
+        #        namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136 # 将QD的namespace中id填入
+        namespace: 1b2b72d4-ca4b-48b1-a6ca-a8f17c27c547 # 将QD的namespace中id填入
+        username: nacos
+        password: nacos
+        file-extension: yaml # 文件后缀名
+#        enable: true
+        import-check:
+          enabled: false
+  ## 用于配置数据库
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #    url: jdbc:mysql://192.168.22.180:3306/spring_cloud_db
+    url: jdbc:mysql://127.0.0.1:3306/store
+    username: root
+    password: 123456

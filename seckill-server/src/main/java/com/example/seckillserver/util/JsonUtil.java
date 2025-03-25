@@ -1,4 +1,5 @@
-package com.crazymaker.springcloud.common.util;
+package com.example.seckillserver.util;
+
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;

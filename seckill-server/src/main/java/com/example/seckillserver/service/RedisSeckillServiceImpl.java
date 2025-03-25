@@ -1,17 +1,18 @@
-package com.crazymaker.springcloud.seckill.service.impl;
+package com.example.seckillserver.service;
 
-import com.crazymaker.springcloud.common.exception.BusinessException;
-import com.crazymaker.springcloud.common.util.UUIDUtil;
-import com.crazymaker.springcloud.seckill.api.constant.SeckillConstants;
-import com.crazymaker.springcloud.seckill.api.dto.SeckillDTO;
-import com.crazymaker.springcloud.seckill.api.dto.SeckillOrderDTO;
-import com.crazymaker.springcloud.seckill.dao.SeckillOrderDao;
-import com.crazymaker.springcloud.seckill.dao.SeckillSegmentStockDao;
-import com.crazymaker.springcloud.seckill.dao.SeckillSkuDao;
-import com.crazymaker.springcloud.seckill.dao.po.SeckillOrderPO;
-import com.crazymaker.springcloud.standard.lock.JedisMultiSegmentLock;
-import com.crazymaker.springcloud.standard.lock.RedisLockService;
-import com.crazymaker.springcloud.standard.redis.RedisRepository;
+
+import com.example.seckillserver.api.dto.SeckillDTO;
+import com.example.seckillserver.api.dto.SeckillOrderDTO;
+import com.example.seckillserver.common.exception.BusinessException;
+import com.example.seckillserver.constants.SeckillConstants;
+import com.example.seckillserver.dao.SeckillOrderDao;
+import com.example.seckillserver.dao.SeckillSegmentStockDao;
+import com.example.seckillserver.dao.SeckillSkuDao;
+import com.example.seckillserver.dao.po.SeckillOrderPO;
+import com.example.seckillserver.standard.redis.RedisRepository;
+import com.example.seckillserver.util.UUIDUtil;
+import jakarta.annotation.Resource;
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,15 +20,16 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
-import javax.transaction.Transactional;
+//import javax.annotation.Resource;
+
 import java.util.Collections;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-import static com.crazymaker.springcloud.standard.lock.RedisLockService.SEGMENT_DEFAULT;
-import static com.crazymaker.springcloud.standard.lock.RedisLockService.getDefaultRequestId;
-import static com.crazymaker.springcloud.standard.lua.ScriptHolder.getSeckillScript;
+import static com.example.seckillserver.service.RedisLockService.SEGMENT_DEFAULT;
+import static com.example.seckillserver.service.RedisLockService.getDefaultRequestId;
+import static com.example.seckillserver.standard.lua.ScriptHolder.getSeckillScript;
+
 
 @Configuration
 @Slf4j
@@ -64,7 +66,7 @@ public class RedisSeckillServiceImpl {
     /**
      * 获取秒杀令牌
      *
-     * @param exposedKey 秒杀id
+     * @param exposedKey 秒杀id。 这里看起来像是商品的id
      * @param userId     用户id
      * @return 令牌信息
      */

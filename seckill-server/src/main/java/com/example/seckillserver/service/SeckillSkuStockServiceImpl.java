@@ -1,18 +1,23 @@
-package com.crazymaker.springcloud.stock.service.impl;
+package com.example.seckillserver.service;
 
-import com.crazymaker.springcloud.common.distribute.rateLimit.RateLimitService;
-import com.crazymaker.springcloud.common.exception.BusinessException;
-import com.crazymaker.springcloud.common.page.DataAdapter;
-import com.crazymaker.springcloud.common.page.PageOut;
-import com.crazymaker.springcloud.common.page.PageReq;
-import com.crazymaker.springcloud.common.util.Encrypt;
-import com.crazymaker.springcloud.common.util.JsonUtil;
-import com.crazymaker.springcloud.seckill.api.dto.SeckillSkuDTO;
-import com.crazymaker.springcloud.seckill.dao.SeckillSegmentStockDao;
-import com.crazymaker.springcloud.seckill.dao.SeckillSkuDao;
-import com.crazymaker.springcloud.seckill.dao.po.SeckillSegmentStockPO;
-import com.crazymaker.springcloud.seckill.dao.po.SeckillSkuPO;
-import com.crazymaker.springcloud.standard.redis.RedisRepository;
+
+import com.example.seckillserver.api.dto.SeckillSkuDTO;
+import com.example.seckillserver.common.exception.BusinessException;
+import com.example.seckillserver.dao.SeckillSegmentStockDao;
+import com.example.seckillserver.dao.SeckillSkuDao;
+import com.example.seckillserver.dao.po.SeckillSegmentStockPO;
+import com.example.seckillserver.dao.po.SeckillSkuPO;
+import com.example.seckillserver.page.DataAdapter;
+import com.example.seckillserver.page.PageOut;
+import com.example.seckillserver.page.PageReq;
+import com.example.seckillserver.standard.redis.RedisRepository;
+import com.example.seckillserver.util.Encrypt;
+import com.example.seckillserver.util.JsonUtil;
+import jakarta.annotation.Resource;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.BeanUtils;
@@ -24,20 +29,17 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-import static com.crazymaker.springcloud.standard.lock.RedisLockService.SEGMENT_DEFAULT;
-import static com.crazymaker.springcloud.standard.lua.ScriptHolder.SECKILL_LUA_SHA_1;
-import static com.crazymaker.springcloud.standard.lua.ScriptHolder.getSeckillScript;
+import static com.example.seckillserver.service.RedisLockService.SEGMENT_DEFAULT;
+import static com.example.seckillserver.standard.lua.ScriptHolder.SECKILL_LUA_SHA_1;
+import static com.example.seckillserver.standard.lua.ScriptHolder.getSeckillScript;
+
 
 @Configuration
 @Slf4j
@@ -50,8 +52,8 @@ public class SeckillSkuStockServiceImpl {
     @Resource
     SeckillSegmentStockDao seckillSegmentStockDao;
 
-    @Resource(name = "zkRateLimitServiceImpl")
-    RateLimitService zkRateLimitServiceImpl;
+//    @Resource(name = "zkRateLimitServiceImpl")
+//    RateLimitService zkRateLimitServiceImpl;
 
     @Resource
     RedisRepository redisRepository;

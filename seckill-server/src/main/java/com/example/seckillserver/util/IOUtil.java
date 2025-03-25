@@ -3,7 +3,7 @@
  * Date: 17-12-30
  * Time: 下午4:50
  */
-package com.crazymaker.springcloud.common.util;
+package com.example.seckillserver.util;
 
 
 import cn.hutool.core.util.StrUtil;

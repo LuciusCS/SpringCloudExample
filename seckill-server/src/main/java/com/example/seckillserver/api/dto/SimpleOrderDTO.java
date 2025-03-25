@@ -1,4 +1,4 @@
-package com.crazymaker.springcloud.seckill.api.dto;
+package com.example.seckillserver.api.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

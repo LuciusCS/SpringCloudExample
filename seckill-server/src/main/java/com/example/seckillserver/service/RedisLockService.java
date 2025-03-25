@@ -1,6 +1,7 @@
-package com.crazymaker.springcloud.standard.lock;
+package com.example.seckillserver.service;
 
-import com.crazymaker.springcloud.common.util.UUIDUtil;
+
+import com.example.seckillserver.util.UUIDUtil;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

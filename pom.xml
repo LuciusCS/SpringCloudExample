@@ -16,7 +16,7 @@
         <module>gateway</module>
         <module>ocpp</module>
         <module>authorization-server</module>
-<!--        <module>seckill-server</module>-->
+        <module>seckill-server</module>
     </modules>
 
 
@@ -87,14 +87,14 @@
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-                <version>2022.0.0.0-RC2</version>
+                <version>2022.0.0.0</version>
                 <!--                <version>2.2.1.RELEASE</version>-->
             </dependency>
             <!--        nacos客户端依赖包-->
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-                <version>2022.0.0.0-RC2</version>
+                <version>2022.0.0.0</version>
                 <!--                <version>2.2.1.RELEASE</version>-->
             </dependency>
 

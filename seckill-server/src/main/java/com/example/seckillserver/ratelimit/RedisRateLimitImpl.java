@@ -1,25 +1,23 @@
-package com.crazymaker.springcloud.standard.ratelimit;
+package com.example.seckillserver.ratelimit;
 
-import com.crazymaker.springcloud.common.distribute.rateLimit.RateLimitService;
-import com.crazymaker.springcloud.standard.lua.ScriptHolder;
-import com.crazymaker.springcloud.standard.properties.RedisRateLimitProperties;
-import com.google.common.collect.ImmutableList;
+
+import com.alibaba.nacos.shaded.com.google.common.collect.ImmutableList;
+import com.example.seckillserver.standard.lua.ScriptHolder;
+import com.example.seckillserver.standard.properties.RedisRateLimitProperties;
 import lombok.Builder;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.script.RedisScript;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * 实现：令牌桶限流服务
- * create by 尼恩 @ 疯狂创客圈
- **/
 @Slf4j
+@Service
 public class RedisRateLimitImpl implements RateLimitService, InitializingBean
 {
     /**

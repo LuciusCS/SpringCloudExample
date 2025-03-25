@@ -1,16 +1,10 @@
 /**
  * Created by 尼恩@疯狂创客圈
  */
-package com.crazymaker.springcloud.common.util;
+package com.example.seckillserver.util;
 
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.LockSupport;
 
@@ -37,9 +31,11 @@ public class ThreadUtil
 
         CustomThreadFactory(String threadTag)
         {
-            SecurityManager s = System.getSecurityManager();
-            group = (s != null) ? s.getThreadGroup() :
-                    Thread.currentThread().getThreadGroup();
+
+            group = Thread.currentThread().getThreadGroup(); // 不再依赖 SecurityManager
+//            SecurityManager s = System.getSecurityManager();
+//            group = (s != null) ? s.getThreadGroup() :
+//                    Thread.currentThread().getThreadGroup();
             this.threadTag = "apppool-" + poolNumber.getAndIncrement() + "-" + threadTag + "-";
         }
 

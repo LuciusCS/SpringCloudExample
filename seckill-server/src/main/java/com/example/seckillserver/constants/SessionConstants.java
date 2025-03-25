@@ -1,4 +1,4 @@
-package com.crazymaker.springcloud.common.constants;
+package com.example.seckillserver.constants;
 
 /**
  * Created by 尼恩 on 2019/7/17.

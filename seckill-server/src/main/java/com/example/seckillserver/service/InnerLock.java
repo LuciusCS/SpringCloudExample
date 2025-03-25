@@ -1,8 +1,9 @@
-package com.crazymaker.springcloud.standard.lock;
+package com.example.seckillserver.service;
 
-import com.crazymaker.springcloud.common.exception.BusinessException;
-import com.crazymaker.springcloud.standard.context.SpringContextUtil;
-import com.crazymaker.springcloud.standard.lua.ScriptHolder;
+
+import com.example.seckillserver.common.exception.BusinessException;
+import com.example.seckillserver.standard.context.SpringContextUtil;
+import com.example.seckillserver.standard.lua.ScriptHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.script.RedisScript;

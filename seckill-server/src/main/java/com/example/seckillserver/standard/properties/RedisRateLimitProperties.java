@@ -1,6 +1,7 @@
-package com.crazymaker.springcloud.standard.properties;
+package com.example.seckillserver.standard.properties;
 
-import com.crazymaker.springcloud.standard.ratelimit.RedisRateLimitImpl;
+
+import com.example.seckillserver.ratelimit.RedisRateLimitImpl;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

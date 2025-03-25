@@ -1,17 +1,13 @@
-package com.crazymaker.springcloud.seckill.dao.po;
+package com.example.seckillserver.dao.po;
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
 import java.io.Serializable;
 
 /**
@@ -28,11 +24,10 @@ public class SeckillSegmentStockPO implements Serializable
 {
     //商品ID
     @Id
-
-    @GenericGenerator(
-            name = "snowflakeIdGenerator",
-            strategy = "com.crazymaker.springcloud.standard.hibernate.CommonSnowflakeIdGenerator")
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "snowflakeIdGenerator")
+//    @GenericGenerator(
+//            name = "snowflakeIdGenerator",
+//            strategy = "com.crazymaker.springcloud.standard.hibernate.CommonSnowflakeIdGenerator")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "SEG_STOCK_ID", unique = true, nullable = false, length = 8)
     private Long id;
 

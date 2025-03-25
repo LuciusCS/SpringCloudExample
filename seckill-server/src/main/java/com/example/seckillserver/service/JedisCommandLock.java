@@ -1,4 +1,4 @@
-package com.crazymaker.springcloud.standard.lock;
+package com.example.seckillserver.service;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

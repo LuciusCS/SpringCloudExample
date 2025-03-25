@@ -1,8 +1,8 @@
-package com.crazymaker.springcloud.common.dto;
+package com.example.seckillserver.api.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,25 +17,25 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@ApiModel("用户")
+@Schema(description="用户")
 public class UserDTO implements Serializable
 {
 
 
     //用户ID
-    @ApiModelProperty("用户ID")
+    @Schema(description ="用户ID")
     private Long userId;
     //用户名
-    @ApiModelProperty("用户名")
+    @Schema(description ="用户名")
     private String username;
     //用户登录密码
-    @ApiModelProperty("密码")
+    @Schema(description ="密码")
     private String password;
     //用户姓名
-    @ApiModelProperty("昵称")
+    @Schema(description ="昵称")
     private String nickname;
     //用户token
-    @ApiModelProperty("令牌")
+    @Schema(description ="令牌")
     private String token;
 
 

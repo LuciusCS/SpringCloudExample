@@ -1,4 +1,4 @@
-package com.crazymaker.springcloud.seckill.api.constant;
+package com.example.seckillserver.constants;
 
 public class SeckillConstants
 {

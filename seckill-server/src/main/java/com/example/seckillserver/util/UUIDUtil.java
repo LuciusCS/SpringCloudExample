@@ -1,4 +1,4 @@
-package com.crazymaker.springcloud.common.util;
+package com.example.seckillserver.util;
 
 import java.util.UUID;
 

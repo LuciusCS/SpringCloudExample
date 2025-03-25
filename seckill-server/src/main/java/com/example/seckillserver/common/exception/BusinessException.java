@@ -1,4 +1,4 @@
-package com.example.seckillserver.common;
+package com.example.seckillserver.common.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

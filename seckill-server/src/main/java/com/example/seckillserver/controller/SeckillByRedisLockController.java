@@ -1,27 +1,24 @@
-package com.crazymaker.springcloud.seckill.controller;
+package com.example.seckillserver.controller;
 
-import com.crazymaker.springcloud.common.constants.SessionConstants;
-import com.crazymaker.springcloud.common.exception.BusinessException;
-import com.crazymaker.springcloud.common.result.RestOut;
-import com.crazymaker.springcloud.seckill.api.dto.SeckillDTO;
-import com.crazymaker.springcloud.seckill.api.dto.SeckillOrderDTO;
-import com.crazymaker.springcloud.seckill.service.impl.RedisSeckillServiceImpl;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
+import com.example.seckillserver.api.dto.SeckillDTO;
+import com.example.seckillserver.api.dto.SeckillOrderDTO;
+import com.example.seckillserver.common.exception.BusinessException;
+import com.example.seckillserver.constants.SessionConstants;
+import com.example.seckillserver.result.RestOut;
+import com.example.seckillserver.service.RedisSeckillServiceImpl;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.web.bind.annotation.*;
+
+
 
 
 @RestController
 @RequestMapping("/api/seckill/redis/")
-@Api(tags = "秒杀练习  RedisLock 版本")
+@Tag(name = "秒杀练习  RedisLock 版本")
 public class SeckillByRedisLockController {
     /**
      * 秒杀服务实现 Bean
@@ -33,10 +30,11 @@ public class SeckillByRedisLockController {
     /**
      * 获取秒杀的令牌
      */
-    @ApiOperation(value = "排队获取秒杀令牌")
+    @Operation(summary = "排队获取秒杀令牌")
     @RequestMapping(value = "/token/{exposedKey}/v1", method = RequestMethod.GET)
     RestOut<String> getSeckillToken(
             @PathVariable String exposedKey, HttpServletRequest request) {
+        /// 从Header中获取userid
         String userIdentifier = request.getHeader(SessionConstants.USER_IDENTIFIER);
         if (null == userIdentifier) {
             throw BusinessException.builder().errMsg("用户id不能为空").build();
@@ -55,7 +53,7 @@ public class SeckillByRedisLockController {
      *
      * @return
      */
-    @ApiOperation(value = "秒杀")
+    @Operation(summary = "秒杀")
     @PostMapping("/do/v1")
     RestOut<SeckillOrderDTO> executeSeckill(@RequestBody SeckillDTO dto) {
         SeckillOrderDTO orderDTO = redisSeckillServiceImpl.executeSeckill(dto);

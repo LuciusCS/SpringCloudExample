@@ -1,7 +1,8 @@
-package com.crazymaker.springcloud.seckill.api.dto;
+package com.example.seckillserver.api.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import io.swagger.annotations.ApiModelProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -44,10 +45,10 @@ public class SeckillSkuDTO
 
 
     //剩余库存数量
-    @ApiModelProperty(value = "秒杀库存",example = "10000")
+    @Schema(description = "秒杀库存",example = "10000")
     private Integer stockCount;
 
-    @ApiModelProperty(value = "原始库存",example = "10000")
+    @Schema(description= "原始库存",example = "10000")
     private Integer rawStockCount;
 
 
@@ -57,6 +58,6 @@ public class SeckillSkuDTO
 
     //秒杀md5
     //加密措施，避免用户通过抓包拿到秒杀地址
-    @ApiModelProperty(value = "秒杀md5",example = "12sssszzz")
+    @Schema(description= "秒杀md5",example = "12sssszzz")
     private String exposedKey;
 }

@@ -1,8 +1,10 @@
-package com.crazymaker.springcloud.common.exception;
+package com.example.seckillserver.common.exception;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
+@Builder
 @Data
 @AllArgsConstructor
 public class BusiException extends RuntimeException

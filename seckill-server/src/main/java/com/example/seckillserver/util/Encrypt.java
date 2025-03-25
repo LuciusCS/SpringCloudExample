@@ -1,12 +1,10 @@
-package com.crazymaker.springcloud.common.util;
+package com.example.seckillserver.util;
 
 import org.springframework.util.DigestUtils;
 
 import java.security.MessageDigest;
 
-/**
- * Created by 尼恩 on 2019/7/18.
- */
+
 public class Encrypt
 {
 

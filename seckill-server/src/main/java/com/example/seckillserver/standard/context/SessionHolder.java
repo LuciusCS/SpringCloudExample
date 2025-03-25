@@ -1,17 +1,16 @@
-package com.crazymaker.springcloud.common.context;
+package com.example.seckillserver.standard.context;
 
-import com.crazymaker.springcloud.common.constants.SessionConstants;
-import com.crazymaker.springcloud.common.dto.UserDTO;
-import com.crazymaker.springcloud.common.util.JsonUtil;
+import com.example.seckillserver.api.dto.UserDTO;
+import com.example.seckillserver.constants.SessionConstants;
+import com.example.seckillserver.util.JsonUtil;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.core.NamedThreadLocal;
 import org.springframework.util.Assert;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
-/**
- * Created by 尼恩@疯狂创客圈
- */
+
+
 public class SessionHolder
 {
     // session id  线程本地变量
