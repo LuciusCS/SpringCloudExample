@@ -8,6 +8,10 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.data.redis.core.script.RedisScript;
 
+/***
+ * 用于持有lua脚本
+ */
+
 @Slf4j
 public class ScriptHolder {
 

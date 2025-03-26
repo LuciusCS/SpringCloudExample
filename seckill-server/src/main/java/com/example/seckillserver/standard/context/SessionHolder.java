@@ -1,6 +1,6 @@
 package com.example.seckillserver.standard.context;
 
-import com.example.seckillserver.api.dto.UserDTO;
+
 import com.example.seckillserver.constants.SessionConstants;
 import com.example.seckillserver.util.JsonUtil;
 import jakarta.servlet.http.HttpServletRequest;
@@ -19,8 +19,7 @@ public class SessionHolder
     private static final ThreadLocal<String> sessionIDStore = new NamedThreadLocal<>("sessionIDStore");
     // session userIdentifier(这里为 user id) 线程本地变量
     private static final ThreadLocal<String> userIdentiferLocal = new NamedThreadLocal<>("userIdentiferLocal");
-    // session 用户信息  线程本地变量
-    private static final ThreadLocal<UserDTO> sessionUserLocal = new NamedThreadLocal<>("sessionUserLocal");
+
     // session  线程本地变量
     private static final ThreadLocal<HttpSession> sessionLocal = new NamedThreadLocal<>("sessionLocal");
     // request  线程本地变量
@@ -81,38 +80,11 @@ public class SessionHolder
 
 
     /**
-     * 取得session user
-     *
-     * @return 返回session user
-     */
-    public static UserDTO getSessionUser()
-    {
-        UserDTO UserDTO = sessionUserLocal.get();
-
-        if (null == UserDTO)
-        {
-
-            HttpSession session = getSession();
-
-            String valueString = (String) session.getAttribute(G_USER);
-
-            UserDTO = JsonUtil.jsonToPojo(valueString, UserDTO.class);
-
-            sessionUserLocal.set(UserDTO);
-        }
-
-        Assert.notNull(UserDTO, "session 未设置");
-        return UserDTO;
-
-    }
-
-
-    /**
      * 清除线程局部变量
      */
     public static void clearData()
     {
-        sessionUserLocal.remove();
+
         sessionLocal.remove();
         sessionIDStore.remove();
         userIdentiferLocal.remove();
@@ -122,19 +94,6 @@ public class SessionHolder
     }
 
 
-    /**
-     * 获取session 中的userid
-     *
-     * @return userid
-     */
-    public static String getUserId()
-    {
-        UserDTO userDTO = getSessionUser();
-
-        Assert.notNull(userDTO, "session user is null");
-
-        return String.valueOf(userDTO.getUserId());
-    }
 
 
     /**
