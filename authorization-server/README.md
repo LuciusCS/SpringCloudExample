@@ -34,3 +34,6 @@
 
 
 
+功能实现参考代码：  youlai-mall
+源码地址：  https://github.com/youlaitech/youlai-mall
+https://gitee.com/youlaiorg/youlai-mall
