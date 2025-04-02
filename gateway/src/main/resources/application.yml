@@ -13,10 +13,55 @@ spring:
   #      Sentinel Dashboard 地址：
   cloud:
     sentinel:
+
       transport:
-        dashboard: localhost:8860  # Sentinel 控制台地址
-        port: 8719                 # 本地与 Sentinel 通信的端口
+        dashboard: localhost:8860 #8080  # Sentinel 控制台地址
+        port: 8719 #8721                 # 本地与 Sentinel 通信的端口
+#      transport:
+#        dashboard: localhost:8080 #8080  # Sentinel 控制台地址
+#        port: 8721 #8721                 # 本地与 Sentinel 通信的端口
       eager: true                  # 取消懒加载，启动即注册到控制台
+#      scg:                        新版本已不再需要此配置。
+#        enabled: true             # ✅ 启用 Gateway 适配
+      datasource:
+#         限流规则
+#        flow:
+#          nacos:
+#            server-addr: 192.168.22.180:8848
+#            dataId: gateway-flow
+#            groupId: QD
+#            namespace: ec6c3694-b06e-4690-a632-b10748bde5b1
+#            rule-type: flow
+#            data-type: json
+#            username: nacos
+#            password: nacos
+
+        # 熔断规则
+        degrade:
+          nacos:
+            server-addr: 192.168.22.180:8848
+            dataId: gateway-degrade
+            groupId: QD
+            namespace: ec6c3694-b06e-4690-a632-b10748bde5b1
+            rule-type: degrade
+            data-type: json
+            username: nacos
+            password: nacos
+        # 网关限流规则
+        gateway-flow-rules:   #gw-flow:  gateway-flow-rules 只是一个自定义的 key 名称，你可以随意命名，但建议使用 有意义的名称。
+          nacos:
+            server-addr: 192.168.22.180:8848
+            dataId: gateway-flow
+            groupId: QD
+            namespace: ec6c3694-b06e-4690-a632-b10748bde5b1
+            rule-type: gw-flow   # 必须 指定 gw-flow，否则 Sentinel 不会识别 Gateway API，只能看到簇点链路。
+            data-type: json
+            username: nacos
+            password: nacos
+      filter:
+        enabled: true  # 启用 Sentinel Gateway 过滤器 ，这样才能看到接口调用，否则只有服务的簇调用， 应该可以通过java代码进行实现
+      gateway:
+        enabled: true  # 启用 Sentinel Gateway
 ---
 spring:
   config:
@@ -27,23 +72,40 @@ spring:
       discovery:
         server-addr: 192.168.22.180:8848
         group: QD   # 需要在nacos 的namespace中创建，名字为QD的Service
-        namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136 # 将QD的namespace中id填入
+        namespace: ec6c3694-b06e-4690-a632-b10748bde5b1 # 将QD的namespace中id填入
         username: nacos
         password: nacos
       config:
         server-addr: 192.168.22.180:8848
         group: QD   # 需要在nacos 的namespace中创建，名字为QD的Service
-        namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136 # 将QD的namespace中id填入
+        namespace: ec6c3694-b06e-4690-a632-b10748bde5b1 # 将QD的namespace中id填入
         username: nacos
         password: nacos
         import-check:
           enabled: false
+
     # 让gateway从nacos中获取服务信息，如果没有这一个不会进行转发
     gateway:
       discovery:
         locator:
           enabled: true #使用服务发现路由
           lower-case-service-id: true
+      routes:
+        - id: authorization-resource-server
+          uri: http://localhost:8006
+          predicates:
+            - Path=/api/**
+        - id: seckill-server
+          uri: http://localhost:8005
+          predicates:
+            - Path=/api/**
+#          filters:
+#            - SentinelGatewayFilter  # 关键！让 Gateway 请求进入 Sentinel 统计
+#      routes: # 这里的 routes 会被 Nacos 动态更新，
+#        - id: placeholder  # 使用placeholder相当于占位符
+#          uri: lb://placeholder
+#          predicates:
+#            - Path=/placeholder/**
       #          server-addr: 192.168.19.121:8848
       #          locator:
       #              enabled: true

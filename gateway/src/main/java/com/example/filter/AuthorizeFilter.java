@@ -19,12 +19,12 @@ public class AuthorizeFilter implements GlobalFilter, Ordered {
 
         ///在gateway这里需要有token才能继续进行请求
         String token = exchange.getRequest().getQueryParams().getFirst("token");
-        if (StringUtils.isBlank(token)) {
-
-            exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
-
-            return exchange.getResponse().setComplete();
-        }
+//        if (StringUtils.isBlank(token)) {
+//
+//            exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
+//
+//            return exchange.getResponse().setComplete();
+//        }
         return chain.filter(exchange);
     }
 

@@ -26,3 +26,43 @@ API 分组限流：自定义 API 分组（如 /order/** 和 /user/**），针对
         spring-cloud-alibaba-sentinel-gateway  为 Spring Cloud Gateway 提供了流量控制、熔断降级、流量监控等功能
 
 ```
+
+## Sentinel Dashboard 在gateway中的特殊配置
+
+
+## 直接请求 gateway中的接口，Sentinel Dashboard 中可能不会有请求显示
+需要通过 gateway  请求到微服务才可以
+
+
+## Sentinel需要添加流控规则/熔断规则
+
+
+## 版本问题
+  spring-cloud-starter-alibaba-sentinel和 spring-cloud-alibaba-sentinel-gateway 使用的是2023.0.3.2版本使用
+  对应的 的gateway-dashboard是1.8.6 ，造成gateway-dashboard 将gateway当成普通微服务
+
+需要在pom.xml文件中指定 1.8.8
+
+```xml
+        <dependency>
+    <!--        该依赖 让 Sentinel 能够拦截 Gateway 的所有流量，否则 Sentinel 只能监控簇点链路，而无法细粒度监控 API。-->
+    <groupId>com.alibaba.csp</groupId>
+    <artifactId>sentinel-spring-cloud-gateway-adapter</artifactId>
+    <version>1.8.8</version>
+    </dependency>
+      <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-core</artifactId>
+            <version>1.8.8</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-datasource-nacos</artifactId>
+            <version>1.8.8</version> <!-- 版本根据你的 Spring Boot 版本适配 -->
+        </dependency>
+```
+  
+
+## 网址
+
+http://localhost:8719/tree?type=root
