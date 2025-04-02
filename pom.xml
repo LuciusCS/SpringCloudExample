@@ -15,6 +15,7 @@
     <modules>
         <module>gateway</module>
         <module>authorization-server</module>
+        <module>authorization-resource</module>
         <module>seckill-server</module>
     </modules>
 

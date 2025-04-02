@@ -3,23 +3,38 @@ package com.example.authorization.resource.config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.jwt.JwtDecoders;
 import org.springframework.security.web.SecurityFilterChain;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 @Configuration
 public class SecurityConfig {
 
 
-    @Value("${spring.security.oauth2.resourceserver.jwt.issuer-uri}")
-    String issuerUri;
-
     @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        ///这里应该是所有的请求都已经在权限服务器进行认证 http://localhost:8004
-        return http.authorizeHttpRequests(auth -> auth.anyRequest().authenticated())
-                .oauth2ResourceServer(oauth2 -> oauth2.jwt(jwt -> jwt.decoder(JwtDecoders.fromIssuerLocation(issuerUri)))).build();
-
+    public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
+//        http
+//                .securityMatcher(request ->
+//                        !request.getRequestURI().startsWith("/oauth2/") // 排除 /oauth2/ 路径
+//                )
+//                .authorizeHttpRequests(authorize -> authorize
+//                                .requestMatchers("/userinfo", "/login", "/addRegisteredClient" /// 表示上述端点可以被任何人进行访问
+////                                "/oauth2/authorize" // 允许匿名访问授权端点（触发登录）
+//                                ).permitAll()
+//                                .anyRequest().permitAll()
+//                );
+        http
+                // 禁用CSRF保护（可选，根据需求决定）
+                .csrf(csrf -> csrf.disable())
+                // 配置请求授权规则
+                .authorizeHttpRequests(authorize -> authorize
+                        // 允许所有请求（包括所有路径）
+                        .anyRequest().permitAll()
+                );
+        return http.build();
     }
 }

@@ -1,4 +1,4 @@
-package com.example.authorization.resource.controller;
+package com.example.seckillserver.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
