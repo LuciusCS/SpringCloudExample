@@ -63,6 +63,11 @@ API 分组限流：自定义 API 分组（如 /order/** 和 /user/**），针对
 ```
   
 
-## 网址
-
+## 网址  这一个用在Sentinels 是用来做什么
+ 
 http://localhost:8719/tree?type=root
+
+
+## 配置信息持久化
+
+参考： https://blog.bigcoder.cn/article/303eac17.html
