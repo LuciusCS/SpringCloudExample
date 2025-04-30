@@ -18,6 +18,7 @@ logging:
     org.springframework.security: DEBUG
     org.springframework.web: DEBUG
     org.springdoc: DEBUG
+    com.alibaba.csp.sentinel: DEBUG
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} - %p [%t] %c{1} - %M - %L - %msg%n"
 
@@ -33,6 +34,34 @@ spring:
   config:
     import:
       - optional:nacos:${spring.application.name}-${spring.profiles.active}.yaml
+  cloud:
+    sentinel:
+      eager: true                  # 取消懒加载，启动即注册到控制台
+      transport:
+        dashboard: localhost:8080 #8080  # Sentinel 控制台地址
+        port: 8722 #8721                 # 本地与 Sentinel 通信的端口
+#         限流规则
+      datasource:
+        flow:
+          nacos:
+            server-addr: 192.168.22.180:8848
+            dataId: seckill-server-flow-rules
+#            dataId: gateway-flow
+            rule-type: flow
+            data-type: json
+            username: nacos
+            password: nacos
+        degrade:
+          nacos:
+            server-addr: 192.168.22.180:8848
+            dataId: seckill-server-degrade
+            #            groupId: QD
+            #            namespace: ec6c3694-b06e-4690-a632-b10748bde5b1
+            rule-type: degrade
+            data-type: json
+            username: nacos
+            password: nacos
+
 
 ---
 spring:
@@ -44,8 +73,8 @@ spring:
       discovery:
         server-addr: 192.168.22.180:8848
         #        server-addr: 127.0.0.1:8848
-        group: QD
-        namespace: ec6c3694-b06e-4690-a632-b10748bde5b1
+#        group: QD
+#        namespace: ec6c3694-b06e-4690-a632-b10748bde5b1
         #        namespace: 1b2b72d4-ca4b-48b1-a6ca-a8f17c27c547
         username: nacos
         password: nacos
@@ -53,9 +82,9 @@ spring:
       config:
         server-addr: 192.168.22.180:8848
         #        server-addr: 127.0.0.1:8848
-        group: QD   # 需要在nacos 的namespace中创建，名字为QD的Service
-        #        namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136 # 将QD的namespace中id填入
-        namespace: ec6c3694-b06e-4690-a632-b10748bde5b1 # 将QD的namespace中id填入
+#        group: QD   # 需要在nacos 的namespace中创建，名字为QD的Service
+#        #        namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136 # 将QD的namespace中id填入
+#        namespace: ec6c3694-b06e-4690-a632-b10748bde5b1 # 将QD的namespace中id填入
         username: nacos
         password: nacos
 #        enable: true

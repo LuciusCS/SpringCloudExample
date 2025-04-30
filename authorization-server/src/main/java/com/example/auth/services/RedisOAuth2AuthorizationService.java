@@ -1,10 +1,12 @@
 package com.example.auth.services;
+
 import org.springframework.security.oauth2.server.authorization.OAuth2Authorization;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationService;
 //import org.springframework.security.oauth2.server.authorization.token.OAuth2TokenType;
 import org.springframework.security.oauth2.server.authorization.OAuth2TokenType;
 import org.springframework.stereotype.Service;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
@@ -17,7 +19,7 @@ public class RedisOAuth2AuthorizationService implements OAuth2AuthorizationServi
     public RedisOAuth2AuthorizationService(RedisTemplate<String, OAuth2Authorization> redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
-
+    @Transactional
     @Override
     public void save(OAuth2Authorization authorization) {
         String authKey = PREFIX + authorization.getId();

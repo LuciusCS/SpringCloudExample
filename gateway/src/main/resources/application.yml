@@ -14,12 +14,12 @@ spring:
   cloud:
     sentinel:
 
-      transport:
-        dashboard: localhost:8860 #8080  # Sentinel 控制台地址
-        port: 8719 #8721                 # 本地与 Sentinel 通信的端口
 #      transport:
-#        dashboard: localhost:8080 #8080  # Sentinel 控制台地址
-#        port: 8721 #8721                 # 本地与 Sentinel 通信的端口
+#        dashboard: localhost:8860 #8080  # Sentinel 控制台地址
+#        port: 8720 #8721                 # 本地与 Sentinel 通信的端口
+      transport:
+        dashboard: localhost:8080 #8080  # Sentinel 控制台地址
+        port: 8721 #8721                 # 本地与 Sentinel 通信的端口
       eager: true                  # 取消懒加载，启动即注册到控制台
 #      scg:                        新版本已不再需要此配置。
 #        enabled: true             # ✅ 启用 Gateway 适配
@@ -41,8 +41,8 @@ spring:
           nacos:
             server-addr: 192.168.22.180:8848
             dataId: gateway-degrade
-            groupId: QD
-            namespace: ec6c3694-b06e-4690-a632-b10748bde5b1
+#            groupId: QD
+#            namespace: ec6c3694-b06e-4690-a632-b10748bde5b1
             rule-type: degrade
             data-type: json
             username: nacos
@@ -52,8 +52,8 @@ spring:
           nacos:
             server-addr: 192.168.22.180:8848
             dataId: gateway-flow
-            groupId: QD
-            namespace: ec6c3694-b06e-4690-a632-b10748bde5b1
+#            groupId: QD
+#            namespace: ec6c3694-b06e-4690-a632-b10748bde5b1
             rule-type: gw-flow   # 必须 指定 gw-flow，否则 Sentinel 不会识别 Gateway API，只能看到簇点链路。
             data-type: json
             username: nacos
@@ -71,14 +71,14 @@ spring:
     nacos:
       discovery:
         server-addr: 192.168.22.180:8848
-        group: QD   # 需要在nacos 的namespace中创建，名字为QD的Service
-        namespace: ec6c3694-b06e-4690-a632-b10748bde5b1 # 将QD的namespace中id填入
+#        group: QD   # 需要在nacos 的namespace中创建，名字为QD的Service
+#        namespace: ec6c3694-b06e-4690-a632-b10748bde5b1 # 将QD的namespace中id填入
         username: nacos
         password: nacos
       config:
         server-addr: 192.168.22.180:8848
-        group: QD   # 需要在nacos 的namespace中创建，名字为QD的Service
-        namespace: ec6c3694-b06e-4690-a632-b10748bde5b1 # 将QD的namespace中id填入
+#        group: QD   # 需要在nacos 的namespace中创建，名字为QD的Service
+#        namespace: ec6c3694-b06e-4690-a632-b10748bde5b1 # 将QD的namespace中id填入
         username: nacos
         password: nacos
         import-check:
