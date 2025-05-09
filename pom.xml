@@ -14,6 +14,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>gateway</module>
+        <module>common</module>
         <module>authorization-server</module>
         <module>authorization-resource</module>
         <module>seckill-server</module>
