@@ -99,6 +99,25 @@ spring:
     #    url: jdbc:mysql://127.0.0.1:3306/spring_cloud_db
     username: root
     password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        login-username: admin
+        login-password: druid@123
+        allow: 127.0.0.1        # 白名单，多个使用逗号隔开（不在白名单中不能访问，默认开启localhost/127.0.0.1）
+      filter:
+        stat:
+          enabled: true           # 启动SQL语句监控，同时会影响其他面板中的SQL展示（如：影响"URI监控"中的jdbc数据）
+          db-type: mysql          # 数据库类型（实测没啥用，会自动根据上面的连接自动识别）
+
+          log-slow-sql: true      # 记录慢日志（"SQL监控"面板中数值会标记为红色）
+          slow-sql-millis: 3000   # 慢日志判定标准（单位：毫秒）
+          slow-sql-log-level: ERROR # 自定义日志级别，默认日志级别"ERROR"
 
   data:
     redis:

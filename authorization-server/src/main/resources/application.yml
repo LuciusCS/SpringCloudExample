@@ -66,17 +66,63 @@ spring:
   #        enable: true
   ## 用于配置数据库
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    ## 有博文解释下面的内容会被自动注入到Druid中
     url: jdbc:mysql://192.168.22.180:3306/spring_cloud_db
-    #    url: jdbc:mysql://127.0.0.1:3306/spring_cloud_db
     username: root
     password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      stat-view-servlet:       ## 用于表示启用 Druid 的监控面板
+        enabled: true
+        url-pattern: /druid/*
+        login-username: admin
+        login-password: druid@123
+        allow: 127.0.0.1        # 白名单，多个使用逗号隔开（不在白名单中不能访问，默认开启localhost/127.0.0.1）
+      filter:
+        stat:                 ## 用于表示启用 Sql 监控
+          enabled: true           # 启动SQL语句监控，同时会影响其他面板中的SQL展示（如：影响"URI监控"中的jdbc数据）
+          db-type: mysql          # 数据库类型（实测没啥用，会自动根据上面的连接自动识别）
+
+          log-slow-sql: true      # 记录慢日志（"SQL监控"面板中数值会标记为红色）
+          slow-sql-millis: 3000   # 慢日志判定标准（单位：毫秒）
+          slow-sql-log-level: ERROR # 自定义日志级别，默认日志级别"ERROR"
+
+        wall:                      #  检查SQL语句，防止恶意操作  同时记录每一次Select/Insert/Update/...等操作
+          enabled: true               # 启用防火墙
+          db-type: h2                 # 数据库类型（实测没啥用，会自动根据上面的连接自动识别）
+          config:
+            delete-allow: false       # 是否允许DELETE操作（报错异常：java.sql.SQLException:sql injection violation, dbType mysql, druid-version 1.2.21, delete not allow : DELETE FROM ...）
+            drop-table-allow: false   # 是否允许DROP TABLE操作
+
+        web-stat-filter:
+          enabled: true     # 启用"Web应用/URI监控/Session监控"面板
+          url-pattern: /*   # 监控这里指定的路径
+          exclusions: /druid/*,*.js,*.gif,*.jpg,*.png,*.css,*.ico,*.html,*.json   # 过滤路径
+
+          # "Session监控"面板设置（RestFul纯后端没有session）
+          session-stat-enable: true
+          session-stat-max-count: 1000
+          principal-session-name: xxc
+          principal-cookie-name: xxc
+          profile-enable: true
+
+      aop-patterns: x.y.z.controller.* # Spring监控AOP切入点，多个用逗号分隔
+
+      # 可以根据需要添加更多DruidDataSource支持的配置项，如：
+      # max-wait: 60000
+      # time-between-eviction-runs-millis: 60000
+      # min-evictable-idle-time-millis: 300000
+      # test-on-borrow: true
 
   data:
     redis:
-      host: localhost       # Redis 服务器地址（如果 Redis 在 Docker 里，改为 host.docker.internal）
+      host: 192.168.22.180       # Redis 服务器地址（如果 Redis 在 Docker 里，改为 host.docker.internal）
       port: 6379            # Redis 端口
-      password: 123456          # Redis 密码（如果没有设置密码，则为空）
+      password: 123456          # Redis 密码（如果没有设置密码，则为空），使用Docker 启动，每一次都要进行密码配置
       database: 0           # 使用 Redis 的第 0 号数据库
       timeout: 3000ms       # 连接超时时间
       lettuce:

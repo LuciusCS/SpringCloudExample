@@ -128,7 +128,9 @@ public class OAuth2Config {
                 /// 授权服务器通常只处理 /oauth2/token、/oauth2/authorize 等与 OAuth2 相关的请求。
                 .securityMatcher("/oauth2/**")                        // 只匹配以 /oauth2/ 开头的请求
                 .csrf(csrf -> csrf
-                        .ignoringRequestMatchers("/oauth2/token"))   // 忽略 /oauth2/token 路径的 CSRF 防护
+                        .ignoringRequestMatchers("/oauth2/token")
+                        .ignoringRequestMatchers(request -> request.getRequestURI().startsWith("/druid/"))
+                )   // 忽略 /oauth2/token 路径的 CSRF 防护
                 // 添加表单登录支持（关键修复）
                 .formLogin(withDefaults())
                 .oauth2ResourceServer(oauth2 -> oauth2
@@ -148,7 +150,7 @@ public class OAuth2Config {
                         !request.getRequestURI().startsWith("/oauth2/") // 排除 /oauth2/ 路径
                 )
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/userinfo", "/login", "/addRegisteredClient" /// 表示上述端点可以被任何人进行访问
+                        .requestMatchers("/userinfo", "/login", "/addRegisteredClient","/druid/**" /// 表示上述端点可以被任何人进行访问
 //                                "/oauth2/authorize" // 允许匿名访问授权端点（触发登录）
                                 ).permitAll()
                         .anyRequest().authenticated()
@@ -159,7 +161,9 @@ public class OAuth2Config {
 //                )
                 .formLogin(withDefaults())
                 .csrf(csrf -> csrf
-                        .ignoringRequestMatchers("/addRegisteredClient", "/oauth2/token","/addUser") // 禁用对/addRegisteredClient接口的CSRF保护
+                        .ignoringRequestMatchers("/addRegisteredClient", "/oauth2/token","/addUser","/druid/**")
+//                                .ignoringRequestMatchers(request -> request.getRequestURI().startsWith("/druid/"))
+                        // 禁用对/addRegisteredClient接口的CSRF保护
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2
                         .jwt(jwt -> jwt.decoder(jwtDecoder)));

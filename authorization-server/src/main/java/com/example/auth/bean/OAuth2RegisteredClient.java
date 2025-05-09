@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 /**
- *
+ * 用于表示已经注册的客户端信息
  */
 
 @Entity
