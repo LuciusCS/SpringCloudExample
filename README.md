@@ -1,5 +1,19 @@
 
 
+## 端口设置
+
+authorization-client   : 8001
+authorization-resource : 8002
+authorization-server   : 8003
+authorization-server   : 8003
+gateway-server         : 8004
+order                  : 8005
+skill-server           : 8006
+
+
+
+
+
 
 ## Nacos
 

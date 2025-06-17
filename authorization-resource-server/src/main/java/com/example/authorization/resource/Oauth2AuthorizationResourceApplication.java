@@ -9,14 +9,14 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients
-public class AuthorizationResourceApplication {
+public class Oauth2AuthorizationResourceApplication {
 
 //    新版本的Springboot 在出错后，不再输出错误到控制台了，而是将异常在Application main方法中抛出。
     public static void main(String[] args) {
 
 
         try {
-            SpringApplication.run(AuthorizationResourceApplication.class, args);
+            SpringApplication.run(Oauth2AuthorizationResourceApplication.class, args);
 
         }catch (Exception e){
             e.printStackTrace();

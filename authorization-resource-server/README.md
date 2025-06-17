@@ -26,7 +26,7 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343)
-	at com.example.authorization.resource.AuthorizationResourceApplication.main(AuthorizationResourceApplication.java:19)
+	at com.example.authorization.resource.Oauth2AuthorizationResourceApplication.main(AuthorizationResourceApplication.java:19)
 Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.security.web.SecurityFilterChain]: Factory method 'securityFilterChain' threw exception with message: Unable to resolve the Configuration with the provided Issuer of "http://localhost:8004"
 	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:177)
 	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:647)

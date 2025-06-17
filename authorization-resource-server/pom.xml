@@ -8,7 +8,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>authorization-resource</artifactId>
+    <artifactId>authorization-resource-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>authorization-resource</name>
     <description>authorization-resource</description>

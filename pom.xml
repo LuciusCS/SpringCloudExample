@@ -13,11 +13,11 @@
     <artifactId>SpringCloudExample</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>gateway</module>
+        <module>gateway-server</module>
         <module>common</module>
-        <module>order</module>
+        <module>order-server</module>
         <module>authorization-server</module>
-        <module>authorization-resource</module>
+        <module>authorization-resource-server</module>
         <module>seckill-server</module>
     </modules>
 
