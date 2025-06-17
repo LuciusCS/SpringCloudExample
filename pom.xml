@@ -15,6 +15,7 @@
     <modules>
         <module>gateway</module>
         <module>common</module>
+        <module>order</module>
         <module>authorization-server</module>
         <module>authorization-resource</module>
         <module>seckill-server</module>
@@ -191,6 +192,12 @@
                 <version>1.4.13</version>
             </dependency>
 
+<!--            用于集成elk-->
+            <dependency>
+                <groupId>net.logstash.logback</groupId>
+                <artifactId>logstash-logback-encoder</artifactId>
+                <version>7.3</version>
+            </dependency>
 
             <dependency>
                 <groupId>org.springdoc</groupId>
@@ -198,6 +205,7 @@
                 <version>2.2.0</version>
             </dependency>
 
+<!--            用于表示数据库连接池-->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-3-starter</artifactId>
@@ -207,6 +215,13 @@
                 <groupId>jakarta.servlet</groupId>
                 <artifactId>jakarta.servlet-api</artifactId>
                 <version>6.0.0</version>
+            </dependency>
+
+<!--           用于接入xxl-job-->
+            <dependency>
+                <groupId>com.xuxueli</groupId>
+                <artifactId>xxl-job-core</artifactId>
+                <version>3.0.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
