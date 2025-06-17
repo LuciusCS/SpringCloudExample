@@ -10,3 +10,9 @@
 默认情况下 Sentinel 只能接收到 Nacos 推送的消息，但不能将自己控制台修改的信息同步给 Nacos，如下图所示：
 
 在 Sentinel 1.8.0+ 版本中，官方提供了一个 sentinel.datasource 相关配置，可以将控制台的规则同步到 Nacos 等外部配置中心。配置方法如下：
+
+
+
+
+
+Sentinel 面板访问地址，是由Sentinel服务启动的时候定义的端口
