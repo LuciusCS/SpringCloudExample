@@ -2,10 +2,9 @@
 
 ## 端口设置
 
-authorization-client   : 8001
-authorization-resource : 8002
-authorization-server   : 8003
-authorization-server   : 8003
+authorization-client          : 8001
+authorization-resource-server : 8002
+authorization-server          : 8003
 gateway-server         : 8004
 order                  : 8005
 skill-server           : 8006
@@ -49,6 +48,24 @@ nacos 2.2.1 版本需要单独设置 conf目录下 application.properties
 #### 在bootstrap.yaml 中配置nacos的路经后，微服务启动时还是使用 127.0.0.1:8848 注册nacos
 
 需要对模块依赖进行clean
+
+需要将
+
+```
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>		
+	       <artifactId>spring-cloud-starter-bootstrap</artifactId>
+		</dependency>
+```
+替换为
+
+```
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter</artifactId>
+		</dependency>
+```
+
 
 ### mysql配置
 

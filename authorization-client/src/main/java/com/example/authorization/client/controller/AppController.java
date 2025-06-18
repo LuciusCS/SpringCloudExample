@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/appController")
 public class AppController {
 
     @Autowired
@@ -33,9 +33,12 @@ public class AppController {
         return ResponseEntity.ok(appService.getJwtToken());
     }
 
-    @GetMapping("hello")
+    @GetMapping("/hello")
     public ResponseEntity<String>sayHello(){
-        return ResponseEntity.ok(helloClient.getHello());
+
+
+//        return ResponseEntity.ok(helloClient.getHello());
+        return ResponseEntity.ok("hello");
     }
 
 

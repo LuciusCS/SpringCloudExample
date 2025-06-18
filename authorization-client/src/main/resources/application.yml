@@ -3,16 +3,24 @@ server:
 
 
 spring:
+  profiles:
+    active: mac   #开发环境
+  application:
+    name: authorization-client  # 服务名称
+  # 服务名称+开发环境+文件后缀名 = nacos配置的Data Id
+  # 服务名称+开发环境+文件后缀名 = nacos配置的Data Id
+
+  main:
+    web-application-type: reactive
+    allow-bean-definition-overriding: true
   security:
     oauth2:
       client:
         registration:
-
           ## 已经登记的客户端
           oidc-client:
-            provider: spring
-
-            client-id: oidc-client
+            provider: spring   # 在下文配置了 行
+            client-id: client1234
             client-secret: secret
 
 #            认证方式
@@ -20,7 +28,7 @@ spring:
 
             ## 这里返回的地址是 authorization-client的地址
             ## authorization-server 会将数据重定向到这个接口
-            redirect-uri: http://127.0.0.1:8001/login/oauth2/code/oidc-client
+            redirect-uri: http://127.0.0.1:8001/appController/hello
 
             scope:
               - openid
@@ -34,4 +42,50 @@ spring:
         # 上文用的 provider
         provider:
           spring:   ## 名字应该是任意的
-             issuer-uri: http://localhost:8004  # 这里的地址是 authorization-server的地址
+             issuer-uri: http://localhost:8003  # 这里的地址是 authorization-server的地址
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: mac
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.22.180:8848
+        #        server-addr: 127.0.0.1:8848
+#        group: QD
+#        namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136
+#        #        namespace: 1b2b72d4-ca4b-48b1-a6ca-a8f17c27c547
+#        username: nacos
+#        password: nacos
+        enable: true
+      config:
+        #        import-check:
+        #          enabled: false
+        server-addr: 192.168.22.180:8848
+        #        server-addr: 127.0.0.1:8848
+        import-check:
+          enabled: false
+#        group: QD   # 需要在nacos 的namespace中创建，名字为QD的Service
+#        #        namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136 # 将QD的namespace中id填入
+#        namespace: 1b2b72d4-ca4b-48b1-a6ca-a8f17c27c547 # 将QD的namespace中id填入
+#        username: nacos
+#        password: nacos
+#        file-extension: yaml # 文件后缀名
+        enable: true
+  ## 用于配置数据库
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.22.180:3306/spring_cloud_db
+    #    url: jdbc:mysql://127.0.0.1:3306/spring_cloud_db
+    username: root
+    password: 123456
+
+
+
+#security:
+#  ignored=/**:
+#  enable-csrf: false
+

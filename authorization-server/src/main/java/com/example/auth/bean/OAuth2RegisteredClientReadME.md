@@ -3,6 +3,7 @@
 
 从 Jakarta EE 9 开始，JPA 规范从 javax.persistence 转移到了 jakarta.persistence，因此最新的 JPA 实现库（如 Hibernate）也支持并推荐使用 jakarta.persistence。
 
+Jakarta(雅加达)
 
 javax.persistence（不再推荐使用）
 
@@ -25,4 +26,3 @@ org.springframework.data.annotation 主要在 Spring Data 中使用，它与 JPA
 总结
 jakarta.persistence 是 JPA 的标准实现，适用于传统的关系型数据库和复杂的 ORM 映射。
 org.springframework.data.annotation 是 Spring Data 的一部分，用于简化与 Spring 的数据访问集成，支持多种数据库，包括关系型和 NoSQL 数据库。
-因此，选择哪个包取决于你的项目需求，如果你在使用 Spring Data 来简化数据访问，org.springframework.data.annotation 是推荐的选择；如果你需要遵循 JPA 标准或使用关系型数据库，jakarta.persistence 则是更合适的选择。

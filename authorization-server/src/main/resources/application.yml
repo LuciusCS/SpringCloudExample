@@ -49,7 +49,7 @@ spring:
 #        namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136
 #        username: nacos
 #        password: nacos
-      #        enable: true
+        enable: true
       config:
         server-addr: 192.168.22.180:8848
 #        group: QD   # 需要在nacos 的namespace中创建，名字为QD的Service
@@ -58,8 +58,9 @@ spring:
 #        password: nacos
         import-check:
           enabled: false
+        enable: true
   #        file-extension: yaml # 文件后缀名
-  #        enable: true
+
   ## 用于配置数据库
   datasource:
     ## 有博文解释下面的内容会被自动注入到Druid中

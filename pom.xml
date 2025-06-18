@@ -18,6 +18,7 @@
         <module>order-server</module>
         <module>authorization-server</module>
         <module>authorization-resource-server</module>
+        <module>authorization-client</module>
         <module>seckill-server</module>
     </modules>
 
