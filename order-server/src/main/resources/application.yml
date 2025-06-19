@@ -109,8 +109,6 @@ spring:
           acknowledge-mode: none   # 设置消费者确认模式  可以采手动确认的模式来进行
 
 
-
-
   datasource:
     ## 有博文解释下面的内容会被自动注入到Druid中
     url: jdbc:mysql://192.168.22.180:3306/spring_cloud_db
