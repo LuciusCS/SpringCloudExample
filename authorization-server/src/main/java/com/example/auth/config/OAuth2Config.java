@@ -70,7 +70,7 @@ public class OAuth2Config {
     private final CustomOidcUserInfoService customOidcUserInfoService;
 
 
-    public OAuth2Config(JwtDecoder jwtDecoder,OAuth2TokenCustomizer<JwtEncodingContext> jwtCustomizer,CustomOidcUserInfoService customOidcUserInfoService) {
+    public OAuth2Config(JwtDecoder jwtDecoder, OAuth2TokenCustomizer<JwtEncodingContext> jwtCustomizer, CustomOidcUserInfoService customOidcUserInfoService) {
         this.jwtDecoder = jwtDecoder;
         this.jwtCustomizer = jwtCustomizer;
         this.customOidcUserInfoService = customOidcUserInfoService;
@@ -82,7 +82,7 @@ public class OAuth2Config {
     //授权服务器配置 (authorizationServerSecurityFilterChain) 是专门处理授权流程的配置，主要处理授权码、客户端凭证、token 颁发等。
     @Bean
     @Order(1)
-    public SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity http,     AuthenticationManager authenticationManager,
+    public SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity http, AuthenticationManager authenticationManager,
                                                                       OAuth2AuthorizationService authorizationService,
                                                                       OAuth2TokenGenerator<?> tokenGenerator) throws Exception {
         /// 授权服务器需要有这一行，资源服务器不需要有这一行
@@ -107,8 +107,8 @@ public class OAuth2Config {
                                         // 自定义授权模式提供者(Provider)
                                         authenticationProviders.addAll(
                                                 List.of(
-                                                        new PasswordAuthenticationProvider(authenticationManager,authorizationService, tokenGenerator)
-                                                                                           )
+                                                        new PasswordAuthenticationProvider(authenticationManager, authorizationService, tokenGenerator)
+                                                )
                                         )
                         )
                         .accessTokenResponseHandler(new MyAuthenticationSuccessHandler()) // 自定义成功响应
@@ -129,6 +129,7 @@ public class OAuth2Config {
                 .securityMatcher("/oauth2/**")                        // 只匹配以 /oauth2/ 开头的请求
                 .csrf(csrf -> csrf
                         .ignoringRequestMatchers("/oauth2/token")
+                        .ignoringRequestMatchers("/.well-known/openid-configuration")
                         .ignoringRequestMatchers(request -> request.getRequestURI().startsWith("/druid/"))
                 )   // 忽略 /oauth2/token 路径的 CSRF 防护
                 // 添加表单登录支持（关键修复）
@@ -150,10 +151,10 @@ public class OAuth2Config {
                         !request.getRequestURI().startsWith("/oauth2/") // 排除 /oauth2/ 路径
                 )
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/userinfo", "/login", "/addRegisteredClient","/druid/**" /// 表示上述端点可以被任何人进行访问
+                                .requestMatchers("/.well-known/openid-configuration", "/userinfo", "/login", "/addRegisteredClient", "/druid/**" /// 表示上述端点可以被任何人进行访问
 //                                "/oauth2/authorize" // 允许匿名访问授权端点（触发登录）
                                 ).permitAll()
-                        .anyRequest().authenticated()
+                                .anyRequest().authenticated()
                 )
 //                .formLogin(form -> form
 //                        .loginPage("/login")
@@ -161,7 +162,7 @@ public class OAuth2Config {
 //                )
                 .formLogin(withDefaults())
                 .csrf(csrf -> csrf
-                        .ignoringRequestMatchers("/addRegisteredClient", "/oauth2/token","/addUser","/druid/**")
+                                .ignoringRequestMatchers("/.well-known/openid-configuration","/addRegisteredClient", "/oauth2/token", "/addUser", "/druid/**")
 //                                .ignoringRequestMatchers(request -> request.getRequestURI().startsWith("/druid/"))
                         // 禁用对/addRegisteredClient接口的CSRF保护
                 )
@@ -170,7 +171,6 @@ public class OAuth2Config {
 
         return http.build();
     }
-
 
 
     @Bean
@@ -183,7 +183,6 @@ public class OAuth2Config {
         return new DelegatingOAuth2TokenGenerator(
                 jwtGenerator, accessTokenGenerator, refreshTokenGenerator);
     }
-
 
 
     // 密码模式需要配置 AuthenticationManager

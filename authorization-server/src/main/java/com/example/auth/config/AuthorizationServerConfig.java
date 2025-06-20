@@ -29,7 +29,7 @@ public class AuthorizationServerConfig {
     @Bean
     public AuthorizationServerSettings authorizationServerSettings() {
         return AuthorizationServerSettings.builder()
-                .issuer("http://localhost:8004")
+                .issuer("http://localhost:8003")
                 .tokenEndpoint("/oauth2/token") // 自定义令牌端点URL
                 .authorizationEndpoint("/oauth2/authorize")  // 授权端点（如果需要授权码模式）
 

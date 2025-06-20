@@ -1,0 +1,552 @@
+2025-06-17 15:55:26.967 [restartedMain] [] INFO  com.example.order.OrderApplication - Starting OrderApplication using Java 17.0.2 with PID 1647 (/Users/eastsoft/Documents/Development/LuciusGithub/JavaProject/SpringCloudExample/order/target/classes started by eastsoft in /Users/eastsoft/Documents/Development/LuciusGithub/JavaProject/SpringCloudExample)
+2025-06-17 15:55:26.974 [restartedMain] [] INFO  com.example.order.OrderApplication - The following 1 profile is active: "mac"
+2025-06-17 15:55:27.191 [restartedMain] [] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-06-17 15:55:27.192 [restartedMain] [] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-06-17 15:55:27.653 [restartedMain] [] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-06-17 15:55:27.654 [restartedMain] [] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-17 15:55:27.673 [restartedMain] [] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 10 ms. Found 0 JPA repository interfaces.
+2025-06-17 15:55:27.946 [restartedMain] [] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-06-17 15:55:27.947 [restartedMain] [] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-06-17 15:55:27.960 [restartedMain] [] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
+2025-06-17 15:55:28.342 [restartedMain] [] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'com.alibaba.druid.spring.boot3.autoconfigure.stat.DruidSpringAopConfiguration' of type [com.alibaba.druid.spring.boot3.autoconfigure.stat.DruidSpringAopConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [projectingArgumentResolverBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2025-06-17 15:55:28.355 [restartedMain] [] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'spring.datasource.druid-com.alibaba.druid.spring.boot3.autoconfigure.properties.DruidStatProperties' of type [com.alibaba.druid.spring.boot3.autoconfigure.properties.DruidStatProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [projectingArgumentResolverBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2025-06-17 15:55:28.360 [restartedMain] [] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'advisor' of type [org.springframework.aop.support.RegexpMethodPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [projectingArgumentResolverBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2025-06-17 15:55:28.608 [restartedMain] [] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8004 (http)
+2025-06-17 15:55:28.618 [restartedMain] [] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8004"]
+2025-06-17 15:55:28.619 [restartedMain] [] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-17 15:55:28.619 [restartedMain] [] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2025-06-17 15:55:28.671 [restartedMain] [] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-06-17 15:55:28.671 [restartedMain] [] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1479 ms
+2025-06-17 15:55:28.721 [restartedMain] [] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2025-06-17 15:55:32.769 [restartedMain] [] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2025-06-17 15:55:32.847 [restartedMain] [] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-17 15:55:32.877 [restartedMain] [] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-06-17 15:55:32.893 [restartedMain] [] INFO  o.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-06-17 15:55:32.997 [restartedMain] [] INFO  o.s.o.j.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-17 15:55:33.189 [restartedMain] [] INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-17 15:55:33.191 [restartedMain] [] INFO  o.s.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-17 15:55:33.409 [restartedMain] [] INFO  com.example.order.config.rebbitmq.RabbitMqConfig - 重试也失败的消息！
+2025-06-17 15:55:33.449 [restartedMain] [] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-17 15:55:33.491 [restartedMain] [] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 3 mappings in 'requestMappingHandlerMapping'
+2025-06-17 15:55:33.545 [restartedMain] [] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-06-17 15:55:33.564 [restartedMain] [] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-06-17 15:55:33.579 [restartedMain] [] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-06-17 15:55:33.717 [restartedMain] [] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-06-17 15:55:33.731 [restartedMain] [] INFO  com.xxl.job.core.executor.XxlJobExecutor - >>>>>>>>>>> xxl-job register jobhandler success, name:cleanExpiredOrders, jobHandler:com.xxl.job.core.handler.impl.MethodJobHandler@5394afa3[class com.example.order.component.OrderCleanupJob$$SpringCGLIB$$0#cleanExpiredOrders]
+2025-06-17 15:55:33.774 [restartedMain] [] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8004"]
+2025-06-17 15:55:33.784 [restartedMain] [] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8004 (http) with context path ''
+2025-06-17 15:55:33.787 [restartedMain] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:55:33.812 [Thread-11] [] INFO  com.xxl.job.core.server.EmbedServer - >>>>>>>>>>> xxl-job remoting server start success, nettype = class com.xxl.job.core.server.EmbedServer, port = 9999
+2025-06-17 15:55:34.831 [xxl-job, executor ExecutorRegistryThread] [] INFO  com.xxl.job.core.thread.ExecutorRegistryThread - >>>>>>>>>>> xxl-job registry fail, registryParam:RegistryParam{registryGroup='EXECUTOR', registryKey='order', registryValue='http://192.168.22.181:9999'}, registryResult:ReturnT [code=500, msg=xxl-job remoting fail, StatusCode(503) invalid. for url : http://192.168.22.180:8082/xxl-job-admin/api/registry, content=null]
+2025-06-17 15:55:34.905 [restartedMain] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Broker not available; cannot force queue declarations during start: java.io.IOException
+2025-06-17 15:55:34.909 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:55:36.024 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+org.springframework.amqp.AmqpIOException: java.io.IOException
+	at org.springframework.amqp.rabbit.support.RabbitExceptionTranslator.convertRabbitAccessException(RabbitExceptionTranslator.java:70)
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:606)
+	at org.springframework.amqp.rabbit.connection.CachingConnectionFactory.createConnection(CachingConnectionFactory.java:727)
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils.createConnection(ConnectionFactoryUtils.java:257)
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.doExecute(RabbitTemplate.java:2249)
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2222)
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2202)
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueInfo(RabbitAdmin.java:467)
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueProperties(RabbitAdmin.java:451)
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.attemptDeclarations(AbstractMessageListenerContainer.java:1960)
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.redeclareElementsIfNecessary(AbstractMessageListenerContainer.java:1924)
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.initialize(SimpleMessageListenerContainer.java:1480)
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1322)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.io.IOException: null
+	at com.rabbitmq.client.impl.AMQChannel.wrap(AMQChannel.java:140)
+	at com.rabbitmq.client.impl.AMQChannel.wrap(AMQChannel.java:136)
+	at com.rabbitmq.client.impl.AMQConnection.start(AMQConnection.java:406)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1251)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1198)
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connectAddresses(AbstractConnectionFactory.java:652)
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connect(AbstractConnectionFactory.java:621)
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:568)
+	... 12 common frames omitted
+Caused by: com.rabbitmq.client.ShutdownSignalException: connection error
+	at com.rabbitmq.utility.ValueOrException.getValue(ValueOrException.java:66)
+	at com.rabbitmq.utility.BlockingValueOrException.uninterruptibleGetValue(BlockingValueOrException.java:36)
+	at com.rabbitmq.client.impl.AMQChannel$BlockingRpcContinuation.getReply(AMQChannel.java:552)
+	at com.rabbitmq.client.impl.AMQConnection.start(AMQConnection.java:336)
+	... 17 common frames omitted
+Caused by: java.io.EOFException: null
+	at java.base/java.io.DataInputStream.readUnsignedByte(DataInputStream.java:296)
+	at com.rabbitmq.client.impl.Frame.readFrom(Frame.java:91)
+	at com.rabbitmq.client.impl.SocketFrameHandler.readFrame(SocketFrameHandler.java:199)
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:687)
+	... 1 common frames omitted
+2025-06-17 15:55:36.029 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:55:37.141 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:55:38.254 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:55:38.254 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:55:39.370 [restartedMain] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:55:40.483 [restartedMain] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Broker not available; cannot force queue declarations during start: java.io.IOException
+2025-06-17 15:55:40.486 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:55:41.600 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+org.springframework.amqp.AmqpIOException: java.io.IOException
+	at org.springframework.amqp.rabbit.support.RabbitExceptionTranslator.convertRabbitAccessException(RabbitExceptionTranslator.java:70)
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:606)
+	at org.springframework.amqp.rabbit.connection.CachingConnectionFactory.createConnection(CachingConnectionFactory.java:727)
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils.createConnection(ConnectionFactoryUtils.java:257)
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.doExecute(RabbitTemplate.java:2249)
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2222)
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2202)
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueInfo(RabbitAdmin.java:467)
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueProperties(RabbitAdmin.java:451)
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.attemptDeclarations(AbstractMessageListenerContainer.java:1960)
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.redeclareElementsIfNecessary(AbstractMessageListenerContainer.java:1924)
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.initialize(SimpleMessageListenerContainer.java:1480)
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1322)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.io.IOException: null
+	at com.rabbitmq.client.impl.AMQChannel.wrap(AMQChannel.java:140)
+	at com.rabbitmq.client.impl.AMQChannel.wrap(AMQChannel.java:136)
+	at com.rabbitmq.client.impl.AMQConnection.start(AMQConnection.java:406)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1251)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1198)
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connectAddresses(AbstractConnectionFactory.java:652)
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connect(AbstractConnectionFactory.java:621)
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:568)
+	... 12 common frames omitted
+Caused by: com.rabbitmq.client.ShutdownSignalException: connection error
+	at com.rabbitmq.utility.ValueOrException.getValue(ValueOrException.java:66)
+	at com.rabbitmq.utility.BlockingValueOrException.uninterruptibleGetValue(BlockingValueOrException.java:36)
+	at com.rabbitmq.client.impl.AMQChannel$BlockingRpcContinuation.getReply(AMQChannel.java:552)
+	at com.rabbitmq.client.impl.AMQConnection.start(AMQConnection.java:336)
+	... 17 common frames omitted
+Caused by: java.io.EOFException: null
+	at java.base/java.io.DataInputStream.readUnsignedByte(DataInputStream.java:296)
+	at com.rabbitmq.client.impl.Frame.readFrom(Frame.java:91)
+	at com.rabbitmq.client.impl.SocketFrameHandler.readFrame(SocketFrameHandler.java:199)
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:687)
+	... 1 common frames omitted
+2025-06-17 15:55:41.601 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:55:42.217 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@2febdccf: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:55:42.713 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:55:43.826 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:55:43.826 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:55:44.456 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@6cf47edb: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:55:44.940 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:55:44.940 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:55:46.053 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:55:46.072 [restartedMain] [] INFO  com.example.order.OrderApplication - Started OrderApplication in 19.83 seconds (process running for 20.329)
+2025-06-17 15:55:47.167 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:55:47.797 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@24221bb3: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:55:48.280 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:55:48.280 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-3] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:55:49.393 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-3] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:55:49.393 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:55:50.506 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-3] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:55:51.123 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@60de5e6c: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:55:51.619 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-4] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:55:52.263 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@7b6b5d76: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:55:52.733 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-5] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:55:52.733 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-4] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:55:53.844 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-4] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:55:53.844 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-5] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:55:54.957 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-5] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:55:55.598 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@7af98b6b: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:55:56.069 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-6] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:55:56.695 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-3] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@431fa80b: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:55:57.182 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-6] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:55:57.182 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-5] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:55:58.294 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-5] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:55:58.294 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-6] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:55:59.408 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-5] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:00.046 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-4] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@270e9a60: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:56:00.519 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-6] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:01.163 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-5] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@1f834003: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:56:01.631 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-7] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:01.631 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-6] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:56:02.744 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-6] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:02.744 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-7] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:56:03.855 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-7] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:04.498 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-6] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@4515a781: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:56:04.968 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-8] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:05.604 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-5] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@6f269e61: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:56:05.852 [xxl-job, executor ExecutorRegistryThread] [] INFO  com.xxl.job.core.thread.ExecutorRegistryThread - >>>>>>>>>>> xxl-job registry fail, registryParam:RegistryParam{registryGroup='EXECUTOR', registryKey='order', registryValue='http://192.168.22.181:9999'}, registryResult:ReturnT [code=500, msg=xxl-job remoting fail, StatusCode(503) invalid. for url : http://192.168.22.180:8082/xxl-job-admin/api/registry, content=null]
+2025-06-17 15:56:06.079 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-8] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:56:06.079 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-7] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:07.192 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-7] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:56:07.192 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-8] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:08.305 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-7] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:08.949 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-6] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@6d2a5b0f: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:56:09.417 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-8] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:10.057 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-7] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@304c38b0: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:56:10.531 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-9] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:10.531 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-8] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:56:11.645 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-8] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:11.644 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-9] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:56:12.758 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-9] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:13.398 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-8] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@19dc2922: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:56:13.871 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-10] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:14.523 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-7] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@5421740a: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:56:14.984 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-10] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:56:14.985 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-9] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:16.098 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-9] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:56:16.098 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-10] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:17.212 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-9] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:17.839 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-8] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@6366e65c: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:56:18.326 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-10] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:18.948 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-9] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@524bbde9: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:56:19.440 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-10] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:56:19.440 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-11] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:20.553 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-11] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:56:20.553 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-10] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:21.667 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-11] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:22.295 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-10] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@7cc1805: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:56:22.779 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-12] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:23.414 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-9] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@7ea00a62: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:56:23.888 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-11] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:23.888 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-12] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:56:25.000 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-12] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:25.000 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-11] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:56:26.113 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-11] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:26.761 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-10] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@7a813068: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:56:27.226 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-12] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:27.873 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-11] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@3b270d02: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:56:28.338 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-12] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:56:28.338 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-13] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:29.451 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-13] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:56:29.451 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-12] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:30.565 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-13] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:31.209 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-12] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@70640180: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:56:31.679 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-14] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:32.316 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-11] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@2f011994: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:56:32.792 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-14] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:56:32.792 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-13] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:33.903 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-13] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:56:33.903 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-14] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:35.014 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-13] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:35.641 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-12] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@6e73f344: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:56:36.126 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-14] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:36.766 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-13] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@363daa4e: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:56:36.876 [xxl-job, executor ExecutorRegistryThread] [] INFO  com.xxl.job.core.thread.ExecutorRegistryThread - >>>>>>>>>>> xxl-job registry fail, registryParam:RegistryParam{registryGroup='EXECUTOR', registryKey='order', registryValue='http://192.168.22.181:9999'}, registryResult:ReturnT [code=500, msg=xxl-job remoting fail, StatusCode(503) invalid. for url : http://192.168.22.180:8082/xxl-job-admin/api/registry, content=null]
+2025-06-17 15:56:37.237 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-14] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:56:37.238 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-15] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:38.348 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-15] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:56:38.348 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-14] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:39.457 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-15] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:40.103 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-14] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@497dd5d6: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:56:40.567 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-16] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:41.195 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-13] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@b31abd1: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:56:41.679 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-16] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:56:41.679 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-15] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:42.792 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-15] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:56:42.792 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-16] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:43.904 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-15] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:44.546 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-14] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@2bab7d1f: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:56:45.012 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-16] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:45.659 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-15] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@38fd064b: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:56:46.121 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-16] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:56:46.121 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-17] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:47.233 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-16] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:47.233 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-17] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:56:48.343 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-17] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:49.007 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-16] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@7b8bd1fa: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:56:49.455 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-18] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:50.102 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-15] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@7d11ae69: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:56:50.568 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-18] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:56:50.568 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-17] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:51.680 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-17] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:56:51.680 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-18] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:52.791 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-17] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:53.433 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-16] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@32e817a4: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:56:53.902 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-18] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:54.556 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-17] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@6faae82c: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:56:55.012 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-19] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:55.012 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-18] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:56:56.122 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-19] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:56:56.122 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-18] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:57.232 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-19] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:57.880 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-18] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@4ada308a: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:56:58.343 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-20] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:56:58.993 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-17] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@52051446: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:56:59.454 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-20] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:56:59.454 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-19] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:00.566 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-19] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:57:00.566 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-20] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:01.678 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-19] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:02.321 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-18] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@2aa7af8b: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:57:02.791 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-20] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:03.438 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-19] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@7689f4cb: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:57:03.901 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-20] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:57:03.901 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-21] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:05.011 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-21] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:57:05.011 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-20] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:06.124 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-21] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:06.760 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-20] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@5dc98843: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:57:07.236 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-22] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:07.871 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-19] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@3866f97b: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:57:07.892 [xxl-job, executor ExecutorRegistryThread] [] INFO  com.xxl.job.core.thread.ExecutorRegistryThread - >>>>>>>>>>> xxl-job registry fail, registryParam:RegistryParam{registryGroup='EXECUTOR', registryKey='order', registryValue='http://192.168.22.181:9999'}, registryResult:ReturnT [code=500, msg=xxl-job remoting fail, StatusCode(503) invalid. for url : http://192.168.22.180:8082/xxl-job-admin/api/registry, content=null]
+2025-06-17 15:57:08.349 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-22] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:57:08.349 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-21] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:09.458 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-21] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:57:09.458 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-22] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:10.567 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-21] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:11.215 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-20] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@2c136737: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:57:11.676 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-22] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:12.309 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-21] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@18066b72: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:57:12.784 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-22] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:57:12.784 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-23] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:13.892 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-23] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:57:13.892 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-22] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:15.003 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-23] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:15.645 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-22] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@1bcdea0f: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:57:16.116 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-24] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:16.768 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-21] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@19c78d01: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:57:17.229 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-24] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:57:17.229 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-23] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:18.341 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-23] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:57:18.341 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-24] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:19.457 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-23] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:20.072 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-22] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@4b6436c8: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:57:20.571 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-24] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:21.196 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-23] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@178fefe5: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:57:21.684 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-25] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:21.684 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-24] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:57:22.796 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-25] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:57:22.796 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-24] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:23.909 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-25] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:24.545 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-24] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@43ff4232: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:57:25.021 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-26] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:25.664 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-23] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@4f15b2e5: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:57:26.130 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-26] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:57:26.131 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-25] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:27.239 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-26] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:27.239 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-25] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:57:28.351 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-25] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:28.995 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-24] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@63ffc102: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:57:29.463 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-26] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:30.109 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-25] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@a92e5a2: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:57:30.582 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-26] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:57:30.582 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-27] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:31.691 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-27] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:57:31.692 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-26] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:32.802 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-27] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:33.429 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-26] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@b6f58b: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:57:33.913 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-28] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:34.541 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-25] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@3a9eab78: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:57:35.024 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-28] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:57:35.024 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-27] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:36.133 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-27] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:57:36.133 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-28] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:37.244 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-27] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:37.907 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-26] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@477f874a: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:57:38.355 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-28] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:38.908 [xxl-job, executor ExecutorRegistryThread] [] INFO  com.xxl.job.core.thread.ExecutorRegistryThread - >>>>>>>>>>> xxl-job registry fail, registryParam:RegistryParam{registryGroup='EXECUTOR', registryKey='order', registryValue='http://192.168.22.181:9999'}, registryResult:ReturnT [code=500, msg=xxl-job remoting fail, StatusCode(503) invalid. for url : http://192.168.22.180:8082/xxl-job-admin/api/registry, content=null]
+2025-06-17 15:57:39.001 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-27] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@10028733: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:57:39.465 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-28] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:57:39.465 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-29] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:40.577 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-29] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:57:40.577 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-28] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:41.686 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-29] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:42.317 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-28] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@2ad9d665: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:57:42.798 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-30] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:43.434 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-27] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@281cab8: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:57:43.910 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-30] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:57:43.910 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-29] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:45.021 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-30] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:45.021 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-29] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:57:46.132 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-29] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:46.772 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-28] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@5fc211cd: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:57:47.243 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-30] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:47.898 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-29] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@71557db8: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:57:48.355 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-30] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:57:48.355 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-31] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:49.462 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-31] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:57:49.462 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-30] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:50.575 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-31] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:51.212 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-30] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@55632860: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:57:51.688 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-32] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:52.335 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-29] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@26ea0208: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:57:52.801 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-31] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:52.801 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-32] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:57:53.913 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-31] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:57:53.913 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-32] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:55.028 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-31] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:55.677 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-30] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@6343768e: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:57:56.140 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-32] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:56.762 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-31] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@186a4a87: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:57:57.252 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-32] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:57:57.252 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-33] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:58.363 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-33] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:57:58.363 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-32] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:57:59.474 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-33] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:00.108 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-32] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@44a18413: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:58:00.584 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-34] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:01.226 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-31] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@bb5d879: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:58:01.695 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-33] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:01.695 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-34] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:58:02.803 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-34] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:02.803 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-33] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:58:03.916 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-33] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:04.556 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-32] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@28da954f: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:58:05.030 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-34] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:05.655 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-33] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@3d4676c9: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:58:06.144 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-34] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:58:06.144 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-35] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:07.255 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-35] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:58:07.255 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-34] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:08.366 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-35] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:08.977 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-34] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@1a8f8f2c: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:58:09.476 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-36] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:09.922 [xxl-job, executor ExecutorRegistryThread] [] INFO  com.xxl.job.core.thread.ExecutorRegistryThread - >>>>>>>>>>> xxl-job registry fail, registryParam:RegistryParam{registryGroup='EXECUTOR', registryKey='order', registryValue='http://192.168.22.181:9999'}, registryResult:ReturnT [code=500, msg=xxl-job remoting fail, StatusCode(503) invalid. for url : http://192.168.22.180:8082/xxl-job-admin/api/registry, content=null]
+2025-06-17 15:58:10.115 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-33] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@5098c1fb: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:58:10.589 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-35] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:10.588 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-36] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:58:11.699 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-36] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:11.699 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-35] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:58:12.812 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-35] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:13.442 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-34] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@34532145: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:58:13.924 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-36] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:14.552 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-35] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@1133d935: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:58:15.035 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-36] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:58:15.035 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-37] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:16.151 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-37] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:58:16.151 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-36] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:17.261 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-37] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:17.891 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-36] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@1642c02c: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:58:18.372 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-38] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:18.991 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-35] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@5d0ccc48: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:58:19.482 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-38] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:58:19.482 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-37] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:20.596 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-37] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:58:20.596 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-38] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:21.708 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-37] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:22.343 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-36] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@5ddd1bbb: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:58:22.818 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-38] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:23.462 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-37] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@4b31de5c: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:58:23.929 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-38] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:58:23.929 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-39] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:25.040 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-39] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:58:25.040 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-38] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:26.152 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-39] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:26.787 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-38] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@189c825d: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:58:27.264 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-40] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:27.893 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-37] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@227bc600: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:58:28.377 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-40] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:58:28.377 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-39] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:29.487 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-39] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:58:29.487 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-40] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:30.598 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-39] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:31.233 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-38] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@5b7ee4fd: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:58:31.711 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-40] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:32.337 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-39] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@39553c6: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:58:32.820 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-40] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:58:32.821 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-41] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:33.933 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-41] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:58:33.933 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-40] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:35.045 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-41] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:35.676 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-40] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@1e285167: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:58:36.157 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-42] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:36.786 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-39] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@186cf9f2: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:58:37.270 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-42] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:58:37.271 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-41] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:38.383 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-41] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:58:38.383 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-42] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:39.494 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-41] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:40.132 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-40] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@63d3c48f: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:58:40.604 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-42] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:40.935 [xxl-job, executor ExecutorRegistryThread] [] INFO  com.xxl.job.core.thread.ExecutorRegistryThread - >>>>>>>>>>> xxl-job registry fail, registryParam:RegistryParam{registryGroup='EXECUTOR', registryKey='order', registryValue='http://192.168.22.181:9999'}, registryResult:ReturnT [code=500, msg=xxl-job remoting fail, StatusCode(503) invalid. for url : http://192.168.22.180:8082/xxl-job-admin/api/registry, content=null]
+2025-06-17 15:58:41.247 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-41] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@7cc0201b: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:58:41.716 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-42] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:58:41.716 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-43] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:42.828 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-43] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:58:42.828 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-42] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:43.949 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-43] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:44.566 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-42] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@3fb2568: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:58:45.059 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-44] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:45.689 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-41] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@211498e0: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:58:46.169 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-43] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:46.169 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-44] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:58:47.279 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-43] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:58:47.279 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-44] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:48.388 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-43] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:49.029 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-42] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@3dc26469: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:58:49.499 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-44] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:50.131 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-43] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@66b94fc1: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:58:50.610 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-44] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:58:50.610 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-45] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:51.723 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-44] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:51.723 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-45] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:58:52.834 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-45] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:53.481 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-44] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@21f0c4a5: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:58:53.944 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-46] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:54.585 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-43] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Restarting Consumer@68972f11: tags=[[]], channel=null, acknowledgeMode=NONE local queue size=0
+2025-06-17 15:58:55.055 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-46] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:58:55.055 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-46] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:56.166 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-45] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:56.664 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-47] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Waiting for workers to finish.
+2025-06-17 15:58:56.664 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-47] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+2025-06-17 15:58:57.278 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-45] [] ERROR o.s.a.r.listener.SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+2025-06-17 15:58:57.278 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-45] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 15:58:57.279 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-46] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Waiting for workers to finish.
+2025-06-17 15:58:57.280 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-46] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+2025-06-17 15:59:08.314 [Thread-11] [] INFO  com.xxl.job.core.server.EmbedServer - >>>>>>>>>>> xxl-job remoting server stop.
+2025-06-17 15:59:09.325 [xxl-job, executor ExecutorRegistryThread] [] INFO  com.xxl.job.core.thread.ExecutorRegistryThread - >>>>>>>>>>> xxl-job registry-remove fail, registryParam:RegistryParam{registryGroup='EXECUTOR', registryKey='order', registryValue='http://192.168.22.181:9999'}, registryResult:ReturnT [code=500, msg=xxl-job remoting fail, StatusCode(503) invalid. for url : http://192.168.22.180:8082/xxl-job-admin/api/registryRemove, content=null]
+2025-06-17 15:59:09.325 [xxl-job, executor ExecutorRegistryThread] [] INFO  com.xxl.job.core.thread.ExecutorRegistryThread - >>>>>>>>>>> xxl-job, executor registry thread destroy.
+2025-06-17 15:59:09.325 [SpringApplicationShutdownHook] [] INFO  com.xxl.job.core.server.EmbedServer - >>>>>>>>>>> xxl-job remoting server destroy success.
+2025-06-17 15:59:09.325 [xxl-job, executor TriggerCallbackThread] [] INFO  com.xxl.job.core.thread.TriggerCallbackThread - >>>>>>>>>>> xxl-job, executor callback thread destroy.
+2025-06-17 15:59:09.326 [Thread-10] [] INFO  com.xxl.job.core.thread.TriggerCallbackThread - >>>>>>>>>>> xxl-job, executor retry callback thread destroy.
+2025-06-17 15:59:09.336 [SpringApplicationShutdownHook] [] INFO  o.s.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-17 15:59:09.341 [SpringApplicationShutdownHook] [] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2025-06-17 15:59:09.351 [SpringApplicationShutdownHook] [] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2025-06-17 16:41:17.753 [restartedMain] [] INFO  com.example.order.OrderApplication - Starting OrderApplication using Java 21.0.2 with PID 21272 (/Users/eastsoft/Documents/Development/LuciusGithub/JavaProject/SpringCloudExample/order/target/classes started by eastsoft in /Users/eastsoft/Documents/Development/LuciusGithub/JavaProject/SpringCloudExample)
+2025-06-17 16:41:17.755 [restartedMain] [] INFO  com.example.order.OrderApplication - The following 1 profile is active: "mac"
+2025-06-17 16:41:17.856 [restartedMain] [] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-06-17 16:41:17.856 [restartedMain] [] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-06-17 16:41:18.093 [restartedMain] [] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-06-17 16:41:18.094 [restartedMain] [] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-17 16:41:18.101 [restartedMain] [] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 4 ms. Found 0 JPA repository interfaces.
+2025-06-17 16:41:18.220 [restartedMain] [] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-06-17 16:41:18.220 [restartedMain] [] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-06-17 16:41:18.229 [restartedMain] [] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 4 ms. Found 0 Redis repository interfaces.
+2025-06-17 16:41:18.485 [restartedMain] [] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'com.alibaba.druid.spring.boot3.autoconfigure.stat.DruidSpringAopConfiguration' of type [com.alibaba.druid.spring.boot3.autoconfigure.stat.DruidSpringAopConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [projectingArgumentResolverBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2025-06-17 16:41:18.493 [restartedMain] [] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'spring.datasource.druid-com.alibaba.druid.spring.boot3.autoconfigure.properties.DruidStatProperties' of type [com.alibaba.druid.spring.boot3.autoconfigure.properties.DruidStatProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [projectingArgumentResolverBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2025-06-17 16:41:18.497 [restartedMain] [] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'advisor' of type [org.springframework.aop.support.RegexpMethodPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [projectingArgumentResolverBeanPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2025-06-17 16:41:18.632 [restartedMain] [] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8004 (http)
+2025-06-17 16:41:18.637 [restartedMain] [] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8004"]
+2025-06-17 16:41:18.638 [restartedMain] [] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-17 16:41:18.638 [restartedMain] [] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2025-06-17 16:41:18.658 [restartedMain] [] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-06-17 16:41:18.658 [restartedMain] [] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 801 ms
+2025-06-17 16:41:18.687 [restartedMain] [] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2025-06-17 16:41:20.149 [restartedMain] [] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2025-06-17 16:41:20.235 [restartedMain] [] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-17 16:41:20.258 [restartedMain] [] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-06-17 16:41:20.271 [restartedMain] [] INFO  o.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-06-17 16:41:20.365 [restartedMain] [] INFO  o.s.o.j.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-17 16:41:20.543 [restartedMain] [] INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-17 16:41:20.545 [restartedMain] [] INFO  o.s.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-17 16:41:20.769 [restartedMain] [] INFO  com.example.order.config.rebbitmq.RabbitMqConfig - 重试也失败的消息！
+2025-06-17 16:41:20.816 [restartedMain] [] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-17 16:41:20.860 [restartedMain] [] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 3 mappings in 'requestMappingHandlerMapping'
+2025-06-17 16:41:20.913 [restartedMain] [] DEBUG o.s.web.servlet.handler.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-06-17 16:41:20.928 [restartedMain] [] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-06-17 16:41:20.944 [restartedMain] [] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-06-17 16:41:21.064 [restartedMain] [] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-06-17 16:41:21.079 [restartedMain] [] INFO  com.xxl.job.core.executor.XxlJobExecutor - >>>>>>>>>>> xxl-job register jobhandler success, name:cleanExpiredOrders, jobHandler:com.xxl.job.core.handler.impl.MethodJobHandler@60f4c5e7[class com.example.order.component.OrderCleanupJob$$SpringCGLIB$$0#cleanExpiredOrders]
+2025-06-17 16:41:21.121 [restartedMain] [] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8004"]
+2025-06-17 16:41:21.126 [restartedMain] [] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8004 (http) with context path ''
+2025-06-17 16:41:21.128 [restartedMain] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Attempting to connect to: [192.168.22.180:5672]
+2025-06-17 16:41:21.144 [Thread-11] [] INFO  com.xxl.job.core.server.EmbedServer - >>>>>>>>>>> xxl-job remoting server start success, nettype = class com.xxl.job.core.server.EmbedServer, port = 9999
+2025-06-17 16:41:21.254 [restartedMain] [] INFO  o.s.a.rabbit.connection.CachingConnectionFactory - Created new connection: rabbitConnectionFactory#4737f2de:0/SimpleConnection@7107d6ea [delegate=amqp://rabbitmq@192.168.22.180:5672/, localPort=52226]
+2025-06-17 16:41:21.257 [restartedMain] [] INFO  org.springframework.amqp.rabbit.core.RabbitAdmin - Auto-declaring a non-durable or auto-delete Exchange (demo_exchange) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2025-06-17 16:41:21.327 [restartedMain] [] INFO  com.example.order.OrderApplication - Started OrderApplication in 4.06 seconds (process running for 4.342)
+2025-06-17 16:49:32.472 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Waiting for workers to finish.
+2025-06-17 16:49:32.475 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-3] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Waiting for workers to finish.
+2025-06-17 16:49:32.966 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-3] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+2025-06-17 16:49:33.056 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] [] INFO  o.s.a.r.listener.SimpleMessageListenerContainer - Successfully waited for workers to finish.
+2025-06-17 16:49:44.093 [Thread-11] [] INFO  com.xxl.job.core.server.EmbedServer - >>>>>>>>>>> xxl-job remoting server stop.
+2025-06-17 16:49:44.099 [xxl-job, executor ExecutorRegistryThread] [] INFO  com.xxl.job.core.thread.ExecutorRegistryThread - >>>>>>>>>>> xxl-job registry-remove success, registryParam:RegistryParam{registryGroup='EXECUTOR', registryKey='order', registryValue='http://192.168.22.181:9999'}, registryResult:ReturnT [code=200, msg=null, content=null]
+2025-06-17 16:49:44.102 [xxl-job, executor ExecutorRegistryThread] [] INFO  com.xxl.job.core.thread.ExecutorRegistryThread - >>>>>>>>>>> xxl-job, executor registry thread destroy.
+2025-06-17 16:49:44.102 [SpringApplicationShutdownHook] [] INFO  com.xxl.job.core.server.EmbedServer - >>>>>>>>>>> xxl-job remoting server destroy success.
+2025-06-17 16:49:44.102 [xxl-job, executor TriggerCallbackThread] [] INFO  com.xxl.job.core.thread.TriggerCallbackThread - >>>>>>>>>>> xxl-job, executor callback thread destroy.
+2025-06-17 16:49:44.102 [Thread-10] [] INFO  com.xxl.job.core.thread.TriggerCallbackThread - >>>>>>>>>>> xxl-job, executor retry callback thread destroy.
+2025-06-17 16:49:44.107 [SpringApplicationShutdownHook] [] INFO  o.s.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-17 16:49:44.110 [SpringApplicationShutdownHook] [] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2025-06-17 16:49:44.115 [SpringApplicationShutdownHook] [] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed

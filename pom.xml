@@ -80,11 +80,12 @@
 
             <!--            </dependency>-->
 
-            <!--            <dependency>-->
-            <!--                <groupId>org.springframework.cloud</groupId>-->
-            <!--                <artifactId>spring-cloud-starter-loadbalancer</artifactId>-->
+                        <dependency>
+                            <groupId>org.springframework.cloud</groupId>
+                            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+                            <version>4.0.3</version>
 
-            <!--            </dependency>-->
+                        </dependency>
 
             <!--        nacos的配置管理客户端依赖-->
             <dependency>
