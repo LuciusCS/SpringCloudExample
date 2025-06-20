@@ -129,6 +129,7 @@ public class OAuth2Config {
                 .securityMatcher("/oauth2/**")                        // 只匹配以 /oauth2/ 开头的请求
                 .csrf(csrf -> csrf
                         .ignoringRequestMatchers("/oauth2/token")
+                        .ignoringRequestMatchers("/jwks")
                         .ignoringRequestMatchers("/.well-known/openid-configuration")
                         .ignoringRequestMatchers(request -> request.getRequestURI().startsWith("/druid/"))
                 )   // 忽略 /oauth2/token 路径的 CSRF 防护
@@ -151,7 +152,7 @@ public class OAuth2Config {
                         !request.getRequestURI().startsWith("/oauth2/") // 排除 /oauth2/ 路径
                 )
                 .authorizeHttpRequests(authorize -> authorize
-                                .requestMatchers("/.well-known/openid-configuration", "/userinfo", "/login", "/addRegisteredClient", "/druid/**" /// 表示上述端点可以被任何人进行访问
+                                .requestMatchers( "/oauth2/jwks","/.well-known/openid-configuration", "/userinfo", "/login", "/addRegisteredClient", "/druid/**" /// 表示上述端点可以被任何人进行访问
 //                                "/oauth2/authorize" // 允许匿名访问授权端点（触发登录）
                                 ).permitAll()
                                 .anyRequest().authenticated()

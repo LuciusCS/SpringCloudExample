@@ -12,24 +12,24 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
-@Component
-public class AuthorizeFilter implements GlobalFilter, Ordered {
-    @Override
-    public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-
-        ///在gateway这里需要有token才能继续进行请求
-        String token = exchange.getRequest().getQueryParams().getFirst("token");
-//        if (StringUtils.isBlank(token)) {
+//@Component
+//public class AuthorizeFilter implements GlobalFilter, Ordered {
+//    @Override
+//    public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
 //
-//            exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
+//        ///在gateway这里需要有token才能继续进行请求
+//        String token = exchange.getRequest().getQueryParams().getFirst("token");
+////        if (StringUtils.isBlank(token)) {
+////
+////            exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
+////
+////            return exchange.getResponse().setComplete();
+////        }
+//        return chain.filter(exchange);
+//    }
 //
-//            return exchange.getResponse().setComplete();
-//        }
-        return chain.filter(exchange);
-    }
-
-    @Override
-    public int getOrder() {
-        return 0;
-    }
-}
+//    @Override
+//    public int getOrder() {
+//        return 0;
+//    }
+//}

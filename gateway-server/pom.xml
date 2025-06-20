@@ -38,6 +38,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
         </dependency>
+<!--        用于权限验证-->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
 
         <!--            用于表示网关依赖-->
         <dependency>
@@ -45,7 +51,11 @@
             <artifactId>spring-cloud-starter-gateway</artifactId>
 
         </dependency>
-
+        <!-- OAuth2 资源服务器：包含 ReactiveJwtDecoder 所在包 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>com.alibaba.cloud</groupId>

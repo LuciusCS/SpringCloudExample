@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: gateway  # 服务名称
+    name: gateway-server  # 服务名称
   # 服务名称+开发环境+文件后缀名 = nacos配置的Data Id     gateway-dev.yaml
   profiles:
     active: mac   #开发环境

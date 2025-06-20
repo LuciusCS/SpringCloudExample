@@ -19,6 +19,8 @@ import org.springframework.security.web.SecurityFilterChain;
 
 /**
  * AuthorizationServerConfig 负责配置 OAuth2 授权服务器的端点和相关设置，如令牌端点 URL、令牌存储等。
+ * 具体的作用以及，怎样体现出来
+ *
  */
 
 @Configuration
