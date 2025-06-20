@@ -26,3 +26,7 @@ org.springframework.data.annotation 主要在 Spring Data 中使用，它与 JPA
 总结
 jakarta.persistence 是 JPA 的标准实现，适用于传统的关系型数据库和复杂的 ORM 映射。
 org.springframework.data.annotation 是 Spring Data 的一部分，用于简化与 Spring 的数据访问集成，支持多种数据库，包括关系型和 NoSQL 数据库。
+
+ JPA中的 @Entity, @Column, @ManyToOne 等注解，在 Spring Data中是没有的
+但是 @CreatedDate, @LastModifiedDate, @Version 等注解在JPA中是没有的，在Spring Data中是有的
+可以暂且认为Spring Data是对JPA的补充

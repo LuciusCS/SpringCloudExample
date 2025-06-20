@@ -101,6 +101,11 @@
             <version>1.8.8</version> <!-- 版本根据你的 Spring Boot 版本适配 -->
         </dependency>
 
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
         <!-- R2DBC (响应式数据库访问，可选) -->
 <!--        <dependency>-->
 <!--            <groupId>org.springframework.boot</groupId>-->

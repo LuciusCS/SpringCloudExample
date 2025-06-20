@@ -22,7 +22,7 @@ public class PasswordAuthenticationConverter implements AuthenticationConverter 
     @Override
     public Authentication convert(HttpServletRequest request) {
 
-        // 授权类型 (必需)
+        // 授权类型 (必需)，在进行认证请求的时候需要传入的参数
         String grantType = request.getParameter(OAuth2ParameterNames.GRANT_TYPE);
         if (!AuthorizationGrantType.PASSWORD.getValue().equals(grantType)) {
             return null;

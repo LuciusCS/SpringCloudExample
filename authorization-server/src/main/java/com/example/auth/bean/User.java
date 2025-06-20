@@ -2,6 +2,7 @@ package com.example.auth.bean;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
@@ -25,11 +26,14 @@ public class User implements UserDetails {
     private Long id;
 
     @Column(unique = true, nullable = false)
+    @Schema(description = "用户名字")
     private String username;
 
     @Column(nullable = false)
+    @Schema(description = "用户密码")
     private String password;
 
+    @Schema(description = "用户是否在使用")
     private boolean enabled;
 
     private String email;

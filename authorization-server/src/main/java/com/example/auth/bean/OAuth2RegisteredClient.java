@@ -46,6 +46,7 @@ public class OAuth2RegisteredClient
      * none	   客户端不进行身份验证，适用于公开客户端（public client），如前端 JavaScript 应用。
      *
      * 推荐仅使用前两种client_secret_basic 和 client_secret_post
+     *
      */
     @Schema(description = "客户端认证方式字段")
     @Column(name = "client_authentication_methods", nullable = false)

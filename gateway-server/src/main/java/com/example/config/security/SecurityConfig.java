@@ -1,5 +1,7 @@
 package com.example.config.security;
 
+import com.example.properties.SecurityProperties;
+import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,7 +25,13 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableWebFluxSecurity
 public class SecurityConfig {
 
-
+    /**
+     * 有一个同名的 SecurityProperties 是 org.springframework.boot.autoconfigure.security.SecurityProperties;
+     * 下面这一个用的是自定的 SecurityProperties
+     *
+     */
+    @Resource
+    private SecurityProperties securityProperties;
 //    @Autowired
 //    private ReactiveJwtDecoder jwtDecoder; // 替代传统的 JwtDecoder
 
@@ -47,6 +55,24 @@ public class SecurityConfig {
                         ).permitAll()
                         // 其他所有请求需要认证
                         .anyExchange().authenticated()
+
+                        /**
+                         * 下面的数据用于在nacos配置成功后，允许访问
+                         */
+                        /**
+                         *        securityProperties.getPermitAll().forEach(request -> {
+                         *                         if (request.getMethod() != null) {
+                         *                             authorizeExchangeCustomizer
+                         *                                     .pathMatchers(HttpMethod.valueOf(request.getMethod().name()), request.getUri())
+                         *                                         .permitAll();
+                         *                         } else {
+                         *                             authorizeExchangeCustomizer
+                         *                                     .pathMatchers(request.getUri())
+                         *                                         .permitAll();
+                         *                         }
+                         *                     });
+                         */
+
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2
                         .jwt(jwt -> jwt

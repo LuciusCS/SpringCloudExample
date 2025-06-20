@@ -1,5 +1,6 @@
 package com.example.auth.bean;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -17,6 +18,7 @@ public class Role {
     private Long id;
 
     @Column(unique = true, nullable = false)
+    @Schema(description = "用户角色名字")
     private String name;
 
     @ManyToMany(fetch = FetchType.EAGER)
