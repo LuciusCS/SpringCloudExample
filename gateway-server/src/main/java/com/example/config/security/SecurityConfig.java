@@ -30,8 +30,8 @@ public class SecurityConfig {
      * 下面这一个用的是自定的 SecurityProperties
      *
      */
-    @Resource
-    private SecurityProperties securityProperties;
+//    @Resource
+//    private SecurityProperties securityProperties;
 //    @Autowired
 //    private ReactiveJwtDecoder jwtDecoder; // 替代传统的 JwtDecoder
 

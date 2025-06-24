@@ -24,6 +24,12 @@ logging:
   level:
     org.springframework.security: DEBUG
     org.springframework.web: DEBUG
+    org:
+      springframework:
+        web:
+          servlet:
+            DispatcherServlet: DEBUG
+        boot: DEBUG
     org.springdoc: DEBUG
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} - %p [%t] %c{1} - %M - %L - %msg%n"
@@ -37,7 +43,15 @@ spring:
   main:
     web-application-type: servlet #reactive
     allow-bean-definition-overriding: true
-
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: health,metrics,beans,threaddump
+      health:
+        show-details: always
+      metrics:
+        enabled: true
 xxl:
   job:
     admin:
@@ -46,10 +60,12 @@ xxl:
     executor:
       appname: order  # 执行器应用名（需与调度中心注册一致）
       address:  # 自动获取IP（留空）
-      ip:  192.168.19.181  # 同上
+      ip:     # 同上
       port: 9999  # 执行器端口（需未被占用）
 #      logpath: /data/applogs/xxl-job/jobhandler  # 任务日志存储路径
 #      logretentiondays: 30  # 日志保留天数
+
+
 ---
 spring:
   config:
@@ -175,40 +191,10 @@ spring:
           max-idle: 8
           min-idle: 0
           max-wait:
+  elasticsearch:
+        uris: http://192.168.22.180:9200  # HTTP 地址（可多个） Elasticsearch 8.x 必须使用 uris 方式
+#      cluster-name: elasticsearch      适用于 Elasticsearch ≤ 7.x 版本
+#      cluster-nodes: 192.168.22.180:9200
 #security:
 #  ignored=/**:
 #  enable-csrf: false
-
----
-spring:
-  config:
-    activate:
-      on-profile: windows
-  cloud:
-    nacos:
-      discovery:
-        #        server-addr: 192.168.22.180:8848
-        server-addr: 127.0.0.1:8848
-        group: QD
-        #        namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136
-        namespace: 1b2b72d4-ca4b-48b1-a6ca-a8f17c27c547
-        username: nacos
-        password: nacos
-        enable: true
-      config:
-        #        server-addr: 192.168.22.180:8848
-        server-addr: 127.0.0.1:8848
-        group: QD   # 需要在nacos 的namespace中创建，名字为QD的Service
-        #        namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136 # 将QD的namespace中id填入
-        namespace: 1b2b72d4-ca4b-48b1-a6ca-a8f17c27c547 # 将QD的namespace中id填入
-        username: nacos
-        password: nacos
-        file-extension: yaml # 文件后缀名
-        enable: true
-  ## 用于配置数据库
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    #    url: jdbc:mysql://192.168.22.180:3306/spring_cloud_db
-    url: jdbc:mysql://127.0.0.1:3306/spring_cloud_db
-    username: root
-    password: 123456
