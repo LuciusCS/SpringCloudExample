@@ -2,12 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-<!--    这里要使用项目中的，不能使用默认创建-->
+    <!--    这里要使用项目中的，不能使用默认创建-->
     <parent>
         <groupId>com.example</groupId>
         <artifactId>SpringCloudExample</artifactId>
         <version>1.0-SNAPSHOT</version>
-<!--        <relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
+        <!--        <relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
     </parent>
     <groupId>com.example</groupId>
     <artifactId>order-server</artifactId>
@@ -44,10 +44,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-data-jdbc</artifactId>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-data-jdbc</artifactId>-->
+        <!--        </dependency>-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -56,15 +56,15 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-openfeign</artifactId>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.cloud</groupId>-->
+        <!--            <artifactId>spring-cloud-starter-openfeign</artifactId>-->
+        <!--        </dependency>-->
         <!--            用于表示数据库连接池-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-3-starter</artifactId>
-<!--            <version>1.2.23</version> &lt;!&ndash; 请检查最新版本并替换 &ndash;&gt;-->
+            <!--            <version>1.2.23</version> &lt;!&ndash; 请检查最新版本并替换 &ndash;&gt;-->
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -91,13 +91,13 @@
         <dependency>
             <groupId>com.xuxueli</groupId>
             <artifactId>xxl-job-core</artifactId>
-<!--            <version>3.0.0</version>-->
+            <!--            <version>3.0.0</version>-->
         </dependency>
         <!--            用于集成elk-->
         <dependency>
             <groupId>net.logstash.logback</groupId>
             <artifactId>logstash-logback-encoder</artifactId>
-<!--            <version>7.3</version>-->
+            <!--            <version>7.3</version>-->
         </dependency>
 
         <dependency>
@@ -124,6 +124,31 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <!--        在高版本 spring-boot-starter-data-elasticsearch 中其底层实际上依赖并封装了
+               ‌elasticsearch-java（当时称为 Java API Client）‌ 或兼容的客户端 ，所以不需要下面的配置-->
+        <!--        <dependency>-->
+        <!--&lt;!&ndash;            早期版本使用org.elasticsearch.client ，后来改成co.elastic.clients &ndash;&gt;-->
+        <!--&lt;!&ndash;            <groupId>org.elasticsearch.client</groupId>&ndash;&gt;-->
+        <!--&lt;!&ndash;            elasticsearch-java 客户端是相对新的，官方尚未为其发布专门的 Spring Boot starter。&ndash;&gt;-->
+        <!--            <groupId>co.elastic.clients</groupId>-->
+        <!--            <artifactId>elasticsearch-java</artifactId>-->
+        <!--            <version>8.17.6</version> &lt;!&ndash; 使用与 Elasticsearch 集群相匹配的版本 &ndash;&gt;-->
+        <!--        </dependency>-->
+
+
+        <!-- 在这里添加是因为       -->
+<!--        <dependency>-->
+<!--            <groupId>co.elastic.clients</groupId>-->
+<!--            <artifactId>elasticsearch-java</artifactId>-->
+<!--            <version>8.17.6</version> &lt;!&ndash; 使用与 Elasticsearch 集群相匹配的版本 &ndash;&gt;-->
+<!--        </dependency>-->
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
