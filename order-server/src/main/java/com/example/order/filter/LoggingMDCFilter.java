@@ -37,7 +37,6 @@ public class LoggingMDCFilter implements Filter {
 
 //            MDC.put("host", hostName);
 
-
             chain.doFilter(request, response);
         } finally {
             MDC.clear(); // 防止内存泄露

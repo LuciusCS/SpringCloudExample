@@ -16,9 +16,7 @@ Nacos 配置 routes	     需要自定义 /user/** -> user-service 规则，或�
 
 application.yml 即使不配置下面的路由信息，Nacos也会自动配置
 
-```xml
-
-
+```yml
     # 让gateway从nacos中获取服务信息，如果没有这一个不会进行转发
     gateway:
       discovery:
@@ -35,3 +33,6 @@ application.yml 即使不配置下面的路由信息，Nacos也会自动配置
           predicates:
             - Path=/api/**
 ```
+
+
+

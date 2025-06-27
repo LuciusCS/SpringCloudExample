@@ -1,4 +1,4 @@
-package com.example.order.config;
+package com.example.order.config.filter;
 
 
 import com.example.order.filter.LoggingMDCFilter;

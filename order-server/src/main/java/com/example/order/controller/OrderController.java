@@ -3,6 +3,9 @@ package com.example.order.controller;
 
 import com.example.order.bean.Order;
 import com.example.order.config.rebbitmq.MqProductor;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,8 +17,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController
 @RequestMapping("/order/controller")
+@Tag(name = "OrderController",description = "用于订单管理")
 public class OrderController {
 
     private static final Logger logger = LoggerFactory.getLogger(OrderController.class);
@@ -26,6 +31,7 @@ public class OrderController {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
+    @Operation(summary = "创建订单，并将订单信息发送到RabbitMQ")
     @PostMapping("/order")
     public String createOrder(@RequestBody Order order) {
         // 发送订单信息到 RabbitMQ 队列

@@ -86,6 +86,7 @@ public class SecurityConfig {
 
     /**
      * 它定义了 Gateway（或资源服务器）如何解析和校验 JWT Token 的方式。
+     * http://127.0.0.1:8003/oauth2/jwks 是启动authorization-server 后的启动地址
      * @return
      */
     @Bean

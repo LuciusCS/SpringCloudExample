@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 安全配置
+ * 安全配置, 用于允许部分请求，不带权限校验
  *
  */
 @ConfigurationProperties(prefix = "security")

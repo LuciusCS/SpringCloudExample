@@ -39,6 +39,7 @@ public class ElasticsearchProductServiceImpl implements ElasticsearchProductServ
     //根据 id 查询
     @Override
     public Product findById(String id) {
+        // Optional<T> findById(ID id)，返回值是Optional ,如无值时抛出 NoSuchElementException
         return  productRepository.findById(id).get();
 
     }

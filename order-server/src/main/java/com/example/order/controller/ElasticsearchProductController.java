@@ -3,11 +3,15 @@ package com.example.order.controller;
 
 import com.example.order.bean.Product;
 import com.example.order.service.impl.ElasticsearchProductServiceImpl;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
+@Tag(name = "ElasticsearchProductController",description = "产品信息管理")
 @RestController
 @RequestMapping("/order/product")
 public class ElasticsearchProductController {
@@ -16,6 +20,7 @@ public class ElasticsearchProductController {
     ElasticsearchProductServiceImpl elasticsearchProductService;
 
     @PostMapping("/save")
+    @Operation(summary = "添加产品")
     public Product save(@RequestBody Product product) {
 
        return elasticsearchProductService.save(product);

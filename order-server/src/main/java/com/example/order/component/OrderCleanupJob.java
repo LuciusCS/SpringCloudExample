@@ -7,6 +7,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+/**
+ * 用于定期清理开发环境中过期的订单
+ */
 @Component
 public class OrderCleanupJob {
 
