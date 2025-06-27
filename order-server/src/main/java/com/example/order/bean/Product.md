@@ -1,6 +1,4 @@
-
-
-# 使用ElasticSearch 保存 Article
+# 使用ElasticSearch 保存 Product
 
 不需要提前在 Elasticsearch 中建表。相较于关系型数据库，Elasticsearch 不需要显式地创建表。
 在 Spring Data Elasticsearch 中，索引会在第一个文档被索引时自动创建，

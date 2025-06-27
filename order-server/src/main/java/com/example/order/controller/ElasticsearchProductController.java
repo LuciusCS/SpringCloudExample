@@ -2,14 +2,10 @@ package com.example.order.controller;
 
 
 import com.example.order.bean.Product;
-import com.example.order.service.ElasticsearchProductService;
+import com.example.order.service.impl.ElasticsearchProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -17,7 +13,7 @@ import java.util.List;
 public class ElasticsearchProductController {
 
     @Autowired
-    ElasticsearchProductService elasticsearchProductService;
+    ElasticsearchProductServiceImpl elasticsearchProductService;
 
     @PostMapping("/save")
     public Product save(@RequestBody Product product) {

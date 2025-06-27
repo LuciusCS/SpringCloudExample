@@ -1,98 +1,26 @@
 package com.example.order.service;
 
-
 import com.example.order.bean.Product;
-import com.example.order.repository.ElasticsearchProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 
-import org.springframework.stereotype.Service;
-//import org.elasticsearch.index.query.QueryBuilders;
-//import org.elasticsearch.index.query.TermQueryBuilder;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
-@Service
-public class ElasticsearchProductService {
-    @Autowired
-    private ElasticsearchProductRepository productRepository;
+public interface ElasticsearchProductService {
+    Product save(Product product);
 
-
-    public Product save( Product product) {
-       return   productRepository.save(product);
-    }
-
-
-
-    public void update(Product product) {
-
-        productRepository.save(product);
-    }
-
+    void update(Product product);
 
     //根据 id 查询
-    public Product findById(String id) {
-        return  productRepository.findById(id).get();
+    Product findById(String id);
 
-    }
+    List<Product> findAll();
 
-    public List<Product>  findAll() {
-        Iterable<Product> products = productRepository.findAll();
-
-       return StreamSupport.stream(products.spliterator(), false)
-                .collect(Collectors.toList());
-    }
-
-    public void delete(String id) {
-
-        productRepository.deleteById(id);
-    }
-
+    void delete(String id);
 
     //批量新增
-    public void saveAll(   List<Product> productList ) {
-
-         productRepository.saveAll(productList);
-    }
+    void saveAll(List<Product> productList);
 
     //分页查询
-    public Page<Product>  findByPageable(Pageable pageable) {
-
-        Page<Product> productPage = productRepository.findAll(pageable);
-
-        return  productPage;
-    }
-
-//    /**
-//     * term 查询
-//     * search(termQueryBuilder) 调用搜索方法，参数查询构建器对象
-//     */
-//
-//    public void termQuery() {
-//        TermQueryBuilder termQueryBuilder = QueryBuilders.termQuery("category", "手机");
-//        Iterable<Product> products = productRepository.search(termQueryBuilder);
-//        for (Product product : products) {
-//            System.out.println(product);
-//        }
-//    }
-//
-//    /**
-//     * term 查询加分页
-//     */
-//
-//    public void termQueryByPage() {
-//        int currentPage = 0;
-//        int pageSize = 5;
-//        //设置查询分页
-//        PageRequest pageRequest = PageRequest.of(currentPage, pageSize);
-//        TermQueryBuilder termQueryBuilder = QueryBuilders.termQuery("category", "手机");
-//        Iterable<Product> products = productDao.search(termQueryBuilder, pageRequest);
-//        for (Product product : products) {
-//            System.out.println(product);
-//        }
-//    }
+    Page<Product> findByPageable(Pageable pageable);
 }

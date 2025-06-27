@@ -31,7 +31,7 @@ public class LoggingMDCFilter implements Filter {
             MDC.put("clientIP", clientIP);
 
             /**
-             * 获取主机名，会造成执行时间过长，影响接口请求
+             * 获取主机名，会造成执行时间过长，影响接口请求, 这个地方后面需要修改
              */
 //            String hostName = InetAddress.getLocalHost().getHostName();
 

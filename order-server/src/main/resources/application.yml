@@ -191,6 +191,7 @@ spring:
           max-idle: 8
           min-idle: 0
           max-wait:
+  # elasticsearch 使用 spring-boot-starter-data-elasticsearch 和使用  elasticsearch-java 配置不同
   elasticsearch:
         uris: http://192.168.22.180:9200  # HTTP 地址（可多个） Elasticsearch 8.x 必须使用 uris 方式
 #      cluster-name: elasticsearch      适用于 Elasticsearch ≤ 7.x 版本
