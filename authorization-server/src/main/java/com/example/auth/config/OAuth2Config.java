@@ -127,7 +127,7 @@ public class OAuth2Config {
         http
                 /// 授权服务器通常只处理 /oauth2/token、/oauth2/authorize 等与 OAuth2 相关的请求。
                 .securityMatcher("/oauth2/**")                        // 只匹配以 /oauth2/ 开头的请求
-                .csrf(csrf -> csrf
+                .csrf(csrf -> csrf                   /// 针对 OAuth2 相关的端点禁用 CSRF 防护
                         .ignoringRequestMatchers("/oauth2/token")
                         .ignoringRequestMatchers("/jwks")
                         .ignoringRequestMatchers("/.well-known/openid-configuration")
@@ -149,7 +149,9 @@ public class OAuth2Config {
     public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http
                 .securityMatcher(request ->
-                        !request.getRequestURI().startsWith("/oauth2/") // 排除 /oauth2/ 路径
+                        !request.getRequestURI().startsWith("/oauth2/") // 排除 /oauth2/ 路径的请求，使其不被当前的过滤器处理。
+                                                                        // 这意味着该过滤器不会处理与 OAuth2 授权相关的请求，主要保护其他资源。
+
                 )
                 .authorizeHttpRequests(authorize -> authorize
                                 .requestMatchers( "/oauth2/jwks","/.well-known/openid-configuration", "/userinfo", "/login", "/addRegisteredClient", "/druid/**" /// 表示上述端点可以被任何人进行访问

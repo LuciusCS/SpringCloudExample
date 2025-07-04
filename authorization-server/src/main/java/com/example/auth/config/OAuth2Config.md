@@ -60,3 +60,15 @@ phone                   phone_number、phone_number_verified
 //        source.registerCorsConfiguration("/**", configuration);
 //        return source;
 //    }
+
+
+在Spring Security OAuth2资源服务器中，CSRF（跨站请求伪造）保护通常针对有状态会话（如基于Cookie的认证）启用，而OAuth2资源服务器默认采用无状态的令牌认证（如JWT），
+因此‌默认不启用CSRF保护‌。若你的资源服务器混合使用了会话认证（如密码模式登录）或手动启用了CSRF，则需通过Postman传递CSRF令牌。
+
+
+OAuth2资源服务器通常依赖Bearer Token（如JWT）进行无状态认证，默认不依赖会话，故无需CSRF防护‌‌
+
+## ‌何时需要验证CSRF‌
+
+资源服务器同时提供表单登录页面（如结合授权码模式）。
+显式调用了.csrf().requireCsrfProtectionMatcher()强制开启CSRF保护‌

@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 
 /// 自定义用户信息控制器
 @RestController
-public class OidcUserInfoController {
+public class    OidcUserInfoController {
 
     @Autowired
     private UserDetailsServiceImpl userService;
@@ -30,14 +30,22 @@ public class OidcUserInfoController {
     public Map<String, Object> userInfo(@AuthenticationPrincipal Jwt jwt) {
 
         ///这部分代码有错误，后面再改
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        return Map.of(
+//                "sub", user.getUsername(),
+//                "name", user.getUsername(),
+//                "email", user.getEmail(),
+//                "roles", user.getAuthorities().stream()
+//                        .map(GrantedAuthority::getAuthority)
+//                        .collect(Collectors.toList())
+//        );
         return Map.of(
-                "sub", user.getUsername(),
-                "name", user.getUsername(),
-                "email", user.getEmail(),
-                "roles", user.getAuthorities().stream()
-                        .map(GrantedAuthority::getAuthority)
-                        .collect(Collectors.toList())
+                "sub", jwt.getClaims().get("sub"),
+                "roles",jwt.getClaims().get("roles")
+//                "email", jwt.getClaimAsString("email"),
+//                "email", jwt.getClaimAsString("email"),
+//                "email", jwt.getClaimAsString("email"),
+//                "roles", jwt.getClaimAsStringList("roles")
         );
     }
 
