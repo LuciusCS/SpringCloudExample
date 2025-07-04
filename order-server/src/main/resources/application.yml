@@ -1,39 +1,6 @@
 server:
   port: 8005
 
-springdoc:
-  api-docs:
-    enabled: true
-    path: /v3/api-docs  # 访问的端口为微服务的端口
-  swagger-ui:
-    path: /swagger-ui.html
-    tagsSorter: alpha
-    use-root-path: true
-  cache:
-    disabled: true
-
-#spring:
-#  main:
-#    web-application-type:
-#      reactive
-# 设置日志打印输出
-# log config
-#  logging.config=classpath:logback.xml
-
-logging:
-  level:
-    org.springframework.security: DEBUG
-    org.springframework.web: DEBUG
-    org:
-      springframework:
-        web:
-          servlet:
-            DispatcherServlet: DEBUG
-        boot: DEBUG
-    org.springdoc: DEBUG
-  pattern:
-    console: "%d{yyyy-MM-dd HH:mm:ss} - %p [%t] %c{1} - %M - %L - %msg%n"
-
 spring:
   application:
     name: order-server  # 服务名称
@@ -43,6 +10,17 @@ spring:
   main:
     web-application-type: servlet #reactive
     allow-bean-definition-overriding: true
+  config:
+    import:
+      - optional:nacos:datasource.yml
+      - optional:nacos:redis.yml
+      - optional:nacos:springdoc.yml
+      - optional:nacos:xxl-job.yml
+      - optional:nacos:rabbitmq.yml
+      - optional:nacos:elasticsearch.yml
+      - optional:nacos:logging.yml
+
+  #  Spring Boot Actuator 的配置，用于开放应用的运行状态监控接口。
   management:
     endpoints:
       web:
@@ -52,18 +30,6 @@ spring:
         show-details: always
       metrics:
         enabled: true
-xxl:
-  job:
-    admin:
-      addresses: http://192.168.22.180:8082/xxl-job-admin  # 调度中心地址
-    accessToken: default_token
-    executor:
-      appname: order  # 执行器应用名（需与调度中心注册一致）
-      address:  # 自动获取IP（留空）
-      ip:     # 同上
-      port: 9999  # 执行器端口（需未被占用）
-#      logpath: /data/applogs/xxl-job/jobhandler  # 任务日志存储路径
-#      logretentiondays: 30  # 日志保留天数
 
 
 ---
@@ -75,127 +41,21 @@ spring:
     nacos:
       discovery:
         server-addr: 192.168.22.180:8848
-        #        server-addr: 127.0.0.1:8848
-#        group: QD
-#        namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136
-#        #        namespace: 1b2b72d4-ca4b-48b1-a6ca-a8f17c27c547
+        group: spring-cloud-example-dev
+        namespace: cb500d3d-c86c-4230-8f7f-f5434caf711a
 #        username: nacos
 #        password: nacos
       #        enable: true
       config:
         server-addr: 192.168.22.180:8848
-        #        server-addr: 127.0.0.1:8848
-#        group: QD   # 需要在nacos 的namespace中创建，名字为QD的Service
-#        #        namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136 # 将QD的namespace中id填入
-#        namespace: 1b2b72d4-ca4b-48b1-a6ca-a8f17c27c547 # 将QD的namespace中id填入
+        group: spring-cloud-example-dev
+        namespace: cb500d3d-c86c-4230-8f7f-f5434caf711a
 #        username: nacos
 #        password: nacos
         import-check:
           enabled: false
   #        file-extension: yaml # 文件后缀名
   #        enable: true
-  ## 配置RabbitMQ,
-  rabbitmq:
-#    stream:   # 不能加 stream 否则连接不上rabbitmq
-      username: rabbitmq
-      password: 123456
-      port: 5672
-      host: 192.168.22.180
-      virtual-host: /
-      # 发送
-      publisher-confirm-type: correlated  # 开启消息确认 设置确认模式，配合 ConfirmCallback 方法处理到达交换机
-      publisher-returns: true  # 开启消息退回，设置消息回退，配合 ReturnsCallback 处理消息从交换机到达队列
-      template:               #  mandatory参数，当设置为 true 时，如果消息无法被交换机路由到任何队列，RabbitMQ 会通过 ReturnCallback 将消息退回给生产者。若为 false，则消息会被直接丢弃
-        mandatory: true
-     #监听
-      listener:
-        simple:
-          retry:
-            enabled: true #开启重试，默认不开启
-            max-attempts: 3 #最大重试次数
-            initial-interval: 1000ms #重试间隔时间（单位毫秒）
-            max-interval: 1200000ms #重试最大时间间隔（单位毫秒）
-            # 乘子。间隔时间*乘子=下一次的间隔时间，不能超过 max-interval
-            # 以本处为例：第一次间隔 5 秒，第二次间隔 10 秒，以此类推
-            multiplier: 2
-          prefetch: 3      #实际消息中预取了 perfetch * concurrency = 6 条消息在处理
-          concurrency: 2
-          max-concurrency: 2
-
-          acknowledge-mode: none   # 设置消费者确认模式  可以采手动确认的模式来进行
-
-
-  datasource:
-    ## 有博文解释下面的内容会被自动注入到Druid中
-    url: jdbc:mysql://192.168.22.180:3306/spring_cloud_db
-    username: root
-    password: 123456
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    type: com.alibaba.druid.pool.DruidDataSource
-    druid:
-      initial-size: 5
-      min-idle: 5
-      max-active: 20
-      stat-view-servlet:       ## 用于表示启用 Druid 的监控面板
-        enabled: true
-        url-pattern: /druid/*
-        login-username: admin
-        login-password: druid@123
-        allow: 127.0.0.1        # 白名单，多个使用逗号隔开（不在白名单中不能访问，默认开启localhost/127.0.0.1）
-      filter:
-        stat:                 ## 用于表示启用 Sql 监控
-          enabled: true           # 启动SQL语句监控，同时会影响其他面板中的SQL展示（如：影响"URI监控"中的jdbc数据）
-          db-type: mysql          # 数据库类型（实测没啥用，会自动根据上面的连接自动识别）
-
-          log-slow-sql: true      # 记录慢日志（"SQL监控"面板中数值会标记为红色）
-          slow-sql-millis: 3000   # 慢日志判定标准（单位：毫秒）
-          slow-sql-log-level: ERROR # 自定义日志级别，默认日志级别"ERROR"
-
-        wall:                      #  检查SQL语句，防止恶意操作  同时记录每一次Select/Insert/Update/...等操作
-          enabled: true               # 启用防火墙
-          db-type: h2                 # 数据库类型（实测没啥用，会自动根据上面的连接自动识别）
-          config:
-            delete-allow: false       # 是否允许DELETE操作（报错异常：java.sql.SQLException:sql injection violation, dbType mysql, druid-version 1.2.21, delete not allow : DELETE FROM ...）
-            drop-table-allow: false   # 是否允许DROP TABLE操作
-
-        web-stat-filter:
-          enabled: true     # 启用"Web应用/URI监控/Session监控"面板
-          url-pattern: /*   # 监控这里指定的路径
-          exclusions: /druid/*,*.js,*.gif,*.jpg,*.png,*.css,*.ico,*.html,*.json   # 过滤路径
-
-          # "Session监控"面板设置（RestFul纯后端没有session）
-          session-stat-enable: true
-          session-stat-max-count: 1000
-          principal-session-name: xxc
-          principal-cookie-name: xxc
-          profile-enable: true
-
-      aop-patterns: x.y.z.controller.* # Spring监控AOP切入点，多个用逗号分隔
-
-      # 可以根据需要添加更多DruidDataSource支持的配置项，如：
-      # max-wait: 60000
-      # time-between-eviction-runs-millis: 60000
-      # min-evictable-idle-time-millis: 300000
-      # test-on-borrow: true
-
-  data:
-    redis:
-      host: 192.168.22.180       # Redis 服务器地址（如果 Redis 在 Docker 里，改为 host.docker.internal）
-      port: 6379            # Redis 端口
-      password: east300183          # Redis 密码（如果没有设置密码，则为空），使用Docker 启动，每一次都要进行密码配置
-      database: 0           # 使用 Redis 的第 0 号数据库
-      timeout: 3000ms       # 连接超时时间
-      lettuce:
-        pool:
-          max-active: 8
-          max-idle: 8
-          min-idle: 0
-          max-wait:
-  # elasticsearch 使用 spring-boot-starter-data-elasticsearch 和使用  elasticsearch-java 配置不同
-  elasticsearch:
-        uris: http://192.168.22.180:9200  # HTTP 地址（可多个） Elasticsearch 8.x 必须使用 uris 方式
-#      cluster-name: elasticsearch      适用于 Elasticsearch ≤ 7.x 版本
-#      cluster-nodes: 192.168.22.180:9200
 #security:
 #  ignored=/**:
 #  enable-csrf: false

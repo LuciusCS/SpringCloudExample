@@ -154,7 +154,8 @@ public class OAuth2Config {
 
                 )
                 .authorizeHttpRequests(authorize -> authorize
-                                .requestMatchers( "/oauth2/jwks","/.well-known/openid-configuration", "/userinfo", "/login", "/addRegisteredClient", "/druid/**" /// 表示上述端点可以被任何人进行访问
+                                .requestMatchers( "/oauth2/jwks","/.well-known/openid-configuration", "/userinfo", "/login", "/addRegisteredClient", "/druid/**", /// 表示上述端点可以被任何人进行访问
+                                        "/swagger-ui/**","/v3/api-docs/**"
 //                                "/oauth2/authorize" // 允许匿名访问授权端点（触发登录）
                                 ).permitAll()
                                 .anyRequest().authenticated()
