@@ -16,3 +16,6 @@
 
 
 Sentinel 面板访问地址，是由Sentinel服务启动的时候定义的端口
+
+
+## GatewaySentinelConfig.java 中是手动进行流量控制，现在已经在nacos中进行配置了

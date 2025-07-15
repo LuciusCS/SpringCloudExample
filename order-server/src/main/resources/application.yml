@@ -1,6 +1,8 @@
 server:
   port: 8005
 
+
+
 spring:
   application:
     name: order-server  # 服务名称
@@ -32,6 +34,19 @@ spring:
         enabled: true
 
 
+
+  cloud:
+    openfeign:
+      okhttp:
+        enabled: true
+      client:
+        config:
+          default: # 对所有FeignClient生效
+            loggerLevel: full
+      httpclient:
+        enabled: false
+        max-connections: 200  # 最大的连接数
+        max-connections-per-route: 50 # 每个路径的最大连接数
 ---
 spring:
   config:

@@ -13,7 +13,11 @@ spring:
   config:
     import:
       - optional:nacos:sentinel.yml
-  #      Sentinel Dashboard 地址：
+logging:
+  level:
+    com.alibaba.csp.sentinel: DEBUG  # Sentinel 的日志级别
+    org.springframework.cloud: DEBUG  # Spring Cloud 相关的日志
+    com.example: DEBUG  # 你自己应用的日志级别
 ---
 spring:
   config:
@@ -35,7 +39,19 @@ spring:
         password: nacos
         import-check:
           enabled: false
-
+#    sentinel:
+#      transport:
+#        dashboard: 127.0.0.1:8080
+#        port: 8719
+#      datasource:
+#        gw-flow:
+#          nacos:
+#            server-addr: 192.168.22.180:8848
+#            namespace: cb500d3d-c86c-4230-8f7f-f5434caf711a
+#            group-id: spring-cloud-example-dev
+#            data-id: gateway-flow-rules
+#            rule-type: gw-flow
+#            data-type: json
     # 让gateway从nacos中获取服务信息，如果没有这一个不会进行转发
     gateway:
       discovery:
@@ -43,15 +59,19 @@ spring:
           enabled: true #使用服务发现路由
           lower-case-service-id: true
       routes:
-        - id: authorization-resource-server
-          uri: http://localhost:8006
+        - id: authorization-resource-server    # 只是一个id 可以随意命名，但要与nacos中的流控规则名字对应起来
+          uri: lb://authorization-server
           predicates:
-            - Path=/api/**
+            - Path=/oauth2/**
+        - id: order-server
+          uri: lb://order-server
+          predicates:
+            - Path=/order/**
         - id: seckill-server
-          uri: http://localhost:8005
+          uri: lb://seckill-server             # 注册到Nacos中的服务名
           predicates:
             - Path=/api/**
-#          filters:
+#          filters:                   ✅ 结论：因为 Sentinel 网关限流已经自动集成到 Gateway 的过滤器链中，不需要手动配置 filters 条目
 #            - SentinelGatewayFilter  # 关键！让 Gateway 请求进入 Sentinel 统计
 #      routes: # 这里的 routes 会被 Nacos 动态更新，
 #        - id: placeholder  # 使用placeholder相当于占位符

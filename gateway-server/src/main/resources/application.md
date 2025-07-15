@@ -35,4 +35,12 @@ application.yml 即使不配置下面的路由信息，Nacos也会自动配置
 ```
 
 
+为什么在 Gateway 路由配置中，不需要显式添加 filters: - name: SentinelGatewayFilter，Sentinel 的网关限流就能生效？
+✅ 结论：因为 Sentinel 网关限流已经自动集成到 Gateway 的过滤器链中，不需要手动配置 filters 条目
 
+
+实际开发建议
+
+✅ 保持 route 的 id 有业务含义（如 seckill-server、user-api），利于限流管理；
+✅ 使用默认机制即可满足大部分场景，减少冗余配置；
+✅ 有高级限流需求（如组合限流、基于参数、header 限流）时，再引入 filters 配置。
