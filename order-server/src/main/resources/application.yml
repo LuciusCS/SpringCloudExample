@@ -1,8 +1,6 @@
 server:
   port: 8005
 
-
-
 spring:
   application:
     name: order-server  # 服务名称
@@ -32,9 +30,6 @@ spring:
         show-details: always
       metrics:
         enabled: true
-
-
-
   cloud:
     openfeign:
       okhttp:
@@ -47,6 +42,12 @@ spring:
 #        enabled: false
 #        max-connections: 200  # 最大的连接数
 #        max-connections-per-route: 50 # 每个路径的最大连接数
+
+
+logging:
+  level:
+    org.springframework.cloud.client.loadbalancer.LoadBalancerInterceptor: DEBUG
+    org.springframework.cloud.loadbalancer: DEBUG
 ---
 spring:
   config:

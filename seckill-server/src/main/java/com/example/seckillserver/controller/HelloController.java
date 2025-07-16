@@ -11,9 +11,10 @@ import java.time.LocalDateTime;
 public class HelloController {
 
     @GetMapping("/hello")
-    public String home(){
+    public String home() throws InterruptedException {
         LocalDateTime time=LocalDateTime.now();
-
+        // 模拟 3 秒的延迟
+//        Thread.sleep(30000);
         return  "Hello from the resource server! -"+ time;
     }
 

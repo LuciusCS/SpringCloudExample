@@ -1,12 +1,11 @@
 package com.example.order.feign;
 
-import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.example.order.config.feign.FeignConfiguration;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@FeignClient(value = "seckill-server", configuration = FeignConfiguration. class)
+@FeignClient(value = "seckill-server", configuration = FeignConfiguration. class, fallback = SeckillFeignClientFallback.class)
 public interface SeckillFeignClient {
 
     /**

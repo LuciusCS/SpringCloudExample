@@ -21,7 +21,7 @@
         <module>seckill-server</module>
     </modules>
 
-
+<!--打包方式为 pom 则说明此工程只管理 Maven 依赖-->
     <packaging>pom</packaging>
 
     <properties>

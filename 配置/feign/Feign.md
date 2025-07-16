@@ -197,6 +197,11 @@ public class UserClientFallback implements UserClient {
 
 ```
 
+
+UserClientFallback 会出现不执行的情况，
+
+Feign 的 retry 配置问题。Feig你 的超时异常通常会触发重试机制，而 fallback 方法只有在请求完全失败时才会被调用，即 Feign 没有重试时才会触发 fallback。
+
 ## 技术选型
 
         你使用的体系	                      推荐熔断器	                推荐负载均衡器
@@ -251,3 +256,12 @@ public class UserServiceFallback implements UserServiceClient {
 
 ```
 
+
+## Feign 配置  okhttp客户端后，会自动使用 http长连接，并使用连接失败重试
+
+
+## Spring Cloud 中内部微服务调用默认是 http 请求，主要通过下面三种 API：
+
+RestTemplate：同步 http API
+WebClient：异步响应式 http API
+三方客户端封装，例如 openfeign

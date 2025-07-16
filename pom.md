@@ -80,3 +80,17 @@ API 网关           	spring-cloud-starter-zuul
                或 spring-cloud-starter-circuitbreaker    使用 Hystrix 或 Spring Cloud Circuit Breaker 来提供服务的容错能力。
 
 分布式追踪	     spring-cloud-starter-sleuth	         集成 Spring Cloud Sleuth 进行分布式追踪。
+
+
+
+## 子工程和父工程的依赖
+
+参考 https://juejin.cn/post/7227128420358422565
+
+如果 maven 父工程中使用的是 dependencies 标签，则子工程中可以直接使用父工程的引用。
+如果父工程中使用的是 dependencyManagement 则子工程中不能直接使用父工程引入的依赖，
+需要在自己的 pom 文件中引入，此时只需要添加坐标即可，不需要添加版本号。因为 dependencyManagement 对依赖进行了统一的版本管理。
+
+
+用一个不恰当的例子说明：dependencyManagement就相当于餐馆的老板，老板把菜、调味品等所需要的东西备好了，
+厨师 子工程 只负责使用老板已备好的东西进行出菜即可
