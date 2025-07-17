@@ -69,11 +69,16 @@ public class OAuth2Config {
 
     private final CustomOidcUserInfoService customOidcUserInfoService;
 
+    private final CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
+    private final CustomAccessDeniedHandler customAccessDeniedHandler;
 
-    public OAuth2Config(JwtDecoder jwtDecoder, OAuth2TokenCustomizer<JwtEncodingContext> jwtCustomizer, CustomOidcUserInfoService customOidcUserInfoService) {
+
+    public OAuth2Config(JwtDecoder jwtDecoder, OAuth2TokenCustomizer<JwtEncodingContext> jwtCustomizer, CustomOidcUserInfoService customOidcUserInfoService, CustomAuthenticationEntryPoint customAuthenticationEntryPoint, CustomAccessDeniedHandler customAccessDeniedHandler) {
         this.jwtDecoder = jwtDecoder;
         this.jwtCustomizer = jwtCustomizer;
         this.customOidcUserInfoService = customOidcUserInfoService;
+        this.customAuthenticationEntryPoint = customAuthenticationEntryPoint;
+        this.customAccessDeniedHandler = customAccessDeniedHandler;
     }
 
 
@@ -148,6 +153,13 @@ public class OAuth2Config {
     @Order(2)
     public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http
+                .exceptionHandling(
+                        exceptionHandling -> exceptionHandling
+                                .authenticationEntryPoint(customAuthenticationEntryPoint)
+                                .accessDeniedHandler(customAccessDeniedHandler)  // 设置权限不足的处理
+
+                )// 设置自定义的 AuthenticationEntryPoint
+
                 .securityMatcher(request ->
                         !request.getRequestURI().startsWith("/oauth2/") // 排除 /oauth2/ 路径的请求，使其不被当前的过滤器处理。
                                                                         // 这意味着该过滤器不会处理与 OAuth2 授权相关的请求，主要保护其他资源。
@@ -173,7 +185,9 @@ public class OAuth2Config {
                         // 禁用对/addRegisteredClient接口的CSRF保护
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2
-                        .jwt(jwt -> jwt.decoder(jwtDecoder)));
+                        .jwt(jwt -> jwt.decoder(jwtDecoder))
+                        .authenticationEntryPoint(customAuthenticationEntryPoint) // 确保 OAuth2 的过期 token 也会交由 CustomAuthenticationEntryPoint 处理
+                );
 
         return http.build();
     }

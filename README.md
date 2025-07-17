@@ -11,30 +11,6 @@ skill-server           : 8006
 
 
 
-## Nacos
-
-使用版本： nacos-server-2.2.1
-
-
-nacos配置，
-
-nacos启动方式，单机启动 
-
-windows:   startup.cmd -m standalone
-
-linux:  sh startup.sh -m standalone
-
-nacos 2.2.1 版本需要单独设置 conf目录下 application.properties 
-
-  ```
-    nacos.core.auth.enabled=true
-    nacos.core.auth.plugin.nacos.token.secret.key=VGhpc0lzTXlDdXN0b21TZWNyZXRLZXkwMTIzNDU2Nzg=
-    
-    nacos.core.auth.server.identity.key=abcde
-    nacos.core.auth.server.identity.value=abcde
-    
-  ```
-
 
 ### mysql配置
 
@@ -42,7 +18,7 @@ nacos 2.2.1 版本需要单独设置 conf目录下 application.properties
 
 ### 使用 springdoc 替代swagger
 
-springdoc 访问的端口为微服务的端口
+springdoc 访问的端口为微服务的端口，Spring Boot 中配置了权限管理，需要进行方形
 
 
 ### 如果程序不能运行

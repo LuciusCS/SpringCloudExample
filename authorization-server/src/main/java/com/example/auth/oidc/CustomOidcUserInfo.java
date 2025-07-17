@@ -4,6 +4,7 @@ package com.example.auth.oidc;
 import org.springframework.security.oauth2.core.oidc.OidcUserInfo;
 import org.springframework.util.Assert;
 
+import java.io.Serial;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -16,6 +17,7 @@ import java.util.function.Consumer;
  * @since 3.1.0
  */
 public class CustomOidcUserInfo extends OidcUserInfo {
+    @Serial
     private static final long serialVersionUID = 610L;
     private final Map<String, Object> claims;
 

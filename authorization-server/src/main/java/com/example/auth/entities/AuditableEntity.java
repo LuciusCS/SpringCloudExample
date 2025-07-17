@@ -52,19 +52,19 @@ public abstract class AuditableEntity<U> implements Serializable {
 	private static final long serialVersionUID = 8L;
 
 	@CreatedDate
-	@Column(name = "CREATED_DATE")
+	@Column(name = "create_date")
 	protected LocalDateTime createdDate;
 
 	@CreatedBy
-	@Column(name = "CREATED_BY")
+	@Column(name = "create_by")
 	protected String createdBy;
 
 	@LastModifiedBy
-	@Column(name = "LAST_MODIFIED_BY")
+	@Column(name = "last_modified_by")
 	protected String lastModifiedBy;
 
 	@LastModifiedDate
-	@Column(name = "LAST_MODIFIED_DATE")
+	@Column(name = "last_modified_date")
 	protected LocalDateTime lastModifiedDate;
 
 	public Optional<String> getCreatedBy() {

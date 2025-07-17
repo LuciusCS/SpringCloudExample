@@ -7,6 +7,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserDetailsServiceImpl  implements UserDetailsService {
 
@@ -20,6 +22,17 @@ public class UserDetailsServiceImpl  implements UserDetailsService {
         User user =  userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
         return user; // 直接返回 User 实体（已实现 UserDetails）
+    }
+
+
+    /// 用于表示获取所有的用户信息
+    public  List<User> getAllUser(){
+        return  userRepository.findAll();
+    }
+
+    /// 用于表示修改用户信息
+    public  void  update(User user){
+        userRepository.save(user);
     }
 
     public boolean save(User user) {
