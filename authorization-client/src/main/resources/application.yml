@@ -9,7 +9,6 @@ spring:
     name: authorization-client  # 服务名称
   # 服务名称+开发环境+文件后缀名 = nacos配置的Data Id
   # 服务名称+开发环境+文件后缀名 = nacos配置的Data Id
-
   main:
     web-application-type: servlet #reactive
     allow-bean-definition-overriding: true
@@ -22,23 +21,19 @@ spring:
             provider: spring   # 在下文配置了 行
             client-id: client1234
             client-secret: secret
-
-#            认证方式
-            authorization-grant-type: authorization_code
+            authorization-grant-type: client_credentials
 
             ## 这里返回的地址是 authorization-client的地址
             ## authorization-server 会将数据重定向到这个接口
-            redirect-uri: http://127.0.0.1:8001/login/oauth2/code/client1234
-
-            scope:
-              - openid
-              - profile
-              - read
-              - write
+#            redirect-uri: http://127.0.0.1:8001/login/oauth2/code/client1234
+#            scope:
+##              - openid
+##              - profile
+#              - read
+#              - write
 
             ## 这个名字将会在登陆页面显示，类似于QQ 微信的等登陆方式
             client-name: oidc-client
-
         # 上文用的 provider
         provider:
           spring:   ## 名字应该是任意的
@@ -46,7 +41,6 @@ spring:
              authorization-uri: http://localhost:8003/oauth2/authorize
              token-uri: http://localhost:8003/oauth2/token
              user-info-uri: http://localhost:8003/userinfo
-
 ---
 spring:
   config:
@@ -56,26 +50,18 @@ spring:
     nacos:
       discovery:
         server-addr: 192.168.22.180:8848
-        #        server-addr: 127.0.0.1:8848
-#        group: QD
-#        namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136
-#        #        namespace: 1b2b72d4-ca4b-48b1-a6ca-a8f17c27c547
-#        username: nacos
-#        password: nacos
+        group: spring-cloud-example-dev  # 需要在nacos 的namespace中创建，名字为spring-cloud-example-dev的Service
+        namespace: cb500d3d-c86c-4230-8f7f-f5434caf711a   # 将spring-cloud-example-dev的namespace中id填入
+        username: nacos
+        password: nacos
         enable: true
       config:
-        #        import-check:
-        #          enabled: false
-        server-addr: 192.168.22.180:8848
-        #        server-addr: 127.0.0.1:8848
+        group: spring-cloud-example-dev  # 需要在nacos 的namespace中创建，名字为spring-cloud-example-dev的Service
+        namespace: cb500d3d-c86c-4230-8f7f-f5434caf711a   # 将spring-cloud-example-dev的namespace中id填入
+        username: nacos
+        password: nacos
         import-check:
           enabled: false
-#        group: QD   # 需要在nacos 的namespace中创建，名字为QD的Service
-#        #        namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136 # 将QD的namespace中id填入
-#        namespace: 1b2b72d4-ca4b-48b1-a6ca-a8f17c27c547 # 将QD的namespace中id填入
-#        username: nacos
-#        password: nacos
-#        file-extension: yaml # 文件后缀名
         enable: true
   ## 用于配置数据库
   datasource:

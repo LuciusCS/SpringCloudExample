@@ -29,6 +29,10 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<!--            最新的，-->
 
 			<artifactId>spring-boot-starter-oauth2-client</artifactId>
@@ -75,6 +79,19 @@
 
 		</dependency>
 
+		<!--已经被官方移除-->
+		<!--        <dependency>-->
+		<!--            <groupId>org.springframework.security.oauth</groupId>-->
+		<!--            <artifactId>spring-security-oauth2</artifactId>-->
+		<!--            <version>${spring.security.oauth2.version}</version>-->
+		<!--        </dependency>-->
+		<!--            最新的，-->
+		<!--        Spring Security OAuth 2 中不需要client-->
+		        <dependency>
+		            <groupId>org.springframework.boot</groupId>
+		            <!--            最新的，-->
+		            <artifactId>spring-boot-starter-oauth2-client</artifactId>
+		        </dependency>
 		<dependency>
 			<groupId>com.alibaba.cloud</groupId>
 			<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>

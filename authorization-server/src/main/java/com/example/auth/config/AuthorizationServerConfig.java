@@ -34,7 +34,7 @@ public class AuthorizationServerConfig {
                 .issuer("http://localhost:8003")  /// 它定义了 Gateway（或资源服务器）如何解析和校验 JWT Token 的请求路径。
                 .tokenEndpoint("/oauth2/token") // 自定义令牌端点URL
                 .authorizationEndpoint("/oauth2/authorize")  // 授权端点（如果需要授权码模式）
-
+                .jwkSetEndpoint("/.well-known/jwks.json")  // JWK 公钥集端点
                 .oidcUserInfoEndpoint("/userinfo")
                 .build();
     }
