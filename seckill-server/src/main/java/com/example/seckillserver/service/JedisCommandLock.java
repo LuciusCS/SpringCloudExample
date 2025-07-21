@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.params.SetParams;
 
 import java.util.Collections;
 
@@ -28,8 +29,10 @@ public class JedisCommandLock {
      * @return 是否获取成功
      */
     public static   boolean tryGetDistributedLock(Jedis jedis, String lockKey, String requestId, int expireTime) {
-
-        String result = jedis.set(lockKey, requestId, SET_IF_NOT_EXIST, SET_WITH_EXPIRE_TIME, expireTime);
+        SetParams params = new SetParams()
+                .nx() // SET_IF_NOT_EXIST
+                .ex(expireTime); // SET_WITH_EXPIRE_TIME, 单位是秒
+        String result = jedis.set(lockKey, requestId, params);
 
         if (LOCK_SUCCESS.equals(result)) {
             return true;

@@ -28,25 +28,25 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring-cloud-dependencies.version>2023.0.0</spring-cloud-dependencies.version>
-        <spring-boot-dependencies.version>3.2.3</spring-boot-dependencies.version>
-        <spring-cloud-starter-loadbalancer.version>4.0.3</spring-cloud-starter-loadbalancer.version>
-        <spring-cloud-starter-alibaba-nacos-config.version>2022.0.0.0</spring-cloud-starter-alibaba-nacos-config.version>
-        <spring-cloud-starter-alibaba-nacos-discovery.version>2022.0.0.0</spring-cloud-starter-alibaba-nacos-discovery.version>
+        <spring-cloud-dependencies.version>2023.0.3</spring-cloud-dependencies.version>
+        <spring-boot-dependencies.version>3.3.0</spring-boot-dependencies.version>
+        <spring-cloud-starter-loadbalancer.version>4.1.1</spring-cloud-starter-loadbalancer.version>
+        <spring-cloud-starter-alibaba-nacos-config.version>2023.0.3.2</spring-cloud-starter-alibaba-nacos-config.version>
+        <spring-cloud-starter-alibaba-nacos-discovery.version>2023.0.3.2</spring-cloud-starter-alibaba-nacos-discovery.version>
         <spring-cloud-starter-alibaba-sentinel.version>2023.0.3.2</spring-cloud-starter-alibaba-sentinel.version>
         <spring-cloud-alibaba-sentinel-gateway.version>2023.0.3.2</spring-cloud-alibaba-sentinel-gateway.version>
         <sentinel-transport-simple-http.version>1.8.8</sentinel-transport-simple-http.version>
-        <mysql-connector-java.version>8.0.28</mysql-connector-java.version>
-        <lombok.version>1.18.30</lombok.version>
+        <mysql-connector-java.version>8.0.33</mysql-connector-java.version>
+        <lombok.version>1.18.32</lombok.version>
         <log4j.version>1.2.16</log4j.version>
-        <logback-core.version>1.4.13</logback-core.version>
-        <logstash-logback-encoder.version>7.3</logstash-logback-encoder.version>
-        <springdoc-openapi-starter-webmvc-ui.version>2.3.0</springdoc-openapi-starter-webmvc-ui.version>
+        <logback-core.version>1.5.6</logback-core.version>
+        <logstash-logback-encoder.version>7.4</logstash-logback-encoder.version>
+        <springdoc-openapi-starter-webmvc-ui.version>2.5.0</springdoc-openapi-starter-webmvc-ui.version>
         <druid-spring-boot-3-starter.version>1.2.23</druid-spring-boot-3-starter.version>
         <jakarta.servlet-api.version>6.0.0</jakarta.servlet-api.version>
-        <xxl-job-core.version>3.0.0</xxl-job-core.version>
-        <hutool-all.version>5.8.26</hutool-all.version>
-        <jedis.version>2.9.0</jedis.version>
+        <xxl-job-core.version>3.1.0</xxl-job-core.version>
+        <hutool-all.version>5.8.28</hutool-all.version>
+        <jedis.version>5.2.0</jedis.version>
         <fastjson.version>1.2.83</fastjson.version>
         <gson.version>2.10.1</gson.version>
         <sentinel-web-servlet.version>1.8.8</sentinel-web-servlet.version>
@@ -54,7 +54,7 @@
         <sentinel-datasource-nacos.version>1.8.8</sentinel-datasource-nacos.version>
         <sentinel-spring-cloud-gateway-adapter.version>1.8.8</sentinel-spring-cloud-gateway-adapter.version>
         <!--        设置依赖的版本-->
-        <junit.version>4.13.1</junit.version>
+        <junit.version>4.13.2</junit.version>
     </properties>
     <!--    用于子文件的依赖管理-->
     <dependencyManagement>

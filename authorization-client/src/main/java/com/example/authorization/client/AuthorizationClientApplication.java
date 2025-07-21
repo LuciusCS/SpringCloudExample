@@ -13,11 +13,9 @@ import org.springframework.core.env.Environment;
 import java.util.Arrays;
 
 
-@SpringBootApplication(exclude = {
-		SecurityAutoConfiguration.class,
-		OAuth2ClientAutoConfiguration.class})
+@SpringBootApplication
 @EnableDiscoveryClient
-@EnableFeignClients
+//@EnableFeignClients
 public class AuthorizationClientApplication {
 
 
