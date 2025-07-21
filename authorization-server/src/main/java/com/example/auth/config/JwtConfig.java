@@ -78,7 +78,7 @@ public class JwtConfig {
     public OAuth2TokenCustomizer<JwtEncodingContext> jwtCustomizer() {
         return context -> {
             // 设置过期时间为 1 小时（60 * 60 秒）
-            context.getClaims().claim("exp", System.currentTimeMillis() / 1000 + 60 * 60);
+//            context.getClaims().claim("exp", System.currentTimeMillis() / 1000 + 60 * 2);
 
             if (context.getAuthorizationGrantType().getValue().equals("access_token")) {
                 User user = (User) context.getPrincipal().getPrincipal();

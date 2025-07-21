@@ -1,5 +1,6 @@
 package com.example.authorization.client.config;
 
+import com.example.authorization.client.filter.TokenPrintingFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -45,10 +46,16 @@ public class SecurityConfig {
      * @return 配置了 OAuth2 过滤器的 WebClient 实例
      */
     @Bean
-    WebClient webClient(OAuth2AuthorizedClientManager authorizedClientManager) {
+    WebClient webClient(OAuth2AuthorizedClientManager authorizedClientManager, TokenPrintingFilter tokenInterceptor) {
         ServletOAuth2AuthorizedClientExchangeFilterFunction oauth2Client = new ServletOAuth2AuthorizedClientExchangeFilterFunction(authorizedClientManager);
+
+        // 配置令牌刷新策略
+        oauth2Client.setDefaultClientRegistrationId("oidc-client");
+        oauth2Client.setDefaultOAuth2AuthorizedClient(true);
+
         return WebClient.builder()
                 .filter(oauth2Client)
+                .filter(tokenInterceptor)
                 .build();
     }
 

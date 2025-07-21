@@ -49,3 +49,6 @@ JWT编码器/解码器	自动创建NimbusJwtEncoder/NimbusJwtDecoder	无需修�
 Spring Security OAuth2 服务器自动管理 JWT，不需要手动配置 JwtEncoder。
 JWKSource 负责管理 JWT 密钥，Spring Security 自动使用它生成 JWT。
 如果要手动生成 JWT，才需要 JwtEncoder，但通常不需要这样做。
+
+
+## 在 JwtConfig 中可以设置过期时间
