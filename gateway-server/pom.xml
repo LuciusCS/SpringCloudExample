@@ -78,7 +78,6 @@
 <!--        该依赖 让 Sentinel 能够拦截 Gateway 的所有流量，否则 Sentinel 只能监控簇点链路，而无法细粒度监控 API。-->
             <groupId>com.alibaba.csp</groupId>
             <artifactId>sentinel-spring-cloud-gateway-adapter</artifactId>
-            <version>1.8.8</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
@@ -93,12 +92,11 @@
         <dependency>
             <groupId>com.alibaba.csp</groupId>
             <artifactId>sentinel-core</artifactId>
-            <version>1.8.8</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba.csp</groupId>
             <artifactId>sentinel-datasource-nacos</artifactId>
-            <version>1.8.8</version> <!-- 版本根据你的 Spring Boot 版本适配 -->
+
         </dependency>
 
         <dependency>

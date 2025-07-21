@@ -21,7 +21,7 @@
         <module>seckill-server</module>
     </modules>
 
-<!--打包方式为 pom 则说明此工程只管理 Maven 依赖-->
+    <!--打包方式为 pom 则说明此工程只管理 Maven 依赖-->
     <packaging>pom</packaging>
 
     <properties>
@@ -30,6 +30,29 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring-cloud-dependencies.version>2023.0.0</spring-cloud-dependencies.version>
         <spring-boot-dependencies.version>3.2.3</spring-boot-dependencies.version>
+        <spring-cloud-starter-loadbalancer.version>4.0.3</spring-cloud-starter-loadbalancer.version>
+        <spring-cloud-starter-alibaba-nacos-config.version>2022.0.0.0</spring-cloud-starter-alibaba-nacos-config.version>
+        <spring-cloud-starter-alibaba-nacos-discovery.version>2022.0.0.0</spring-cloud-starter-alibaba-nacos-discovery.version>
+        <spring-cloud-starter-alibaba-sentinel.version>2023.0.3.2</spring-cloud-starter-alibaba-sentinel.version>
+        <spring-cloud-alibaba-sentinel-gateway.version>2023.0.3.2</spring-cloud-alibaba-sentinel-gateway.version>
+        <sentinel-transport-simple-http.version>1.8.8</sentinel-transport-simple-http.version>
+        <mysql-connector-java.version>8.0.28</mysql-connector-java.version>
+        <lombok.version>1.18.30</lombok.version>
+        <log4j.version>1.2.16</log4j.version>
+        <logback-core.version>1.4.13</logback-core.version>
+        <logstash-logback-encoder.version>7.3</logstash-logback-encoder.version>
+        <springdoc-openapi-starter-webmvc-ui.version>2.3.0</springdoc-openapi-starter-webmvc-ui.version>
+        <druid-spring-boot-3-starter.version>1.2.23</druid-spring-boot-3-starter.version>
+        <jakarta.servlet-api.version>6.0.0</jakarta.servlet-api.version>
+        <xxl-job-core.version>3.0.0</xxl-job-core.version>
+        <hutool-all.version>5.8.26</hutool-all.version>
+        <jedis.version>2.9.0</jedis.version>
+        <fastjson.version>1.2.83</fastjson.version>
+        <gson.version>2.10.1</gson.version>
+        <sentinel-web-servlet.version>1.8.8</sentinel-web-servlet.version>
+        <sentinel-core.version>1.8.8</sentinel-core.version>
+        <sentinel-datasource-nacos.version>1.8.8</sentinel-datasource-nacos.version>
+        <sentinel-spring-cloud-gateway-adapter.version>1.8.8</sentinel-spring-cloud-gateway-adapter.version>
         <!--        设置依赖的版本-->
         <junit.version>4.13.1</junit.version>
     </properties>
@@ -58,58 +81,58 @@
                 <scope>import</scope>
             </dependency>
 
-                        <dependency>
-                            <groupId>org.springframework.cloud</groupId>
-                            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
-                            <version>4.0.3</version>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+                <version>${spring-cloud-starter-loadbalancer.version}</version>
 
-                        </dependency>
+            </dependency>
 
 
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-                <version>2022.0.0.0</version>
+                <version>${spring-cloud-starter-alibaba-nacos-config.version}</version>
                 <!--                <version>2.2.1.RELEASE</version>-->
             </dependency>
             <!--        nacos客户端依赖包-->
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-                <version>2022.0.0.0</version>
+                <version>${spring-cloud-starter-alibaba-nacos-discovery.version}</version>
                 <!--                <version>2.2.1.RELEASE</version>-->
             </dependency>
 
-            <dependency>
-                <groupId>org.mybatis.spring.boot</groupId>
-                <artifactId>mybatis-spring-boot-starter</artifactId>
-                <version>3.0.2</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>org.mybatis.spring.boot</groupId>-->
+<!--                <artifactId>mybatis-spring-boot-starter</artifactId>-->
+<!--                <version>3.0.2</version>-->
+<!--            </dependency>-->
 
             <!--       用于gateway sentinel管理-->
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
-                <version>2023.0.3.2</version>
+                <version>${spring-cloud-starter-alibaba-sentinel.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-sentinel-gateway</artifactId>
-                <version>2023.0.3.2</version>
+                <version>${spring-cloud-alibaba-sentinel-gateway.version}</version>
 
             </dependency>
 
             <dependency>
                 <groupId>com.alibaba.csp</groupId>
                 <artifactId>sentinel-transport-simple-http</artifactId>
-                <version>1.8.8</version>
+                <version>${sentinel-transport-simple-http.version}</version>
 
             </dependency>
 
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
-                <version>8.0.28</version>
+                <version>${mysql-connector-java.version}</version>
             </dependency>
 
 
@@ -123,60 +146,104 @@
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <version>1.18.30</version>
+                <version>${lombok.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>log4j</groupId>
                 <artifactId>log4j</artifactId>
-                <version>1.2.16</version>
+                <version>${log4j.version}</version>
                 <!--            <version>1.2.16</version>-->
             </dependency>
 
             <dependency>
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-core</artifactId>
-                <version>1.4.13</version>
+                <version>${logback-core.version}</version>
             </dependency>
 
-<!--            用于集成elk-->
+            <!--            用于集成elk-->
             <dependency>
                 <groupId>net.logstash.logback</groupId>
                 <artifactId>logstash-logback-encoder</artifactId>
-                <version>7.3</version>
+                <version>${logstash-logback-encoder.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.springdoc</groupId>
                 <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-                <version>2.3.0</version>
+                <version>${springdoc-openapi-starter-webmvc-ui.version}</version>
             </dependency>
 
-<!--            用于表示数据库连接池-->
+            <!--            用于表示数据库连接池-->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-3-starter</artifactId>
-                <version>1.2.23</version> <!-- 请检查最新版本并替换 -->
+                <version>${druid-spring-boot-3-starter.version}</version> <!-- 请检查最新版本并替换 -->
             </dependency>
             <dependency>
                 <groupId>jakarta.servlet</groupId>
                 <artifactId>jakarta.servlet-api</artifactId>
-                <version>6.0.0</version>
+                <version>${jakarta.servlet-api.version}</version>
             </dependency>
 
-<!--           用于接入xxl-job-->
+            <!--           用于接入xxl-job-->
             <dependency>
                 <groupId>com.xuxueli</groupId>
                 <artifactId>xxl-job-core</artifactId>
-                <version>3.0.0</version>
+                <version>${xxl-job-core.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool-all.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${jedis.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version> <!-- 建议根据实际需求选择最新版本 -->
+            </dependency>
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>${gson.version}</version>
+            </dependency>
+
+            <!-- 这里添加用于 Spring MVC 的适配器 ，如果没有则不会被注册到 Sentinel Dashboard-->
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-web-servlet</artifactId>
+                <version>${sentinel-web-servlet.version}</version> <!-- 适配Servlet环境 -->
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-core</artifactId>
+                <version>${sentinel-core.version}</version>
+            </dependency>
+            <dependency>
+                <!--        该依赖 让 Sentinel 能够拦截 Gateway 的所有流量，否则 Sentinel 只能监控簇点链路，而无法细粒度监控 API。-->
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-spring-cloud-gateway-adapter</artifactId>
+                <version>${sentinel-spring-cloud-gateway-adapter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-datasource-nacos</artifactId>
+                <version>${sentinel-datasource-nacos.version}</version> <!-- 版本根据你的 Spring Boot 版本适配 -->
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
-
-
     </dependencies>
 
     <build>
