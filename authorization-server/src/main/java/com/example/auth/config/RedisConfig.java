@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -76,7 +77,8 @@ public class RedisConfig {
 
         // 注册自定义User类的Mix-in
         objectMapper.addMixIn(User.class, UserMixin.class);
-
+        objectMapper.registerModule(new Jdk8Module()); // 支持 Optional
+        objectMapper.registerModule(new JavaTimeModule()); // 支持 LocalDateTime
         // 注册UsernamePasswordAuthenticationToken的反序列化器
         SimpleModule securityModule = new SimpleModule();
         securityModule.addDeserializer(
