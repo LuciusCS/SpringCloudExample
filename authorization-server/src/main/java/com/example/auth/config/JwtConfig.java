@@ -80,14 +80,18 @@ public class JwtConfig {
             // 设置过期时间为 1 小时（60 * 60 秒）
 //            context.getClaims().claim("exp", System.currentTimeMillis() / 1000 + 60 * 2);
 
-            if (context.getAuthorizationGrantType().getValue().equals("access_token")) {
+            /// 用于通过用户名密码模式登录
+            if (context.getAuthorizationGrantType().getValue().equals("password")) {
                 User user = (User) context.getPrincipal().getPrincipal();
                 context.getClaims().claim("roles",
                         user.getAuthorities().stream()
                                 .map(GrantedAuthority::getAuthority)
                                 .collect(Collectors.toList())
                 );
-            }else if(context.getAuthorizationGrantType().getValue().equals("client_credential")){
+            }
+            /// 用于客户端模式登录
+            else if(context.getAuthorizationGrantType().getValue().equals("client_credential")){
+
                 context.getClaims().claim("roles", "test");
             }else{
                 context.getClaims().claim("roles","test");

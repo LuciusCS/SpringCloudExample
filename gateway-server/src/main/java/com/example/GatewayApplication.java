@@ -21,3 +21,4 @@ public class GatewayApplication {
 //        System.setProperty(SentinelConfig.APP_TYPE_PROP_KEY, String.valueOf(SentinelGatewayConstants.GATEWAY_APP_TYPE));
 //    }
 }
+

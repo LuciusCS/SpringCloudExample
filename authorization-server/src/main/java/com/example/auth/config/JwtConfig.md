@@ -52,3 +52,27 @@ JWKSource 负责管理 JWT 密钥，Spring Security 自动使用它生成 JWT。
 
 
 ## 在 JwtConfig 中可以设置过期时间
+
+## JWT 中的 sub 和 aud
+
+```
+{
+  "sub": "username",
+  "aud": "client1234",
+  "nbf": 1753089654,
+  "scope": [
+    "openid"
+  ],
+  "roles": "test",
+  "iss": "http://localhost:8003",
+  "exp": 1753089954,
+  "iat": 1753089654,
+  "jti": "d38fa33a-ee57-46d6-b627-dbd575c044d3"
+}
+
+```
+
+   sub（Subject）：通常代表的是 授权的主体，即 用户。它通常是用户的唯一标识符（如用户名、用户 ID 或其他标识符）。
+   在你提供的令牌中，sub 被设置为 "username"，意味着令牌是颁发给名为 "username" 的用户。
+   aud（Audience）：这个字段通常表示令牌的目标受众。在 OAuth2 中，aud 字段通常表示客户端 ID（如 client1234），  
+   它表示令牌是由哪个客户端应用请求的。在你提供的令牌中，aud 被设置为 "client1234"，意味着该令牌是为 client1234 客户端申请的。
