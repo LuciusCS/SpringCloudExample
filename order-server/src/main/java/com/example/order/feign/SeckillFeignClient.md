@@ -52,3 +52,6 @@ spring:
 接口方法（比如 getTestHello）；
 服务名（如 user-service）；
 特定的业务操作（比如 order-create）；
+
+
+## 需要补充 sentinel-rules.json

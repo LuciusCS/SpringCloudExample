@@ -1,7 +1,7 @@
 package com.example.order.controller;
 
 
-import com.example.order.bean.Product;
+import com.example.order.bean.po.elasticsearch.Product;
 import com.example.order.service.impl.ElasticsearchProductServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

@@ -1,20 +1,9 @@
-package com.example.auth.config;
+package com.example.auth.config.oauth;
 
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.oauth2.core.AuthorizationGrantType;
-import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
-import org.springframework.security.oauth2.core.oidc.OidcScopes;
-import org.springframework.security.oauth2.server.authorization.client.InMemoryRegisteredClientRepository;
-import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
-import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
-import org.springframework.security.oauth2.server.authorization.config.annotation.web.configurers.OAuth2AuthorizationServerConfigurer;
 import org.springframework.security.oauth2.server.authorization.settings.AuthorizationServerSettings;
-import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
-import org.springframework.security.web.SecurityFilterChain;
 
 
 /**
@@ -34,7 +23,7 @@ public class AuthorizationServerConfig {
                 .issuer("http://localhost:8003")  /// 它定义了 Gateway（或资源服务器）如何解析和校验 JWT Token 的请求路径。
                 .tokenEndpoint("/oauth2/token") // 自定义令牌端点URL
                 .authorizationEndpoint("/oauth2/authorize")  // 授权端点（如果需要授权码模式）
-                .jwkSetEndpoint("/.well-known/jwks.json")  // JWK 公钥集端点
+//                .jwkSetEndpoint("/.well-known/jwks.json")  // JWK 公钥集端点
                 .oidcUserInfoEndpoint("/userinfo")
                 .build();
     }

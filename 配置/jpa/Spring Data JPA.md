@@ -42,3 +42,10 @@ User user = userRepository.findUserForUpdate(id);
 
 无论是 悲观锁 还是 乐观锁，在实际使用过程中，都需要使用事务来保证数据的原子性、一致性、隔离性和持久性（即 ACID 特性）。
 但是，它们在事务使用上的方式和场景有所不同。
+
+
+##   下面的两个包有什么区别
+```
+import jakarta.persistence.Id;
+    import org.springframework.data.annotation.Id;
+```

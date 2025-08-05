@@ -1,7 +1,7 @@
 package com.example.order.service.impl;
 
 
-import com.example.order.bean.Product;
+import com.example.order.bean.po.elasticsearch.Product;
 import com.example.order.repository.ElasticsearchProductRepository;
 import com.example.order.service.ElasticsearchProductService;
 import org.springframework.beans.factory.annotation.Autowired;

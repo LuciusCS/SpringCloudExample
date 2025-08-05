@@ -1,12 +1,9 @@
-package com.example.auth.config;
+package com.example.auth.config.oauth;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
-import java.security.interfaces.RSAPrivateKey;
-import java.security.interfaces.RSAPublicKey;
-
 
 
 @Configuration

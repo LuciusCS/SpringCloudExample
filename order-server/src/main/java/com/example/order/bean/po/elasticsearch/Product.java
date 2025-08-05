@@ -1,4 +1,4 @@
-package com.example.order.bean;
+package com.example.order.bean.po.elasticsearch;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
