@@ -1,4 +1,4 @@
-package com.example.order.config.rebbitmq;
+package com.example.order.config.rabbitmq;
 
 
 import org.springframework.amqp.AmqpException;

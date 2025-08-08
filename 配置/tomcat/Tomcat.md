@@ -86,3 +86,16 @@ HTTP/2 通信（如 gRPC 或启用 HTTP/2）	    ✅ 推荐，HTTP/2 天生复�
 每次请求的数据很大或处理时间长	           ⚠️ 小心连接被长期占用，可配置超时与连接上限
 
 
+## Tomcat 默认配置 
+
+
+
+在SpringBoot2.7.10版本中内置Tomcat版本是9.0.73，
+SpringBoot内置Tomcat的默认设置如下：
+Tomcat的连接等待队列长度，默认是100
+Tomcat的最大连接数，默认是8192
+Tomcat的最小工作线程数，默认是10
+Tomcat的最大线程数，默认是200
+Tomcat的连接超时时间，默认是20s
+
+

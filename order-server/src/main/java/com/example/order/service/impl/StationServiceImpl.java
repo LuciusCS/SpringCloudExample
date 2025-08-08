@@ -5,26 +5,44 @@ import com.example.order.bean.po.mysql.criteria.AreaPO;
 import com.example.order.bean.po.mysql.criteria.OperatorPO;
 import com.example.order.bean.po.mysql.criteria.StationPO;
 import com.example.order.service.StationService;
+//import jakarta.persistence.Cacheable;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.*;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @CacheConfig(cacheNames = "stationCache")   ///  类里默认缓存名，在这里使用 CacheConfig 就不需要在每一个注解里写value 进行命名了
+ *  这种方法不推荐，会让所有类型的数据都缓存到命名空间 stationCache 中，会造成相互清理
+ */
 @Service
+//@CacheConfig(cacheNames = "stationCache")
 public class StationServiceImpl implements StationService {
 
     @PersistenceContext
     EntityManager entityManager;
 
+    /**
+     */
     @Override
+    @Cacheable(
+            value = "stationCacheList",                 // 缓存的名字
+            key = "'stations:' + #nameFilter + ':' + #pageable.pageNumber + '-' + #pageable.pageSize", // 缓存key命名规范
+            cacheManager = "cacheManagerWithTTL"  // 自定义cacheManager，支持过期时间
+    )
     public Page<StationDTO> queryStations(String nameFilter, Pageable pageable) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
 
@@ -91,6 +109,26 @@ public class StationServiceImpl implements StationService {
 
         Long total = entityManager.createQuery(countQuery).getSingleResult();
 
+
         return new PageImpl<>(content, pageable, total);
+    }
+
+    @Cacheable(value =  "stationCacheById", key = "'station:' + #id")
+    public StationDTO getById(Long id) {
+        // 查询单条数据
+        return  new StationDTO();
+    }
+
+    @CachePut(value =  "stationCacheById", key = "'station:' + #station.id")
+//    @CacheEvict(value = "stationCacheList", key = "'stations:' + '*'")  // 不可以使用这种方式，因为无效
+    @CacheEvict(value = "stationCacheList", allEntries = true)         ///  不会清除命名为 stationCacheById 的缓存
+    @Transactional
+    public StationDTO update(StationDTO station) {
+        // 更新数据库
+        return station;
+    }
+
+    @CacheEvict(allEntries = true)  // 删除所有缓存，适合批量更新、删除
+    public void refreshCache() {
     }
 }

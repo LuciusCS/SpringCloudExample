@@ -12,7 +12,7 @@ import com.example.seckillserver.dao.po.SeckillOrderPO;
 import com.example.seckillserver.standard.redis.RedisRepository;
 import com.example.seckillserver.util.UUIDUtil;
 import jakarta.annotation.Resource;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

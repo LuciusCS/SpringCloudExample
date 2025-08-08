@@ -13,9 +13,6 @@ import org.springframework.web.reactive.function.client.WebClient;
 import static org.springframework.security.config.Customizer.withDefaults;
 
 /**
- * 配置 Spring Security 资源服务器的安全策略。
- *
- * @date: 2022/6/29 5:07 下午
  */
 @Configuration
 public class SecurityConfig {
@@ -49,10 +46,15 @@ public class SecurityConfig {
     WebClient webClient(OAuth2AuthorizedClientManager authorizedClientManager, TokenPrintingFilter tokenInterceptor) {
         ServletOAuth2AuthorizedClientExchangeFilterFunction oauth2Client = new ServletOAuth2AuthorizedClientExchangeFilterFunction(authorizedClientManager);
 
+        /// // ✅ 设置默认 clientRegistrationId , 所以在 ResourceService 中就不需要配置
+        ///     .attributes(clientRegistrationId("oidc-client")) 了，如果有多个 clientRegistrationId 需要另外的配置
         // 配置令牌刷新策略
+
+        /// 如果有多个 clientRegistrationId , 删除下面两行即可，不需要做其他的修改
         oauth2Client.setDefaultClientRegistrationId("oidc-client");
         oauth2Client.setDefaultOAuth2AuthorizedClient(true);
 
+        /// .filter(oauth2Client) 注册了 OAuth2 的 ExchangeFilterFunction，实现了请求时自动携带和管理 token 的能力。
         return WebClient.builder()
                 .filter(oauth2Client)
                 .filter(tokenInterceptor)
@@ -71,6 +73,7 @@ public class SecurityConfig {
     OAuth2AuthorizedClientManager authorizedClientManager(ClientRegistrationRepository clientRegistrationRepository,
                                                           OAuth2AuthorizedClientService authorizedClientService) {
 
+        ///authorizedClientProvider 它会自动重新获取 token 并替换旧 token
         OAuth2AuthorizedClientProvider authorizedClientProvider = OAuth2AuthorizedClientProviderBuilder
                 .builder()
                 .clientCredentials()

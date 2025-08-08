@@ -2,7 +2,7 @@ package com.example.seckillserver.dao;
 
 
 import com.example.seckillserver.dao.po.SeckillSkuPO;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;

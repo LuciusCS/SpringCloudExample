@@ -2,13 +2,12 @@ package com.example.order.controller;
 
 
 import com.example.order.bean.Order;
-import com.example.order.config.rebbitmq.MqProductor;
+import com.example.order.config.rabbitmq.MqProductor;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 

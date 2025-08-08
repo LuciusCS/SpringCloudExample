@@ -26,7 +26,7 @@ spring:
             ## 这里返回的地址是 authorization-client的地址
             ## authorization-server 会将数据重定向到这个接口
 #            redirect-uri: http://127.0.0.1:8001/login/oauth2/code/client1234
-#            scope:
+#            scope:           # 现在加上 scope 等内容请求会出错
 ##              - openid
 ##              - profile
 #              - read

@@ -1,7 +1,5 @@
 package com.example.order.config.nacos;
 import com.alibaba.cloud.nacos.NacosDiscoveryProperties;
-import com.example.order.config.rebbitmq.stream.StreamBridgeConsumer;
-import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

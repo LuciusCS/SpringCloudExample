@@ -1,6 +1,5 @@
-package com.example.order.config.rebbitmq;
+package com.example.order.config.rabbitmq;
 
-import com.example.order.component.OrderCleanupJob;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.*;
@@ -133,5 +132,8 @@ public class RabbitMqConfig {
     public Binding deadBinding(Queue deadQueue, DirectExchange deadExchange){
         return BindingBuilder.bind(deadQueue).to(deadExchange).with(dead_queue_key_1);
     }
+
+    ///
+
 
 }

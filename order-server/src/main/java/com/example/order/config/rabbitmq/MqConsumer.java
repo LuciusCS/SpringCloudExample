@@ -1,4 +1,5 @@
-package com.example.order.config.rebbitmq;
+package com.example.order.config.rabbitmq;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +10,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class MqConsumer {
     private static final Logger logger = LoggerFactory.getLogger(DeadLetterConsumer.class);
+
+
 
     @RabbitListener(queues = RabbitMqConfig.queue1)
     public void c1(Message message) {

@@ -52,6 +52,7 @@
         <sentinel-web-servlet.version>1.8.8</sentinel-web-servlet.version>
         <sentinel-core.version>1.8.8</sentinel-core.version>
         <sentinel-datasource-nacos.version>1.8.8</sentinel-datasource-nacos.version>
+        <caffeine.version>3.1.8</caffeine.version>
         <sentinel-spring-cloud-gateway-adapter.version>1.8.8</sentinel-spring-cloud-gateway-adapter.version>
         <!--        设置依赖的版本-->
         <junit.version>4.13.2</junit.version>
@@ -239,6 +240,11 @@
                 <groupId>com.alibaba.csp</groupId>
                 <artifactId>sentinel-datasource-nacos</artifactId>
                 <version>${sentinel-datasource-nacos.version}</version> <!-- 版本根据你的 Spring Boot 版本适配 -->
+            </dependency>
+            <dependency>
+                <groupId>com.github.ben-manes.caffeine</groupId>
+                <artifactId>caffeine</artifactId>
+                <version>${caffeine.version}</version> <!-- 你可以使用当前最新版本 -->
             </dependency>
         </dependencies>
     </dependencyManagement>

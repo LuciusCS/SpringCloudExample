@@ -1,5 +1,4 @@
 package com.example.order.config.xxljob;
-import com.example.order.config.rebbitmq.MqConsumer;
 import com.xxl.job.core.context.XxlJobHelper;
 import com.xxl.job.core.handler.annotation.XxlJob;
 import lombok.extern.slf4j.Slf4j;

@@ -31,6 +31,9 @@ public class ResourceService {
         } else {
             log.info("No authorized client found for the specified client registration ID.");
         }
+
+        /// // 在SecurityConfig的 webClient 设置默认 clientRegistrationId , 所以在 ResourceService 中就不需要配置
+        ///     .attributes(clientRegistrationId("oidc-client")) 了，如果有多个 clientRegistrationId 需要另外的配置
         return webClient.get()
                 .uri("http://127.0.0.1:8003/helloTestController/hello") // 资源服务器地址
                 .attributes(clientRegistrationId("oidc-client"))

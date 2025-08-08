@@ -25,6 +25,7 @@ public class StationController {
     @Autowired
     StationService stationService;
 
+
     @GetMapping("/stations")
     public PagedModel<StationDTO> getStations(
             @RequestParam(required = false) String nameFilter,

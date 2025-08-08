@@ -1,6 +1,7 @@
 package com.example.common.config;
 
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -21,7 +22,7 @@ class TransactionHelper {
     /**
      * 默认事务传播行为：REQUIRED（如果事务存在，则加入当前事务；如果不存在，则创建新事务）
      */
-    @Transactional(rollbackOn = Exception.class, value = Transactional.TxType.REQUIRED)
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
     public <T, R> R transactional(Function<T, R> function, T t) {
         return function.apply(t);
     }
@@ -29,15 +30,15 @@ class TransactionHelper {
     /**
      * 使用自定义事务传播行为
      */
-    @Transactional(rollbackOn = Exception.class)
-    public <T, R> R transactionalWithPropagation(Transactional.TxType propagation, Function<T, R> function, T t) {
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
+    public <T, R> R transactionalWithPropagation( Function<T, R> function, T t) {
         return function.apply(t);
     }
 
     /**
      * 只读事务，用于查询操作，优化性能
      */
-    @Transactional(rollbackOn = Exception.class, value = Transactional.TxType.SUPPORTS) // 假设查询操作可以支持当前事务
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS, readOnly = true) // 假设查询操作可以支持当前事务
     public <T, R> R readOnlyTransactional(Function<T, R> function, T t) {
         return function.apply(t);
     }
