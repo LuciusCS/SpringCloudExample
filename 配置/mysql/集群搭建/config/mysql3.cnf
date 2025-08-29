@@ -1,0 +1,43 @@
+[mysqld]
+# 启用 performance_schema
+performance_schema=ON
+datadir = /develop/mysql/mysql3
+# MySQL 主从复制相关设置
+server-id=3
+log-bin=mysql-bin
+gtid-mode=ON
+enforce-gtid-consistency=TRUE
+log-replica-updates=TRUE
+binlog-format=ROW
+binlog_transaction_dependency_tracking=WRITESET
+
+# 安全模式相关
+sql-mode=STRICT_TRANS_TABLES,NO_ZERO_DATE,NO_ZERO_IN_DATE
+
+# 连接设置
+max_connections=1000
+wait_timeout=28800
+interactive_timeout=28800
+
+# 其他常见配置
+innodb_buffer_pool_size=1G
+innodb_log_file_size=256M
+innodb_file_per_table=1
+
+# 错误日志和日志相关设置
+log-error=/var/log/mysql/error.log
+log-queries-not-using-indexes=1
+slow-query-log=1
+slow-query-log-file=/var/log/mysql/slow-query.log
+
+# 存储引擎设置
+default-storage-engine=INNODB
+
+# 让系统能够处理更多的连接
+table_open_cache=2000
+open_files_limit=65535
+max_allowed_packet=64M
+
+# 防止表锁，增强并发性能
+innodb_flush_log_at_trx_commit=1
+innodb_lock_wait_timeout=50

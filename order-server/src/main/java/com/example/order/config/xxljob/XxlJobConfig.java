@@ -14,7 +14,7 @@ public class XxlJobConfig {
     public XxlJobSpringExecutor xxlJobExecutor() {
         XxlJobSpringExecutor executor = new XxlJobSpringExecutor();
         executor.setAdminAddresses(adminAddresses);  // 注入调度中心地址
-        executor.setAddress("http://192.168.22.181:9999");  ///如果不显式添加，只在yml文件中进行配置，实际不会生效
+        executor.setAddress("http://192.168.22.181:9999");  ///如果不显式添加，只在yml文件中进行配置，实际不会生效 ， 这个应该是本机的地址吧
         executor.setAccessToken("dsfds");
         executor.setAppname("order");   // 覆盖配置文件中的appname（可选）
         executor.setPort(9999);                      // 覆盖配置文件的端口

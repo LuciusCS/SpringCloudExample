@@ -1,6 +1,5 @@
-package com.example.order.component;
+package com.example.order.component.xxljob;
 
-import com.example.order.controller.OrderController;
 import com.xxl.job.core.context.XxlJobHelper;
 import com.xxl.job.core.handler.annotation.XxlJob;
 import org.slf4j.Logger;

@@ -56,6 +56,11 @@ spring:
           destination: message-detect
           group: instance-b
 
+xxl:
+  job:
+    logpath: ./logs/  # 修改日志存储路径
+    executor:
+      logpath: ./logs/  # 指定任务执行器日志路径
 logging:
   level:
     org.springframework.cloud.client.loadbalancer.LoadBalancerInterceptor: DEBUG

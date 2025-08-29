@@ -1,0 +1,30 @@
+
+services:
+  mysql-router:
+    image: mysql/mysql-router:8.0
+    container_name: mysql-router
+    # 这些只是用于通过启动检查，指向任一健康节点即可
+    environment:
+      MYSQL_HOST: 192.168.22.191      # 集群中的一个 MySQL 实例的外部地址
+      MYSQL_PORT: 33061                # MySQL 服务的端口
+      MYSQL_USER: root                   # 连接集群的用户名
+      MYSQL_PASSWORD: 123456      # 连接集群的密码
+      MYSQL_ROUTER_USER: router
+      MYSQL_ROUTER_PASSWORD: 123456
+      # MYSQL_INNODB_CLUSTER_MEMBERS: "192.168.22.191:33061,192.168.22.191:33062,192.168.22.191:33063"  # 集群中的所有节点的外部地址
+      MYSQL_CREATE_ROUTER_USER: "false"    # 是否自动创建 MySQL Router 用户
+      # MYSQL_INNODB_CLUSTER_MEMBERS: 3
+    volumes:
+      - /develop/mysql/config/mysqlrouter.conf:/etc/mysqlrouter/mysqlrouter.conf  # 挂载自定义配置文件      
+    ports:
+      - "6446:6446"  # MySQL Router 端口
+      - "6447:6447"  # RW端口
+      - "6448:6448"  # RO端口
+    networks:
+      - mysql-cluster
+    restart: unless-stopped
+
+networks:
+  mysql-cluster:
+    driver: bridge
+

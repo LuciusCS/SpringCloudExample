@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  mysql1:
+    image: mysql:8.0
+    container_name: mysql1
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+    ports:
+      - "33061:3306"
+    volumes:
+      - mysql1-data:/develop/mysql/mysql1
+      - /develop/mysql/config/mysql1.cnf:/etc/mysql/conf.d/custom.cnf # 挂载到conf.d目录下并命名为.cnf结尾  # 挂载自定义的 my.cnf 文件
+    networks:
+      - mysql-cluster
+
+volumes:
+  mysql1-data:
+
+
+networks:
+  mysql-cluster:
+    driver: bridge
+

@@ -7,8 +7,8 @@ if [ -z "$1" ]; then
 fi
 
 TARGET_DATE="$1"
-BACKUP_DIR="/data/backups"
-RESTORE_DIR="/data/tmp_restore"
+BACKUP_DIR="/develop/backup/full"
+RESTORE_DIR="/develop/backup/full/tmp_restore"
 
 echo "🔁 恢复到日期：$TARGET_DATE"
 
@@ -30,6 +30,7 @@ cp -a $BASE/* $RESTORE_DIR
 INCR_LIST=$(find $BACKUP_DIR -maxdepth 1 -type d -name "incr_*" | sort | while read INCR; do
   [[ "$(basename $INCR | cut -d_ -f2)" < "$TARGET_DATE" || "$(basename $INCR | cut -d_ -f2)" = "$TARGET_DATE" ]] && echo $INCR
 done)
+
 
 # 4. 执行 apply-log
 for INCR in $INCR_LIST; do

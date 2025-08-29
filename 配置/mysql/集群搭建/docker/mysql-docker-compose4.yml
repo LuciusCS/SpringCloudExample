@@ -1,0 +1,22 @@
+
+services:
+  mysql4:
+    image: mysql:8.0
+    container_name: mysql4
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+    ports:
+      - "33064:3306"
+    volumes:
+      # - mysql4-data:/develop/mysql/mysql4
+      - /develop/mysql/mysql4:/develop/mysql/mysql4
+      - /develop/mysql/config/mysql4.cnf:/etc/mysql/conf.d/custom.cnf # 挂载到conf.d目录下并命名为.cnf结尾  # 挂载自定义的 my.cnf 文件
+    networks:
+      - mysql-cluster
+
+#volumes:
+#  mysql4-data:
+
+networks:
+  mysql-cluster:
+    driver: bridge
