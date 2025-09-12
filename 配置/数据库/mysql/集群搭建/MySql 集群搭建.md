@@ -94,6 +94,12 @@ cluster.addInstance('root@192.168.22.191:33063', {password: '123456', recoveryMe
 
 ```
 
+## 查看mysql 集群的状态
+```
+var cluster = dba.getCluster("myCluster")
+cluster.status()
+```
+
 
 ## MySql Router 配置
 

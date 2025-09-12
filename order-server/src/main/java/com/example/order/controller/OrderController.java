@@ -1,6 +1,7 @@
 package com.example.order.controller;
 
 
+import com.example.common.utils.Snowflake;
 import com.example.order.bean.Order;
 import com.example.order.config.rabbitmq.MqProductor;
 import io.swagger.v3.oas.annotations.Operation;
@@ -8,13 +9,10 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
@@ -40,6 +38,13 @@ public class OrderController {
         logger.info("订单创建成功，订单ID: {}"); // 生产环境可见
         logger.error("订单创建异常"); // 错误日志
         return "Order received, processing asynchronously";
+    }
+
+
+    @Operation(summary = "测试雪花算法")
+    @GetMapping("/")
+    public  Long getSnowflake(){
+        return new Snowflake().nextId();
     }
 
 }

@@ -11,14 +11,47 @@
 server-id = 1
 bind-address = 0.0.0.0  # 允许所有IP连接
 group_replication_start_on_boot = off
-group_replication_local_address = "主机1IP:33061"
-group_replication_group_seeds = "主机1IP:33061,主机2IP:33061,主机3IP:33061"
+group_replication_local_address = "192.168.22.191:33061"
+group_replication_group_seeds = "192.168.22.191:33061,192.168.22.191:33061,192.168.22.191:33061"
 group_replication_single_primary_mode = ON
 group_replication_enforce_update_everywhere_checks = OFF
 ```
 
+### 说明
+
+#### group_replication_start_on_boot = off
+
+实例重启时不会自动启动 Group Replication
+也就是说，MySQL 服务起来了，但 这个节点不会自动加入集群
+你需要手动执行：
+```
+START GROUP_REPLICATION;
+```
+节点才会尝试加入 InnoDB Cluster
+
+- 为什么默认是 OFF？
+MySQL 官方建议这样做：
+防止集群因为节点重启时状态不一致，自动把坏数据带入集群
+提供更安全的 显式控制（你确认节点准备好后，再手动让它加入）
+
+#### group_replication_single_primary_mode = ON
+决定集群是否采用 单主模式（Single Primary Mode）
+ON → 集群中 只能有一个节点接受写入（PRIMARY），其他节点都是只读（SECONDARY）
+OFF → 多主模式（Multi-Primary Mode），多个节点可以同时写入
+
+- 场景说明
+  | 值   | 写入模式 | 适用场景                   |
+  | --- | ---- | ---------------------- |
+  | ON  | 单主写入 | 企业生产环境，数据一致性要求高        |
+  | OFF | 多主写入 | 分布式写入，允许多节点写（需要应用处理冲突） |
 
 
+#### group_replication_enforce_update_everywhere_checks = OFF
+
+只在 多主模式 有效
+控制 update everywhere checks 是否生效：
+ON → 强制检查同一行在其他节点是否被修改，防止冲突
+OFF → 不做检查，写入可能覆盖其他节点的数据
 
 
 ## MySql Router 配置说明 1
@@ -66,7 +99,7 @@ Router使用这里的配置连接到您指定的引导节点(192.168.22.191:3306
 #### 运行阶段：使用专用路由账户
 
 当Router需要将客户端连接路由到其他节点时，它不使用环境变量中的root凭据，而是使用配置文件中指定的专用账户：
-下面的配置暂时未再 mysqlrouter.conf中进行添加
+下面的配置暂时未在 mysqlrouter.conf中进行添加
 
 ```shell
 [metadata_cache:mycluster]
@@ -82,3 +115,4 @@ ttl=0.5
 
 
 
+## 
