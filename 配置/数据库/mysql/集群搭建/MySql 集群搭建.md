@@ -2,10 +2,6 @@
 
 # MySQL数据库高可用性方案
 
-
-
-
-
 # MySQL InnoDB Cluster（官方集群方案）
 ## 环境 
 

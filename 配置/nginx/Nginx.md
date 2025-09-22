@@ -11,3 +11,7 @@
 keepalive_timeout 65;    # 每个连接最多复用请求数
 keepalive_requests 100;  # 空闲多久断开
 ```
+
+
+使用 Nginx 的话，可以引入淘宝开源的 nginx_upstream_check_module，对后端服务做定期的存活检测，
+后端的服务节点在重启时，也要秉承着“先切流量后重启”的原则，尽量减少节点重启对于整体系统的影响。
