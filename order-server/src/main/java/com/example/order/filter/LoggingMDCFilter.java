@@ -10,6 +10,8 @@ import java.net.InetAddress;
 
 /**
  * 在日志的上下文加入动态的内容，如 IP Host
+ * 在传统 Servlet 环境中使用 Filter
+ * 在Spring Boot 项目中应该使用 Spring 中的 OncePerRequestFilter 等以及其他
  */
 public class LoggingMDCFilter implements Filter {
 

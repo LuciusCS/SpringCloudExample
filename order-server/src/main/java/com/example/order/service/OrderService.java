@@ -1,7 +1,12 @@
 package com.example.order.service;
 
-import org.springframework.stereotype.Service;
+import com.example.order.bean.Order;
 
-@Service
-public class OrderService {
+import java.util.Optional;
+
+public interface OrderService {
+
+    void save(Order order);
+
+    Optional<Order> findById(Long id);
 }

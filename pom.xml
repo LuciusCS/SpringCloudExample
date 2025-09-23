@@ -54,6 +54,9 @@
         <sentinel-datasource-nacos.version>1.8.8</sentinel-datasource-nacos.version>
         <caffeine.version>3.1.8</caffeine.version>
         <sentinel-spring-cloud-gateway-adapter.version>1.8.8</sentinel-spring-cloud-gateway-adapter.version>
+        <transmittable-thread-local.version>2.14.5</transmittable-thread-local.version>
+        <guava.version>33.4.8-jre</guava.version>
+
         <!--        设置依赖的版本-->
         <junit.version>4.13.2</junit.version>
     </properties>
@@ -246,6 +249,19 @@
                 <artifactId>caffeine</artifactId>
                 <version>${caffeine.version}</version> <!-- 你可以使用当前最新版本 -->
             </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>transmittable-thread-local</artifactId>
+                <version>${transmittable-thread-local.version}</version> <!-- 建议使用最新版本 -->
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
