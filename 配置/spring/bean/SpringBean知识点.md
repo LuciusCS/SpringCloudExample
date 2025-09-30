@@ -91,3 +91,11 @@ Bean 已经实例化 + 属性注入 + 初始化完成，可以直接使用。
 (3) 三级缓存：singletonFactories
 存放对象工厂（ObjectFactory），主要用来创建代理对象（AOP 场景）。
 只有真正需要时，才从三级缓存里调用工厂方法生成对象，然后放到二级缓存。
+
+
+## BeanNameAware 接⼝ 和 BeanClassLoaderAware 接⼝
+BeanFactoryAware 接⼝  其他 *.Aware 接⼝
+
+
+
+## Bean的生命周期

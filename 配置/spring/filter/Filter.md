@@ -6,10 +6,13 @@
 'javax.servlet.Filter' 适用于传统的 Servlet 项目，或者在非 Spring 环境下运行时也能有效处理租户信息。由于没有 Spring 提供的机制，通常不如 OncePerRequestFilter 灵活和方便。
 
 
+ 
 ```java
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import java.io.IOException;
+
+/// 不推荐使用
 
 @WebFilter("/*")
 public class TenantFilter implements Filter {
@@ -35,8 +38,6 @@ public class TenantFilter implements Filter {
 
 ```java
 
- //推荐使用
-
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -45,6 +46,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
+/// 推荐使用，需要手动注册
 public class TenantContextWebFilter extends OncePerRequestFilter {
 
     @Override
@@ -59,3 +61,6 @@ public class TenantContextWebFilter extends OncePerRequestFilter {
 ```
 
 
+### OncePerRequestFilter 和
+
+### 在WebFlux中应该使用WebFilter

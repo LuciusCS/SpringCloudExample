@@ -8,3 +8,10 @@
 ## Tomcat 中也开启长连接
 
 ## Spring MVC 开启长连接
+
+
+
+
+## HTTP2 多条并行tcp处理 ???
+
+单一tcp处理 Web页面 会造成 队首阻塞

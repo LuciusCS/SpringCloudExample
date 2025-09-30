@@ -27,6 +27,7 @@ import java.util.List;
 /**
  * @CacheConfig(cacheNames = "stationCache")   ///  类里默认缓存名，在这里使用 CacheConfig 就不需要在每一个注解里写value 进行命名了
  *  这种方法不推荐，会让所有类型的数据都缓存到命名空间 stationCache 中，会造成相互清理
+ *  参考资料 /配置/cache/redis/缓存处理.md
  */
 @Service
 //@CacheConfig(cacheNames = "stationCache")
@@ -113,6 +114,7 @@ public class StationServiceImpl implements StationService {
         return new PageImpl<>(content, pageable, total);
     }
 
+    //不加 cacheManager = "cacheManagerWithTTL"，Spring 默认会使用你在 CacheConfig 中定义的 主 CacheManager，
     @Cacheable(value =  "stationCacheById", key = "'station:' + #id")
     public StationDTO getById(Long id) {
         // 查询单条数据
@@ -120,7 +122,7 @@ public class StationServiceImpl implements StationService {
     }
 
     @CachePut(value =  "stationCacheById", key = "'station:' + #station.id")
-//    @CacheEvict(value = "stationCacheList", key = "'stations:' + '*'")  // 不可以使用这种方式，因为无效
+//    @CacheEvict(value = "stationCacheList", key = "'stations:' + '*'")  // 不可以使用这种方式，因为 * 不能进行任何字段的匹配
     @CacheEvict(value = "stationCacheList", allEntries = true)         ///  不会清除命名为 stationCacheById 的缓存
     @Transactional
     public StationDTO update(StationDTO station) {

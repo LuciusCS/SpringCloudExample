@@ -15,6 +15,8 @@ import java.io.IOException;
  *  如果你的 TenantContextWebFilter 的顺序不正确，可能会导致请求处理异常或无法正确初始化
  *  下面的Filter 因为顺序不对，导致启动不了，因此需要使用手动注册
  *
+ *  这个地方是从请求里获取信息
+ *
  */
 //@Component
 public class TenantContextWebFilter extends OncePerRequestFilter {

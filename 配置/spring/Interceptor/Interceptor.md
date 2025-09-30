@@ -146,6 +146,41 @@ public boolean preHandle(HttpServletRequest request, HttpServletResponse respons
 ### 统一异常处理
 通过拦截器统一捕获异常并进行处理，或者记录异常日志。
 
+### Interceptor 也可以添加多个
+
+```java
+@Configuration
+public class WebConfig implements WebMvcConfigurer {
+
+    @Autowired
+    private LogInterceptor logInterceptor;
+
+    @Autowired
+    private AuthInterceptor authInterceptor;
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        // 先注册 log，再注册 auth
+        registry.addInterceptor(logInterceptor).addPathPatterns("/**");
+        registry.addInterceptor(authInterceptor).addPathPatterns("/**");
+    }
+}
+
+```
+
+### 请求执行时
+
+```
+>>> [LogInterceptor] preHandle
+>>> [AuthInterceptor] preHandle
+--- Controller 执行 ---
+<<< [AuthInterceptor] postHandle
+<<< [LogInterceptor] postHandle
+<<< [AuthInterceptor] afterCompletion
+<<< [LogInterceptor] afterCompletion
+```
+
+
 ## 在 Spring WebFlux 开发过程中，不能使用传统的 Spring MVC HandlerInterceptor
 
 HandlerInterceptor 是 Spring MVC 特有的拦截器机制，它基于 Servlet 规范，适用于传统的 Servlet 容器。

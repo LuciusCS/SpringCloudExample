@@ -48,7 +48,7 @@ public class CacheConfig {
 
     // 组合缓存管理器：优先使用Caffeine，未命中则访问Redis
     @Primary
-    @Bean
+    @Bean(name = "cacheManagerWithTTL")  ///  cacheManagerWithTTL 在 com.example.order.service.impl.StationServiceImpl 中使用
     public CacheManager cacheManager(RedisCacheManager redisCacheManager, CacheManager caffeineCacheManager) {
         CompositeCacheManager compositeCacheManager = new CompositeCacheManager(caffeineCacheManager, redisCacheManager);
         compositeCacheManager.setFallbackToNoOpCache(false);
