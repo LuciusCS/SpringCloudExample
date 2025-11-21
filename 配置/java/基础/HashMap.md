@@ -18,10 +18,6 @@
 ## HashMap、ConcurrentHashMap初始化阈值为什么要是8，才转为红黑树？
 
 
-
-
-
-
 ## 手写HashMap
 
 要点：
@@ -33,8 +29,21 @@ hash冲突的时候，转换为链表
 
 ## HashMap在并发下会产生什么问题？有什么替代方案?(HashTable, ConcurrentHashMap)。它们两者的实现原理。
 
+### HashMap在并发下会死循环
 
+```java
+// JDK7的扩容代码确实会导致死循环
+// 但JDK8只是修复了死循环，并发问题依然存在！
 
+// 在JDK8+中，并发put会导致：
+// 1. 数据覆盖（值丢失）
+// 2. size计算不准
+// 3. 红黑树结构破坏
+
+Map<String, String> map = new HashMap<>();
+// 两个线程同时put，可能只有一个线程的值被保留
+
+```
 
 ## HashMap 为什么不用平衡树，而用红黑树
 

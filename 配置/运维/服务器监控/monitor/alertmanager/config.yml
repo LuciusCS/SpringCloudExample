@@ -1,0 +1,12 @@
+global:
+  resolve_timeout: 5m
+
+route:
+  receiver: "default"
+
+receivers:
+  - name: "default"
+    webhook_configs:
+      - url: "http://10.0.2.15:5001/dingtalk"  # 如果你后续用Flask转钉钉，就放这里
+      - url: "http://10.0.2.15:8081/alert/wechat"  # 如果你后续用Flask转钉钉，就放这里
+

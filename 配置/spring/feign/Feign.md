@@ -15,11 +15,10 @@
 
 ## 微服务之间使用Feign调用，采用Http长连接
 
-
 不需要显式禁用 Ribbon，因为在 Spring Cloud 2020 及以后的版本中，Spring Cloud LoadBalancer 已默认取代了 Ribbon。
 只需配置 OkHttpClient 来支持长连接，并将其与 Feign 配合使用。
 
-OpenFeign组件
+### OpenFeign组件
 
      组件	                                  用途	                                 是否自动创建                          谁调用谁
 feign.Client	               Feign 的底层 HTTP 请求执行器接口（真正发请求的）   	✅ 是                              Feign 框架调用它
@@ -30,37 +29,20 @@ LoadBalancerFeignClient	       一个装饰器，它包裹了底层 Feign client
 OkHttpClient（来自 okhttp3 包） 	真正执行 HTTP 请求的底层客户端（非 feign 的）	    ✅ 是（如果使用                    被 feign.okhttp.OkHttpClient 调用
                                                                                    feign.okhttp.OkHttpClient）
 
-结构图解：
-
+#### 结构图解：
 ```
-         @FeignClient
-             ↓
-      Feign 自动生成代理
-             ↓
-   通过 feign.Client 执行 HTTP 请求
-             ↓
+           @FeignClient
+               ↓
+        Feign 自动生成代理
+               ↓
+    通过 feign.Client 执行 HTTP 请求
+               ↓
 LoadBalancerFeignClient（装饰器，增强客户端支持服务发现）
-             ↓
+               ↓
    feign.okhttp.OkHttpClient（如果配置了 OkHttp）
-              ↓        
+               ↓        
    okhttp3.OkHttpClient（真正发起 HTTP 请求）
 ```
-
-无Sentinel的情况
-
-A[Feign接口调用] --> B(LoadBalancer选择实例)
-B --> C{生成具体URL<br>如http://192.168.1.1:8080/api}
-C --> D[OkHttp发送实际请求]
-D --> E[接收响应]
-
-有Sentinel的情况
-A[用户请求] --> B(LoadBalancer)
-B -->|选择实例| C[Service A]
-C -->|调用依赖| D{Sentinel监控}
-D -->|正常| E[Service B]
-D -->|熔断| F[降级逻辑]
-
-
 
 ## Spring Cloud LoadBalancer VS  NacosLoadBalancer
 
@@ -128,26 +110,11 @@ Spring Cloud 中配置了 Nacos 后，Feign 会自动使用 NacosLoadBalancer �
                 └──────────────────────┘
 
 
-## CircuitBreaker
-
-          你的业务逻辑
-              ↓
-      CircuitBreaker（保护层）
-              ↓   
-    OpenFeign 动态代理（@FeignClient）
-              ↓
-    LoadBalancerFeignClient（服务发现、负载均衡）
-              ↓
-    feign.okhttp.OkHttpClient（发起请求）
-              ↓
-    okhttp3.OkHttpClient（真正发起 HTTP 请求）
 
 ## FeignClient中的fallback 使用Sentinel
 ```
 
 ```
- 
-
 
 ## Sentinel 可以通过 spring-cloud-starter-alibaba-sentinel 自动接管 Feign；
 
@@ -158,49 +125,39 @@ Spring Cloud 中配置了 Nacos 后，Feign 会自动使用 NacosLoadBalancer �
 
 ```
 feign:
-sentinel:
-enabled: true
-```
-然后给 FeignClient 加上 fallback：
-```
-@FeignClient(name = "order-service", fallback = OrderFallback.class)
-public interface OrderClient {
-@GetMapping("/order/{id}")
-Order getOrder(@PathVariable Long id);
-}
-
-```
-🌟 这时候，Feign 会通过 Sentinel 实现熔断、降级。
-
-
-如果同时使用Resilience4j 和 Sentinel
-就会发生 Feign 的 FallbackFactory 被两边都拦截，谁先注册谁生效，另外一个完全不工作 —— 但你以为两个都在保护，其实只有一个在工作。而且：
-
-增加启动时间；
-引入多个 AOP 拦截，会产生副作用（如 fallback 不触发、熔断状态不一致等）；
-日志不清晰，不知道哪个组件在工作。
-
-
+  sentinel:
+     enabled: true
 ```
 
+## FeignClient 中的 fallback
+
+fallback 是 Feign 提供的一个机制，用于 在请求失败时返回预设的替代结果。它通常用于：
+熔断：当服务不可用时，可以通过 fallback 来提供“降级”逻辑，避免调用失败导致整个系统崩溃。
+降级：比如，当远程服务不可达时，fallback 可以返回本地缓存数据或预设的结果。
+‼️ 关联：fallback 只是提供了 降级处理，它并没有实现 熔断。熔断机制（如 CircuitBreaker）
+‼️ 是 更加智能的，它会判断什么时候开启熔断、何时恢复，而不仅仅是简单的返回“备用”数据。
+
+```java
 @FeignClient(name = "user-service", fallback = UserClientFallback.class)
 public interface UserClient {
     @GetMapping("/api/user/{id}")
     User getUser(@PathVariable("id") Long id);
 }
+
 @Component
 public class UserClientFallback implements UserClient {
     public User getUser(Long id) {
         return new User(id, "Fallback User");
     }
 }
-
+//UserClientFallback 会出现不执行的情况，
+//Feign 的 retry 配置问题。Feign 的超时异常通常会触发重试机制，而 fallback 方法只有在请求完全失败时才会被调用，即 Feign 没有重试时才会触发 fallback。
 ```
+🌟 这时候，Feign 会通过 Sentinel 实现熔断、降级。
 
-
-UserClientFallback 会出现不执行的情况，
-
-Feign 的 retry 配置问题。Feig你 的超时异常通常会触发重试机制，而 fallback 方法只有在请求完全失败时才会被调用，即 Feign 没有重试时才会触发 fallback。
+如果同时使用Resilience4j 和 Sentinel 就会发生 Feign 的 FallbackFactory 被两边都拦截，谁先注册谁生效，另外一个完全不工作 
+但你以为两个都在保护，其实只有一个在工作。而且： 增加启动时间； 引入多个 AOP 拦截，会产生副作用（如 fallback 不触发、熔断状态不一致等）；
+日志不清晰，不知道哪个组件在工作。
 
 ## 技术选型
 
@@ -210,58 +167,19 @@ Feign 的 retry 配置问题。Feig你 的超时异常通常会触发重试机�
     K8s + Istio 服务网格	                 可选：Envoy/LB 熔断	        Istio / Sidecar
 
 
-| 框架                        | 状态                  | 推荐使用          | 说明                     |
-| ------------------------- | ------------------- | ------------- | ---------------------- |
-| Ribbon                    | ❌ 停止维护              | ❌ 否           | 曾是 Spring Cloud 默认，已弃用 |
-| Spring Cloud LoadBalancer | ✅ 推荐                | ✅ Spring 官方推荐 | 替代 Ribbon 的官方方案        |
-| NacosLoadBalancer         | ✅ 推荐（在 Alibaba 生态中） | ✅             | 更适合与 Nacos 注册中心配合      |
-
-
 ## Feign 客户端查看
 
 https://xie.infoq.cn/article/d17c619ade78d8f5d02d48bb5
 
-## 限流控制 CircuitBreaker Sentinel Ribbon
-
-
-## 使用 Resilience4j 的 Feign 熔断功能，是通过CircuitBreaker实现的吗
-
-
-## FeignClient 中的 fallback
-
-fallback 是 Feign 提供的一个机制，用于 在请求失败时返回预设的替代结果。它通常用于：
-熔断：当服务不可用时，可以通过 fallback 来提供“降级”逻辑，避免调用失败导致整个系统崩溃。
-降级：比如，当远程服务不可达时，fallback 可以返回本地缓存数据或预设的结果。
-
-
-‼️ 关联：fallback 只是提供了 降级处理，它并没有实现 熔断。熔断机制（如 CircuitBreaker）
-‼️ 是 更加智能的，它会判断什么时候开启熔断、何时恢复，而不仅仅是简单的返回“备用”数据。
-
-```
-@FeignClient(name = "user-service", fallback = UserServiceFallback.class)
-public interface UserServiceClient {
-    @GetMapping("/users/{id}")
-    User getUser(@PathVariable("id") Long id);
-}
-
-@Component
-public class UserServiceFallback implements UserServiceClient {
-    @Override
-    public User getUser(Long id) {
-        // 返回默认用户数据
-        return new User(id, "Fallback User");
-    }
-}
-
-
-```
-
 
 ## Feign 配置  okhttp客户端后，会自动使用 http长连接，并使用连接失败重试
 
-
 ## Spring Cloud 中内部微服务调用默认是 http 请求，主要通过下面三种 API：
 
-RestTemplate：同步 http API
+RestTemplate：同步 http API  在Spring 7.0 中 RestTemplate 标记为弃用
 WebClient：异步响应式 http API
 三方客户端封装，例如 openfeign
+Spring 6.1 推出 RestClient
+
+
+

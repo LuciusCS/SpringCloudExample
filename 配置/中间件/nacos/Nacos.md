@@ -19,7 +19,6 @@
 ✅ NacosLoadBalancer 是它的实现，负责用 Nacos 的权重等信息来“选一个”。
 
 
-
 ## Spring Cloud LoadBalancer VS  NacosLoadBalancer
 
 Spring Cloud LoadBalancer 是 Spring Cloud 提供的一个 负载均衡器接口，它为不同的负载均衡策略提供了一个统一的抽象层；
@@ -50,3 +49,7 @@ spring:
       ribbon:
         enabled: false  # Ribbon 被废弃，使用 LoadBalancer
 ```
+
+## Nacos 可以将主机名，自动创建group，在开发环境中使用
+
+## 将Nacos的配置ip写入到环境变量中

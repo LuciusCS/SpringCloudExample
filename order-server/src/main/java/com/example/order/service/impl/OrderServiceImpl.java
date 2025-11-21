@@ -7,6 +7,7 @@ import com.example.order.tenant.TenantContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -19,6 +20,7 @@ public class OrderServiceImpl implements OrderService {
 
 
     @Override
+    @Transactional
     public void save(Order order) {
 
         orderRepository.save(order);

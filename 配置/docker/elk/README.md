@@ -8,6 +8,9 @@
 docker compose up -d
 ```
 
+## 将后端接入到elk
+
+
 ## 对于某些系统，只能将日志输出至log文件
 
 可以使用Filebeat 采集日志文件，并将其发送至logstash,

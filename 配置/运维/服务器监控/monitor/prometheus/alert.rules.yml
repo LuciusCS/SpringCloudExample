@@ -1,0 +1,53 @@
+groups:
+- name: system-alerts
+  rules:
+  # ===== CPU 高使用率 =====
+  - alert: HighCPUUsage
+    expr: 100 - (avg by (instance) (rate(node_cpu_seconds_total{mode="idle"}[2m])) * 100) > 2
+    for: 1m
+    labels:
+      severity: warning
+    annotations:
+      summary: "CPU使用率过高 ({{ $value }}%)"
+      description: "实例 {{ $labels.instance }} CPU使用率超过 85%。"
+
+  # ===== 内存使用率 =====
+  - alert: HighMemoryUsage
+    expr: (1 - node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes) * 100 > 3
+    for: 2m
+    labels:
+      severity: warning
+    annotations:
+      summary: "内存使用率过高 ({{ $value }}%)"
+      description: "实例 {{ $labels.instance }} 内存使用率超过 85%。"
+
+  # ===== 磁盘空间使用率 =====
+  - alert: HighDiskUsage
+    expr: (1 - node_filesystem_avail_bytes{mountpoint="/"} / node_filesystem_size_bytes{mountpoint="/"}) * 100 > 3
+    for: 5m
+    labels:
+      severity: critical
+    annotations:
+      summary: "磁盘空间使用率过高 ({{ $value }}%)"
+      description: "实例 {{ $labels.instance }} 根分区使用率超过 90%。"
+
+  # ===== 网络流量异常 =====
+  - alert: HighNetworkTraffic
+    expr: rate(node_network_receive_bytes_total[2m]) + rate(node_network_transmit_bytes_total[2m]) > 10485760
+    for: 2m
+    labels:
+      severity: warning
+    annotations:
+      summary: "网络流量异常 ({{ $value }} bytes/s)"
+      description: "实例 {{ $labels.instance }} 网络流量超过 10MB/s。"
+
+- name: test-alert
+  rules:
+  - alert: TestAlert
+    expr: vector(1)
+    for: 10s
+    labels:
+      severity: critical
+    annotations:
+      summary: "测试告警"
+      description: "这是 Prometheus 告警系统的测试信息。"
