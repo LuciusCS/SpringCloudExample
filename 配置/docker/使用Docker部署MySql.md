@@ -1,8 +1,41 @@
 
+# 使用 Docker 部署 MySQL
+
+## 1. 快速启动 (docker run)
+```bash
+docker run -d \
+  --name mysql \
+  -p 3306:3306 \
+  -e MYSQL_ROOT_PASSWORD=root \
+  mysql:8.0
+```
+
+## 2. 生产推荐 (docker-compose.yml)
+```yaml
+version: '3.8'
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mydb
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data:/var/lib/mysql
+      - ./conf/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./init:/docker-entrypoint-initdb.d
+    command: --default-authentication-plugin=mysql_native_password
+```
+
+## 3. 性能与网络问题 (案例分析)
+> 以下案例来自知乎，描述了 Docker Bridge 模式在高并发下的端口耗尽问题。
+> **解决方案**：使用 `network_mode: host` 或优化内核参数。
+
 作者：搞笑僵尸思考时间
 链接：https://www.zhihu.com/question/627105598/answer/77991926725
-来源：知乎
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
 配置了一个docker版的mysql，然后在上面开发支持高并发的后端，后端的功能类似于一个Mysql代理，
 客户端来一个负载就会让后端跟数据库创建一个连接。结果发现并发数超过10000左右就会提示连不上数据库。

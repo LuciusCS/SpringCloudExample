@@ -38,19 +38,20 @@ master node 就自动重启了，还是可能导致上面所有的 slave node �
 
 
 ## Redis 获取热点数据
+1.  **客户端收集**：在客户端进行统计（如 AtomicLong），上报到监控系统。
+2.  **代理层收集**：如果使用 Twemproxy 或 Codis，可以在代理层收集。
+3.  **Redis 自带命令**：
+    - `redis-cli --hotkeys` (需要 maxmemory-policy 为 LFU)
+    - `MONITOR` 命令（采样分析，生产慎用）
+    - `hotkeys` 参数 (Redis 4.0+)
 
+## Redis 监控
+推荐使用 **Prometheus + Grafana + Redis Exporter**。
+- **Redis Exporter**：采集 Redis 指标（内存、QPS、连接数等）。
+- **Grafana**：展示可视化大屏。
 
-Redis 的高可用架构，叫做 failover 故障转移，也可以叫做主备切换。
-
-
-
-● 如何选择缓存读写策略？
-● 缓存如何做到高可用？
-● 缓存穿透怎么办？缓存雪崩怎么办？
-
-
-
-## Redis 监控 New Relic、DataLog等
-
-
-## Redis 常用命令查看参数
+## Redis 常用命令
+- `INFO`：查看服务器状态、内存、客户端连接等。
+- `CLIENT LIST`：查看当前连接的客户端。
+- `SLOWLOG GET`：查看慢查询日志。
+- `CONFIG GET *`：查看配置参数。

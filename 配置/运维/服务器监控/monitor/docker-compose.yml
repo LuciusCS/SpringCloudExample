@@ -58,6 +58,19 @@ services:
     environment:
       - TZ=Asia/Shanghai
 
+  alert-webhook:
+    build: ../../告警/alert-webhooks
+    container_name: alert-webhook
+    restart: always
+    ports:
+      - "5001:5001"
+    networks:
+      - monitor-net
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+
 volumes:
   prometheus_data:
   alertmanager_data:

@@ -3,51 +3,151 @@ groups:
   rules:
   # ===== CPU 高使用率 =====
   - alert: HighCPUUsage
-    expr: 100 - (avg by (instance) (rate(node_cpu_seconds_total{mode="idle"}[2m])) * 100) > 60
-    for: 1m
+    expr: 100 - (avg by (instance) (rate(node_cpu_seconds_total{mode="idle"}[2m])) * 100) > 80
+    for: 3m
     labels:
       severity: warning
+      alert_type: system
     annotations:
-      summary: "CPU使用率过高 ({{ $value }}%)"
-      description: "实例 {{ $labels.instance }} CPU使用率超过 60%。"
+      summary: "CPU 使用率过高"
+      description: "实例 {{ $labels.instance }} CPU 使用率为 {{ $value | humanize }}%，已超过 80% 阈值持续 3 分钟。"
+      current_value: "{{ $value | humanize }}%"
+      threshold: "80%"
+      instance: "{{ $labels.instance }}"
+
+  - alert: CriticalCPUUsage
+    expr: 100 - (avg by (instance) (rate(node_cpu_seconds_total{mode="idle"}[2m])) * 100) > 90
+    for: 2m
+    labels:
+      severity: critical
+      alert_type: system
+    annotations:
+      summary: "CPU 使用率严重过高"
+      description: "实例 {{ $labels.instance }} CPU 使用率为 {{ $value | humanize }}%，已超过 90% 阈值持续 2 分钟，请立即处理！"
+      current_value: "{{ $value | humanize }}%"
+      threshold: "90%"
+      instance: "{{ $labels.instance }}"
 
   # ===== 内存使用率 =====
   - alert: HighMemoryUsage
-    expr: (1 - node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes) * 100 > 60
-    for: 2m
+    expr: (1 - node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes) * 100 > 80
+    for: 3m
     labels:
       severity: warning
+      alert_type: system
     annotations:
-      summary: "内存使用率过高 ({{ $value }}%)"
-      description: "实例 {{ $labels.instance }} 内存使用率超过 60%。"
+      summary: "内存使用率过高"
+      description: "实例 {{ $labels.instance }} 内存使用率为 {{ $value | humanize }}%，已超过 80% 阈值持续 3 分钟。"
+      current_value: "{{ $value | humanize }}%"
+      threshold: "80%"
+      instance: "{{ $labels.instance }}"
+
+  - alert: CriticalMemoryUsage
+    expr: (1 - node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes) * 100 > 90
+    for: 2m
+    labels:
+      severity: critical
+      alert_type: system
+    annotations:
+      summary: "内存使用率严重过高"
+      description: "实例 {{ $labels.instance }} 内存使用率为 {{ $value | humanize }}%，已超过 90% 阈值持续 2 分钟，请立即处理！"
+      current_value: "{{ $value | humanize }}%"
+      threshold: "90%"
+      instance: "{{ $labels.instance }}"
 
   # ===== 磁盘空间使用率 =====
   - alert: HighDiskUsage
-    expr: (1 - node_filesystem_avail_bytes{mountpoint="/"} / node_filesystem_size_bytes{mountpoint="/"}) * 100 > 60
+    expr: (1 - node_filesystem_avail_bytes{mountpoint="/",fstype!="rootfs"} / node_filesystem_size_bytes{mountpoint="/",fstype!="rootfs"}) * 100 > 80
     for: 5m
     labels:
-      severity: critical
+      severity: warning
+      alert_type: system
     annotations:
-      summary: "磁盘空间使用率过高 ({{ $value }}%)"
-      description: "实例 {{ $labels.instance }} 根分区使用率超过 60%。"
+      summary: "磁盘空间使用率过高"
+      description: "实例 {{ $labels.instance }} 根分区使用率为 {{ $value | humanize }}%，已超过 80% 阈值持续 5 分钟。"
+      current_value: "{{ $value | humanize }}%"
+      threshold: "80%"
+      instance: "{{ $labels.instance }}"
+      mountpoint: "/"
+
+  - alert: CriticalDiskUsage
+    expr: (1 - node_filesystem_avail_bytes{mountpoint="/",fstype!="rootfs"} / node_filesystem_size_bytes{mountpoint="/",fstype!="rootfs"}) * 100 > 90
+    for: 3m
+    labels:
+      severity: critical
+      alert_type: system
+    annotations:
+      summary: "磁盘空间严重不足"
+      description: "实例 {{ $labels.instance }} 根分区使用率为 {{ $value | humanize }}%，已超过 90% 阈值持续 3 分钟，请立即清理磁盘！"
+      current_value: "{{ $value | humanize }}%"
+      threshold: "90%"
+      instance: "{{ $labels.instance }}"
+      mountpoint: "/"
 
   # ===== 网络流量异常 =====
   - alert: HighNetworkTraffic
-    expr: rate(node_network_receive_bytes_total[2m]) + rate(node_network_transmit_bytes_total[2m]) > 10485760
-    for: 2m
+    expr: (rate(node_network_receive_bytes_total{device!="lo"}[5m]) + rate(node_network_transmit_bytes_total{device!="lo"}[5m])) / 1024 / 1024 > 100
+    for: 5m
     labels:
       severity: warning
+      alert_type: network
     annotations:
-      summary: "网络流量异常 ({{ $value }} bytes/s)"
-      description: "实例 {{ $labels.instance }} 网络流量超过 10MB/s。"
+      summary: "网络流量异常"
+      description: "实例 {{ $labels.instance }} 网络接口 {{ $labels.device }} 流量为 {{ $value | humanize }} MB/s，已超过 100 MB/s 阈值持续 5 分钟。"
+      current_value: "{{ $value | humanize }} MB/s"
+      threshold: "100 MB/s"
+      instance: "{{ $labels.instance }}"
+      device: "{{ $labels.device }}"
 
+  # ===== 系统负载 =====
+  - alert: HighSystemLoad
+    expr: node_load15 / count(node_cpu_seconds_total{mode="idle"}) without (cpu, mode) > 2
+    for: 5m
+    labels:
+      severity: warning
+      alert_type: system
+    annotations:
+      summary: "系统负载过高"
+      description: "实例 {{ $labels.instance }} 15分钟平均负载为 {{ $value | humanize }}，已超过 CPU 核心数的 2 倍持续 5 分钟。"
+      current_value: "{{ $value | humanize }}"
+      threshold: "CPU 核心数 × 2"
+      instance: "{{ $labels.instance }}"
+
+  # ===== 服务健康检查 =====
+  - alert: PrometheusDown
+    expr: up{job="prometheus"} == 0
+    for: 1m
+    labels:
+      severity: critical
+      alert_type: service
+    annotations:
+      summary: "Prometheus 服务异常"
+      description: "Prometheus 服务在实例 {{ $labels.instance }} 上已停止运行超过 1 分钟。"
+      instance: "{{ $labels.instance }}"
+      service: "Prometheus"
+
+  - alert: NodeExporterDown
+    expr: up{job="node_exporter"} == 0
+    for: 1m
+    labels:
+      severity: critical
+      alert_type: service
+    annotations:
+      summary: "Node Exporter 服务异常"
+      description: "Node Exporter 服务在实例 {{ $labels.instance }} 上已停止运行超过 1 分钟，无法采集系统指标。"
+      instance: "{{ $labels.instance }}"
+      service: "Node Exporter"
+
+# ===== 测试告警（仅用于测试，生产环境应删除或注释） =====
 - name: test-alert
   rules:
   - alert: TestAlert
     expr: vector(1)
-    for: 10s
+    for: 30s  # 增加到 30 秒，避免频繁触发
     labels:
-      severity: critical
+      severity: info
+      alert_type: test
     annotations:
       summary: "测试告警"
-      description: "这是 Prometheus 告警系统的测试信息。"
+      description: "这是 Prometheus 告警系统的测试信息，用于验证告警通道是否正常工作。"
+      instance: "test-instance"

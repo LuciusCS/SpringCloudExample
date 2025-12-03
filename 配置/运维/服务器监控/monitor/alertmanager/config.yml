@@ -3,13 +3,17 @@ global:
 
 route:
   receiver: "all"      # 所有告警统一进入
+  group_by: ['alertname', 'instance']
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 4h
 
 receivers:
   - name: "all"
     webhook_configs:
-      - url: "http://172.17.0.1:8081/alert/wechat"
+      - url: "http://alert-webhook:5001/alert/wechat"
         send_resolved: true
-      - url: "http://172.17.0.1:5001/dingtalk"
+      - url: "http://alert-webhook:5001/alert/dingtalk"
         send_resolved: true
-      - url: "http://172.17.0.1:8082/alert/sms"
+      - url: "http://alert-webhook:5001/alert/sms"
         send_resolved: true

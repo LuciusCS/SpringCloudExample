@@ -176,10 +176,10 @@ https://xie.infoq.cn/article/d17c619ade78d8f5d02d48bb5
 
 ## Spring Cloud 中内部微服务调用默认是 http 请求，主要通过下面三种 API：
 
-RestTemplate：同步 http API  在Spring 7.0 中 RestTemplate 标记为弃用
-WebClient：异步响应式 http API
-三方客户端封装，例如 openfeign
-Spring 6.1 推出 RestClient
+RestTemplate：同步 http API  在 Spring Framework 6.0 (Spring Boot 3.0) 中 RestTemplate 进入维护模式，不再增加新特性。
+WebClient：异步响应式 http API，推荐用于响应式场景。
+三方客户端封装，例如 OpenFeign。
+Spring 6.1 (Spring Boot 3.2) 推出 RestClient：一个现代化的同步 HTTP 客户端，提供流畅的 API，是 RestTemplate 的官方推荐替代品。
 
 
 

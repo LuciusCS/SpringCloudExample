@@ -26,8 +26,8 @@ RocketMQ（社区扩展）
 ##  三、RabbitMQ Stream 与 Spring Cloud Stream 的关系？
 ❌ 无直接关系！
 RabbitMQ Stream（事件流）是底层消息中间件的新功能，需要使用 RabbitMQ 的 Stream 客户端（非 AMQP）；
-Spring Cloud Stream（SCS）目前的 RabbitMQ binder 是基于 AMQP 协议的，不支持 RabbitMQ 的 Stream 协议。
-👉 也就是说： SCS 的 RabbitMQ binder 不支持 RabbitMQ Stream 模式。
+Spring Cloud Stream（SCS）标准的 RabbitMQ binder 是基于 AMQP 协议的。
+👉 **注意**：虽然 Spring Cloud Stream 官方也在跟进 RabbitMQ Stream 的支持，但目前主流用法仍是 AMQP。如果要使用 RabbitMQ Stream 的高性能特性，建议直接使用 RabbitMQ Stream Java Client 或关注最新的 Spring Cloud Stream RabbitMQ Binder 更新。
 
 特性  	RabbitMQ Stream 	               Spring Cloud Stream
 定义  	RabbitMQ 的新特性	               Spring 消息微服务框架
