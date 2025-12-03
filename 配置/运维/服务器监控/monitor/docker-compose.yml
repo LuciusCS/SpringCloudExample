@@ -10,12 +10,15 @@ services:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
       - ./prometheus/alert.rules.yml:/etc/prometheus/alert.rules.yml
       - prometheus_data:/prometheus
+      - /etc/localtime:/etc/localtime:ro
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
       - '--web.enable-lifecycle'
     networks:
       - monitor-net
+    environment:
+      - TZ=Asia/Shanghai
 
   alertmanager:
     image: prom/alertmanager:latest
@@ -26,10 +29,13 @@ services:
     volumes:
       - ./alertmanager/config.yml:/etc/alertmanager/config.yml
       - alertmanager_data:/alertmanager
+      - /etc/localtime:/etc/localtime:ro
     command:
       - '--config.file=/etc/alertmanager/config.yml'
     networks:
       - monitor-net
+    environment:
+      - TZ=Asia/Shanghai
 
   node_exporter:
     image: prom/node-exporter:latest
@@ -41,6 +47,7 @@ services:
       - "/proc:/host/proc:ro"
       - "/sys:/host/sys:ro"
       - "/:/rootfs:ro"
+      - /etc/localtime:/etc/localtime:ro
     command:
       - '--path.procfs=/host/proc'
       - '--path.sysfs=/host/sys'
@@ -48,6 +55,8 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
+    environment:
+      - TZ=Asia/Shanghai
 
 volumes:
   prometheus_data:

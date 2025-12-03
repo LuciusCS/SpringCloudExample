@@ -3,33 +3,33 @@ groups:
   rules:
   # ===== CPU 高使用率 =====
   - alert: HighCPUUsage
-    expr: 100 - (avg by (instance) (rate(node_cpu_seconds_total{mode="idle"}[2m])) * 100) > 2
+    expr: 100 - (avg by (instance) (rate(node_cpu_seconds_total{mode="idle"}[2m])) * 100) > 60
     for: 1m
     labels:
       severity: warning
     annotations:
       summary: "CPU使用率过高 ({{ $value }}%)"
-      description: "实例 {{ $labels.instance }} CPU使用率超过 85%。"
+      description: "实例 {{ $labels.instance }} CPU使用率超过 60%。"
 
   # ===== 内存使用率 =====
   - alert: HighMemoryUsage
-    expr: (1 - node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes) * 100 > 3
+    expr: (1 - node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes) * 100 > 60
     for: 2m
     labels:
       severity: warning
     annotations:
       summary: "内存使用率过高 ({{ $value }}%)"
-      description: "实例 {{ $labels.instance }} 内存使用率超过 85%。"
+      description: "实例 {{ $labels.instance }} 内存使用率超过 60%。"
 
   # ===== 磁盘空间使用率 =====
   - alert: HighDiskUsage
-    expr: (1 - node_filesystem_avail_bytes{mountpoint="/"} / node_filesystem_size_bytes{mountpoint="/"}) * 100 > 3
+    expr: (1 - node_filesystem_avail_bytes{mountpoint="/"} / node_filesystem_size_bytes{mountpoint="/"}) * 100 > 60
     for: 5m
     labels:
       severity: critical
     annotations:
       summary: "磁盘空间使用率过高 ({{ $value }}%)"
-      description: "实例 {{ $labels.instance }} 根分区使用率超过 90%。"
+      description: "实例 {{ $labels.instance }} 根分区使用率超过 60%。"
 
   # ===== 网络流量异常 =====
   - alert: HighNetworkTraffic

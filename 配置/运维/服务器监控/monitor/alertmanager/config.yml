@@ -2,11 +2,14 @@ global:
   resolve_timeout: 5m
 
 route:
-  receiver: "default"
+  receiver: "all"      # 所有告警统一进入
 
 receivers:
-  - name: "default"
+  - name: "all"
     webhook_configs:
-      - url: "http://10.0.2.15:5001/dingtalk"  # 如果你后续用Flask转钉钉，就放这里
-      - url: "http://10.0.2.15:8081/alert/wechat"  # 如果你后续用Flask转钉钉，就放这里
-
+      - url: "http://172.17.0.1:8081/alert/wechat"
+        send_resolved: true
+      - url: "http://172.17.0.1:5001/dingtalk"
+        send_resolved: true
+      - url: "http://172.17.0.1:8082/alert/sms"
+        send_resolved: true

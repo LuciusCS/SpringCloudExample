@@ -1,18 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from flask import Flask, request
 import requests, json, time, hmac, hashlib, base64, urllib.parse
 
-app = Flask(__name__)
 
 # 你的钉钉机器人配置
 access_token = ""
 secret = ""
 
-@app.route("/dingtalk", methods=["POST"])
-def dingtalk_alert():
-    data = request.get_json()
+
+def handle_alert(data):
+    #data = request.get_json()
     if not data:
         return "No data", 400
 
@@ -50,6 +48,4 @@ def dingtalk_alert():
            print(f"发送钉钉消息失败: {e}")
     return "ok"
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5001)
 

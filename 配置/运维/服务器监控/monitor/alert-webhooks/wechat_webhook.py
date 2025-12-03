@@ -1,8 +1,6 @@
-from flask import Flask, request, jsonify
-import requests
-import time
 
-app = Flask(__name__)
+import requests, json, time
+
 
 # ======= 微信服务号配置 =======
 APP_ID = ""
@@ -11,7 +9,7 @@ TEMPLATE_ID = ""
 
 # 模拟 openId 列表（你可从数据库读取）
 USER_LIST = [
-    "-LGNnh0Dny0g"
+    "otBDx6vw9xBm6rQO-"
 ]
 
 # 缓存 access_token
@@ -69,11 +67,10 @@ def send_wechat_template(open_id, alert):
     return resp
 
 
-# Alertmanager 告警入口
-@app.route("/alert/wechat", methods=["POST"])
-def alert_wechat():
-    payload = request.json
-    alerts = payload.get("alerts", [])
+
+def handle_alert(data):
+
+    alerts = data.get("alerts", [])
 
     for alert in alerts:
         labels = alert.get("labels", {})
@@ -94,6 +91,4 @@ def alert_wechat():
     return jsonify({"status": "ok"})
 
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8081)
 

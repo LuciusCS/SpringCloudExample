@@ -4,19 +4,19 @@
 # -----------------------
 # 1️⃣ CPU 压力测试
 # -----------------------
-echo "==> 开始 CPU 压力测试（持续 60 秒）"
+echo "==> 开始 CPU 压力测试（持续 180 秒）"
 CPU_CORES=$(nproc)
-stress --cpu "$CPU_CORES" --timeout 60 &
+stress --cpu "$CPU_CORES" --timeout 180 &
 CPU_PID=$!
 
 # -----------------------
 # 2️⃣ 内存压力测试
 # -----------------------
-echo "==> 开始内存压力测试（占用 70% 系统内存，持续 60 秒）"
+echo "==> 开始内存压力测试（占用 70% 系统内存，持续 180 秒）"
 TOTAL_MEM_KB=$(grep MemTotal /proc/meminfo | awk '{print $2}')
 # 70% 内存换算成字节数
-MEM_BYTES=$((TOTAL_MEM_KB * 1024 * 80 / 100))
-stress --vm 2 --vm-bytes "$MEM_BYTES" --timeout 60 &
+MEM_BYTES=$((TOTAL_MEM_KB * 1024 * 70 / 100))
+stress --vm 2 --vm-bytes "$MEM_BYTES" --timeout 180 &
 MEM_PID=$!
 
 # -----------------------

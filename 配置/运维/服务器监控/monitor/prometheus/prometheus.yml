@@ -18,4 +18,3 @@ scrape_configs:
   - job_name: "node_exporter"
     static_configs:
       - targets: ["10.0.2.15:9100"]  # 🚨改为宿主机IP（Prometheus 容器可访问的）
-
