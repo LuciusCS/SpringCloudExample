@@ -7,7 +7,8 @@ import time
 import logging
 from datetime import datetime
 from flask import jsonify
-
+from datetime import datetime, timedelta, timezone
+import dateutil.parser  # 需要安装：pip install python-dateutil
 # 配置日志
 logging.basicConfig(
     level=logging.INFO,
@@ -22,7 +23,7 @@ TEMPLATE_ID = ""
 
 # 接收告警的用户 openId 列表
 USER_LIST = [
-    ""
+    "-LGNnh0Dny0g"
 ]
 
 # 缓存 access_token
@@ -35,14 +36,23 @@ def format_time(iso_time_str):
     try:
         if not iso_time_str:
             return "未知时间"
-        # 处理 Z 结尾的 UTC 时间
-        time_str = iso_time_str.replace('Z', '+00:00')
-        dt = datetime.fromisoformat(time_str)
-        # 微信模板要求的格式
-        return dt.strftime('%Y年%m月%d日 %H:%M:%S')
+
+        # 使用 dateutil.parser 自动解析各种ISO格式
+        dt = dateutil.parser.isoparse(iso_time_str)
+
+        # 如果解析出的时间没有时区，假定为UTC
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+
+        # 转换到北京时间
+        beijing_tz = timezone(timedelta(hours=8))
+        dt_beijing = dt.astimezone(beijing_tz)
+
+        return dt_beijing.strftime("%Y-%m-%d %H:%M:%S")
+
     except Exception as e:
-        logger.warning(f"时间格式化失败: {e}, 原始时间: {iso_time_str}")
-        return "未知时间"
+        logger.warning(f"时间格式化失败: {iso_time_str}, 错误: {e}")
+        return iso_time_str
 
 
 def get_severity_text(severity):
@@ -97,11 +107,11 @@ def send_wechat_template(open_id, alert_data):
             "touser": open_id,
             "template_id": TEMPLATE_ID,
             "data": {
-                "time3": {"value": alert_data["time"]},
-                "thing16": {"value": alert_data["severity"][:20]},  # 限制长度
-                "thing2": {"value": alert_data["alertname"][:20]},
-                "thing46": {"value": alert_data["instance"][:20]},
-                "phrase20": {"value": alert_data["status"][:5]},
+                "time3": {"value": alert_data["time"]},              #告警时间
+                "const36": {"value": alert_data["severity"][:20]},  # 告警等级
+                "thing3": {"value": alert_data["alertname"][:20]},   # 告警项目
+                "thing4": {"value": alert_data["instance"][:20]},   #告警对象
+                "const26": {"value": alert_data["status"][:5]},    #当前状态
             }
         }
         
@@ -127,7 +137,7 @@ def format_alert_data(alert):
     
     # 提取信息
     alertname = labels.get("alertname", "未知告警")
-    severity = labels.get("severity", "warning")
+    severity = labels.get("severity", "告警")
     instance = annotations.get("instance") or labels.get("instance", "未知实例")
     description = annotations.get("description", "无描述")
     starts_at = alert.get("startsAt", "")

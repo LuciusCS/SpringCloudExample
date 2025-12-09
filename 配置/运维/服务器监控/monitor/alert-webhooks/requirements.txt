@@ -1,4 +1,10 @@
 flask
 requests
+gunicorn
+python-dateutil
 aliyun-python-sdk-core
 aliyun-python-sdk-dysmsapi
+alibabacloud_dingtalk
+alibabacloud_tea_openapi
+alibabacloud_tea_util
+python-dateutil>=2.8.2  # 添加这一行

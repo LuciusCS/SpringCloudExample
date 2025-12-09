@@ -2,82 +2,82 @@ groups:
 - name: system-alerts
   rules:
   # ===== CPU 高使用率 =====
-  - alert: HighCPUUsage
+  - alert: CPU使用率高
     expr: 100 - (avg by (instance) (rate(node_cpu_seconds_total{mode="idle"}[2m])) * 100) > 80
     for: 3m
     labels:
-      severity: warning
+      severity: 告警
       alert_type: system
     annotations:
-      summary: "CPU 使用率过高"
+      summary: "CPU使用率高"
       description: "实例 {{ $labels.instance }} CPU 使用率为 {{ $value | humanize }}%，已超过 80% 阈值持续 3 分钟。"
       current_value: "{{ $value | humanize }}%"
       threshold: "80%"
       instance: "{{ $labels.instance }}"
 
-  - alert: CriticalCPUUsage
+  - alert: CPU使用率高
     expr: 100 - (avg by (instance) (rate(node_cpu_seconds_total{mode="idle"}[2m])) * 100) > 90
     for: 2m
     labels:
-      severity: critical
+      severity: 严重
       alert_type: system
     annotations:
-      summary: "CPU 使用率严重过高"
+      summary: "CPU使用率高"
       description: "实例 {{ $labels.instance }} CPU 使用率为 {{ $value | humanize }}%，已超过 90% 阈值持续 2 分钟，请立即处理！"
       current_value: "{{ $value | humanize }}%"
       threshold: "90%"
       instance: "{{ $labels.instance }}"
 
   # ===== 内存使用率 =====
-  - alert: HighMemoryUsage
+  - alert: 内存使用率高
     expr: (1 - node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes) * 100 > 80
     for: 3m
     labels:
-      severity: warning
+      severity: 告警
       alert_type: system
     annotations:
-      summary: "内存使用率过高"
+      summary: "内存使用率高"
       description: "实例 {{ $labels.instance }} 内存使用率为 {{ $value | humanize }}%，已超过 80% 阈值持续 3 分钟。"
       current_value: "{{ $value | humanize }}%"
       threshold: "80%"
       instance: "{{ $labels.instance }}"
 
-  - alert: CriticalMemoryUsage
+  - alert: 内存使用率高
     expr: (1 - node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes) * 100 > 90
     for: 2m
     labels:
-      severity: critical
+      severity: 严重
       alert_type: system
     annotations:
-      summary: "内存使用率严重过高"
+      summary: "内存使用率高"
       description: "实例 {{ $labels.instance }} 内存使用率为 {{ $value | humanize }}%，已超过 90% 阈值持续 2 分钟，请立即处理！"
       current_value: "{{ $value | humanize }}%"
       threshold: "90%"
       instance: "{{ $labels.instance }}"
 
   # ===== 磁盘空间使用率 =====
-  - alert: HighDiskUsage
+  - alert: 磁盘使用率高
     expr: (1 - node_filesystem_avail_bytes{mountpoint="/",fstype!="rootfs"} / node_filesystem_size_bytes{mountpoint="/",fstype!="rootfs"}) * 100 > 80
     for: 5m
     labels:
-      severity: warning
+      severity: 告警
       alert_type: system
     annotations:
-      summary: "磁盘空间使用率过高"
+      summary: "磁盘空间不足"
       description: "实例 {{ $labels.instance }} 根分区使用率为 {{ $value | humanize }}%，已超过 80% 阈值持续 5 分钟。"
       current_value: "{{ $value | humanize }}%"
       threshold: "80%"
       instance: "{{ $labels.instance }}"
       mountpoint: "/"
 
-  - alert: CriticalDiskUsage
+  - alert: 磁盘使用率高
     expr: (1 - node_filesystem_avail_bytes{mountpoint="/",fstype!="rootfs"} / node_filesystem_size_bytes{mountpoint="/",fstype!="rootfs"}) * 100 > 90
     for: 3m
     labels:
-      severity: critical
+      severity: 严重
       alert_type: system
     annotations:
-      summary: "磁盘空间严重不足"
+      summary: "磁盘空间不足"
       description: "实例 {{ $labels.instance }} 根分区使用率为 {{ $value | humanize }}%，已超过 90% 阈值持续 3 分钟，请立即清理磁盘！"
       current_value: "{{ $value | humanize }}%"
       threshold: "90%"
@@ -85,11 +85,11 @@ groups:
       mountpoint: "/"
 
   # ===== 网络流量异常 =====
-  - alert: HighNetworkTraffic
+  - alert: 网络告警
     expr: (rate(node_network_receive_bytes_total{device!="lo"}[5m]) + rate(node_network_transmit_bytes_total{device!="lo"}[5m])) / 1024 / 1024 > 100
     for: 5m
     labels:
-      severity: warning
+      severity: 告警
       alert_type: network
     annotations:
       summary: "网络流量异常"
@@ -100,14 +100,14 @@ groups:
       device: "{{ $labels.device }}"
 
   # ===== 系统负载 =====
-  - alert: HighSystemLoad
+  - alert: 系统负载高
     expr: node_load15 / count(node_cpu_seconds_total{mode="idle"}) without (cpu, mode) > 2
     for: 5m
     labels:
-      severity: warning
+      severity: 严重
       alert_type: system
     annotations:
-      summary: "系统负载过高"
+      summary: "系统负载高"
       description: "实例 {{ $labels.instance }} 15分钟平均负载为 {{ $value | humanize }}，已超过 CPU 核心数的 2 倍持续 5 分钟。"
       current_value: "{{ $value | humanize }}"
       threshold: "CPU 核心数 × 2"
@@ -118,7 +118,7 @@ groups:
     expr: up{job="prometheus"} == 0
     for: 1m
     labels:
-      severity: critical
+      severity: 严重
       alert_type: service
     annotations:
       summary: "Prometheus 服务异常"
@@ -130,7 +130,7 @@ groups:
     expr: up{job="node_exporter"} == 0
     for: 1m
     labels:
-      severity: critical
+      severity: 严重
       alert_type: service
     annotations:
       summary: "Node Exporter 服务异常"

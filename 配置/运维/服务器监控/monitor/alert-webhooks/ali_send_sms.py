@@ -9,6 +9,8 @@ from flask import jsonify
 
 from aliyunsdkdysmsapi.request.v20170525 import SendSmsRequest
 from aliyunsdkcore.client import AcsClient
+from datetime import datetime, timedelta, timezone
+import dateutil.parser  # 需要安装：pip install python-dateutil
 
 # 配置日志
 logging.basicConfig(
@@ -21,7 +23,7 @@ logger = logging.getLogger(__name__)
 ACCESS_KEY_ID = ""
 ACCESS_KEY_SECRET = ""
 SIGN_NAME = ""
-TEMPLATE_CODE = ""  # 复电短信
+TEMPLATE_CODE = ""
 
 # 目标手机号（可以是多个手机号，逗号分隔）
 PHONE_NUMBERS = ""
@@ -42,14 +44,23 @@ def format_time(iso_time_str):
     try:
         if not iso_time_str:
             return "未知时间"
-        # 处理 Z 结尾的 UTC 时间
-        time_str = iso_time_str.replace('Z', '+00:00')
-        dt = datetime.fromisoformat(time_str)
-        return dt.strftime('%Y-%m-%d %H:%M:%S')
-    except Exception as e:
-        logger.warning(f"时间格式化失败: {e}, 原始时间: {iso_time_str}")
-        return iso_time_str
 
+        # 使用 dateutil.parser 自动解析各种ISO格式
+        dt = dateutil.parser.isoparse(iso_time_str)
+
+        # 如果解析出的时间没有时区，假定为UTC
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+
+        # 转换到北京时间
+        beijing_tz = timezone(timedelta(hours=8))
+        dt_beijing = dt.astimezone(beijing_tz)
+
+        return dt_beijing.strftime("%Y-%m-%d %H:%M:%S")
+
+    except Exception as e:
+        logger.warning(f"时间格式化失败: {iso_time_str}, 错误: {e}")
+        return iso_time_str
 
 def get_alert_fingerprint(alert):
     """生成告警指纹用于去重"""
@@ -121,7 +132,7 @@ def format_alert_message(alert):
     # 提取信息
     alertname = labels.get("alertname", "未知告警")
     instance = annotations.get("instance") or labels.get("instance", "未知实例")
-    severity = labels.get("severity", "warning")
+    severity = labels.get("severity", "告警")
     description = annotations.get("description", "无描述")
     starts_at = alert.get("startsAt", "")
     
@@ -131,15 +142,18 @@ def format_alert_message(alert):
     # 根据状态调整事件描述
     if status == "resolved":
         event = f"【已恢复】{description}"
+        status="已恢复"
     else:
         event = description
-    
+        status="告警中"
+
     # 返回短信模板参数
     return {
-        "name": alertname[:20],  # 限制长度，避免超出短信模板限制
-        "address": instance[:30],
-        "date": formatted_time,
-        "event": event[:50],  # 限制长度
+        "name": instance[:30],    # 对应模板 ${name} - 服务器实例
+        "time": formatted_time,   # 对应模板 ${time} - 告警时间
+        "type": alertname[:20],   # 对应模板 ${type} - 告警类型
+        "level": severity,        # 对应模板 ${level} - 告警级别
+        "status": status,        # 对应模板 ${status} - 告警状态
     }
 
 

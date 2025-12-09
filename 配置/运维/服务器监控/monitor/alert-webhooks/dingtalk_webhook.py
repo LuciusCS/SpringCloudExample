@@ -10,6 +10,8 @@ import base64
 import urllib.parse
 import logging
 from datetime import datetime
+from datetime import datetime, timedelta, timezone
+import dateutil.parser  # 需要安装：pip install python-dateutil
 
 # 配置日志
 logging.basicConfig(
@@ -41,14 +43,23 @@ def format_time(iso_time_str):
     try:
         if not iso_time_str:
             return "未知时间"
-        # 处理 Z 结尾的 UTC 时间
-        time_str = iso_time_str.replace('Z', '+00:00')
-        dt = datetime.fromisoformat(time_str)
-        return dt.strftime('%Y-%m-%d %H:%M:%S')
-    except Exception as e:
-        logger.warning(f"时间格式化失败: {e}, 原始时间: {iso_time_str}")
-        return iso_time_str
 
+        # 使用 dateutil.parser 自动解析各种ISO格式
+        dt = dateutil.parser.isoparse(iso_time_str)
+
+        # 如果解析出的时间没有时区，假定为UTC
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+
+        # 转换到北京时间
+        beijing_tz = timezone(timedelta(hours=8))
+        dt_beijing = dt.astimezone(beijing_tz)
+
+        return dt_beijing.strftime("%Y-%m-%d %H:%M:%S")
+
+    except Exception as e:
+        logger.warning(f"时间格式化失败: {iso_time_str}, 错误: {e}")
+        return iso_time_str
 
 def get_severity_emoji(severity):
     """根据严重程度返回对应的 emoji"""
