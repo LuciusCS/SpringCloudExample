@@ -73,14 +73,14 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 192.168.22.180:8848
+        server-addr: @nacos.server-addr@
         group: spring-cloud-example-dev
         namespace: cb500d3d-c86c-4230-8f7f-f5434caf711a
 #        username: nacos
 #        password: nacos
       #        enable: true
       config:
-        server-addr: 192.168.22.180:8848
+        server-addr: @nacos.server-addr@
         group: spring-cloud-example-dev
         namespace: cb500d3d-c86c-4230-8f7f-f5434caf711a
 #        username: nacos

@@ -25,14 +25,14 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 192.168.22.180:8848
+        server-addr: @nacos.server-addr@
         group: spring-cloud-example-dev
         namespace: cb500d3d-c86c-4230-8f7f-f5434caf711a
 #        username: nacos
 #        password: nacos
         enable: true
       config:
-        server-addr: 192.168.22.180:8848
+        server-addr: @nacos.server-addr@
         group: spring-cloud-example-dev   # 需要在nacos 的namespace中创建，名字为QD的Service
         namespace: cb500d3d-c86c-4230-8f7f-f5434caf711a # 将QD的namespace中id填入
 #        username: nacos
@@ -55,7 +55,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        #        server-addr: 192.168.22.180:8848
+        #        server-addr: @nacos.server-addr@
         server-addr: 127.0.0.1:8848
         group: QD
         #        namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136
@@ -64,7 +64,7 @@ spring:
         password: nacos
         enable: true
       config:
-        #        server-addr: 192.168.22.180:8848
+        #        server-addr: @nacos.server-addr@
         server-addr: 127.0.0.1:8848
         group: QD   # 需要在nacos 的namespace中创建，名字为QD的Service
         #        namespace: bc73081d-7fca-422d-ba18-cfe2e62a2136 # 将QD的namespace中id填入
