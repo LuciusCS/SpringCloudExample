@@ -1,6 +1,5 @@
 package com.example.auth.bean;
 
-
 import com.example.auth.entities.AuditableEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -17,7 +16,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * @DynamicUpdate 注解时，Spring JPA 会根据实体的实际修改字段生成更新 SQL。也就是说，只有你修改了的字段会被更新，而未修改的字段会保持原值。
+ * @DynamicUpdate 注解时，Spring JPA 会根据实体的实际修改字段生成更新
+ *                SQL。也就是说，只有你修改了的字段会被更新，而未修改的字段会保持原值。
  */
 @Entity
 @Table(name = "user")
@@ -25,7 +25,8 @@ import java.util.stream.Collectors;
 @DynamicUpdate
 public class User extends AuditableEntity<User> implements UserDetails {
 
-    public User() {}
+    public User() {
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -58,15 +59,25 @@ public class User extends AuditableEntity<User> implements UserDetails {
     @Column(name = "version")
     private Integer version;
 
+    @Column(name = "wechat_openid", unique = true, length = 64)
+    @Schema(description = "微信OpenID")
+    private String wechatOpenid;
 
+    @Column(name = "wechat_unionid", length = 64)
+    @Schema(description = "微信UnionID")
+    private String wechatUnionid;
+
+    @Column(name = "nickname", length = 100)
+    @Schema(description = "昵称")
+    private String nickname;
+
+    @Column(name = "avatar_url", length = 500)
+    @Schema(description = "头像URL")
+    private String avatarUrl;
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "user_role",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id")
-    )
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
     @Override
@@ -78,8 +89,19 @@ public class User extends AuditableEntity<User> implements UserDetails {
     }
 
     // UserDetails 接口的其他方法
-    @Override public boolean isAccountNonExpired() { return true; }
-    @Override public boolean isAccountNonLocked() { return true; }
-    @Override public boolean isCredentialsNonExpired() { return true; }
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
 
 }

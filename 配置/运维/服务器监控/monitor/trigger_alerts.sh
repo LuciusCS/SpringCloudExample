@@ -45,7 +45,7 @@ try:
     print("   内存分配完成，保持中...")
 except Exception as e:
     print(f"   内存分配失败: {e}")
-time.sleep(720)
+time.sleep(360)
 EOF
 ) &
 MEM_STRESS_PID=$!

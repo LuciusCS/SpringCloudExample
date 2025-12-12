@@ -1,3 +1,12 @@
+wechat:
+  pay:
+    appid: ""                  # 小程序 AppID
+    mchid: ""                  # 商户号
+    api-v3-key: ""            # API v3 密钥
+    private-key-path: ""      # 你的商户私钥文件路径，例如 classpath:apiclient_key.pem
+    certificate-serial-number: "" # 证书序列号
+    notify-url: "https://your.domain.com/notify" # 支付回调地址
+
 server:
   port: 8005
 
