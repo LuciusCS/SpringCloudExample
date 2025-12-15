@@ -87,11 +87,6 @@
 		<!--        </dependency>-->
 		<!--            最新的，-->
 		<!--        Spring Security OAuth 2 中不需要client-->
-		        <dependency>
-		            <groupId>org.springframework.boot</groupId>
-		            <!--            最新的，-->
-		            <artifactId>spring-boot-starter-oauth2-client</artifactId>
-		        </dependency>
 		<dependency>
 			<groupId>com.alibaba.cloud</groupId>
 			<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
