@@ -1,0 +1,42 @@
+server:
+  port: 8006
+
+spring:
+  application:
+    name: demo-server  # 服务名称
+  # 服务名称+开发环境+文件后缀名 = nacos配置的Data Id     gateway-dev.yaml
+  profiles:
+    active: mac   #开发环境
+  main:
+    web-application-type: servlet
+    allow-bean-definition-overriding: true
+  config:
+    import:
+      - optional:nacos:datasource.yml
+      - optional:nacos:minio.yml
+logging:
+  level:
+    com.alibaba.csp.sentinel: DEBUG  # Sentinel 的日志级别
+    org.springframework.cloud: DEBUG  # Spring Cloud 相关的日志
+    com.example: DEBUG  # 你自己应用的日志级别
+---
+spring:
+  config:
+    activate:
+      on-profile: mac
+  cloud:
+    nacos:
+      discovery:
+        server-addr: @nacos.server-addr@
+        group: spring-cloud-example-dev  # 需要在nacos 的namespace中创建，名字为spring-cloud-example-dev的Service
+        namespace: cb500d3d-c86c-4230-8f7f-f5434caf711a   # 将spring-cloud-example-dev的namespace中id填入
+        username: nacos
+        password: nacos
+      config:
+        server-addr: @nacos.server-addr@
+        group: spring-cloud-example-dev  # 需要在nacos 的namespace中创建，名字为spring-cloud-example-dev的Service
+        namespace: cb500d3d-c86c-4230-8f7f-f5434caf711a   # 将spring-cloud-example-dev的namespace中id填入
+        username: nacos
+        password: nacos
+        import-check:
+          enabled: false

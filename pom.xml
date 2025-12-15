@@ -16,6 +16,7 @@
         <module>gateway-server</module>
         <module>common</module>
         <module>order-server</module>
+        <module>demo</module>
         <module>authorization-server</module>
         <module>authorization-client</module>
         <module>seckill-server</module>
@@ -267,6 +268,14 @@
     </dependencyManagement>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
