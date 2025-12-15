@@ -15,8 +15,11 @@ public class ArtistWorkVersionPO {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "preview_url", length = 512)
     private String previewUrl;
+    @Column(name = "original_url", length = 512)
     private String originalUrl;
+    @Column(name = "silhouette_url", length = 512)
     private String silhouetteUrl;
 
     @ManyToOne(fetch = FetchType.LAZY)

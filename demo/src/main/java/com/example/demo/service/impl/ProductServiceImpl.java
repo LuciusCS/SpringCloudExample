@@ -2,6 +2,7 @@ package com.example.demo.service.impl;
 
 import com.example.demo.bean.dto.*;
 import com.example.demo.bean.form.*;
+import com.example.demo.bean.mapper.ProductMapper;
 import com.example.demo.bean.po.ArtistWorkPO;
 import com.example.demo.bean.po.ArtistWorkVersionPO;
 import com.example.demo.bean.po.ProductPO;
@@ -16,6 +17,8 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 @Service
@@ -153,52 +156,15 @@ public class ProductServiceImpl implements ProductService {
     private ProductPO buildProductPO(ProductSaveForm form) {
 
         // 1. 商品
-        ProductPO product = new ProductPO();
-        product.setArtistId(form.getArtistId());
-        product.setCoverUrl(form.getCoverUrl());
-        product.setTitle(form.getTitle());
-        product.setTags(form.getTags());
-        product.setThemeColor(form.getThemeColor());
+        ProductPO product = ProductMapper.INSTANCE.productSaveFormToProductPO(form);
+        // 手动为每个 ArtistWorkPO 设置 product 属性
+        for (ArtistWorkPO work : product.getWorks()) {
+            work.setProduct(product);// 设置每个 work 的 product 为 productPO
 
-        // 2. 作品列表
-        if (form.getWorks() != null) {
-            List<ArtistWorkPO> works = form.getWorks().stream().map(workForm -> {
-
-                ArtistWorkPO work = new ArtistWorkPO();
-                work.setName(workForm.getName());
-                work.setWorkType(workForm.getWorkType());
-                work.setTags(workForm.getTags());
-                work.setTransparency(workForm.getTransparency());
-                work.setSaleType(workForm.getSaleType());
-
-                // ⭐ 关键：建立双向关系
-                work.setProduct(product);
-
-                // 3. 作品版本
-                if (workForm.getVersions() != null) {
-                    List<ArtistWorkVersionPO> versions =
-                            workForm.getVersions().stream().map(versionForm -> {
-
-                                ArtistWorkVersionPO version = new ArtistWorkVersionPO();
-                                version.setPreviewUrl(versionForm.getPreviewUrl());
-                                version.setOriginalUrl(versionForm.getOriginalUrl());
-                                version.setSilhouetteUrl(versionForm.getSilhouetteUrl());
-
-                                // ⭐ 关键：建立双向关系
-                                version.setArtistWork(work);
-                                return version;
-
-                            }).toList();
-
-                    work.setVersions(versions);
-                }
-
-                return work;
-
-            }).toList();
-
-            product.setWorks(works);
-        }
+            for(ArtistWorkVersionPO artistWorkVersionPO: work.getVersions()){
+                artistWorkVersionPO.setArtistWork(work);
+            }
+        };
 
         return product;
     }

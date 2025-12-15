@@ -51,7 +51,8 @@ public class SecurityConfig {
                                 "/oauth2/**", //  建议放开整个 /oauth2/** 路径
                                 "/authorization-server/**", // 显式允许该路径
                                 "/addRegisteredClient",
-                                "/druid/**"
+                                "/druid/**",
+                                "/auth/wechat/**"
                         ).permitAll()
                         // 其他所有请求需要认证
                         .anyExchange().authenticated()

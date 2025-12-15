@@ -16,6 +16,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+
 # ======= 微信服务号配置 =======
 APP_ID = ""
 APP_SECRET = ""
@@ -23,7 +24,7 @@ TEMPLATE_ID = ""
 
 # 接收告警的用户 openId 列表
 USER_LIST = [
-    "-LGNnh0Dny0g"
+    ""
 ]
 
 # 缓存 access_token
@@ -59,7 +60,7 @@ def get_severity_text(severity):
     """将严重程度转换为中文"""
     severity_map = {
         "critical": "严重",
-        "warning": "警告",
+        "warning": "一般",
         "info": "提示",
     }
     return severity_map.get(severity.lower(), severity)
@@ -107,13 +108,17 @@ def send_wechat_template(open_id, alert_data):
             "touser": open_id,
             "template_id": TEMPLATE_ID,
             "data": {
-                "time3": {"value": alert_data["time"]},              #告警时间
+
+                "time1": {"value": alert_data["time"]},              #告警时间
                 "const36": {"value": alert_data["severity"][:20]},  # 告警等级
                 "thing3": {"value": alert_data["alertname"][:20]},   # 告警项目
                 "thing4": {"value": alert_data["instance"][:20]},   #告警对象
                 "const26": {"value": alert_data["status"][:5]},    #当前状态
             }
         }
+
+        logger.info(f"微信消息内容: {data}")
+
         
         resp = requests.post(url, json=data, timeout=10).json()
         
@@ -139,6 +144,7 @@ def format_alert_data(alert):
     alertname = labels.get("alertname", "未知告警")
     severity = labels.get("severity", "告警")
     instance = annotations.get("instance") or labels.get("instance", "未知实例")
+    instance = instance.split(":")[0]
     description = annotations.get("description", "无描述")
     starts_at = alert.get("startsAt", "")
     

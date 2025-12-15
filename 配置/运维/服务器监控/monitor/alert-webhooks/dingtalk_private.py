@@ -27,13 +27,13 @@ logger = logging.getLogger(__name__)
 # ======= 钉钉机器人配置 =======
 # 需要在钉钉开发者后台获取
 APP_KEY = ""      # 对应 Client ID
-APP_SECRET = "-1"  # 对应 Client Secret
+APP_SECRET = ""  # 对应 Client Secret
 ROBOT_CODE = ""  # 对应机器人的 RobotCode
 
 # 接收告警的用户 UserID 列表
 # UserID 可以通过手机号查询获得 (注意：机器人API通常需要用户先与机器人发过消息才能发私聊)
 USER_IDS = [
-    ""
+    "zhaohc@eastsoft.com.cn"
     # "user123",  # 取消注释并填写 UserID
 ]
 
@@ -129,6 +129,7 @@ def send_robot_private_message(userid, alert_data):
     severity = alert_data["severity"]
     alert_type = alert_data["alert_type"]
     instance = alert_data["instance"]
+    instance = instance.split(":")[0]
     current_value = alert_data["current_value"]
     threshold = alert_data["threshold"]
     start_time = alert_data["start_time"]
@@ -147,7 +148,7 @@ def send_robot_private_message(userid, alert_data):
 **详情**: {description}
 """
     # 如果已恢复，添加恢复时间
-    if alert_data.get("end_time"):
+    if alert_data.get("status")=="resolved":
         content += f"\n**恢复时间**: {alert_data['end_time']}"
 
     # 转义内容以适配 JSON 字符串
@@ -224,6 +225,7 @@ def format_alert_data(alert):
         "end_time": end_time,
         "status_icon": status_icon,
         "status_text": status_text,
+        "status":status,
     }
 
 

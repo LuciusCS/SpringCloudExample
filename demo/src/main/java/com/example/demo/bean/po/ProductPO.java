@@ -22,6 +22,10 @@ public class ProductPO {
     private String title;
     private String tags;
     private String themeColor;
+
+    /**
+     * 用于表示扭蛋或者直购
+     */
     private  Integer type;
 
     ///用于表示下架
@@ -53,6 +57,9 @@ public class ProductPO {
 
     // 上架时间
     private LocalDateTime publishTime;
+
+    //用于表示是否为草稿
+    private  Boolean draft;
 
 
     @OneToMany(

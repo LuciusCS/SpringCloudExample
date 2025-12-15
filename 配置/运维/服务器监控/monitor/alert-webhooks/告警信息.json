@@ -1,0 +1,47 @@
+{
+  "receiver": "all",
+  "status": "firing",
+  "alerts": [
+    {
+      "status": "firing",
+      "labels": {
+        "alert_type": "system",
+        "alertname": "CPU使用率高",
+        "instance": "192.168.80.64:9100",
+        "severity": "严重"
+      },
+      "annotations": {
+        "current_value": "98.18%",
+        "description": "实例 192.168.80.64:9100 CPU 使用率为 98.18%，已超过 90% 阈值持续 2 分钟，请立即处理！",
+        "instance": "192.168.80.64:9100",
+        "summary": "CPU使用率高",
+        "threshold": "90%"
+      },
+      "startsAt": "2025-12-18T01:40:17.053Z",
+      "endsAt": "0001-01-01T00:00:00Z",
+      "generatorURL": "http://grafana:9090/graph?g0.expr=100+-+%28avg+by+%28instance%29+%28rate%28node_cpu_seconds_total%7Bmode%3D%22idle%22%7D%5B2m%5D%29%29+%2A+100%29+%3E+90&g0.tab=1",
+      "fingerprint": "16ee2c56ce920a70"
+    }
+  ],
+  "groupLabels": {
+    "alertname": "CPU使用率高",
+    "instance": "192.168.80.64:9100"
+  },
+  "commonLabels": {
+    "alert_type": "system",
+    "alertname": "CPU使用率高",
+    "instance": "192.168.80.64:9100",
+    "severity": "严重"
+  },
+  "commonAnnotations": {
+    "current_value": "98.18%",
+    "description": "实例 192.168.80.64:9100 CPU 使用率为 98.18%，已超过 90% 阈值持续 2 分钟，请立即处理！",
+    "instance": "192.168.80.64:9100",
+    "summary": "CPU使用率高",
+    "threshold": "90%"
+  },
+  "externalURL": "http://5cac0534b968:9093",
+  "version": "4",
+  "groupKey": "{}:{alertname=\"CPU使用率高\", instance=\"192.168.80.64:9100\"}",
+  "truncatedAlerts": 0
+}

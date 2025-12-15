@@ -52,7 +52,7 @@ public class JwtTokenService {
         JwsHeader header = JwsHeader.with(SignatureAlgorithm.RS256).build();
 
         String token = jwtEncoder.encode(JwtEncoderParameters.from(header, claims)).getTokenValue();
-        log.info("为用户生成JWT Token, userId: {}, username: {}", user.getId(), user.getUsername());
+        log.info("为用户生成JWT Token{}, userId: {}, username: {}",token, user.getId(), user.getUsername());
 
         return token;
     }

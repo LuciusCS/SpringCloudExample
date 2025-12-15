@@ -132,6 +132,7 @@ def format_alert_message(alert):
     # 提取信息
     alertname = labels.get("alertname", "未知告警")
     instance = annotations.get("instance") or labels.get("instance", "未知实例")
+    instance = instance.split(":")[0]
     severity = labels.get("severity", "告警")
     description = annotations.get("description", "无描述")
     starts_at = alert.get("startsAt", "")
@@ -181,6 +182,8 @@ def handle_alert(data):
             
             # 格式化告警数据
             alert_data = format_alert_message(alert)
+            logger.info(f"短信消息内容: {alert_data}")
+
             
             # 发送短信
             if send_sms(PHONE_NUMBERS, alert_data):

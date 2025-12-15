@@ -1,11 +1,13 @@
 package com.example.demo.repository;
 
 import com.example.demo.bean.dto.PurchasedContentFlatDTO;
+import com.example.demo.bean.po.OrderPO;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface PurchasedContentRepository {
+public interface PurchasedContentRepository  extends JpaRepository<OrderPO, Long> {
 
     @Query("""
         select new com.example.demo.bean.dto.PurchasedContentFlatDTO(

@@ -1,10 +1,12 @@
 package com.example.demo.repository;
 import com.example.demo.bean.dto.OrderFlatDTO;
+import com.example.demo.bean.po.OrderPO;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 
 import java.util.List;
-public interface  OrderQueryRepository  extends Repository<Object, Long> {
+public interface  OrderQueryRepository  extends JpaRepository<OrderPO, Long> {
 
     @Query("""
         select new com.example.demo.bean.dto.OrderFlatDTO(

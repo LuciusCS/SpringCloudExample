@@ -14,11 +14,25 @@ spring:
     import:
       - optional:nacos:datasource.yml
       - optional:nacos:minio.yml
+      - optional:nacos:springdoc.yml
+
+  # Hibernate DDL Configuration
+  jpa:
+    hibernate:
+      ddl-auto: update  # Automatically updates the schema based on entity definitions
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect  # Use the correct dialect for your database
+    database-platform: org.hibernate.dialect.MySQL8Dialect  # Optional, specify the database platform if needed
+    show-sql: true  # Show SQL queries in the console for debugging
 logging:
   level:
     com.alibaba.csp.sentinel: DEBUG  # Sentinel 的日志级别
     org.springframework.cloud: DEBUG  # Spring Cloud 相关的日志
     com.example: DEBUG  # 你自己应用的日志级别
+
+
+
 ---
 spring:
   config:
