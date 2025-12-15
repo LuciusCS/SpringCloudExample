@@ -23,7 +23,6 @@ public class FileUploadController {
 
     @GetMapping("/test-connection")
     public ResponseEntity<String> testConnection() {
-
         try {
             boolean isConnected = minioService.testConnection();
             if (isConnected) {

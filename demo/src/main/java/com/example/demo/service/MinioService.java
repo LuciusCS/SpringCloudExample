@@ -43,7 +43,7 @@ public class MinioService {
         // Ensure bucket exists
         if (!minioClient.bucketExists(BucketExistsArgs.builder().bucket(bucketName).build())) {
             minioClient.makeBucket(MakeBucketArgs.builder().bucket(bucketName).build());
-            log.error("Bucket '{}' created.", bucketName);
+            log.info("Bucket '{}' created.", bucketName);
         }
 
         // Upload
@@ -56,8 +56,6 @@ public class MinioService {
                             .contentType(file.getContentType())
                             .build()
             );
-        }catch (Exception e){
-            log.error(e.getMessage());
         }
 
         log.info("File uploaded successfully: {}", objectName);
