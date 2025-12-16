@@ -1,16 +1,18 @@
-package com.example.demo.bean.form;
+package com.example.demo.bean.dto;
+
 
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class ProductSaveForm {
+public class ProductDetailDTO {
+    private Long id;
     private Long artistId;
     private String coverUrl;
     private String title;
     private String tags;
     private String themeColor;
-    private  Integer type;
-    private List<ArtistWorkForm> works;
+
+    private List<ArtistWorkDTO> works;
 }

@@ -14,5 +14,6 @@ public class ProductDTO {
     private String title;
     private String tags;
     private String themeColor;
+    private  Integer type;
     private List<ArtistWorkDTO> works;
 }

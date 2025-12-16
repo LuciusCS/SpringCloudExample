@@ -48,7 +48,7 @@ public class FileUploadController {
             String presignedUrl = minioService.getPresignedUrl(fileName);
 
             return ResponseEntity.ok()
-                    .body("文件上传成功!\n文件名: " + fileName + "\n访问链接: " + presignedUrl);
+                    .body(presignedUrl);
         } catch (Exception e) {
             log.error("文件上传失败", e);
             return ResponseEntity.internalServerError()

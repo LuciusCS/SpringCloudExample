@@ -1,16 +1,17 @@
 package com.example.demo.bean.form;
 
+
 import lombok.Data;
 
-import java.util.List;
-
 @Data
-public class ProductSaveForm {
+public class ProductUpdateForm {
+
+    private Long id;  // 必填，指定更新的商品
     private Long artistId;
     private String coverUrl;
     private String title;
     private String tags;
     private String themeColor;
-    private  Integer type;
-    private List<ArtistWorkForm> works;
+
+    private List<ArtistWorkUpdateForm> works;
 }

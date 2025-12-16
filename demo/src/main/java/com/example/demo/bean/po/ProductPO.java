@@ -20,6 +20,11 @@ public class ProductPO {
     private String title;
     private String tags;
     private String themeColor;
+    private  Integer type;
+
+    ///用于表示下架
+    private Boolean onSale;
+
 
     @OneToMany(
             mappedBy = "product",
