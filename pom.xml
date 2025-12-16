@@ -29,7 +29,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <nacos.server-addr>192.168.80.96:8848</nacos.server-addr>
+        <nacos.server-addr>192.168.80.64:8848</nacos.server-addr>
         <spring-cloud-dependencies.version>2023.0.3</spring-cloud-dependencies.version>
         <spring-boot-dependencies.version>3.3.0</spring-boot-dependencies.version>
         <spring-cloud-starter-loadbalancer.version>4.1.1</spring-cloud-starter-loadbalancer.version>

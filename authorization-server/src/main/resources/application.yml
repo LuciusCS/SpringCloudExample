@@ -1,7 +1,7 @@
 wechat:
   miniprogram:
-    appid: ""        # 小程序 AppID
-    secret: ""       # 小程序 AppSecret
+    appid: "wxfe01d98347b5df2c"        # 小程序 AppID
+    secret: "4aac8f50ee62b33ab4be5ecb969ee0d1"       # 小程序 AppSecret
 
 server:
   port: 8003
