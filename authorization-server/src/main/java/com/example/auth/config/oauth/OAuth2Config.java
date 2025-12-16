@@ -116,7 +116,7 @@ public class OAuth2Config {
                                                 .ignoringRequestMatchers("/oauth2/token")
                                                 .ignoringRequestMatchers("/jwks")
                                                 .ignoringRequestMatchers("/.well-known/openid-configuration")
-                                                .ignoringRequestMatchers("/auth/wechat/**") // Added by user instruction
+
                                                 .ignoringRequestMatchers(request -> request.getRequestURI()
                                                                 .startsWith("/druid/"))) // 忽略 /oauth2/token 路径的 CSRF 防护
                                                                                          // 添加表单登录支持（关键修复）
@@ -172,7 +172,7 @@ public class OAuth2Config {
                                 .csrf(csrf -> csrf
                                                 .ignoringRequestMatchers("/.well-known/openid-configuration",
                                                                 "/addRegisteredClient", "/oauth2/token", "/addUser",
-                                                                "/druid/**")
+                                                                "/druid/**", "/auth/wechat/**")
                                 // .ignoringRequestMatchers(request ->
                                 // request.getRequestURI().startsWith("/druid/"))
                                 // 禁用对/addRegisteredClient接口的CSRF保护
