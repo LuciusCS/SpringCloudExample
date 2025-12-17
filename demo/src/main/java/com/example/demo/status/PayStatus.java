@@ -13,4 +13,14 @@ public enum PayStatus {
     PAID(2),
     PAY_FAILED(3),
     REFUND_SUCCESS(4);
+
+    private final int code;
+
+    PayStatus(int code) {
+        this.code = code;
+    }
+
+    public int getCode() {
+        return code;
+    }
 }
