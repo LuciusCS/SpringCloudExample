@@ -19,20 +19,17 @@ public class ProductSpecification {
 
             if (form.getArtistId() != null) {
                 predicates.add(
-                        cb.equal(root.get("artistId"), form.getArtistId())
-                );
+                        cb.equal(root.get("artistId"), form.getArtistId()));
             }
 
             if (StringUtils.hasText(form.getThemeColor())) {
                 predicates.add(
-                        cb.equal(root.get("themeColor"), form.getThemeColor())
-                );
+                        cb.equal(root.get("themeColor"), form.getThemeColor()));
             }
 
             if (StringUtils.hasText(form.getTitle())) {
                 predicates.add(
-                        cb.like(root.get("title"), "%" + form.getTitle() + "%")
-                );
+                        cb.like(root.get("title"), "%" + form.getTitle() + "%"));
             }
 
             // ⭐ tags：按逗号拆分，OR 关系
@@ -42,12 +39,14 @@ public class ProductSpecification {
                 List<Predicate> tagPredicates = new ArrayList<>();
                 for (String tag : tagArr) {
                     tagPredicates.add(
-                            cb.like(root.get("tags"), "%" + tag.trim() + "%")
-                    );
+                            cb.like(root.get("tags"), "%" + tag.trim() + "%"));
                 }
                 predicates.add(cb.or(tagPredicates.toArray(new Predicate[0])));
             }
 
+            if (predicates.isEmpty()) {
+                return null;
+            }
             return cb.and(predicates.toArray(new Predicate[0]));
         };
     }

@@ -12,7 +12,10 @@ import com.example.demo.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.util.StringUtils;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +24,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
@@ -41,12 +45,12 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Page<ProductListDTO> list(ProductQueryForm form, Pageable pageable) {
-        Specification<ProductPO> spec =
-                ProductSpecification.build(form);
+        Specification<ProductPO> spec = ProductSpecification.build(form);
 
         return productDao.findAll(spec, pageable)
                 .map(this::toListDTO);
     }
+
     @Transactional(readOnly = true)
     @Override
     public ProductDetailDTO detail(Long productId) {
@@ -54,7 +58,7 @@ public class ProductServiceImpl implements ProductService {
                 .orElseThrow(() -> new RuntimeException("商品不存在"));
 
         return toDetailDTO(product);
-//        return null;
+        // return null;
     }
 
     @Transactional
@@ -69,7 +73,6 @@ public class ProductServiceImpl implements ProductService {
         product.setTitle(form.getTitle());
         product.setTags(form.getTags());
         product.setThemeColor(form.getThemeColor());
-
 
         // 2️⃣ 更新作品列表
         List<ArtistWorkPO> newWorks = new ArrayList<>();
@@ -145,11 +148,9 @@ public class ProductServiceImpl implements ProductService {
                                 ArtistWorkVersionDTO vd = new ArtistWorkVersionDTO();
                                 BeanUtils.copyProperties(v, vd);
                                 return vd;
-                            }).toList()
-                    );
+                            }).toList());
                     return w;
-                }).toList()
-        );
+                }).toList());
         return dto;
     }
 
@@ -161,14 +162,14 @@ public class ProductServiceImpl implements ProductService {
         for (ArtistWorkPO work : product.getWorks()) {
             work.setProduct(product);// 设置每个 work 的 product 为 productPO
 
-            for(ArtistWorkVersionPO artistWorkVersionPO: work.getVersions()){
+            for (ArtistWorkVersionPO artistWorkVersionPO : work.getVersions()) {
                 artistWorkVersionPO.setArtistWork(work);
             }
-        };
+        }
+        ;
 
         return product;
     }
-
 
     private ProductListDTO toListDTO(ProductPO po) {
         ProductListDTO dto = new ProductListDTO();
@@ -178,7 +179,7 @@ public class ProductServiceImpl implements ProductService {
         dto.setTitle(po.getTitle());
         dto.setTags(po.getTags());
         dto.setThemeColor(po.getThemeColor());
-//        dto.setCreateTime(po.getCreateTime());
+        // dto.setCreateTime(po.getCreateTime());
         return dto;
     }
 
@@ -207,20 +208,17 @@ public class ProductServiceImpl implements ProductService {
                         if (work.getVersions() != null) {
                             workDTO.setVersions(
                                     work.getVersions().stream().map(v -> {
-                                        ArtistWorkVersionDTO vDTO =
-                                                new ArtistWorkVersionDTO();
+                                        ArtistWorkVersionDTO vDTO = new ArtistWorkVersionDTO();
                                         vDTO.setId(v.getId());
                                         vDTO.setPreviewUrl(v.getPreviewUrl());
                                         vDTO.setOriginalUrl(v.getOriginalUrl());
                                         vDTO.setSilhouetteUrl(v.getSilhouetteUrl());
                                         return vDTO;
-                                    }).toList()
-                            );
+                                    }).toList());
                         }
 
                         return workDTO;
-                    }).toList()
-            );
+                    }).toList());
         }
 
         return dto;

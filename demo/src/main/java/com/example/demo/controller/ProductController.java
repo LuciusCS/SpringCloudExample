@@ -40,7 +40,7 @@ public class ProductController {
     @GetMapping("/list")
     public Page<ProductListDTO> list(
             ProductQueryForm form,
-            @PageableDefault(size = 20, sort = "createTime", direction = Sort.Direction.DESC)
+            @PageableDefault(size = 20, sort = "id", direction = Sort.Direction.DESC)
             Pageable pageable) {
 
         return productService.list(form, pageable);
