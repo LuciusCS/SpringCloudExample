@@ -17,11 +17,11 @@ public interface ProductService {
 
     Long saveProduct(ProductSaveForm form);
 
-
     Page<ProductListDTO> list(ProductQueryForm form, Pageable pageable);
-
 
     ProductDetailDTO detail(Long productId);
 
     void updateProduct(ProductUpdateForm form);
+
+    void deleteProduct(Long id);
 }

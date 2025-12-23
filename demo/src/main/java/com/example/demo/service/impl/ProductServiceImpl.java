@@ -8,20 +8,16 @@ import com.example.demo.bean.po.ArtistWorkVersionPO;
 import com.example.demo.bean.po.ProductPO;
 import com.example.demo.repository.ProductRepository;
 import com.example.demo.repository.specification.ProductSpecification;
+import com.example.demo.service.MinioService;
 import com.example.demo.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.util.StringUtils;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +26,8 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productDao;
+
+    private final MinioService minioService;
 
     @Override
     public List<ProductDTO> listAll() {
@@ -134,9 +132,18 @@ public class ProductServiceImpl implements ProductService {
         productDao.save(product);
     }
 
+    @Override
+    @Transactional
+    public void deleteProduct(Long id) {
+        productDao.deleteById(id);
+    }
+
     private ProductDTO toDTO(ProductPO po) {
         ProductDTO dto = new ProductDTO();
         BeanUtils.copyProperties(po, dto);
+        // Only transforming coverUrl if needed here, but usually list is what matters
+        // most for cover
+        dto.setCoverUrl(minioService.getPublicUrl(po.getCoverUrl()));
 
         dto.setWorks(
                 po.getWorks().stream().map(work -> {
@@ -175,7 +182,8 @@ public class ProductServiceImpl implements ProductService {
         ProductListDTO dto = new ProductListDTO();
         dto.setId(po.getId());
         dto.setArtistId(po.getArtistId());
-        dto.setCoverUrl(po.getCoverUrl());
+        // Use MinioService to get public URL
+        dto.setCoverUrl(minioService.getPublicUrl(po.getCoverUrl()));
         dto.setTitle(po.getTitle());
         dto.setTags(po.getTags());
         dto.setThemeColor(po.getThemeColor());
@@ -188,7 +196,8 @@ public class ProductServiceImpl implements ProductService {
         ProductDetailDTO dto = new ProductDetailDTO();
         dto.setId(po.getId());
         dto.setArtistId(po.getArtistId());
-        dto.setCoverUrl(po.getCoverUrl());
+        // Use MinioService to get public URL
+        dto.setCoverUrl(minioService.getPublicUrl(po.getCoverUrl()));
         dto.setTitle(po.getTitle());
         dto.setTags(po.getTags());
         dto.setThemeColor(po.getThemeColor());

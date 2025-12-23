@@ -54,8 +54,7 @@ public class MinioService {
                             .object(objectName)
                             .stream(inputStream, file.getSize(), -1) // 5MB part size
                             .contentType(file.getContentType())
-                            .build()
-            );
+                            .build());
         }
 
         log.info("File uploaded successfully: {}", objectName);
@@ -70,8 +69,7 @@ public class MinioService {
                 GetObjectArgs.builder()
                         .bucket(minioConfig.getBucketName())
                         .object(objectName)
-                        .build()
-        );
+                        .build());
     }
 
     /**
@@ -84,8 +82,7 @@ public class MinioService {
                         .bucket(minioConfig.getBucketName())
                         .object(objectName)
                         .expiry(7, TimeUnit.DAYS)
-                        .build()
-        );
+                        .build());
     }
 
     /**
@@ -96,8 +93,61 @@ public class MinioService {
                 RemoveObjectArgs.builder()
                         .bucket(minioConfig.getBucketName())
                         .object(objectName)
-                        .build()
-        );
+                        .build());
         log.info("File deleted: {}", objectName);
+    }
+
+    /**
+     * Get public URL for file access
+     */
+    public String getPublicUrl(String objectName) {
+        if (objectName == null || objectName.isEmpty()) {
+            return null;
+        }
+        String endpoint = minioConfig.getEndpoint();
+        if (endpoint.endsWith("/")) {
+            endpoint = endpoint.substring(0, endpoint.length() - 1);
+        }
+        return endpoint + "/" + minioConfig.getBucketName() + "/" + objectName;
+    }
+
+    @jakarta.annotation.PostConstruct
+    public void init() {
+        String bucketName = minioConfig.getBucketName();
+        try {
+            boolean found = minioClient.bucketExists(BucketExistsArgs.builder().bucket(bucketName).build());
+            if (!found) {
+                minioClient.makeBucket(MakeBucketArgs.builder().bucket(bucketName).build());
+                log.info("Bucket '{}' created.", bucketName);
+            }
+
+            // Set bucket policy to public read
+            String policy = "{\n" +
+                    "  \"Version\": \"2012-10-17\",\n" +
+                    "  \"Statement\": [\n" +
+                    "    {\n" +
+                    "      \"Effect\": \"Allow\",\n" +
+                    "      \"Principal\": {\n" +
+                    "        \"AWS\": [\n" +
+                    "          \"*\"\n" +
+                    "        ]\n" +
+                    "      },\n" +
+                    "      \"Action\": [\n" +
+                    "        \"s3:GetObject\"\n" +
+                    "      ],\n" +
+                    "      \"Resource\": [\n" +
+                    "        \"arn:aws:s3:::" + bucketName + "/*\"\n" +
+                    "      ]\n" +
+                    "    }\n" +
+                    "  ]\n" +
+                    "}";
+
+            minioClient.setBucketPolicy(
+                    SetBucketPolicyArgs.builder().bucket(bucketName).config(policy).build());
+            log.info("Bucket policy set to public read for '{}'", bucketName);
+
+        } catch (Exception e) {
+            log.error("Error initializing MinIO bucket: {}", e.getMessage());
+        }
     }
 }
