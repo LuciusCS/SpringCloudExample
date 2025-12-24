@@ -8,5 +8,6 @@ public class ProductQueryForm {
     private String tags; // 国风,插画
     private String themeColor;
     private String title;
+    private Integer type;
 
 }

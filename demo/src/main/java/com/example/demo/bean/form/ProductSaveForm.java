@@ -13,6 +13,7 @@ public class ProductSaveForm {
     private String title;
     private String tags;
     private String themeColor;
+    ///用于表示扭蛋还是直购
     private  Integer type;
     private List<ArtistWorkForm> works;
 
