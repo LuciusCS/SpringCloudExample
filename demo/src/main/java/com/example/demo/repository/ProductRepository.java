@@ -10,15 +10,13 @@ import java.util.Optional;
 
 public interface ProductRepository extends JpaRepository<ProductPO, Long>, JpaSpecificationExecutor<ProductPO> {
 
-    @EntityGraph(attributePaths = {
-            "works",
-            "works.versions"
-    })
-    List<ProductPO> findAll();
+        @EntityGraph(attributePaths = {
+                        "works"
+        })
+        List<ProductPO> findAll();
 
-    @EntityGraph(attributePaths = {
-            "works",
-            "works.versions"
-    })
-    Optional<ProductPO> findWithAllById(Long id);
+        @EntityGraph(attributePaths = {
+                        "works"
+        })
+        Optional<ProductPO> findWithAllById(Long id);
 }
