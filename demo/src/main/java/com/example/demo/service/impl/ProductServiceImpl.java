@@ -143,7 +143,7 @@ public class ProductServiceImpl implements ProductService {
         BeanUtils.copyProperties(po, dto);
         // Only transforming coverUrl if needed here, but usually list is what matters
         // most for cover
-        dto.setCoverUrl(minioService.getPublicUrl(po.getCoverUrl()));
+        dto.setCoverUrl(po.getCoverUrl());
 
         dto.setWorks(
                 po.getWorks().stream().map(work -> {
@@ -183,7 +183,8 @@ public class ProductServiceImpl implements ProductService {
         dto.setId(po.getId());
         dto.setArtistId(po.getArtistId());
         // Use MinioService to get public URL
-        dto.setCoverUrl(minioService.getPublicUrl(po.getCoverUrl()));
+//        dto.setCoverUrl(minioService.getPublicUrl(po.getCoverUrl()));
+        dto.setCoverUrl(po.getCoverUrl());
         dto.setTitle(po.getTitle());
         dto.setTags(po.getTags());
         dto.setThemeColor(po.getThemeColor());
@@ -197,7 +198,7 @@ public class ProductServiceImpl implements ProductService {
         dto.setId(po.getId());
         dto.setArtistId(po.getArtistId());
         // Use MinioService to get public URL
-        dto.setCoverUrl(minioService.getPublicUrl(po.getCoverUrl()));
+        dto.setCoverUrl(po.getCoverUrl());
         dto.setTitle(po.getTitle());
         dto.setTags(po.getTags());
         dto.setThemeColor(po.getThemeColor());
