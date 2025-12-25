@@ -19,6 +19,7 @@ public class PayCallbackService {
 
     private final OrderRepository orderRepo;
     private final PaymentRecordRepository payRepo;
+    private final SalesStatisticsService statsService;
 
     @Transactional
     public void handleWechatPaySuccess(
@@ -61,5 +62,8 @@ public class PayCallbackService {
         order.setPayTime(LocalDateTime.now());
 
         orderRepo.save(order);
+
+        // 6️⃣ 记录销售统计
+        statsService.recordSales(order);
     }
 }
