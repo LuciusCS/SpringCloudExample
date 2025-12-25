@@ -15,6 +15,20 @@ spring:
       - optional:nacos:datasource.yml
       - optional:nacos:minio.yml
       - optional:nacos:springdoc.yml
+      - optional:nacos:redis.yml
+
+  mail:
+    host: smtp.qq.com
+    username: # 请替换为你的QQ邮箱
+    password:     # 请替换为你的QQ邮箱授权码
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
 
   # Hibernate DDL Configuration
   jpa:
