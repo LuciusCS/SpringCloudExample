@@ -1,15 +1,15 @@
 package com.example.demo.bean.po;
+
 import jakarta.persistence.*;
 import lombok.Data;
-
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+
 @Entity
-@Table(name = "order_content",        uniqueConstraints = @UniqueConstraint(
-        columnNames = {"order_item_id", "artist_work_id"}
-))
+@Table(name = "order_content", uniqueConstraints = @UniqueConstraint(columnNames = { "order_item_id", "artist_work_id",
+        "content_type" }))
 @Data
 public class OrderContentPO {
 
@@ -33,6 +33,9 @@ public class OrderContentPO {
     private BigDecimal price;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_item_id")
+    @JoinColumn(name = "order_item_id", insertable = false, updatable = false)
     private OrderItemPO orderItem;
+
+    @Column(name = "order_item_id")
+    private Long orderItemId;
 }

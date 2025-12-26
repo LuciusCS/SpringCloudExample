@@ -1,11 +1,12 @@
 package com.example.demo.bean.po;
+
 import jakarta.persistence.*;
 import lombok.Data;
-
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+
 @Entity
 @Table(name = "order_item")
 @Data
@@ -14,9 +15,6 @@ public class OrderItemPO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(name = "order_id")
-    private Long orderId;
 
     /** 商品ID */
     private Long productId;
@@ -45,14 +43,13 @@ public class OrderItemPO {
     /** 购买方式：SINGLE / BOX */
     private String buyMode;
 
+    @Column(name = "order_id")
+    private Long orderId;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id", insertable = false, updatable = false)
     private OrderPO order;
 
-    @OneToMany(
-            mappedBy = "orderItem",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
+    @OneToMany(mappedBy = "orderItem", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderContentPO> contents = new ArrayList<>();
 }
