@@ -1,4 +1,5 @@
 package com.example.demo.service;
+
 import com.example.demo.bean.dto.OrderCreateReq;
 import com.example.demo.bean.dto.OrderCreateResp;
 import com.example.demo.bean.po.*;
@@ -39,13 +40,11 @@ public class OrderService {
         item.setOrder(order);
         order.getItems().add(item);
 
-        List<ArtistWorkPO> works =
-                workRepo.findByProductIdForUpdate(product.getId());
+        List<ArtistWorkPO> works = workRepo.findByProductIdForUpdate(product.getId());
 
-        List<OrderContentPO> contents =
-                "BOX".equals(req.getBuyMode())
-                        ? buildBoxContents(product, item, works, req.getBoxCount())
-                        : buildSingleContents(product, item, works);
+        List<OrderContentPO> contents = "BOX".equals(req.getBuyMode())
+                ? buildBoxContents(product, item, works, req.getBoxCount())
+                : buildSingleContents(product, item, works, req);
 
         item.getContents().addAll(contents);
 
@@ -65,8 +64,9 @@ public class OrderService {
         o.setArtistId(product.getArtistId());
         o.setOrderType("BOX");
         o.setOrderStatus(0);
-        o.setPayStatus(0);
+        o.setPayStatus(1); // Simulated Payment Success
         o.setOrderTime(LocalDateTime.now());
+        o.setPayTime(LocalDateTime.now());
         return o;
     }
 
@@ -110,14 +110,33 @@ public class OrderService {
     private List<OrderContentPO> buildSingleContents(
             ProductPO product,
             OrderItemPO item,
-            List<ArtistWorkPO> works) {
+            List<ArtistWorkPO> works,
+            OrderCreateReq req) {
 
-        ArtistWorkPO work = works.get(0);
-        ArtistWorkVersionPO v = pickSaleVersion(work);
+        if (req.getWorkIds() == null || req.getWorkIds().isEmpty()) {
+            throw new RuntimeException("请选择作品");
+        }
 
-        return List.of(buildContent(
-                item, work, v, "SALE", product.getSinglePrice()
-        ));
+        List<Long> selectedIds = req.getWorkIds();
+
+        // Filter works that match the selected IDs
+        List<ArtistWorkPO> selectedWorks = works.stream()
+                .filter(w -> selectedIds.contains(w.getId()))
+                .toList();
+
+        if (selectedWorks.isEmpty()) {
+            throw new RuntimeException("选中的作品不存在");
+        }
+
+        List<OrderContentPO> contentList = new ArrayList<>();
+
+        for (ArtistWorkPO work : selectedWorks) {
+            ArtistWorkVersionPO v = pickSaleVersion(work);
+            contentList.add(buildContent(
+                    item, work, v, "SALE", product.getSinglePrice()));
+        }
+
+        return contentList;
     }
 
     private OrderContentPO buildContent(
