@@ -8,6 +8,7 @@ import java.util.List;
 public class PurchasedContentDTO {
     private Long productId;
     private String productTitle;
+    private Integer productType;
 
     private List<PurchasedWorkDTO> works;
 }

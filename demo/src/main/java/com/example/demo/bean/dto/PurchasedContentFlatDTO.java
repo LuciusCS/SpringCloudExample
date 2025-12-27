@@ -18,5 +18,7 @@ public class PurchasedContentFlatDTO {
     private String previewUrl;
     private String originalUrl;
 
+    private Integer productType;
+
     private LocalDateTime buyTime;
 }

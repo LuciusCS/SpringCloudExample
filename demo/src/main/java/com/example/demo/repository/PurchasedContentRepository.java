@@ -21,6 +21,8 @@ public interface PurchasedContentRepository extends JpaRepository<OrderPO, Long>
                     c.previewUrl,
                     c.originalUrl,
 
+                    i.productType,
+
                     o.payTime
                 )
                 from OrderContentPO c, OrderItemPO i, OrderPO o
