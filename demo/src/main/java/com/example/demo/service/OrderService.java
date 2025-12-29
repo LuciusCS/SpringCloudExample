@@ -76,9 +76,9 @@ public class OrderService {
         o.setArtistId(product.getArtistId());
         o.setOrderType("BOX");
         o.setOrderStatus(0);
-        o.setPayStatus(1); // Simulated Payment Success
+        o.setPayStatus(0); // UNPAID
         o.setOrderTime(LocalDateTime.now());
-        o.setPayTime(LocalDateTime.now());
+        // o.setPayTime(LocalDateTime.now()); // Removed
         return o;
     }
 
