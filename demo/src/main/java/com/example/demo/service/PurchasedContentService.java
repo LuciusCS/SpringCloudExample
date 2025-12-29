@@ -21,6 +21,8 @@ public class PurchasedContentService {
 
     private final PurchasedContentRepository repository;
 
+    /// 前端在显示的时候直接显示多个版本
+    /// 我的小屋购买列表，需要重新设计
     public List<PurchasedContentDTO> listPurchasedContents(Long userId) {
 
         List<PurchasedContentFlatDTO> rows =
