@@ -21,11 +21,11 @@ public class WeChatPayConfig {
 
     @Bean
     @ConditionalOnProperty(name = "wechat.pay.mock", havingValue = "false", matchIfMissing = true)
-    public Config weChatPayConfig() {
+    public Config wechatConfig() {
         // Only load if not in mock mode (or lenient load)
         // If privateKeyPath is missing in dev, this might fail.
         // We add a check or try-catch if needed, but standard way is to fail fast.
-        
+
         // Ensure file exists to avoid confused errors
         // If we are just testing locally without certs, we might rely on Mock
         return new RSAAutoCertificateConfig.Builder()
