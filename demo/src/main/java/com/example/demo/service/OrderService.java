@@ -4,6 +4,8 @@ import com.example.demo.bean.dto.OrderCreateReq;
 import com.example.demo.bean.dto.OrderCreateResp;
 import com.example.demo.bean.po.*;
 import com.example.demo.repository.ArtistWorkRepository;
+import com.example.demo.repository.OrderContentRepository;
+import com.example.demo.repository.OrderItemRepository;
 import com.example.demo.repository.OrderRepository;
 import com.example.demo.repository.ProductRepository;
 import jakarta.transaction.Transactional;
@@ -18,6 +20,8 @@ import java.util.*;
 @RequiredArgsConstructor
 public class OrderService {
 
+    private final OrderItemRepository itemRepo;
+    private final OrderContentRepository contentRepo;
     private final ProductRepository productRepo;
     private final ArtistWorkRepository workRepo;
     private final OrderRepository orderRepo;
@@ -34,11 +38,9 @@ public class OrderService {
             throw new RuntimeException("商品已下架");
         }
 
+        // 1. Build Objects (in memory)
         OrderPO order = buildOrder(product, userId);
         OrderItemPO item = buildOrderItem(product, req);
-
-        item.setOrder(order);
-        order.getItems().add(item);
 
         List<ArtistWorkPO> works = workRepo.findByProductIdForUpdate(product.getId());
 
@@ -46,11 +48,21 @@ public class OrderService {
                 ? buildBoxContents(product, item, works, req.getBoxCount())
                 : buildSingleContents(product, item, works, req);
 
-        item.getContents().addAll(contents);
-
+        // Calculate Amount
         calcAmount(order, item, contents);
 
+        // 2. Save Order
         orderRepo.save(order);
+
+        // 3. Save Item
+        item.setOrderId(order.getId());
+        itemRepo.save(item);
+
+        // 4. Save Contents
+        for (OrderContentPO content : contents) {
+            content.setOrderItemId(item.getId());
+        }
+        contentRepo.saveAll(contents);
 
         return new OrderCreateResp(order.getOrderNo(), order.getPayAmount());
     }
@@ -64,9 +76,9 @@ public class OrderService {
         o.setArtistId(product.getArtistId());
         o.setOrderType("BOX");
         o.setOrderStatus(0);
-        o.setPayStatus(1); // Simulated Payment Success
+        o.setPayStatus(0); // UNPAID
         o.setOrderTime(LocalDateTime.now());
-        o.setPayTime(LocalDateTime.now());
+        // o.setPayTime(LocalDateTime.now()); // Removed
         return o;
     }
 

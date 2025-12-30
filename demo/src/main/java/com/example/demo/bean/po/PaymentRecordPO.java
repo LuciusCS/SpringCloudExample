@@ -1,46 +1,58 @@
 package com.example.demo.bean.po;
+
 import jakarta.persistence.*;
 import lombok.Data;
 
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
-/**
- * 支付流水 = 对账凭证 = 幂等核心
- */
-@Entity
-@Table(name = "payment_record",
-        uniqueConstraints = @UniqueConstraint(columnNames = "outTradeNo"))
 @Data
+@Entity
+@Table(name = "payment_record")
 public class PaymentRecordPO {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    /** 订单号 */
+    @Column(name = "order_no", length = 64)
     private String orderNo;
 
-    /** 第三方支付单号 */
-    private String transactionId;
-
-    /** 商户订单号（微信 out_trade_no） */
+    @Column(name = "out_trade_no", length = 64, unique = true)
     private String outTradeNo;
 
-    /** 支付渠道 */
-    private String payType; // WECHAT / ALIPAY
+    @Column(name = "transaction_id", length = 64)
+    private String transactionId;
 
-    /** 支付金额 */
+    /**
+     * WECHAT, ALIPAY
+     */
+    @Column(name = "pay_type", length = 20)
+    private String payType;
+
+    @Column(name = "pay_amount", precision = 10, scale = 2)
     private BigDecimal payAmount;
 
-    /** 支付状态 */
+    /**
+     * 0: UNPAID, 1: PAID, 2: CLOSED, 3: REFUND
+     * See PayStatus.java
+     */
+    @Column(name = "pay_status")
     private Integer payStatus;
 
-    /** 回调原始报文 */
-    @Column(columnDefinition = "text")
+    @Column(name = "raw_notify", columnDefinition = "TEXT")
     private String rawNotify;
 
+    @Column(name = "create_time")
+    private LocalDateTime createTime;
+
+    @Column(name = "pay_time")
     private LocalDateTime payTime;
+
+    @PrePersist
+    public void init() {
+        if (createTime == null) {
+            createTime = LocalDateTime.now();
+        }
+    }
 }
