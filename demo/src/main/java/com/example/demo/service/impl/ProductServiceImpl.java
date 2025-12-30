@@ -175,6 +175,12 @@ public class ProductServiceImpl implements ProductService {
         }
         ;
 
+        if (product.getPublishTime() != null) {
+            product.setOnSale(!product.getPublishTime().isAfter(java.time.LocalDateTime.now()));
+        } else {
+            product.setOnSale(true);
+        }
+
         return product;
     }
 
@@ -183,7 +189,7 @@ public class ProductServiceImpl implements ProductService {
         dto.setId(po.getId());
         dto.setArtistId(po.getArtistId());
         // Use MinioService to get public URL
-//        dto.setCoverUrl(minioService.getPublicUrl(po.getCoverUrl()));
+        // dto.setCoverUrl(minioService.getPublicUrl(po.getCoverUrl()));
         dto.setCoverUrl(po.getCoverUrl());
         dto.setTitle(po.getTitle());
         dto.setTags(po.getTags());
