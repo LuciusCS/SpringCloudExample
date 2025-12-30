@@ -29,7 +29,7 @@ public interface PurchasedContentRepository extends JpaRepository<OrderPO, Long>
                 where c.orderItem.id = i.id
                   and i.orderId = o.id
                   and o.userId = :userId
-                  and o.payStatus = 1
+                  and o.payStatus = 2
                   and o.orderStatus in (0, 1, 2)
                   and c.contentType = 'SALE'
                 order by o.payTime desc
