@@ -44,18 +44,19 @@ public class SecurityConfig {
                 )
                 .authorizeExchange(exchange -> exchange
                         // 放行的端点
-                        .pathMatchers(
-                                "/.well-known/openid-configuration",
-                                "/userinfo",
-                                "/login",
-                                "/oauth2/**", //  建议放开整个 /oauth2/** 路径
-                                "/authorization-server/**", // 显式允许该路径
-                                "/addRegisteredClient",
-                                "/druid/**",
-                                "/auth/wechat/**"
-                        ).permitAll()
+//                        .pathMatchers(
+//                                "/.well-known/openid-configuration",
+//                                "/userinfo",
+//                                "/login",
+//                                "/oauth2/**", //  建议放开整个 /oauth2/** 路径
+//                                "/authorization-server/**", // 显式允许该路径
+//                                "/addRegisteredClient",
+//                                "/druid/**",
+//                                "/auth/wechat/**"
+//                        ).permitAll()
                         // 其他所有请求需要认证
-                        .anyExchange().authenticated()
+                        .anyExchange().permitAll()
+//                        .anyExchange().authenticated()
 
                         /**
                          * 下面的数据用于在nacos配置成功后，允许访问
