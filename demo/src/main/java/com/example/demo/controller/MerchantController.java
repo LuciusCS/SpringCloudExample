@@ -1,9 +1,13 @@
 package com.example.demo.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.demo.bean.dto.MerchantAuditReviewReq;
+import com.example.demo.bean.dto.MerchantAuditSubmitReq;
+import com.example.demo.bean.po.MerchantAuditPO;
+import com.example.demo.repository.MerchantAuditRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,7 +15,56 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/moe/merchant")
+@RequiredArgsConstructor
 public class MerchantController {
+
+    private final MerchantAuditRepository auditRepository;
+
+    // --- Audit Endpoints ---
+
+    @PostMapping("/audit/submit")
+    public Map<String, Object> submitAudit(@RequestBody MerchantAuditSubmitReq req) {
+        MerchantAuditPO po = new MerchantAuditPO();
+        po.setUserId(req.getUserId());
+        po.setMerchantName(req.getMerchantName());
+        po.setProofImages(req.getProofImages());
+        po.setQqContact(req.getQqContact());
+        po.setStatus(0); // Pending
+
+        auditRepository.save(po);
+
+        return Map.of("code", 0, "msg", "提交成功");
+    }
+
+    @GetMapping("/audit/list")
+    public Map<String, Object> getAuditList(@RequestParam(required = false) Integer status) {
+        List<MerchantAuditPO> list;
+        if (status != null) {
+            list = auditRepository.findByStatus(status);
+        } else {
+            list = auditRepository.findAll();
+        }
+        return Map.of("code", 0, "msg", "success", "data", list);
+    }
+
+    @PostMapping("/audit/review")
+    public Map<String, Object> reviewAudit(@RequestBody MerchantAuditReviewReq req) {
+        MerchantAuditPO po = auditRepository.findById(req.getId())
+                .orElseThrow(() -> new RuntimeException("Audit record not found"));
+
+        if (Boolean.TRUE.equals(req.getPass())) {
+            po.setStatus(1); // Approved
+            // TODO: Grant Merchant Role / Logic
+        } else {
+            po.setStatus(2); // Rejected
+            po.setRejectReason(req.getRejectReason());
+        }
+        auditRepository.save(po);
+
+        return Map.of("code", 0, "msg", "审核完成");
+    }
+
+    // --- Existing Mocked Endpoints ---
 
     // 1. Merchant Stats (Wallet, Views, Fans)
     @GetMapping("/stats")
@@ -22,7 +75,7 @@ public class MerchantController {
         data.put("balance", "127.67");
         data.put("views", "50933");
         data.put("fans", "1.1w");
-        
+
         result.put("code", 0);
         result.put("msg", "success");
         result.put("data", data);
