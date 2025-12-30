@@ -197,6 +197,16 @@ public class ProductServiceImpl implements ProductService {
         dto.setThemeColor(po.getThemeColor());
         // dto.setCreateTime(po.getCreateTime());
 
+        dto.setAllowBox(po.getAllowBox());
+        dto.setMinUserPrice(po.getMinUserPrice());
+        dto.setPackagePrice(po.getPackagePrice());
+        dto.setSinglePrice(po.getSinglePrice());
+        dto.setNeedFollow(po.getNeedFollow());
+        dto.setAllowHelp(po.getAllowHelp());
+        dto.setQuantity(po.getQuantity());
+        dto.setOptimizedPrice(po.getOptimizedPrice());
+        dto.setPublishTime(po.getPublishTime());
+
         storeRepository.findByUserId(po.getArtistId()).ifPresent(store -> {
             dto.setStoreName(store.getName());
             dto.setStoreId(store.getId());
@@ -215,6 +225,16 @@ public class ProductServiceImpl implements ProductService {
         dto.setTitle(po.getTitle());
         dto.setTags(po.getTags());
         dto.setThemeColor(po.getThemeColor());
+
+        dto.setAllowBox(po.getAllowBox());
+        dto.setMinUserPrice(po.getMinUserPrice());
+        dto.setPackagePrice(po.getPackagePrice());
+        dto.setSinglePrice(po.getSinglePrice());
+        dto.setNeedFollow(po.getNeedFollow());
+        dto.setAllowHelp(po.getAllowHelp());
+        dto.setQuantity(po.getQuantity());
+        dto.setOptimizedPrice(po.getOptimizedPrice());
+        dto.setPublishTime(po.getPublishTime());
 
         storeRepository.findByUserId(po.getArtistId()).ifPresent(store -> {
             dto.setStoreName(store.getName());
