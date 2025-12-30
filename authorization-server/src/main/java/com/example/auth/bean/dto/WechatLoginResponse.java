@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 /**
  * 微信小程序登录响应
  */
@@ -27,4 +29,7 @@ public class WechatLoginResponse {
 
     @Schema(description = "用户ID")
     private Long userId;
+
+    @Schema(description = "用户权限列表")
+    private Set<String> authorities;
 }

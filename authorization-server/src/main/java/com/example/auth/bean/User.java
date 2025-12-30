@@ -82,10 +82,16 @@ public class User extends AuditableEntity<User> implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return roles.stream()
+        Set<GrantedAuthority> authorities = roles.stream()
                 .flatMap(role -> role.getPermissions().stream())
                 .map(permission -> new SimpleGrantedAuthority(permission.getName()))
                 .collect(Collectors.toSet());
+
+        authorities.addAll(roles.stream()
+                .map(role -> new SimpleGrantedAuthority("ROLE_" + role.getName()))
+                .collect(Collectors.toSet()));
+
+        return authorities;
     }
 
     // UserDetails 接口的其他方法

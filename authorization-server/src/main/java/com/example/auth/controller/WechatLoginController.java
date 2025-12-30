@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.stream.Collectors;
+import org.springframework.security.core.GrantedAuthority;
+
 /**
  * 微信登录控制器
  */
@@ -57,6 +60,9 @@ public class WechatLoginController {
                 .openid(openid)
                 .userId(user.getId())
                 .isNewUser(userResult.isNewUser())
+                .authorities(user.getAuthorities().stream()
+                        .map(GrantedAuthority::getAuthority)
+                        .collect(Collectors.toSet()))
                 .build();
     }
 }
