@@ -1,6 +1,5 @@
 package com.example.demo.bean.dto;
 
-
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -42,4 +41,7 @@ public class ProductListDTO {
 
     // 上架时间
     private LocalDateTime publishTime;
+
+    private String storeName;
+    private Long storeId;
 }

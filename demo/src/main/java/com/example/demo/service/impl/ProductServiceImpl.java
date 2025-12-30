@@ -26,6 +26,7 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productDao;
+    private final com.example.demo.repository.StoreRepository storeRepository;
 
     private final MinioService minioService;
 
@@ -195,6 +196,12 @@ public class ProductServiceImpl implements ProductService {
         dto.setTags(po.getTags());
         dto.setThemeColor(po.getThemeColor());
         // dto.setCreateTime(po.getCreateTime());
+
+        storeRepository.findByUserId(po.getArtistId()).ifPresent(store -> {
+            dto.setStoreName(store.getName());
+            dto.setStoreId(store.getId());
+        });
+
         return dto;
     }
 
@@ -208,6 +215,12 @@ public class ProductServiceImpl implements ProductService {
         dto.setTitle(po.getTitle());
         dto.setTags(po.getTags());
         dto.setThemeColor(po.getThemeColor());
+
+        storeRepository.findByUserId(po.getArtistId()).ifPresent(store -> {
+            dto.setStoreName(store.getName());
+            dto.setStoreId(store.getId());
+            dto.setStoreContact(store.getContact());
+        });
 
         if (po.getWorks() != null) {
             dto.setWorks(

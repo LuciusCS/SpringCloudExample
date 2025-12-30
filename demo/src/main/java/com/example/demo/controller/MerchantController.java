@@ -19,11 +19,13 @@ import java.util.Map;
 public class MerchantController {
 
     private final MerchantAuditRepository auditRepository;
+    private final com.example.demo.repository.StoreRepository storeRepository;
 
     // --- Audit Endpoints ---
 
     @PostMapping("/audit/submit")
     public Map<String, Object> submitAudit(@RequestBody MerchantAuditSubmitReq req) {
+        System.out.println("Submit Audit Req: " + req);
         MerchantAuditPO po = new MerchantAuditPO();
         po.setUserId(req.getUserId());
         po.setMerchantName(req.getMerchantName());
@@ -54,7 +56,27 @@ public class MerchantController {
 
         if (Boolean.TRUE.equals(req.getPass())) {
             po.setStatus(1); // Approved
-            // TODO: Grant Merchant Role / Logic
+
+            System.out.println("Review Audit Passed. PO UserId: " + po.getUserId());
+
+            // Check if store exists
+            if (po.getUserId() != null) {
+                var existingStore = storeRepository.findByUserId(po.getUserId());
+                if (existingStore.isEmpty()) {
+                    System.out.println("Creating new store for user: " + po.getUserId());
+                    com.example.demo.bean.po.StorePO store = new com.example.demo.bean.po.StorePO();
+                    store.setUserId(po.getUserId());
+                    store.setName(po.getMerchantName());
+                    store.setContact(po.getQqContact());
+                    storeRepository.save(store);
+                } else {
+                    System.out.println("Store already exists for user: " + po.getUserId());
+                }
+            } else {
+                // Log warning or handle error: Audit record has no userId, cannot create store
+                System.err.println("Warning: Audit record " + po.getId() + " has no userId. Cannot create store.");
+            }
+
         } else {
             po.setStatus(2); // Rejected
             po.setRejectReason(req.getRejectReason());
