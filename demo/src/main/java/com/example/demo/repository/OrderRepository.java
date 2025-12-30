@@ -11,7 +11,7 @@ import java.util.Optional;
 public interface OrderRepository extends JpaRepository<OrderPO, Long> {
 
     @Lock(LockModeType.PESSIMISTIC_WRITE)
-    @Query("select o from OrderPO o where o.orderNo = :orderNo")
+    @Query("select o from OrderPO o left join fetch o.items where o.orderNo = :orderNo")
     Optional<OrderPO> findByOrderNoForUpdate(String orderNo);
 
     Optional<OrderPO> findByOrderNo(String orderNo);

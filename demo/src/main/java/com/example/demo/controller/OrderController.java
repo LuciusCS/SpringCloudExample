@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class OrderController {
     private final OrderService orderService;
-    private final com.example.demo.service.PurchasedContentService purchasedContentService;
 
     @PostMapping("/create")
     public OrderCreateResp create(@RequestBody OrderCreateReq req) {

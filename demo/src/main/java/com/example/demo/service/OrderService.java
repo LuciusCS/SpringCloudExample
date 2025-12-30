@@ -8,7 +8,6 @@ import com.example.demo.repository.OrderContentRepository;
 import com.example.demo.repository.OrderItemRepository;
 import com.example.demo.repository.OrderRepository;
 import com.example.demo.repository.ProductRepository;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +25,7 @@ public class OrderService {
     private final ArtistWorkRepository workRepo;
     private final OrderRepository orderRepo;
 
-    @Transactional
+    @org.springframework.transaction.annotation.Transactional
     public OrderCreateResp createOrder(OrderCreateReq req) {
 
         Long userId = 1L; // TODO 从登录上下文获取
@@ -42,6 +41,10 @@ public class OrderService {
         OrderPO order = buildOrder(product, userId);
         OrderItemPO item = buildOrderItem(product, req);
 
+        // Bi-directional link
+        item.setOrder(order);
+        order.getItems().add(item);
+
         List<ArtistWorkPO> works = workRepo.findByProductIdForUpdate(product.getId());
 
         List<OrderContentPO> contents = "BOX".equals(req.getBuyMode())
@@ -51,10 +54,12 @@ public class OrderService {
         // Calculate Amount
         calcAmount(order, item, contents);
 
-        // 2. Save Order
+        // 2. Save Order (Cascade will save items if configured, but we keep explicit
+        // for safety)
         orderRepo.save(order);
 
-        // 3. Save Item
+        // 3. Save Item (Explicitly set orderId column as it's the owner of the physical
+        // column)
         item.setOrderId(order.getId());
         itemRepo.save(item);
 

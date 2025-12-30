@@ -33,17 +33,13 @@ public class SalesStatisticsService {
      */
     @Transactional
     public void recordSales(OrderPO order) {
-        log.info("Starting to record sales statistics for OrderNo: {}", order.getOrderNo());
-
-        if (order.getItems() == null || order.getItems().isEmpty()) {
-            log.warn("Order has no items, skipping statistics. OrderNo: {}", order.getOrderNo());
-            return;
-        }
+        log.info("Order items count: {}", order.getItems().size());
 
         List<ProductSalesRecordPO> productRecords = new ArrayList<>();
         List<WorkSalesRecordPO> workRecords = new ArrayList<>();
 
         for (OrderItemPO item : order.getItems()) {
+            log.info("Processing item: ProductId={}, Subtotal={}", item.getProductId(), item.getSubtotalAmount());
             // 1. 创建商品销售记录
             ProductSalesRecordPO productRecord = new ProductSalesRecordPO();
             productRecord.setProductId(item.getProductId());
@@ -59,6 +55,7 @@ public class SalesStatisticsService {
 
             // 2. 创建作品销售记录 (如果有具体的 OrderContent)
             if (item.getContents() != null) {
+                log.info("Item has {} contents", item.getContents().size());
                 for (OrderContentPO content : item.getContents()) {
                     // 只记录有收益的内容，也可以记录 GIFT 但金额为0
                     WorkSalesRecordPO workRecord = new WorkSalesRecordPO();
@@ -76,10 +73,14 @@ public class SalesStatisticsService {
         }
 
         if (!productRecords.isEmpty()) {
+            log.info("Saving {} product sales records", productRecords.size());
             productSalesRepo.saveAll(productRecords);
+            productSalesRepo.flush();
         }
         if (!workRecords.isEmpty()) {
+            log.info("Saving {} work sales records", workRecords.size());
             workSalesRepo.saveAll(workRecords);
+            workSalesRepo.flush();
         }
 
         log.info("Recorded {} product sales and {} work sales for OrderNo: {}",
