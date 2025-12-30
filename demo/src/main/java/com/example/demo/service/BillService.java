@@ -5,6 +5,7 @@ import com.example.demo.bean.po.PaymentRecordPO;
 import com.example.demo.config.WeChatPayProperties;
 import com.example.demo.repository.OrderRepository;
 import com.example.demo.repository.PaymentRecordRepository;
+import com.example.demo.status.PayStatus;
 import com.wechat.pay.java.service.payments.app.AppServiceExtension;
 import com.wechat.pay.java.service.payments.app.model.Amount;
 import com.wechat.pay.java.service.payments.app.model.PrepayRequest;
@@ -30,16 +31,25 @@ public class BillService {
     private final OrderRepository orderRepo;
 
     // Optional: might be null if mock=true
-    private final AppServiceExtension appService;
+    @org.springframework.beans.factory.annotation.Autowired(required = false)
+    private AppServiceExtension appService;
+
+    public WeChatPayProperties getProperties() {
+        return properties;
+    }
 
     @Transactional
     public Map<String, Object> prepay(String orderNo) {
         OrderPO order = orderRepo.findByOrderNo(orderNo)
                 .orElseThrow(() -> new RuntimeException("订单不存在"));
 
-        if (order.getPayStatus() == 1) {
+        if (order.getPayStatus() != null && order.getPayStatus() == PayStatus.PAID.getCode()) {
             throw new RuntimeException("订单已支付");
         }
+
+        // Optional: Mark as PAYING
+        order.setPayStatus(PayStatus.PAYING.getCode());
+        orderRepo.saveAndFlush(order);
 
         // Generate our own trace ID if not exists, or just use orderNo as outTradeNo
         // Usually we might retry, so we use orderNo.
@@ -47,7 +57,8 @@ public class BillService {
         // outTradeNo, handle that.
         // For simplicity: outTradeNo = orderNo
 
-        if (Boolean.TRUE.equals(properties.getMock())) {
+        // If appService is null, force mock
+        if (appService == null || Boolean.TRUE.equals(properties.getMock())) {
             return mockPrepay(order);
         } else {
             return wechatPrepay(order);
@@ -56,6 +67,9 @@ public class BillService {
 
     private Map<String, Object> mockPrepay(OrderPO order) {
         log.info("Mock Prepay for order: {}", order.getOrderNo());
+
+        // Save Record (Pending)
+        createPendingRecord(order, "MOCK");
 
         // Return dummy data that frontend can detect as "Mock"
         // Or return consistent format that automatically "succeeds" when used
@@ -108,16 +122,19 @@ public class BillService {
     }
 
     private void createPendingRecord(OrderPO order, String type) {
-        if (paymentRepo.findByOutTradeNo(order.getOrderNo()).isPresent()) {
-            return;
-        }
-        PaymentRecordPO p = new PaymentRecordPO();
+        log.info("Creating pending record for order: {}, type: {}", order.getOrderNo(), type);
+
+        PaymentRecordPO p = paymentRepo.findByOutTradeNo(order.getOrderNo())
+                .orElse(new PaymentRecordPO());
+
         p.setOrderNo(order.getOrderNo());
         p.setOutTradeNo(order.getOrderNo());
         p.setPayType(type);
-        p.setPayAmount(order.getPayAmount());
+        p.setPayAmount(order.getPayAmount() != null ? order.getPayAmount() : BigDecimal.ZERO);
         p.setPayStatus(0); // UNPAID
         p.setCreateTime(LocalDateTime.now());
-        paymentRepo.save(p);
+
+        paymentRepo.saveAndFlush(p);
+        log.info("Pending record saved for order: {}", order.getOrderNo());
     }
 }

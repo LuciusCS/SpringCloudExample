@@ -20,7 +20,7 @@ public class WeChatPayConfig {
     private final WeChatPayProperties properties;
 
     @Bean
-    @ConditionalOnProperty(name = "wechat.pay.mock", havingValue = "false", matchIfMissing = true)
+    @ConditionalOnProperty(name = "wechat.pay.mock", havingValue = "false", matchIfMissing = false)
     public Config wechatConfig() {
         // Only load if not in mock mode (or lenient load)
         // If privateKeyPath is missing in dev, this might fail.
@@ -40,7 +40,7 @@ public class WeChatPayConfig {
      * Service for App Payment (Native App) outputting prepay_id
      */
     @Bean
-    @ConditionalOnProperty(name = "wechat.pay.mock", havingValue = "false", matchIfMissing = true)
+    @ConditionalOnProperty(name = "wechat.pay.mock", havingValue = "false", matchIfMissing = false)
     public AppServiceExtension appServiceExtension(Config config) {
         return new AppServiceExtension.Builder().config(config).build();
     }
@@ -49,7 +49,7 @@ public class WeChatPayConfig {
      * Service for JSAPI Payment (MiniProgram) outputting prepay_id
      */
     @Bean
-    @ConditionalOnProperty(name = "wechat.pay.mock", havingValue = "false", matchIfMissing = true)
+    @ConditionalOnProperty(name = "wechat.pay.mock", havingValue = "false", matchIfMissing = false)
     public JsapiServiceExtension jsapiServiceExtension(Config config) {
         return new JsapiServiceExtension.Builder().config(config).build();
     }

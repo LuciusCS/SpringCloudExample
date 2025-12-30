@@ -8,11 +8,13 @@ import com.example.demo.status.OrderStatus;
 import com.example.demo.status.PayStatus;
 import com.example.demo.util.WechatNotify;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class PayCallbackService {
@@ -54,14 +56,50 @@ public class PayCallbackService {
         record.setRawNotify(rawNotify);
         record.setPayTime(LocalDateTime.now());
 
-        payRepo.save(record);
+        record.setPayTime(LocalDateTime.now());
+
+        payRepo.saveAndFlush(record);
 
         // 5️⃣ 更新订单状态（状态机）
+        processOrderSuccess(order);
+    }
+
+    @Transactional
+    public void handleSimulatedSuccess(String orderNo) {
+        log.info("Handling simulated success for order: {}", orderNo);
+
+        OrderPO order = orderRepo.findByOrderNoForUpdate(orderNo)
+                .orElseThrow(() -> new RuntimeException("订单不存在"));
+
+        if (order.getPayStatus() == PayStatus.PAID.getCode()) {
+            return;
+        }
+
+        // For simulation, we assume amount is correct and transaction ID is mock
+        PaymentRecordPO record = payRepo.findByOutTradeNo(orderNo)
+                .orElseGet(() -> {
+                    PaymentRecordPO r = new PaymentRecordPO();
+                    r.setOrderNo(orderNo);
+                    r.setOutTradeNo(orderNo);
+                    return r;
+                });
+
+        record.setTransactionId("SIMULATED_" + System.currentTimeMillis());
+        record.setPayType("MOCK");
+        record.setPayAmount(order.getPayAmount());
+        record.setPayStatus(PayStatus.PAID.getCode());
+        record.setPayTime(LocalDateTime.now());
+        payRepo.saveAndFlush(record);
+
+        processOrderSuccess(order);
+    }
+
+    private void processOrderSuccess(OrderPO order) {
         order.setPayStatus(PayStatus.PAID.getCode());
         order.setOrderStatus(OrderStatus.PAID.getCode());
         order.setPayTime(LocalDateTime.now());
 
-        orderRepo.save(order);
+        orderRepo.saveAndFlush(order);
 
         // 6️⃣ 记录销售统计
         statsService.recordSales(order);

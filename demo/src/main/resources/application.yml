@@ -45,6 +45,16 @@ logging:
     org.springframework.cloud: DEBUG  # Spring Cloud 相关的日志
     com.example: DEBUG  # 你自己应用的日志级别
 
+wechat:
+  pay:
+    mock: true # Set to false to enable real payment
+    appid: wx8888888888888888
+    mchid: "1230000109"
+    merchant-serial-number: "YOUR_MERCHANT_SERIAL_NUMBER"
+    private-key-path: "classpath:apiclient_key.pem"
+    api-v3-key: "YOUR_API_V3_KEY"
+    notify-url: "https://yourdomain.com/api/wx-pay/notify"
+
 
 
 ---
