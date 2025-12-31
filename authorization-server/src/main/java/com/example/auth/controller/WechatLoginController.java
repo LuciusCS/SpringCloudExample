@@ -48,7 +48,8 @@ public class WechatLoginController {
         String unionid = sessionData.getStr("unionid"); // 可能为null
 
         // 2. 查找或创建用户
-        WechatUserService.UserResult userResult = wechatUserService.findOrCreateUserByOpenid(openid, unionid);
+        WechatUserService.UserResult userResult = wechatUserService.findOrCreateUserByOpenid(
+                openid, unionid, request.getNickname(), request.getAvatar());
         User user = userResult.getUser();
 
         // 3. 生成JWT Token
@@ -63,6 +64,8 @@ public class WechatLoginController {
                 .authorities(user.getAuthorities().stream()
                         .map(GrantedAuthority::getAuthority)
                         .collect(Collectors.toSet()))
+                .nickname(user.getNickname())
+                .avatar(user.getAvatarUrl())
                 .build();
     }
 }

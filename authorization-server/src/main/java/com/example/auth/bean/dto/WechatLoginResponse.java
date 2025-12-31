@@ -32,4 +32,10 @@ public class WechatLoginResponse {
 
     @Schema(description = "用户权限列表")
     private Set<String> authorities;
+
+    @Schema(description = "用户昵称")
+    private String nickname;
+
+    @Schema(description = "用户头像")
+    private String avatar;
 }

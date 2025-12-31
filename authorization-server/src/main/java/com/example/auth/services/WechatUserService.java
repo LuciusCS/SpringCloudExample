@@ -27,23 +27,42 @@ public class WechatUserService {
     /**
      * 根据openid查找或创建用户
      *
-     * @param openid  微信OpenID
-     * @param unionid 微信UnionID (可选)
+     * @param openid    微信OpenID
+     * @param unionid   微信UnionID (可选)
+     * @param nickname  微信昵称 (可选)
+     * @param avatarUrl 微信头像 (可选)
      * @return 用户实体和是否为新用户的标识
      */
     @Transactional
-    public UserResult findOrCreateUserByOpenid(String openid, String unionid) {
+    public UserResult findOrCreateUserByOpenid(String openid, String unionid, String nickname, String avatarUrl) {
         Optional<User> existingUser = userRepository.findByWechatOpenid(openid);
 
         if (existingUser.isPresent()) {
+            User user = existingUser.get();
             log.info("找到已存在的微信用户, openid: {}", openid);
-            return new UserResult(existingUser.get(), false);
+            // 同步最新的微信资料
+            boolean updated = false;
+            if (nickname != null && !nickname.equals(user.getNickname())) {
+                user.setNickname(nickname);
+                updated = true;
+            }
+            if (avatarUrl != null && !avatarUrl.equals(user.getAvatarUrl())) {
+                user.setAvatarUrl(avatarUrl);
+                updated = true;
+            }
+            if (updated) {
+                userRepository.save(user);
+                log.info("更新用户微信资料, userId: {}", user.getId());
+            }
+            return new UserResult(user, false);
         }
 
         // 创建新用户
         User newUser = new User();
         newUser.setWechatOpenid(openid);
         newUser.setWechatUnionid(unionid);
+        newUser.setNickname(nickname);
+        newUser.setAvatarUrl(avatarUrl);
 
         // 生成随机用户名和密码 (微信登录不需要密码，但User实体要求非空)
         newUser.setUsername("wx_" + UUID.randomUUID().toString().substring(0, 8));
