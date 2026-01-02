@@ -71,6 +71,10 @@ spring:
           uri: lb://seckill-server             # 注册到Nacos中的服务名
           predicates:
             - Path=/api/**
+        - id: demo-server
+          uri: lb://demo-server
+          predicates:
+            - Path=/moe/**
 #          filters:                   ✅ 结论：因为 Sentinel 网关限流已经自动集成到 Gateway 的过滤器链中，不需要手动配置 filters 条目
 #            - SentinelGatewayFilter  # 关键！让 Gateway 请求进入 Sentinel 统计
 #      routes: # 这里的 routes 会被 Nacos 动态更新，

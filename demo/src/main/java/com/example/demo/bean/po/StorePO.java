@@ -23,6 +23,8 @@ public class StorePO {
 
     private String contact;
 
+    private String logo;
+
     private LocalDateTime createTime;
 
     private LocalDateTime updateTime;

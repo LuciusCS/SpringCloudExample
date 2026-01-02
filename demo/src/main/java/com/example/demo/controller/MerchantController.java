@@ -86,7 +86,48 @@ public class MerchantController {
         return Map.of("code", 0, "msg", "审核完成");
     }
 
-    // --- Existing Mocked Endpoints ---
+    // --- Store Info Management ---
+
+    @GetMapping("/store/info")
+    public Map<String, Object> getStoreInfo(@RequestParam Long userId) {
+        var storeOpt = storeRepository.findByUserId(userId);
+        if (storeOpt.isEmpty()) {
+            return Map.of("code", 0, "msg", "success", "data", null);
+        }
+        return Map.of("code", 0, "msg", "success", "data", storeOpt.get());
+    }
+
+    @PostMapping("/store/update")
+    public Map<String, Object> updateStoreInfo(@RequestBody com.example.demo.bean.dto.StoreUpdateReq req) {
+        System.out.println("Received Store Update Request: " + req);
+        if (req.getUserId() == null) {
+            System.out.println("Error: UserId is required");
+            return Map.of("code", 1, "msg", "UserId is required");
+        }
+        var storeOpt = storeRepository.findByUserId(req.getUserId());
+        com.example.demo.bean.po.StorePO store;
+
+        if (storeOpt.isEmpty()) {
+            // Implicitly create store if it doesn't exist?
+            // Users might want to set up store info before audit?
+            // For now, let's create it to be user friendly
+            store = new com.example.demo.bean.po.StorePO();
+            store.setUserId(req.getUserId());
+        } else {
+            store = storeOpt.get();
+        }
+
+        if (req.getName() != null && !req.getName().isBlank())
+            store.setName(req.getName());
+        if (req.getDescription() != null)
+            store.setDescription(req.getDescription());
+        if (req.getLogo() != null)
+            store.setLogo(req.getLogo());
+
+        storeRepository.save(store);
+
+        return Map.of("code", 0, "msg", "更新成功");
+    }
 
     // 1. Merchant Stats (Wallet, Views, Fans)
     @GetMapping("/stats")
