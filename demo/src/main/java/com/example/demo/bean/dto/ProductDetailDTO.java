@@ -46,4 +46,6 @@ public class ProductDetailDTO {
     private String storeName;
     private Long storeId;
     private String storeContact;
+    private String storeLogo;
+    private String storeDesc;
 }

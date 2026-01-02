@@ -211,6 +211,7 @@ public class ProductServiceImpl implements ProductService {
         storeRepository.findByUserId(po.getArtistId()).ifPresent(store -> {
             dto.setStoreName(store.getName());
             dto.setStoreId(store.getId());
+            dto.setStoreLogo(store.getLogo());
         });
 
         return dto;
@@ -241,6 +242,8 @@ public class ProductServiceImpl implements ProductService {
             dto.setStoreName(store.getName());
             dto.setStoreId(store.getId());
             dto.setStoreContact(store.getContact());
+            dto.setStoreLogo(store.getLogo());
+            dto.setStoreDesc(store.getDescription());
         });
 
         if (po.getWorks() != null) {

@@ -45,4 +45,5 @@ public class ProductListDTO {
 
     private String storeName;
     private Long storeId;
+    private String storeLogo;
 }
