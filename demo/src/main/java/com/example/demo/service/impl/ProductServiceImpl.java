@@ -197,6 +197,7 @@ public class ProductServiceImpl implements ProductService {
         dto.setThemeColor(po.getThemeColor());
         // dto.setCreateTime(po.getCreateTime());
 
+        dto.setOnSale(po.getOnSale());
         dto.setAllowBox(po.getAllowBox());
         dto.setMinUserPrice(po.getMinUserPrice());
         dto.setPackagePrice(po.getPackagePrice());

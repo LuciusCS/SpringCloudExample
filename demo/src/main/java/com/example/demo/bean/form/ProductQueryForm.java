@@ -9,5 +9,7 @@ public class ProductQueryForm {
     private String themeColor;
     private String title;
     private Integer type;
+    private Boolean onSale;
+    private Boolean draft;
 
 }

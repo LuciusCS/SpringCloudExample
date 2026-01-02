@@ -37,6 +37,11 @@ public class ProductSpecification {
                         cb.equal(root.get("type"), form.getType()));
             }
 
+            if (form.getOnSale() != null) {
+                predicates.add(
+                        cb.equal(root.get("onSale"), form.getOnSale()));
+            }
+
             // ⭐ tags：按逗号拆分，OR 关系
             if (StringUtils.hasText(form.getTags())) {
                 String[] tagArr = form.getTags().split(",");

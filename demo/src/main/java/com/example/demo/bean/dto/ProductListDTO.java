@@ -17,6 +17,7 @@ public class ProductListDTO {
     private LocalDateTime createTime;
     // 是否允许抱盒
     private Boolean allowBox;
+    private Boolean onSale;
 
     // 用户消费需满足的最低价格
     private BigDecimal minUserPrice;
