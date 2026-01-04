@@ -20,5 +20,7 @@ public class PurchasedContentFlatDTO {
 
     private Integer productType;
 
+    private String storeLogo;
+
     private LocalDateTime buyTime;
 }

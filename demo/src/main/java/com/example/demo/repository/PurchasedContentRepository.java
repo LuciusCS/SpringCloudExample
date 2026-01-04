@@ -23,11 +23,14 @@ public interface PurchasedContentRepository extends JpaRepository<OrderPO, Long>
 
                     i.productType,
 
+                    s.logo,
+
                     o.payTime
                 )
-                from OrderContentPO c, OrderItemPO i, OrderPO o
+                from OrderContentPO c, OrderItemPO i, OrderPO o, ProductPO p left join StorePO s on p.artistId = s.userId
                 where c.orderItem.id = i.id
                   and i.orderId = o.id
+                  and i.productId = p.id
                   and o.userId = :userId
                   and o.payStatus = 2
                   and o.orderStatus in (0, 1, 2)

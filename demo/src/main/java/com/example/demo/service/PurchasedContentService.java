@@ -38,6 +38,7 @@ public class PurchasedContentService {
                                                 dto.setProductId(r.getProductId());
                                                 dto.setProductTitle(r.getProductTitle());
                                                 dto.setProductType(r.getProductType());
+                                                dto.setStoreLogo(r.getStoreLogo());
                                                 dto.setWorks(new ArrayList<>());
                                                 return dto;
                                         });
