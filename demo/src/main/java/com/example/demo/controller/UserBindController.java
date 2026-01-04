@@ -94,4 +94,11 @@ public class UserBindController {
             return ResponseEntity.internalServerError().body("绑定失败: " + e.getMessage());
         }
     }
+
+    @GetMapping("/info")
+    public ResponseEntity<String> getBindInfo(@RequestParam Long userId) {
+        Optional<UserQQBindPO> existing = userQQBindRepository.findByUserId(userId);
+        return existing.map(userQQBindPO -> ResponseEntity.ok(userQQBindPO.getQq()))
+                .orElseGet(() -> ResponseEntity.ok(null));
+    }
 }

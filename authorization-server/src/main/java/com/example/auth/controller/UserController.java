@@ -60,7 +60,45 @@ public class UserController {
         if (userRequest.getNickname() != null) {
             currentUser.setNickname(userRequest.getNickname());
         }
+        if (userRequest.getMobile() != null) {
+            currentUser.setMobile(userRequest.getMobile());
+        }
+        if (userRequest.getQq() != null) {
+            currentUser.setQq(userRequest.getQq());
+        }
+        if (userRequest.getSingleSignature() != null) {
+            currentUser.setSingleSignature(userRequest.getSingleSignature());
+        }
+        if (userRequest.getDoubleSignature() != null) {
+            currentUser.setDoubleSignature(userRequest.getDoubleSignature());
+        }
+        if (userRequest.getFourSignature() != null) {
+            currentUser.setFourSignature(userRequest.getFourSignature());
+        }
+
         userRepository.save(currentUser);
         return ResponseEntity.ok("更新成功");
+    }
+
+    @GetMapping("/profile/info")
+    @Operation(summary = "获取当前用户信息")
+    public ResponseEntity<User> getUserInfo(Authentication authentication) {
+        Jwt jwt = (Jwt) authentication.getPrincipal();
+        Long userId = jwt.getClaim("userId");
+        if (userId == null) {
+            return ResponseEntity.status(401).build();
+        }
+
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("用户不存在"));
+
+        // Hide password/sensitive info if needed, but @JsonIgnore on roles might be
+        // enough,
+        // password should be @JsonIgnore but isn't in the snippet I saw?
+        // Checking User.java again... password doesn't have @JsonIgnore.
+        // I should probably refrain from returning password.
+        user.setPassword(null);
+
+        return ResponseEntity.ok(user);
     }
 }

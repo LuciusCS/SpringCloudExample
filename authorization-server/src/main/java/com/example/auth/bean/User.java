@@ -75,6 +75,26 @@ public class User extends AuditableEntity<User> implements UserDetails {
     @Schema(description = "头像URL")
     private String avatarUrl;
 
+    @Column(name = "mobile", length = 20)
+    @Schema(description = "手机号")
+    private String mobile;
+
+    @Column(name = "qq", length = 20)
+    @Schema(description = "QQ号")
+    private String qq;
+
+    @Column(name = "single_signature", length = 10)
+    @Schema(description = "单字署名")
+    private String singleSignature;
+
+    @Column(name = "double_signature", length = 20)
+    @Schema(description = "二字署名")
+    private String doubleSignature;
+
+    @Column(name = "four_signature", length = 50)
+    @Schema(description = "四字署名")
+    private String fourSignature;
+
     @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
